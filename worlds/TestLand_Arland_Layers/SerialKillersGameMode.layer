@@ -1,0 +1,17 @@
+SCR_AIWorld : "{01DC74137CFDDB6A}Prefabs/AI/SCR_AIWorld_Arland.et" {
+ coords 2698.815 78.492 1775.564
+}
+SK_SerialKillersGameMode GameModeSF : "{ECEEDB2D3737204B}Prefabs/ScenarioFramework/SK_SerialKillersGameModeOverride.et" {
+ components {
+  SK_CivilianManagerComponent "{60C4D31D2257CD56}" {
+   m_iDefaultHouseOccupants 1
+  }
+  SK_SerialKillersConfigComponent "{60C4D31123C481B5}" {
+   m_pCivilianPrefab "{1AF5B9AE5CFD4433}Prefabs/Groups/INDFOR/Group_CIV.et"
+   m_pPatrolWaypointPrefab "{22A875E30470BD4F}Prefabs/AI/Waypoints/AIWaypoint_Patrol.et"
+   m_pWaitWaypointPrefab "{531EC45063C1F57B}Prefabs/AI/Waypoints/AIWaypoint_Wait.et"
+   m_pCycleWaypointPrefab "{35BD6541CBB8AC08}Prefabs/AI/Waypoints/AIWaypoint_Cycle.et"
+  }
+ }
+ coords 2033.122 32.126 2017.837
+}

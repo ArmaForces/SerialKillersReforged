@@ -1,0 +1,8 @@
+GameProject {
+ ID "SerialKillersReforged"
+ GUID "60BAEB435E4E0AE5"
+ TITLE "SerialKillersReforged"
+ Dependencies {
+  "58D0FB3206B6F859"
+ }
+}
