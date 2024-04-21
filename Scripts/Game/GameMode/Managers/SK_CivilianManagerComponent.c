@@ -146,9 +146,4 @@ class SK_CivilianManagerComponent: ScriptComponent
 		}
 		return false;	
 	}
-	
-	void OnAIKilled(IEntity ai, IEntity instigator)
-	{
-		Print("AI " + ai.GetID() + " was killed by " + instigator.GetID() + " !", LogLevel.WARNING);
-	}
 }
