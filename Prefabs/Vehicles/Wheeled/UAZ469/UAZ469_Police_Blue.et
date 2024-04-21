@@ -1,0 +1,84 @@
+Vehicle : "{99F1610551D54D17}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_base.et" {
+ ID "BBCBA43A9778AE21"
+ components {
+  MeshObject "{51DAA09FEFBFC0E7}" {
+   Materials {
+    MaterialAssignClass "{612AA0637891915C}" {
+     SourceMaterial "UAZ469_Body"
+     AssignedMaterial "{766B295AB9CA1020}Assets/Vehicles/Wheeled/UAZ469/Data/UAZ469_Body_POLICEBLUE.emat"
+    }
+   }
+  }
+  SCR_EditableVehicleComponent "{50DEB7C26B5EB312}" {
+   m_UIInfo SCR_EditableVehicleUIInfo "{5298E609432D192D}" {
+    Name "#SK_CAR_UAZ469_Police_Blue"
+    m_Image "{32D49F65C0DCDAEC}UI/Textures/EditorPreviews/Vehicles/UAZ469/UAZ469_Police_Blue_Thumb.edds"
+    m_sFaction "CIV"
+    m_EntityBudgetCost {
+     SCR_EntityBudgetValue "{5EDC86E4AF8908B6}" {
+      m_Value 150
+     }
+    }
+   }
+   m_Flags PLACEABLE
+  }
+  SCR_ResourceComponent "{5D83561B226A69C6}" {
+   m_aEncapsulators {
+    SCR_ResourceEncapsulator "{5DAD42B36FF7E6E7}" {
+     m_aActions {
+      SCR_ResourceEncapsulatorActionChangeResourceValue "{5DDCCC77C7BA6B26}" {
+       m_fResourceValueCurrent 0
+      }
+     }
+    }
+   }
+   m_eDebugVisualizationFlags ENCAPSULATOR
+  }
+  SCR_VehicleFactionAffiliationComponent "{5882CBD9AC741CEC}" {
+   "faction affiliation" "CIV"
+  }
+  SCR_WheeledDamageManagerComponent "{141326E9FD94FE40}" {
+   m_fVehicleDestroyDamage 8582.14
+  }
+  SlotManagerComponent "{55BCE45E438E4CFF}" {
+   Slots {
+    RegisteringComponentSlotInfo Frame {
+    }
+    RegisteringComponentSlotInfo Door_L01 {
+     Prefab "{C93A2BD7DCBBC747}Prefabs/Vehicles/Wheeled/UAZ469/VehParts/Doors/UAZ469_door_L01_Police_Blue.et"
+    }
+    RegisteringComponentSlotInfo Door_R01 {
+     Prefab "{73516A20282D0989}Prefabs/Vehicles/Wheeled/UAZ469/VehParts/Doors/UAZ469_door_R01_Police_Blue.et"
+    }
+    RegisteringComponentSlotInfo Door_L02 {
+     Prefab "{899B9971E6AE3440}Prefabs/Vehicles/Wheeled/UAZ469/VehParts/Doors/UAZ469_door_L02_Police_Blue.et"
+    }
+    RegisteringComponentSlotInfo Door_R02 {
+     Prefab "{33F0D8861238FA8E}Prefabs/Vehicles/Wheeled/UAZ469/VehParts/Doors/UAZ469_door_R02_Police_Blue.et"
+    }
+    RegisteringComponentSlotInfo SeatsRear {
+     Prefab "{780AAF0A51AEE61A}Prefabs/Vehicles/Wheeled/UAZ469/VehParts/Seats/UAZ469_seats_rear.et"
+    }
+    RegisteringComponentSlotInfo SupplyStorage_05 {
+     PivotID "v_body"
+     Offset -0.1873 1.1635 -1.6017
+     Angles -85.0629 0 0
+     MergePhysics 1
+     Prefab "{11E588E215EBCF23}Prefabs/Props/Military/SupplyBox/SupplyCrate/SupplyCrate_01/SupplyCrate_01_Vehicle.et"
+     RegisterDamage 1
+    }
+    RegisteringComponentSlotInfo SupplyStorage_06 {
+     PivotID "v_body"
+     Offset 0.4041 0.8851 -1.4127
+     Angles 25.2855 -93.0068 -1.2853
+     MergePhysics 1
+     Prefab "{2E10FD09B66A44FF}Prefabs/Props/Military/SupplyBox/SupplyPortableContainers/SupplyPortableContainer_01/SupplyPortableContainers_01_large_Vehicle.et"
+     RegisterDamage 1
+    }
+   }
+  }
+  VehicleAnimationComponent "{50B803EAA459B0AF}" {
+   StartNode "VehicleMasterControl"
+  }
+ }
+}

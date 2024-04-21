@@ -1,0 +1,17 @@
+MetaFileClass {
+ Name "{7C21E792D2AC7119}Configs/Editor/PlaceableEntities/Vehicles/Vehicles.conf"
+ Configurations {
+  CONFResourceClass PC {
+  }
+  CONFResourceClass XBOX_ONE : PC {
+  }
+  CONFResourceClass XBOX_SERIES : PC {
+  }
+  CONFResourceClass PS4 : PC {
+  }
+  CONFResourceClass PS5 : PC {
+  }
+  CONFResourceClass HEADLESS : PC {
+  }
+ }
+}

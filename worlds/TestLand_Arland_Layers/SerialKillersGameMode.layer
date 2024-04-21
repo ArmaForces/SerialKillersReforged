@@ -3,6 +3,30 @@ SCR_AIWorld : "{01DC74137CFDDB6A}Prefabs/AI/SCR_AIWorld_Arland.et" {
 }
 SK_SerialKillersGameMode GameModeSF : "{ECEEDB2D3737204B}Prefabs/ScenarioFramework/SK_SerialKillersGameModeOverride.et" {
  components {
+  SCR_EntityCatalogManagerComponent "{5C9AD18D91F9E87E}" {
+   m_aEntityCatalogs {
+    SCR_EntityCatalogMultiList "{5C9AD18D9B68853E}" {
+     m_aMultiLists {
+      SCR_EntityCatalogMultiListEntry "{612AA05F7C1A7A40}" {
+       m_aEntities {
+        SCR_EntityCatalogEntry "{612AA05F0BAA4E03}" {
+         m_aEntityDataList {
+          SCR_EntityCatalogEditorData "{612AA047A694CD7B}" {
+          }
+         }
+        }
+        SCR_EntityCatalogEntry "{612AA05F13BCCE83}" {
+         m_aEntityDataList {
+          SCR_EntityCatalogEditorData "{612AA047A86CEE18}" {
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  }
   SK_CivilianManagerComponent "{60C4D31D2257CD56}" {
    m_iDefaultHouseOccupants 1
   }

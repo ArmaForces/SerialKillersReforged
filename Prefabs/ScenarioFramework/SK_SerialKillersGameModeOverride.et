@@ -1,3 +1,24 @@
 SK_SerialKillersGameMode : "{1B76F75A3175E85C}Prefabs/MP/Modes/Plain/GameMode_Plain.et" {
  ID "56B2B479C6B96951"
+ components {
+  SCR_EntityCatalogManagerComponent "{5C9AD18D91F9E87E}" {
+   m_aEntityCatalogs {
+    SCR_EntityCatalogMultiList "{5C9AD18D9B68853E}" {
+     m_aMultiLists {
+      SCR_EntityCatalogMultiListEntry "{612AA05F7C1A7A40}" {
+       m_sIdentifier "Police"
+       m_aEntities {
+        SCR_EntityCatalogEntry "{612AA05F0BAA4E03}" {
+         m_sEntityPrefab "{647B628D3671841D}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_Police.et"
+        }
+        SCR_EntityCatalogEntry "{612AA05F13BCCE83}" {
+         m_sEntityPrefab "{3D3B2730DD5CD4E7}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_Police_Blue.et"
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
 }
