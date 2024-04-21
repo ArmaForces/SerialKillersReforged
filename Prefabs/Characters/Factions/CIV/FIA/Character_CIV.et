@@ -16,6 +16,9 @@ SCR_ChimeraCharacter : "{7A9EE19AB67B298B}Prefabs/Characters/Factions/INDFOR/FIA
     }
    }
   }
+  SK_MapDescriptorComponent "{612A9B5E6240E24E}" {
+   MainType "Water Pump"
+  }
   CharacterIdentityComponent "{5584CBC63E092DBC}" {
    Identity Identity "{5584CBC6363C648B}" {
     VisualIdentity VisualIdentity "{56E6D9456009D1C4}" {
