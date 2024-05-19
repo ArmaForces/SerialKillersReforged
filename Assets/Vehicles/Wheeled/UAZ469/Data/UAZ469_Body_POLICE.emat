@@ -2,7 +2,7 @@ MatPBRMulti {
  SurfaceProperties "{F0733D364338D7E0}Common/Materials/Game/grass.gamemat"
  SpecularMul 0.5
  CavityFromAO 0.3
- GlobalMCRMap "{87AF3E7357F32144}Assets/Vehicles/Wheeled/UAZ469/Data/UAZ469_Body_POLICE.edds"
+ GlobalMCRMap "{87AF3E7357F32144}Assets/Vehicles/Wheeled/UAZ469/Data/UAZ469_Body_MILITIA.edds"
  OverlayBlackPower 0.6
  UVSrcGlobalMaps "UV set 2"
  MaskMap "{6390F0229CD2874E}Assets/Vehicles/Wheeled/UAZ469/Data/UAZ469_Body_GLOBAL_MASK.edds"

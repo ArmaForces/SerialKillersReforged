@@ -5,7 +5,7 @@ GenericEntity : "{AB2E315D4519F8DE}Prefabs/Vehicles/Wheeled/UAZ469/VehParts/Door
    Materials {
     MaterialAssignClass "{612AA075DC912CA2}" {
      SourceMaterial "UAZ469_Body"
-     AssignedMaterial "{E1149096A86BB049}Assets/Vehicles/Wheeled/UAZ469/Data/UAZ469_Body_POLICE.emat"
+     AssignedMaterial "{E1149096A86BB049}Assets/Vehicles/Wheeled/UAZ469/Data/UAZ469_Body_MILITIA.emat"
     }
    }
   }

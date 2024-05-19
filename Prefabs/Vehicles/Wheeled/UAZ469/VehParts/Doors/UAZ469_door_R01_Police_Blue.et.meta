@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{73516A20282D0989}Prefabs/Vehicles/Wheeled/UAZ469/VehParts/Doors/UAZ469_door_R01_Police_2.et"
+ Name "{73516A20282D0989}Prefabs/Vehicles/Wheeled/UAZ469/VehParts/Doors/UAZ469_door_R01_Militia_2.et"
  Configurations {
   EntityTemplateResourceClass PC {
   }

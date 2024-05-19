@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{87AF3E7357F32144}Assets/Vehicles/Wheeled/UAZ469/Data/UAZ469_Body_POLICE.edds"
+ Name "{87AF3E7357F32144}Assets/Vehicles/Wheeled/UAZ469/Data/UAZ469_Body_MILITIA.edds"
  Configurations {
   PNGResourceClass PC : "{DC555BD399D92412}Configs/System/ResourceTypes/PC/TextureUnspecified.conf" {
   }

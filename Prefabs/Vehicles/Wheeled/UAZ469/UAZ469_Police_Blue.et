@@ -5,14 +5,14 @@ Vehicle : "{99F1610551D54D17}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_base.et" {
    Materials {
     MaterialAssignClass "{612AA0637891915C}" {
      SourceMaterial "UAZ469_Body"
-     AssignedMaterial "{766B295AB9CA1020}Assets/Vehicles/Wheeled/UAZ469/Data/UAZ469_Body_POLICEBLUE.emat"
+     AssignedMaterial "{766B295AB9CA1020}Assets/Vehicles/Wheeled/UAZ469/Data/UAZ469_Body_MILITIABLUE.emat"
     }
    }
   }
   SCR_EditableVehicleComponent "{50DEB7C26B5EB312}" {
    m_UIInfo SCR_EditableVehicleUIInfo "{5298E609432D192D}" {
-    Name "#SK_CAR_UAZ469_Police_Blue"
-    m_Image "{32D49F65C0DCDAEC}UI/Textures/EditorPreviews/Vehicles/UAZ469/UAZ469_Police_Blue_Thumb.edds"
+    Name "#SK_CAR_UAZ469_Militia_Blue"
+    m_Image "{32D49F65C0DCDAEC}UI/Textures/EditorPreviews/Vehicles/UAZ469/UAZ469_Militia_Blue_Thumb.edds"
     m_sFaction "CIV"
     m_EntityBudgetCost {
      SCR_EntityBudgetValue "{5EDC86E4AF8908B6}" {
@@ -45,16 +45,16 @@ Vehicle : "{99F1610551D54D17}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_base.et" {
     RegisteringComponentSlotInfo Frame {
     }
     RegisteringComponentSlotInfo Door_L01 {
-     Prefab "{C93A2BD7DCBBC747}Prefabs/Vehicles/Wheeled/UAZ469/VehParts/Doors/UAZ469_door_L01_Police_Blue.et"
+     Prefab "{C93A2BD7DCBBC747}Prefabs/Vehicles/Wheeled/UAZ469/VehParts/Doors/UAZ469_door_L01_Militia_Blue.et"
     }
     RegisteringComponentSlotInfo Door_R01 {
-     Prefab "{73516A20282D0989}Prefabs/Vehicles/Wheeled/UAZ469/VehParts/Doors/UAZ469_door_R01_Police_Blue.et"
+     Prefab "{73516A20282D0989}Prefabs/Vehicles/Wheeled/UAZ469/VehParts/Doors/UAZ469_door_R01_Militia_Blue.et"
     }
     RegisteringComponentSlotInfo Door_L02 {
-     Prefab "{899B9971E6AE3440}Prefabs/Vehicles/Wheeled/UAZ469/VehParts/Doors/UAZ469_door_L02_Police_Blue.et"
+     Prefab "{899B9971E6AE3440}Prefabs/Vehicles/Wheeled/UAZ469/VehParts/Doors/UAZ469_door_L02_Militia_Blue.et"
     }
     RegisteringComponentSlotInfo Door_R02 {
-     Prefab "{33F0D8861238FA8E}Prefabs/Vehicles/Wheeled/UAZ469/VehParts/Doors/UAZ469_door_R02_Police_Blue.et"
+     Prefab "{33F0D8861238FA8E}Prefabs/Vehicles/Wheeled/UAZ469/VehParts/Doors/UAZ469_door_R02_Militia_Blue.et"
     }
     RegisteringComponentSlotInfo SeatsRear {
      Prefab "{780AAF0A51AEE61A}Prefabs/Vehicles/Wheeled/UAZ469/VehParts/Seats/UAZ469_seats_rear.et"
