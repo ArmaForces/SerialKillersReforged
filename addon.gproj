@@ -5,4 +5,79 @@ GameProject {
  Dependencies {
   "58D0FB3206B6F859"
  }
+ Configurations {
+  GameProjectConfig PC {
+   WidgetManagerSettings WidgetManagerSettings "{AC4BE58770485E02}" {
+    StringTables {
+     StringTableDefinition "{612B1578A53347E1}" {
+      StringTableSource "{6160B2E39EF90653}Language/SerialKillers_localization.st"
+      Languages {
+       LanguageDefinition "{612B1578A799AF28}" {
+        Code "cs_cz"
+        StringTableRuntime "{FA9B1CD83254F080}Language/SerialKillers_localization.cs_cz.conf"
+       }
+       LanguageDefinition "{612B1578A799AFDC}" {
+        Code "de_de"
+        StringTableRuntime "{2FE506EB21F7E1A0}Language/SerialKillers_localization.de_de.conf"
+       }
+       LanguageDefinition "{612B1578A799AFE1}" {
+        Code "en_us"
+        StringTableRuntime "{71158CA04B04E4A1}Language/SerialKillers_localization.en_us.conf"
+       }
+       LanguageDefinition "{612B1578A799AFF1}" {
+        Code "es_es"
+        StringTableRuntime "{B459C129A5068FBE}Language/SerialKillers_localization.es_es.conf"
+       }
+       LanguageDefinition "{612B1578A799AF86}" {
+        Code "fr_fr"
+        StringTableRuntime "{0FF1341E43856CBC}Language/SerialKillers_localization.fr_fr.conf"
+       }
+       LanguageDefinition "{612B1578A799AFA8}" {
+        Code "it_it"
+        StringTableRuntime "{8FEDBB2AEEA7EF45}Language/SerialKillers_localization.it_it.conf"
+       }
+       LanguageDefinition "{612B1578A799AFBE}" {
+        Code "ja_jp"
+        StringTableRuntime "{9FF606B8D0D6DFEE}Language/SerialKillers_localization.ja_jp.conf"
+       }
+       LanguageDefinition "{612B1578A799AE4E}" {
+        Code "ko_kr"
+        StringTableRuntime "{3F482E1443FBDCD1}Language/SerialKillers_localization.ko_kr.conf"
+       }
+       LanguageDefinition "{612B1578A799AE5D}" {
+        Code "pl_pl"
+        StringTableRuntime "{633988EEFD1440AD}Language/SerialKillers_localization.pl_pl.conf"
+       }
+       LanguageDefinition "{612B1578A799AE6C}" {
+        Code "pt_br"
+        StringTableRuntime "{B64E1222C6EA8A17}Language/SerialKillers_localization.pt_br.conf"
+       }
+       LanguageDefinition "{612B1578A799AE70}" {
+        Code "ru_ru"
+        StringTableRuntime "{E30F068A5B93EF61}Language/SerialKillers_localization.ru_ru.conf"
+       }
+       LanguageDefinition "{612B1578A799AE39}" {
+        Code "uk_ua"
+        StringTableRuntime "{6957537C37BD5134}Language/SerialKillers_localization.uk_ua.conf"
+       }
+       LanguageDefinition "{612B1578A799AECE}" {
+        Code "zh_cn"
+        StringTableRuntime "{B3E73D410E1D8129}Language/SerialKillers_localization.zh_cn.conf"
+       }
+      }
+     }
+    }
+   }
+  }
+  GameProjectConfig XBOX_ONE {
+  }
+  GameProjectConfig XBOX_SERIES {
+  }
+  GameProjectConfig PS4 {
+  }
+  GameProjectConfig PS5 {
+  }
+  GameProjectConfig HEADLESS {
+  }
+ }
 }
