@@ -64,6 +64,12 @@ class SK_CivilianManagerComponent: ScriptComponent
 		AIWaypoint wp = AIWaypoint.Cast(SK_Global.SpawnEntityPrefab(res, pos));
 		return wp;
 	}
+	
+	AIWaypoint SpawnGetInWaypoint(vector pos) 
+	{
+		AIWaypoint wp = AIWaypoint.Cast(SK_Global.SpawnEntityPrefab(SK_Global.GetConfig().m_pGetInWaypointPrefab, pos));
+		return wp;
+	}
 
 	protected ref array<ref EntityID> m_aCivilians = new array<ref EntityID>;
 	
@@ -74,6 +80,7 @@ class SK_CivilianManagerComponent: ScriptComponent
 		vector spawnPosition = SK_Global.GetRandomNonOceanPositionNear(pos, 50);
 
 		vector targetPos = SK_Global.GetRandomNonOceanPositionNear(pos, 5000);
+		vector carPosition = SK_Global.GetRandomNonOceanPositionNear(pos, 50);
 
 		BaseWorld world = GetGame().GetWorld();
 
@@ -89,9 +96,13 @@ class SK_CivilianManagerComponent: ScriptComponent
 		//TODO: Dress civs
 		//aigroup.GetOnAgentAdded().Insert(RandomizeCivilianClothes);
 		
+		SpawnVehicle(carPosition);
+		
 		
 		array<AIWaypoint> queueOfWaypoints = new array<AIWaypoint>();
-
+		
+		
+		queueOfWaypoints.Insert(SpawnGetInWaypoint(carPosition));
 		queueOfWaypoints.Insert(SpawnPatrolWaypoint(targetPos));
 		queueOfWaypoints.Insert(SpawnWaitWaypoint(targetPos, s_AIRandomGenerator.RandFloatXY(15, 50)));
 
@@ -100,9 +111,25 @@ class SK_CivilianManagerComponent: ScriptComponent
 
 		AIWaypointCycle cycle = AIWaypointCycle.Cast(SpawnWaypoint(SK_Global.GetConfig().m_pCycleWaypointPrefab, targetPos));
 		cycle.SetWaypoints(queueOfWaypoints);
-		cycle.SetRerunCounter(-1);
+		cycle.SetRerunCounter(1);
 		aigroup.AddWaypoint(cycle);
+
 		Print("Done spawning civilian", LogLevel.DEBUG);
+	}
+	
+	protected void SpawnVehicle(vector pos)
+	{
+		Print("Spawning vehicle at " + pos, LogLevel.NORMAL);
+		vector spawnPosition = SK_Global.GetRandomNonOceanPositionNear(pos, 50);
+		BaseWorld world = GetGame().GetWorld();
+		
+		spawnPosition = SK_Global.FindSafeSpawnPosition(spawnPosition);
+		IEntity vehicle = SK_Global.SpawnEntityPrefab(
+			SK_Global.GetConfig().m_pVehiclePrefabArray.GetRandomElement(),
+			spawnPosition, 
+			true
+		);
+		
 	}
 	
 	protected bool CheckAndProcessBuilding(IEntity entity)
@@ -123,24 +150,24 @@ class SK_CivilianManagerComponent: ScriptComponent
 	
 	protected bool FilterBuildingEntities(IEntity entity) 
 	{
-		return true;
+		
 		if(entity.ClassName() == "SCR_DestructibleBuildingEntity"){
 			VObject mesh = entity.GetVObject();
-			
 			if(mesh){
 				//TODO: Filter map entities
 				string res = mesh.GetResourceName();
+				//Print(entity.ClassName() + " - " + res, LogLevel.WARNING);
 				//if(res.IndexOf("/Military/") > -1) return false;
 				//if(res.IndexOf("/Industrial/") > -1) return false;
 				//if(res.IndexOf("/Recreation/") > -1) return false;
 				
-				if(res.IndexOf("/Houses/") > -1){
-					//if(res.IndexOf("_ruin") > -1) return false;
-					//if(res.IndexOf("/Shed/") > -1) return false;
-					//if(res.IndexOf("/Garage/") > -1) return false;
-					//if(res.IndexOf("/HouseAddon/") > -1) return false;
+				//if(res.IndexOf("/Houses/") > -1){
+					if(res.IndexOf("_ruin") > -1) return false;
+					if(res.IndexOf("/Shed/") > -1) return false;
+					if(res.IndexOf("/Garage/") > -1) return false;
+					if(res.IndexOf("/HouseAddon/") > -1) return false;
 					return true;
-				}
+				//}
 					
 			}
 		}
