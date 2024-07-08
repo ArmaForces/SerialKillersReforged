@@ -18,43 +18,21 @@ SCR_AIWorld : "{01DC74137CFDDB6A}Prefabs/AI/SCR_AIWorld_Arland.et" {
  coords 1328.174 38.999 2147.295
  "Accepted Road Types" 255
 }
-SCR_FactionManager FactionManager_USxUSSR1 : "{589540B35EBA8CDC}Prefabs/MP/Managers/Factions/FactionManager_USxUSSR.et" {
- coords 1337.067 38.999 2129.087
- Factions {
-  SCR_Faction "{61667A546239623B}" {
-   FactionKey "CIV"
-   FactionColor 0.157 0.624 0.275 1
-   UIInfo SCR_FactionUIInfo "{61667A54F1719695}" {
-    Name "Civilians"
-   }
-   m_bIsPlayable 0
-   m_bShowInWelcomeScreenIfNonPlayable 0
-   m_bIsMilitary 0
-   m_FactionLabel FACTION_CIV
-   m_sFactionRadioEncryptionKey "CIVBURGER"
-   m_aEntityCatalogs {
-    SCR_EntityCatalog "{61667A54E4B30285}" {
-     m_eEntityCatalogType GROUP
-     m_aEntityEntryList {
-      SCR_EntityCatalogEntry "{61667A54EDC45164}" {
-       m_sEntityPrefab "{1AF5B9AE5CFD4433}Prefabs/Groups/INDFOR/Group_CIV.et"
-      }
-     }
-    }
-    SCR_EntityCatalog "{61667A5494ADD142}" {
-     m_eEntityCatalogType ITEM
-    }
-    SCR_EntityCatalog "{61667A548B9F013D}" {
-     m_eEntityCatalogType CHARACTER
-    }
-   }
-  }
- }
-}
 SK_SerialKillersGameMode GameModeSF : "{ECEEDB2D3737204B}Prefabs/ScenarioFramework/SK_SerialKillersGameModeOverride.et" {
  components {
+  SCR_GameOverScreenManagerComponent "{56DEC646298AD219}" {
+   m_GameOverScreenConfig SCR_GameOverScreenConfig "{56DEC6462FFDD82D}" {
+   }
+  }
+  SCR_HintManagerComponent "{5702B54C6CBC9D7F}" {
+   m_bIgnoreHintSettings 1
+  }
   SK_CivilianManagerComponent "{60C4D31D2257CD56}" {
-   m_iDefaultHouseOccupants 1
+   m_iDefaultHouseOccupants 5
+  }
+  SK_RespawnSystemComponent "{56B2B4793051E7C9}" {
+   m_SpawnLogic SCR_MenuSpawnLogic "{5D36888CC966608A}" {
+   }
   }
   SK_SerialKillersConfigComponent "{60C4D31123C481B5}" {
    m_pCivilianPrefab "{1AF5B9AE5CFD4433}Prefabs/Groups/INDFOR/Group_CIV.et"
@@ -63,12 +41,58 @@ SK_SerialKillersGameMode GameModeSF : "{ECEEDB2D3737204B}Prefabs/ScenarioFramewo
    m_pCycleWaypointPrefab "{35BD6541CBB8AC08}Prefabs/AI/Waypoints/AIWaypoint_Cycle.et"
    m_pGetInWaypointPrefab "{B049D4C74FBC0C4D}Prefabs/AI/Waypoints/AIWaypoint_GetInNearest.et"
    m_pVehiclePrefabArray {
-    "{128253A267BE9424}Prefabs/Vehicles/Wheeled/S105/S105_randomized.et" "{49C909AFD66E90A1}Prefabs/Vehicles/Wheeled/S1203/S1203_transport_randomized.et" "{57A441224AC02CF3}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_covered_CIV_Randomized.et" "{EEAC3A94929A2B55}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_CIV_randomized.et" "{43C4AF1EEBD001CE}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_ambulance.et"
+    "{128253A267BE9424}Prefabs/Vehicles/Wheeled/S105/S105_randomized.et" "{49C909AFD66E90A1}Prefabs/Vehicles/Wheeled/S1203/S1203_transport_randomized.et" "{57A441224AC02CF3}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_covered_CIV_Randomized.et" "{EEAC3A94929A2B55}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_CIV_randomized.et" "{43C4AF1EEBD001CE}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_ambulance.et" "{F649585ABB3706C4}Prefabs/Vehicles/Wheeled/M151A2/M151A2.et" "{1B0D46B41C50873D}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_uncovered_CIV_Randomized.et" "{F649585ABB3706C4}Prefabs/Vehicles/Wheeled/M151A2/M151A2.et"
    }
   }
  }
  coords 2033.122 32.126 2017.837
  m_bAutoPlayerRespawn 0
+ m_bAllowFactionChange 0
+ m_iGameOverScore 4
+ {
+  SCR_FactionManager FactionManager_USxUSSR1 : "{589540B35EBA8CDC}Prefabs/MP/Managers/Factions/FactionManager_USxUSSR.et" {
+   coords -696.055 6.873 111.25
+   Factions {
+    SCR_Faction "{56B2B46E999BF3BF}" {
+     m_aFriendlyFactionsIds {
+      "CIV"
+     }
+    }
+    SCR_Faction "{61667A546239623B}" {
+     FactionKey "CIV"
+     FactionColor 0.157 0.624 0.275 1
+     UIInfo SCR_FactionUIInfo "{61667A54F1719695}" {
+      Name "Civilians"
+     }
+     m_bIsPlayable 0
+     m_bShowInWelcomeScreenIfNonPlayable 0
+     m_bIsMilitary 0
+     m_FactionLabel FACTION_CIV
+     m_aFriendlyFactionsIds {
+      "US"
+     }
+     m_sFactionRadioEncryptionKey "CIVBURGER"
+     m_aEntityCatalogs {
+      SCR_EntityCatalog "{61667A54E4B30285}" {
+       m_eEntityCatalogType GROUP
+       m_aEntityEntryList {
+        SCR_EntityCatalogEntry "{61667A54EDC45164}" {
+         m_sEntityPrefab "{1AF5B9AE5CFD4433}Prefabs/Groups/INDFOR/Group_CIV.et"
+        }
+       }
+      }
+      SCR_EntityCatalog "{61667A5494ADD142}" {
+       m_eEntityCatalogType ITEM
+      }
+      SCR_EntityCatalog "{61667A548B9F013D}" {
+       m_eEntityCatalogType CHARACTER
+      }
+     }
+    }
+   }
+   m_bCanChangeFactionsPlayable 0
+  }
+ }
 }
 SCR_SpawnPoint : "{4FEA25583D0975F7}Prefabs/MP/Spawning/SpawnPoint_USSR.et" {
  components {

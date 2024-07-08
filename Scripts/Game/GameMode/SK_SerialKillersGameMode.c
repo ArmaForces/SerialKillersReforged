@@ -19,6 +19,15 @@ class SK_SerialKillersGameMode : SCR_BaseGameMode
 	[Attribute( defvalue: "40", desc: "Blufor resources score")]
 	int m_iBluforResourcesScore;
 	
+	[Attribute( defvalue: "US", desc: "Blufor faction key")]
+	string m_sBluforFactionKey;	
+	
+	[Attribute( defvalue: "USSR", desc: "Redfor faction key")]
+	string m_sRedforFactionKey;
+	
+	[Attribute( defvalue: "CIV", desc: "Civilian faction key")]
+	string m_sCivilianFactionKey;
+	
 	protected int SK_RedforScore = 0;
 	protected int SK_BluforScore = 0;
 	
@@ -78,12 +87,12 @@ class SK_SerialKillersGameMode : SCR_BaseGameMode
 		
 		switch (killedFaction.GetFactionKey()) 
 		{
-			case "USSR":
+			case m_sRedforFactionKey:
 				return;
-			case "US":
+			case m_sBluforFactionKey:
 				HandleBluforKill(unit, instigatorFaction);
 				break;
-			case "CIV":
+			case m_sCivilianFactionKey:
 				HandleCivKill(unit, instigatorFaction);
 				break;
 			default:
@@ -122,7 +131,6 @@ class SK_SerialKillersGameMode : SCR_BaseGameMode
 			if (instigatorFaction.GetFactionKey() == "US")
 			{
 				bluScore = -m_iCivKilledScore;
-				return;
 			} 
 			else 
 			{
@@ -140,13 +148,13 @@ class SK_SerialKillersGameMode : SCR_BaseGameMode
 		ChimeraWorld world = GetWorld();
 		TimeContainer time = world.GetTimeAndWeatherManager().GetTime();
 		
-		string msg = "\t\t\t\t" + time.m_iHours + ":" + time.m_iMinutes + ":"  + time.m_iSeconds + "\n";
-		msg = msg + "___________________\n";
-		msg = msg + "\t\t\t\t Killers\n";
-		msg = msg + "\t\t\t\t " + SK_RedforScore + "/" + m_iGameOverScore + " (" + scoreChange + ")\n";
+		string msg = "\t" + time.m_iHours.ToString(2) + ":" + time.m_iMinutes.ToString(2) + ":"  + time.m_iSeconds.ToString(2) + "\n";
+		msg = msg + "_____________\n";
+		msg = msg + "\t Killers\n";
+		msg = msg + "\t " + SK_RedforScore + "/" + m_iGameOverScore + " (" + scoreChange + ")\n";
 		msg = msg + "\n";
-		msg = msg + "\t\t\t\t Police\n";
-		msg = msg + "\t\t\t\t " + SK_BluforScore + "/" + m_iBluforResourcesScore + " (" + eqScoreChange + ")\n";
+		msg = msg + "\t Police\n";
+		msg = msg + "\t " + SK_BluforScore + "/" + m_iBluforResourcesScore + " (" + eqScoreChange + ")\n";
 		msg = msg + message;
 		
 		SCR_HintManagerComponent.GetInstance().ShowCustom(msg, "", 10, false);
@@ -155,12 +163,21 @@ class SK_SerialKillersGameMode : SCR_BaseGameMode
 	void GameEndCheck() 
 	{
 		//TODO! Check if everyone in redfor is dead
+		SCR_FactionManager fm = SCR_FactionManager.Cast(GetGame().GetFactionManager());
+		SCR_Faction	redfor = SCR_Faction.Cast(fm.GetFactionByKey(m_sRedforFactionKey));
+		SCR_Faction blufor = SCR_Faction.Cast(fm.GetFactionByKey(m_sBluforFactionKey));
+		array<int> bluPlayers = new array<int>;
+		array<int> redPlayers = new array<int>;
+		
+		redfor.GetPlayersInFaction(redPlayers);
+		blufor.GetPlayersInFaction(bluPlayers);
 		if (false) 
 		{
 			Print("Blufor wins!");
-				//TODO!: Add blufor faction id and blufor player ids
-			SCR_GameModeEndData endData = SCR_GameModeEndData.CreateSimple(
-				EGameOverTypes.VICTORY
+				//TODO!: Add blufor player ids
+			SCR_GameModeEndData endData = SCR_GameModeEndData.Create(
+				EGameOverTypes.FACTION_VICTORY_SCORE,
+				bluPlayers
 			);
 			EndGameMode(endData);
 		}
@@ -168,8 +185,9 @@ class SK_SerialKillersGameMode : SCR_BaseGameMode
 		{
 			Print("Redfor wins!");
 				//TODO!: Add redfor faction id and redfor player ids
-			SCR_GameModeEndData endData = SCR_GameModeEndData.CreateSimple(
-				EGameOverTypes.VICTORY
+			SCR_GameModeEndData endData = SCR_GameModeEndData.Create(
+				EGameOverTypes.FACTION_VICTORY_SCORE,
+				redPlayers
 			);
 			EndGameMode(endData);
 		}

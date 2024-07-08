@@ -62,7 +62,9 @@ class SK_Global
 
 		if (!global) return GetGame().SpawnEntityPrefabLocal(Resource.Load(prefab), GetGame().GetWorld(), spawnParams);
 
-		//TODO! Enable randomization in call below
+		if (randomize) 
+			return GetGame().SpawnEntityPrefab(Resource.Load(SCR_EditableEntityComponentClass.GetRandomVariant(prefab)), GetGame().GetWorld(), spawnParams);
+		
 		return GetGame().SpawnEntityPrefab(Resource.Load(prefab), GetGame().GetWorld(), spawnParams);
 	}
 	

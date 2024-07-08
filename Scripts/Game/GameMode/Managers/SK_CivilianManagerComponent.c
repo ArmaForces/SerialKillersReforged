@@ -93,16 +93,15 @@ class SK_CivilianManagerComponent: ScriptComponent
 
 		SCR_AIGroup aigroup = SCR_AIGroup.Cast(civ);
 		
-		//TODO: Dress civs
-		//aigroup.GetOnAgentAdded().Insert(RandomizeCivilianClothes);
-		
-		SpawnVehicle(carPosition);
-		
-		
 		array<AIWaypoint> queueOfWaypoints = new array<AIWaypoint>();
 		
+		if (s_AIRandomGenerator.RandFloat01() < 0.5) 
+		{
+			SpawnVehicle(carPosition);
+			if (s_AIRandomGenerator.RandFloat01() < 0.5) 
+				queueOfWaypoints.Insert(SpawnGetInWaypoint(carPosition));
+		}
 		
-		queueOfWaypoints.Insert(SpawnGetInWaypoint(carPosition));
 		queueOfWaypoints.Insert(SpawnPatrolWaypoint(targetPos));
 		queueOfWaypoints.Insert(SpawnWaitWaypoint(targetPos, s_AIRandomGenerator.RandFloatXY(15, 50)));
 
@@ -143,7 +142,6 @@ class SK_CivilianManagerComponent: ScriptComponent
 	
 	protected void ProcessBuilding(IEntity entity, MapDescriptorComponent mapdesc)
 	{
-		Print("Building found at " + entity.GetOrigin(), LogLevel.DEBUG);
 		for (int i = 0; i < m_iDefaultHouseOccupants; i++)
 			SpawnCivilian(entity.GetOrigin());
 	}
@@ -157,9 +155,10 @@ class SK_CivilianManagerComponent: ScriptComponent
 				//TODO: Filter map entities
 				string res = mesh.GetResourceName();
 				//Print(entity.ClassName() + " - " + res, LogLevel.WARNING);
-				//if(res.IndexOf("/Military/") > -1) return false;
-				//if(res.IndexOf("/Industrial/") > -1) return false;
-				//if(res.IndexOf("/Recreation/") > -1) return false;
+				if(res.IndexOf("/Military/") > -1) return false;
+				if(res.IndexOf("/Industrial/") > -1) return false;
+				if(res.IndexOf("/Recreation/") > -1) return false;
+				if(res.IndexOf("Lighthouse") > -1) return false;
 				
 				//if(res.IndexOf("/Houses/") > -1){
 					if(res.IndexOf("_ruin") > -1) return false;
