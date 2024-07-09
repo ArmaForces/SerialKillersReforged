@@ -147,29 +147,22 @@ class SK_CivilianManagerComponent: ScriptComponent
 	}
 	
 	protected bool FilterBuildingEntities(IEntity entity) 
-	{
-		
-		if(entity.ClassName() == "SCR_DestructibleBuildingEntity"){
-			VObject mesh = entity.GetVObject();
-			if(mesh){
-				//TODO: Filter map entities
-				string res = mesh.GetResourceName();
-				//Print(entity.ClassName() + " - " + res, LogLevel.WARNING);
-				if(res.IndexOf("/Military/") > -1) return false;
-				if(res.IndexOf("/Industrial/") > -1) return false;
-				if(res.IndexOf("/Recreation/") > -1) return false;
-				if(res.IndexOf("Lighthouse") > -1) return false;
-				
-				//if(res.IndexOf("/Houses/") > -1){
-					if(res.IndexOf("_ruin") > -1) return false;
-					if(res.IndexOf("/Shed/") > -1) return false;
-					if(res.IndexOf("/Garage/") > -1) return false;
-					if(res.IndexOf("/HouseAddon/") > -1) return false;
-					return true;
-				//}
-					
-			}
-		}
-		return false;	
-	}
+    {
+        MapDescriptorComponent mapdesc = MapDescriptorComponent.Cast(entity.FindComponent(MapDescriptorComponent));
+        if (mapdesc){
+            int type = mapdesc.GetBaseType();
+            if (type == EMapDescriptorType.MDT_BUILDING) return true;
+            if (type == EMapDescriptorType.MDT_HOUSE) return true;
+            if (type == EMapDescriptorType.MDT_HOSPITAL) return true;
+            if (type == EMapDescriptorType.MDT_FUELSTATION) return true;
+            if (type == EMapDescriptorType.MDT_TOURISM) return true;
+            if (type == EMapDescriptorType.MDT_POLICE) return true;
+            if (type == EMapDescriptorType.MDT_STORE) return true;
+            if (type == EMapDescriptorType.MDT_HOTEL) return true;
+            if (type == EMapDescriptorType.MDT_PUB) return true;
+            if (type == EMapDescriptorType.MDT_FIREDEP) return true;
+        }
+
+        return false;
+    }
 }
