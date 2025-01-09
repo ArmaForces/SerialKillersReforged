@@ -27,6 +27,9 @@ SK_SerialKillersGameMode GameModeSF : "{ECEEDB2D3737204B}Prefabs/ScenarioFramewo
   SCR_HintManagerComponent "{5702B54C6CBC9D7F}" {
    m_bIgnoreHintSettings 1
   }
+  SCR_MapConfigComponent "{5C669498E250A34B}" {
+   m_sGadgetMapConfigPath "{32913D3C51D7736C}Configs/Map/MapFullscreenCoop.conf"
+  }
   SK_CivilianManagerComponent "{60C4D31D2257CD56}" {
    m_iDefaultHouseOccupants 5
   }
@@ -47,7 +50,6 @@ SK_SerialKillersGameMode GameModeSF : "{ECEEDB2D3737204B}Prefabs/ScenarioFramewo
  }
  coords 2033.122 32.126 2017.837
  m_bAutoPlayerRespawn 0
- m_bAllowFactionChange 0
  m_iGameOverScore 4
  {
   SCR_FactionManager FactionManager_USxUSSR1 : "{589540B35EBA8CDC}Prefabs/MP/Managers/Factions/FactionManager_USxUSSR.et" {

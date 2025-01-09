@@ -1,0 +1,18 @@
+$grp GenericEntity : "{88B3A9FF09D43C1B}Prefabs/Items/Equipment/Maps/PaperMap_FastTravel_CO.et" {
+ {
+  coords 1473.225 39.71 2946.767
+  angleX 0
+  angleY 0
+ }
+ {
+  coords 1369.879 40.331 2131.156
+  angleX 0
+  angleY 0
+ }
+}
+SCR_SpawnPoint : "{CEA2B24051A44525}PrefabsEditable/SpawnPoints/E_SpawnPoint_US.et" {
+ coords 1472.168 38 2951.652
+ m_Info SCR_UIInfo "{56B4CC4ECACA2C37}" {
+  Name "SampleBluforBaseName"
+ }
+}
