@@ -51,7 +51,7 @@ class SK_Global
 	}
 	
 		
-	static IEntity SpawnEntityPrefab(ResourceName prefab, vector origin, vector orientation = "0 0 0", bool global = true)
+	static IEntity SpawnEntityPrefab(ResourceName prefab, vector origin, bool randomize = false, vector orientation = "0 0 0", bool global = true)
 	{
 		EntitySpawnParams spawnParams();
 
@@ -62,6 +62,9 @@ class SK_Global
 
 		if (!global) return GetGame().SpawnEntityPrefabLocal(Resource.Load(prefab), GetGame().GetWorld(), spawnParams);
 
+		if (randomize) 
+			return GetGame().SpawnEntityPrefab(Resource.Load(SCR_EditableEntityComponentClass.GetRandomVariant(prefab)), GetGame().GetWorld(), spawnParams);
+		
 		return GetGame().SpawnEntityPrefab(Resource.Load(prefab), GetGame().GetWorld(), spawnParams);
 	}
 	

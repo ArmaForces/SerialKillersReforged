@@ -1,6 +1,9 @@
 SCR_AIGroup : "{242BC3C6BCE96EA5}Prefabs/Groups/INDFOR/Group_FIA_Base.et" {
  ID "0000000000000001"
  components {
+  AIPathfindingComponent "{518A98842FFC190E}" {
+   "Use Road Network" 1
+  }
   SCR_AIConfigComponent "{512CC1759AE69D6D}" {
    m_Skill 0
    m_EnableDangerEvents 0
@@ -8,6 +11,11 @@ SCR_AIGroup : "{242BC3C6BCE96EA5}Prefabs/Groups/INDFOR/Group_FIA_Base.et" {
    m_EnableAttack 0
    m_EnableCommunication 0
    m_EnableAimingError 0
+   m_sDefaultWeaponBehaviorTree "{91B8D5FDB60C1C80}AI/BehaviorTrees/Chimera/Soldier/RetreatFromTarget.bt"
+  }
+  SCR_AIGroupMovementComponent "{6126A0E02097C7FF}" {
+   "Navlink Traversal Attempts" 4
+   "Max Stuck Time" 31.2
   }
   SCR_EditableGroupComponent "{50D291F6C83FA532}" {
    m_UIInfo SCR_EditableGroupUIInfo "{5298E609432D192D}" {
@@ -34,10 +42,14 @@ SCR_AIGroup : "{242BC3C6BCE96EA5}Prefabs/Groups/INDFOR/Group_FIA_Base.et" {
     }
    }
   }
+  SCR_FactionAffiliationComponent "{61667A5E63E6E908}" {
+   "faction affiliation" "CIV"
+  }
   SCR_GroupIdentityComponent "{56366C5C50AD3CF2}" {
    m_MilitarySymbol SCR_MilitarySymbol "{56366C5C4E32A359}" {
-    m_Icons INFANTRY
-    m_Amplifier TEAM
+    m_Identity CIVILIAN
+    m_Icons 1073741825
+    m_Amplifier NONE
    }
   }
   SCR_PreviewEntityComponent "{56FCFA56AF8F68E9}" : "{6CADA7A88A6265FD}Prefabs/Editor/Components/PreviewEntityComponentClass.ct" {
@@ -100,8 +112,8 @@ SCR_AIGroup : "{242BC3C6BCE96EA5}Prefabs/Groups/INDFOR/Group_FIA_Base.et" {
    }
   }
  }
- m_faction ""
+ m_faction "CIV"
  m_aUnitPrefabSlots {
-  "{826258FDA41294E7}Prefabs/Characters/Factions/INDFOR/FIA/Character_CIV.et"
+  "{9B443DD4C1F6DCAE}Prefabs/Characters/Factions/CIV/Character_CIV_baseLoadout.et"
  }
 }
