@@ -1,0 +1,103 @@
+GenericEntity : "{0150701FD7034232}Prefabs/Compositions/Misc/CustomEntities/InteractionPoints/ArsenalBox_USSR_NoAffiliation.et" {
+ components {
+  SCR_ArsenalComponent "{56F2C6D1431AD9AF}" {
+   m_eSupportedArsenalItemTypes 1015806
+   m_eArsenalSaveType SAVING_DISABLED
+  }
+ }
+ coords 940.305 22.543 1440.871
+}
+GenericEntity : "{109608EEA0C767D0}PrefabsEditable/Auto/Props/Military/SupplyBox/SupplyStack/SupplyStack_Large_01/E_SupplyStack_Large_01_storage_USSR_covered.et" {
+ components {
+  SCR_ResourceComponent "{5D247A59598D71AE}" {
+   m_aContainers {
+    SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+     m_fResourceValueCurrent 100000
+     m_fResourceValueMax 20000
+     m_fResourceGainTickrate 0
+    }
+   }
+  }
+ }
+ coords 940.166 22.543 1440.044
+ {
+  GenericEntity {
+   ID "5D3085BCBE7D9302"
+   coords 0.005 0 0
+  }
+ }
+}
+$grp SCR_SpawnPoint : "{4FEA25583D0975F7}Prefabs/MP/Spawning/SpawnPoint_USSR.et" {
+ {
+  components {
+   SCR_MapDescriptorComponent "{54C659A97C47BDE2}" {
+    VisibleOnMap 1
+   }
+  }
+  coords 939.104 22.891 1443.014
+  angleY 138.319
+  m_Info SCR_UIInfo "{56B4CC4ECACA2C37}" {
+   Name "Terrorist arsenal"
+  }
+ }
+ {
+  components {
+   SCR_MapDescriptorComponent "{54C659A97C47BDE2}" {
+    VisibleOnMap 1
+   }
+  }
+  coords 2123.521 61.797 1042.071
+  m_Info SCR_UIInfo "{56B4CC4ECACA2C37}" {
+   Name ""
+  }
+ }
+ {
+  components {
+   SCR_MapDescriptorComponent "{54C659A97C47BDE2}" {
+    VisibleOnMap 1
+   }
+  }
+  coords 2789.549 62.794 1514.864
+  m_Info SCR_UIInfo "{56B4CC4ECACA2C37}" {
+   Name "Arleville"
+  }
+ }
+ {
+  components {
+   SCR_MapDescriptorComponent "{54C659A97C47BDE2}" {
+    VisibleOnMap 1
+   }
+  }
+  coords 3177.178 17.94 2834.113
+  m_Info SCR_UIInfo "{56B4CC4ECACA2C37}" {
+   Name "Beauregard"
+  }
+ }
+ {
+  components {
+   SCR_MapDescriptorComponent "{54C659A97C47BDE2}" {
+    VisibleOnMap 1
+   }
+  }
+  coords 1436.165 34.93 3186.161
+  m_Info SCR_UIInfo "{56B4CC4ECACA2C37}" {
+   Name ""
+  }
+ }
+ {
+  components {
+   SCR_MapDescriptorComponent "{54C659A97C47BDE2}" {
+    VisibleOnMap 1
+   }
+  }
+  coords 1599.579 40.439 2365.708
+  m_Info SCR_UIInfo "{56B4CC4ECACA2C37}" {
+   Name ""
+  }
+ }
+}
+GenericEntity : "{88B3A9FF09D43C1B}Prefabs/Items/Equipment/Maps/PaperMap_FastTravel_CO.et" {
+ coords 938.605 23.602 1439.67
+ angleX 0
+ angleY 0
+}

@@ -1,0 +1,31 @@
+GenericEntity : "{6E9190BC2713551D}Prefabs/Compositions/Slotted/BuildableComposition_Base.et" {
+ ID "5282DCB5DFC8538F"
+ components {
+  FactionAffiliationComponent "{64548D9BBCAA26F1}" {
+   "faction affiliation" "US"
+  }
+  RigidBody "{5E96A067A67C5029}" {
+   Geometries {
+    PhysicsBoxGeometry UserAction {
+     Extents 12 0.5 12
+    }
+   }
+  }
+  SCR_CampaignBuildingCompositionComponent "{5E96A067C097D570}" {
+   m_AudioSourceConfigurationSpawn SCR_AudioSourceConfiguration "{5E96A067C355978C}" {
+    m_sSoundEventName "SOUND_BUILD_VEHICLE_DEPOT"
+   }
+  }
+  Hierarchy "{64548D9BBCAA269A}" {
+   Enabled 1
+  }
+ }
+ coords 64 0 64
+ {
+  GenericEntity : "{79604FB6CD0DD617}Prefabs/Props/Military/Compositions/US/VehicleService_US_Small.et" {
+   ID "64548D9BBCA96EE2"
+   coords 0.017 0 -1.971
+   angleY 176.019
+  }
+ }
+}
