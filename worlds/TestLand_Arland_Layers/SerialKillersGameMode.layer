@@ -20,6 +20,11 @@ SCR_AIWorld : "{01DC74137CFDDB6A}Prefabs/AI/SCR_AIWorld_Arland.et" {
 }
 SK_SerialKillersGameMode GameModeSF : "{ECEEDB2D3737204B}Prefabs/ScenarioFramework/SK_SerialKillersGameModeOverride.et" {
  components {
+  SCR_CampaignBuildingManagerComponent "{6454D2CC640D4E59}" {
+   m_sFreeRoamBuildingServerTrigger "{5E191CEAF4B95816}Prefabs/MP/FreeRoamBuildingClientTrigger.et"
+   m_sFreeRoamBuildingClientTrigger "{5E191CEAF4B95816}Prefabs/MP/FreeRoamBuildingClientTrigger.et"
+   m_BudgetType RANK_CORPORAL
+  }
   SCR_GameOverScreenManagerComponent "{56DEC646298AD219}" {
    m_GameOverScreenConfig SCR_GameOverScreenConfig "{56DEC6462FFDD82D}" {
    }
@@ -50,7 +55,6 @@ SK_SerialKillersGameMode GameModeSF : "{ECEEDB2D3737204B}Prefabs/ScenarioFramewo
  }
  coords 2033.122 32.126 2017.837
  m_bAutoPlayerRespawn 0
- m_iGameOverScore 4
  {
   SCR_FactionManager FactionManager_USxUSSR1 : "{589540B35EBA8CDC}Prefabs/MP/Managers/Factions/FactionManager_USxUSSR.et" {
    coords -696.055 6.873 111.25
@@ -59,6 +63,9 @@ SK_SerialKillersGameMode GameModeSF : "{ECEEDB2D3737204B}Prefabs/ScenarioFramewo
      m_aFriendlyFactionsIds {
       "CIV"
      }
+    }
+    SCR_Faction "{56B2B46E9AF80999}" : "{09727032415AC39B}Configs/Factions/USSR.conf" {
+     m_sFactionBackground "{21533F2089005056}UI/Textures/DeployMenu/Loadout-BG/Loadout_BG_USSR.imageset"
     }
     SCR_Faction "{61667A546239623B}" {
      FactionKey "CIV"
@@ -96,23 +103,13 @@ SK_SerialKillersGameMode GameModeSF : "{ECEEDB2D3737204B}Prefabs/ScenarioFramewo
   }
  }
 }
-SCR_SpawnPoint : "{4FEA25583D0975F7}Prefabs/MP/Spawning/SpawnPoint_USSR.et" {
- components {
-  SCR_MapDescriptorComponent "{54C659A97C47BDE2}" {
-   VisibleOnMap 1
+SCR_LoadoutManager : "{FD4EE3666CA87EA6}Prefabs/MP/Managers/Loadouts/LoadoutManager_SK.et" {
+ coords 1348.81 39 2136.208
+ m_aPlayerLoadouts {
+  SCR_FactionPlayerLoadout "{56B2B461C34A570F}" {
+   m_sLoadoutName "Policeman"
+   m_sLoadoutResource "{DE15FB5FAFC3E63F}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Officer.et"
+   m_sLoadoutImage "{E66FEBD3F049BF7D}UI/Textures/EditorPreviews/Characters/BLUFOR/US_Army/Character_US_SL.edds"
   }
  }
- coords 1373.643 39 2170.003
-}
-SCR_SpawnPoint : "{5A2220DD0C16958B}Prefabs/MP/Spawning/SpawnPoint_US.et" {
- components {
-  SCR_MapDescriptorComponent "{54C659A97C47BDE2}" {
-   VisibleOnMap 1
-  }
- }
- coords 1374.477 39.002 2135.192
- m_bShowInDeployMapOnly 1
-}
-SCR_LoadoutManager : "{97EF4C1A41F63DDB}Prefabs/MP/Managers/Loadouts/LoadoutManager_USxUSSR.et" {
- coords 1348.645 39.001 2136.061
 }

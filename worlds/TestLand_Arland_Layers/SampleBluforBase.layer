@@ -1,18 +1,79 @@
-$grp GenericEntity : "{88B3A9FF09D43C1B}Prefabs/Items/Equipment/Maps/PaperMap_FastTravel_CO.et" {
- {
-  coords 1473.225 39.71 2946.767
-  angleX 0
-  angleY 0
+GenericEntity : "{5E921FB8C70456F1}PrefabsEditable/Auto/Props/Military/SupplyBox/SupplyStack/SupplyStack_Large_01/E_SupplyStack_Large_01_storage_US_covered.et" {
+ components {
+  SCR_ResourceComponent "{5D247A59598D71AE}" {
+   m_aContainers {
+    SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+     m_fResourceValueMax 2500
+     m_bEnableResourceGain 1
+     m_fResourceGain 1
+    }
+   }
+  }
  }
+ coords 1470.923 38 2959.588
  {
-  coords 1369.879 40.331 2131.156
-  angleX 0
-  angleY 0
+  GenericEntity {
+   ID "5D3085BCA5EF72EE"
+   coords 0 0 0
+  }
  }
+}
+GenericEntity : "{88B3A9FF09D43C1B}Prefabs/Items/Equipment/Maps/PaperMap_FastTravel_CO.et" {
+ coords 1466.015 39.093 2957.104
+ angleX 0
+ angleY 127.129
+}
+GenericEntity : "{B642B7B2BF172CF5}Prefabs/Compositions/Misc/CustomEntities/InteractionPoints/ArsenalBox_US_Weapons_NoAffiliation.et" {
+ components {
+  SCR_ArsenalComponent "{56F2C6D1431AD9AF}" {
+   m_eSupportedArsenalItemTypes 1015806
+  }
+ }
+ coords 1470.856 38 2957.931
+ angleY 0
 }
 SCR_SpawnPoint : "{CEA2B24051A44525}PrefabsEditable/SpawnPoints/E_SpawnPoint_US.et" {
  coords 1472.168 38 2951.652
  m_Info SCR_UIInfo "{56B4CC4ECACA2C37}" {
   Name "SampleBluforBaseName"
+ }
+}
+GenericEntity : "{DC50C3296A8BACB2}Prefabs/Compositions/Slotted/SlotFlatSmall/SK_VehicleSpawnPoint.et" {
+ coords 1467.395 38 2956.752
+ {
+  GenericEntity {
+   ID "64548D9BBCA96EE2"
+   components {
+    SCR_CampaignBuildingProviderComponent "{5ED49CDEA85A0083}" {
+     m_bIsMasterProvider 1
+     m_fBuildingRadius 60
+     m_aBudgetsToEvaluate {
+      SCR_CampaignBuildingCooldownWithRankBudgetToEvaluateData "{5EE71CAB5BFCF9A3}" {
+       m_aCustomCooldownData {
+        SCR_CooldownData "{5EEEF52515996867}" {
+         m_fDefaultTimeMultiplier 15
+        }
+        SCR_CooldownData "{5EEEF5250BF881BF}" {
+         m_fDefaultTimeMultiplier 15
+        }
+        SCR_CooldownData "{5EEEF5250BBA697C}" {
+         m_fDefaultTimeMultiplier 15
+        }
+        SCR_CooldownData "{5EEEF5250B54777E}" {
+         m_fDefaultTimeMultiplier 15
+        }
+        SCR_CooldownData "{5EEEF5250B763DE5}" {
+         m_fDefaultTimeMultiplier 15
+        }
+       }
+      }
+     }
+     m_aAvailableTraits {
+      54 53 51 50
+     }
+    }
+   }
+   coords 0.965 0 2.675
+  }
  }
 }
