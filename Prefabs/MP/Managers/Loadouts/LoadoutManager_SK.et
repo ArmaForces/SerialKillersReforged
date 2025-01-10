@@ -1,0 +1,21 @@
+SCR_LoadoutManager : "{AA4E7419A1FF65B0}Prefabs/MP/Managers/Loadouts/LoadoutManager_Base.et" {
+ ID "56B2B47708C4F23A"
+ m_aPlayerLoadouts {
+  SCR_FactionPlayerLoadout "{56B2B461C34A570F}" : "{7C7C65FD583E6612}Configs/Loadouts/US/Loadout_US_Rifleman.conf" {
+  }
+  SCR_FactionPlayerLoadout "{56B2B46134D39388}" : "{5F9034642E99437D}Configs/Loadouts/USSR/Loadout_USSR_Rifleman.conf" {
+   m_sLoadoutName "Terrorist KLMK"
+   m_sLoadoutResource "{9E9B8952B8EEC771}Prefabs/Characters/Factions/OPFOR/USSR_Army/KLMK/Character_USSR_Randomized_KLMK.et"
+   m_sLoadoutImage "{1B567465314E8660}UI/Textures/EditorPreviews/Characters/OPFOR/USSR_Army/KLMK/Character_USSR_Randomized_KLMK.edds"
+  }
+  SCR_FactionPlayerLoadout "{5A2494B91167F3F6}" : "{743C07B33B63F854}Configs/Loadouts/USSR/Loadout_USSR_AR.conf" {
+   m_sLoadoutName "Terrorist Spetsnaz"
+   m_sLoadoutResource "{B6F05D4557B61C4E}Prefabs/Characters/Factions/OPFOR/USSR_Army/Spetsnaz/Character_USSR_SF_BaseLoadout.et"
+  }
+  SCR_FactionPlayerLoadout "{56B2B461341EA370}" : "{E97C426E941D8FDC}Configs/Loadouts/USSR/Loadout_USSR_MG.conf" {
+   m_sLoadoutName "Terrorist"
+   m_sLoadoutResource "{7DE1CBA32A0225EB}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Randomized.et"
+   m_sLoadoutImage "{B905D63636577FCB}UI/Textures/EditorPreviews/Characters/OPFOR/USSR_Army/Character_USSR_Randomized.edds"
+  }
+ }
+}

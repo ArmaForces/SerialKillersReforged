@@ -1,3 +1,15 @@
+GenericEntity : "{1571BF54599093AF}PrefabsEditable/Auto/Props/Furniture/E_MeetingTable_01.et" {
+ coords 2749.896 77.416 1646.848
+ angleY -134.396
+ {
+  GenericEntity : "{88B3A9FF09D43C1B}Prefabs/Items/Equipment/Maps/PaperMap_FastTravel_CO.et" {
+   coords 0.13 1.029 -0.18
+   angleX 89.473
+   angleY -52.871
+   angleZ 129.223
+  }
+ }
+}
 GenericEntity : "{5E921FB8C70456F1}PrefabsEditable/Auto/Props/Military/SupplyBox/SupplyStack/SupplyStack_Large_01/E_SupplyStack_Large_01_storage_US_covered.et" {
  components {
   SCR_ResourceComponent "{5D247A59598D71AE}" {
@@ -10,7 +22,8 @@ GenericEntity : "{5E921FB8C70456F1}PrefabsEditable/Auto/Props/Military/SupplyBox
    }
   }
  }
- coords 1470.923 38 2959.588
+ coords 2745.905 77.437 1651.254
+ angleY -47.915
  {
   GenericEntity {
    ID "5D3085BCA5EF72EE"
@@ -18,28 +31,23 @@ GenericEntity : "{5E921FB8C70456F1}PrefabsEditable/Auto/Props/Military/SupplyBox
   }
  }
 }
-GenericEntity : "{88B3A9FF09D43C1B}Prefabs/Items/Equipment/Maps/PaperMap_FastTravel_CO.et" {
- coords 1466.015 39.093 2957.104
- angleX 0
- angleY 127.129
-}
 GenericEntity : "{B642B7B2BF172CF5}Prefabs/Compositions/Misc/CustomEntities/InteractionPoints/ArsenalBox_US_Weapons_NoAffiliation.et" {
  components {
   SCR_ArsenalComponent "{56F2C6D1431AD9AF}" {
    m_eSupportedArsenalItemTypes 1015806
   }
  }
- coords 1470.856 38 2957.931
- angleY 0
+ coords 2746.492 77.309 1650.086
+ angleY -141.492
 }
 SCR_SpawnPoint : "{CEA2B24051A44525}PrefabsEditable/SpawnPoints/E_SpawnPoint_US.et" {
- coords 1472.168 38 2951.652
+ coords 2752.718 79.534 1646.793
  m_Info SCR_UIInfo "{56B4CC4ECACA2C37}" {
   Name "SampleBluforBaseName"
  }
 }
 GenericEntity : "{DC50C3296A8BACB2}Prefabs/Compositions/Slotted/SlotFlatSmall/SK_VehicleSpawnPoint.et" {
- coords 1467.395 38 2956.752
+ coords 2752.658 77.146 1653.42
  {
   GenericEntity {
    ID "64548D9BBCA96EE2"
@@ -73,7 +81,8 @@ GenericEntity : "{DC50C3296A8BACB2}Prefabs/Compositions/Slotted/SlotFlatSmall/SK
      }
     }
    }
-   coords 0.965 0 2.675
+   coords -3.739 0 2.348
+   angleY 139.822
   }
  }
 }
