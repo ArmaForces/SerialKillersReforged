@@ -43,10 +43,9 @@ GenericEntity : "{B642B7B2BF172CF5}Prefabs/Compositions/Misc/CustomEntities/Inte
 SCR_SpawnPoint : "{CEA2B24051A44525}PrefabsEditable/SpawnPoints/E_SpawnPoint_US.et" {
  coords 3174.515 12.729 2822.112
  m_Info SCR_UIInfo "{56B4CC4ECACA2C37}" {
-  Name "SampleBluforBaseName"
  }
 }
-GenericEntity : "{DC50C3296A8BACB2}Prefabs/Compositions/Slotted/SlotFlatSmall/SK_VehicleSpawnPoint.et" {
+GenericEntity : "{DC50C3296A8BACB2}Prefabs/Compositions/SK_VehicleSpawnPoint.et" {
  coords 3174.454 10.341 2828.739
  {
   GenericEntity {

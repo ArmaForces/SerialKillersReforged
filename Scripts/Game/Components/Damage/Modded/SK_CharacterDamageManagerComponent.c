@@ -10,11 +10,12 @@ modded class SCR_CharacterDamageManagerComponent : SCR_DamageManagerComponent
 	void SK_OnDamageStateChanged(EDamageState state)
 	{		
 		Instigator instigator = GetInstigator();
+		IEntity owner = GetOwner();
 		
 		if(state == EDamageState.DESTROYED)
 		{
 			SK_SerialKillersGameMode gm = SK_SerialKillersGameMode.Cast(GetGame().GetGameMode());
-			gm.OnUnitKilled(GetOwner(), instigator);
+			gm.OnUnitKilled(owner, instigator);
 		}		
 	}
 }

@@ -6,6 +6,7 @@ class SK_SerialKillersGameMode : SCR_BaseGameMode
 {
 	protected SK_SerialKillersConfigComponent m_Config;
 	protected SK_CivilianManagerComponent m_CiviliansManager;
+	protected SCR_MapMarkerManagerComponent m_mapMarkerManager;
 	
 	[Attribute( defvalue: "1", desc: "Civilian killed score")]
 	int m_iCivKilledScore;
@@ -42,12 +43,37 @@ class SK_SerialKillersGameMode : SCR_BaseGameMode
 		
 		m_Config = SK_Global.GetConfig();
 		m_CiviliansManager = SK_Global.GetCiviliansManager();
+		m_mapMarkerManager = SCR_MapMarkerManagerComponent.GetInstance();
 		
 		if (m_CiviliansManager) 
 		{
 			Print("Initialising civilians", LogLevel.NORMAL);
 			m_CiviliansManager.Init(this);
 		}
+		
+		
+	}
+	
+	SCR_MapMarkerBase CreateKillMarker(IEntity victim, Faction victimFaction)
+	{
+		vector worldPos[4];
+		victim.GetWorldTransform(worldPos);
+		
+		SCR_MapMarkerBase marker = new SCR_MapMarkerBase();
+		marker.SetType(SCR_EMapMarkerType.PLACED_CUSTOM);
+		marker.SetCustomText(getNowTimeString());
+		marker.SetWorldPos(worldPos[3][0], worldPos[3][2]);
+		
+		if (victimFaction.GetFactionKey() == m_sBluforFactionKey) 
+		{
+			marker.SetColorEntry(7);
+		}
+		else if (victimFaction.GetFactionKey() == m_sRedforFactionKey)
+		{
+			marker.SetVisible(false); //ugly workaround, TODO FIX
+		}
+		
+		return marker;
 	}
 	
 	void OnUnitKilled(IEntity unit, Instigator instigator)
@@ -84,6 +110,9 @@ class SK_SerialKillersGameMode : SCR_BaseGameMode
 			Print("Victim faction unknown - returning", LogLevel.WARNING);
 			return;
 		}
+		
+		
+		m_mapMarkerManager.InsertStaticMarker(CreateKillMarker(unit, killedFaction), false, true);
 		
 		switch (killedFaction.GetFactionKey()) 
 		{
@@ -145,10 +174,7 @@ class SK_SerialKillersGameMode : SCR_BaseGameMode
 	
 	void ShowScoreHint(int scoreChange, int eqScoreChange, string message)
 	{
-		ChimeraWorld world = GetWorld();
-		TimeContainer time = world.GetTimeAndWeatherManager().GetTime();
-		
-		string msg = "\t" + time.m_iHours.ToString(2) + ":" + time.m_iMinutes.ToString(2) + ":"  + time.m_iSeconds.ToString(2) + "\n";
+		string msg = "\t" + getNowTimeString() + "\n";
 		msg = msg + "_____________\n";
 		msg = msg + "\t Killers\n";
 		msg = msg + "\t " + SK_RedforScore + "/" + m_iGameOverScore + " (" + scoreChange + ")\n";
@@ -158,6 +184,13 @@ class SK_SerialKillersGameMode : SCR_BaseGameMode
 		msg = msg + message;
 		
 		SCR_HintManagerComponent.GetInstance().ShowCustom(msg, "", 10, false);
+	}
+	
+	string getNowTimeString() 
+	{
+		ChimeraWorld world = GetWorld();
+		TimeContainer time = world.GetTimeAndWeatherManager().GetTime();
+		return time.m_iHours.ToString(2) + ":" + time.m_iMinutes.ToString(2) + ":"  + time.m_iSeconds.ToString(2);
 	}
 	
 	void GameEndCheck() 
