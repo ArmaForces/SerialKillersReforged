@@ -166,7 +166,8 @@ class SK_SerialKillersGameMode : SCR_BaseGameMode
 	
 	string getNowTimeString() 
 	{
-		TimeContainer time = GetWorld().GetTimeAndWeatherManager().GetTime();
+		ChimeraWorld world = GetWorld();
+		TimeContainer time = world.GetTimeAndWeatherManager().GetTime();
 		return time.m_iHours.ToString(2) + ":" + time.m_iMinutes.ToString(2) + ":"  + time.m_iSeconds.ToString(2);
 	}
 	
@@ -208,7 +209,7 @@ class SK_SerialKillersGameMode : SCR_BaseGameMode
 	{
 		SK_RedforScore = redScore;
 		SK_BluforScore = bluScore;
-		ShowScoreHint(redScore, bluScore, message);
+		ShowScoreHint(message);
 	} 
 	
 	//------------------------------------------------------------------------------------------------
