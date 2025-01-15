@@ -7,7 +7,6 @@ class SK_SerialKillersGameMode : SCR_BaseGameMode
 	protected SK_SerialKillersConfigComponent m_Config;
 	protected SK_CivilianManagerComponent m_CiviliansManager;
 	protected SCR_MapMarkerManagerComponent m_mapMarkerManager;
-	protected RplComponent m_RplComp;
 	
 	
 	[Attribute( defvalue: "1", desc: "Civilian killed score")]
@@ -49,15 +48,12 @@ class SK_SerialKillersGameMode : SCR_BaseGameMode
 		m_Config = SK_Global.GetConfig();
 		m_CiviliansManager = SK_Global.GetCiviliansManager();
 		m_mapMarkerManager = SCR_MapMarkerManagerComponent.GetInstance();
-		m_RplComp = RplComponent.Cast(owner.FindComponent(RplComponent));
 		
 		if (m_CiviliansManager && IsMaster()) 
 		{
 			Print("Initialising civilians", LogLevel.NORMAL);
 			m_CiviliansManager.Init(this);
 		}
-		
-		
 	}
 	
 	void CreateKillMarker(IEntity victim, int color)
@@ -98,22 +94,6 @@ class SK_SerialKillersGameMode : SCR_BaseGameMode
 					instigatorEntity.FindComponent(FactionAffiliationComponent)
 				).GetAffiliatedFaction();
 		
-		if (instigatorFaction)
-		{
-			Print("Killer faction: " + instigatorFaction.GetFactionKey());
-		}
-		
-		if (killedFaction)
-		{
-			Print("Victim faction: " + killedFaction.GetFactionKey());
-		} 
-		else 
-		{
-			Print("Victim faction unknown - returning", LogLevel.WARNING);
-			return;
-		}
-		
-		
 		switch (killedFaction.GetFactionKey()) 
 		{
 			case m_sRedforFactionKey:
@@ -133,52 +113,52 @@ class SK_SerialKillersGameMode : SCR_BaseGameMode
 	
 	void HandleBluforKill(IEntity unit, Faction instigatorFaction)
 	{
-		int redScore = 2*m_iCivKilledScore, bluScore = 0;
+		SK_RedforScore += 2*m_iCivKilledScore;
 		if (instigatorFaction) 
 		{
 			if (instigatorFaction.GetFactionKey() == "US")
 			{
-				bluScore = -2 * m_iCivKilledScore;
+				SK_BluforScore -= 2 * m_iCivKilledScore;
 			} 
 			else 
 			{
-				bluScore = m_iCivKilledScore;
+				SK_BluforScore += m_iCivKilledScore;
 			}
 		}
 		
-		Rpc(RPC_DoOnKill, "Cop was killed", redScore, bluScore);
-		RPC_DoOnKill("Cop was killed", redScore, bluScore);
-		CreateKillMarker(unit, 7);
+		Rpc(RPC_DoOnKill, "Cop was killed", SK_RedforScore, SK_BluforScore);
+		RPC_DoOnKill("Cop was killed", SK_RedforScore, SK_BluforScore);
+		CreateKillMarker(unit, SK_BluforMapColor);
 	}
 	
 	void HandleCivKill(IEntity unit, Faction instigatorFaction)
 	{
-		int redScore = m_iCivKilledScore, bluScore = 0;
+		SK_RedforScore += m_iCivKilledScore;
 		if (instigatorFaction) 
 		{
 			if (instigatorFaction.GetFactionKey() == "US")
 			{
-				bluScore = -m_iCivKilledScore;
+				SK_BluforScore -= m_iCivKilledScore;
 			} 
 			else 
 			{
-				bluScore = m_iCivKilledScore;
+				SK_BluforScore = m_iCivKilledScore;
 			}
 		}
-		Rpc(RPC_DoOnKill, "Civilian was killed", redScore, bluScore);
-		RPC_DoOnKill("Civilian was killed", redScore, bluScore);
-		CreateKillMarker(unit, 0);
+		Rpc(RPC_DoOnKill, "Civilian was killed", SK_RedforScore, SK_BluforScore);
+		RPC_DoOnKill("Civilian was killed", SK_RedforScore, SK_BluforScore);
+		CreateKillMarker(unit, SK_CivMapColor);
 	}
 	
-	void ShowScoreHint(int scoreChange, int eqScoreChange, string message)
+	void ShowScoreHint(string message)
 	{
 		string msg = "\t" + getNowTimeString() + "\n";
 		msg = msg + "_____________\n";
 		msg = msg + "\t Killers\n";
-		msg = msg + "\t " + SK_RedforScore + "/" + m_iGameOverScore + " (" + scoreChange + ")\n";
+		msg = msg + "\t " + SK_RedforScore + "/" + m_iGameOverScore + "\n";
 		msg = msg + "\n";
 		msg = msg + "\t Police\n";
-		msg = msg + "\t " + SK_BluforScore + "/" + m_iBluforResourcesScore + " (" + eqScoreChange + ")\n";
+		msg = msg + "\t " + SK_BluforScore + "/" + m_iBluforResourcesScore + "\n";
 		msg = msg + message;
 		
 		SCR_HintManagerComponent.GetInstance().ShowCustom(msg, "", 10, false);
@@ -186,8 +166,7 @@ class SK_SerialKillersGameMode : SCR_BaseGameMode
 	
 	string getNowTimeString() 
 	{
-		ChimeraWorld world = GetWorld();
-		TimeContainer time = world.GetTimeAndWeatherManager().GetTime();
+		TimeContainer time = GetWorld().GetTimeAndWeatherManager().GetTime();
 		return time.m_iHours.ToString(2) + ":" + time.m_iMinutes.ToString(2) + ":"  + time.m_iSeconds.ToString(2);
 	}
 	
@@ -227,8 +206,8 @@ class SK_SerialKillersGameMode : SCR_BaseGameMode
 	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
 	void RPC_DoOnKill(string message, int redScore, int bluScore)
 	{
-		SK_RedforScore += redScore;
-		SK_BluforScore += bluScore;
+		SK_RedforScore = redScore;
+		SK_BluforScore = bluScore;
 		ShowScoreHint(redScore, bluScore, message);
 	} 
 	
