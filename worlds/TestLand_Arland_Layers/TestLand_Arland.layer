@@ -7,7 +7,7 @@ RadioManagerEntity RadioManager : "{B8E09FAB91C4ECCD}Prefabs/Radio/RadioManager.
 ScriptedChatEntity ScriptedChatEntity : "{F69BC912AC8236F9}Prefabs/MP/ScriptedChatEntity.et" {
  coords 2033.122 33.482 2024.837
 }
-SCR_BaseTaskManager TaskManager : "{1AC69CD7907FB4F8}Prefabs/ScenarioFramework/Tasks/TaskManager.et" {
+SCR_BaseTaskManager TaskManager : "{1AC69CD7907FB4F8}Prefabs/Systems/ScenarioFramework/Tasks/TaskManager.et" {
  coords 2033.122 32.501 2019.837
  {
   CommentEntity {

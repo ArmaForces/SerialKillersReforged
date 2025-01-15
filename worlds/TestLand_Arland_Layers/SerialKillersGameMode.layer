@@ -20,6 +20,9 @@ SCR_AIWorld : "{01DC74137CFDDB6A}Prefabs/AI/SCR_AIWorld_Arland.et" {
 }
 SK_SerialKillersGameMode GameModeSF : "{ECEEDB2D3737204B}Prefabs/ScenarioFramework/SK_SerialKillersGameModeOverride.et" {
  components {
+  SCR_ArsenalManagerComponent "{6120A34EB1E9BBEF}" {
+   m_bRankLockedItems 1
+  }
   SCR_CampaignBuildingManagerComponent "{6454D2CC640D4E59}" {
    m_sFreeRoamBuildingServerTrigger "{5E191CEAF4B95816}Prefabs/MP/FreeRoamBuildingClientTrigger.et"
    m_sFreeRoamBuildingClientTrigger "{5E191CEAF4B95816}Prefabs/MP/FreeRoamBuildingClientTrigger.et"
@@ -93,9 +96,6 @@ SK_SerialKillersGameMode GameModeSF : "{ECEEDB2D3737204B}Prefabs/ScenarioFramewo
   SCR_GroupsManagerComponent "{5706EC99934496F5}" {
    m_sDefaultGroupPrefab "{8B4D49A9F324E7D5}Prefabs/Groups/PlayableGroup.et"
    m_iPlayableGroupFrequencyOffset 500
-  }
-  SCR_HintManagerComponent "{5702B54C6CBC9D7F}" {
-   m_bIgnoreHintSettings 1
   }
   SCR_MapConfigComponent "{5C669498E250A34B}" {
    m_sGadgetMapConfigPath "{32913D3C51D7736C}Configs/Map/MapFullscreenCoop.conf"
@@ -176,6 +176,9 @@ SK_SerialKillersGameMode GameModeSF : "{ECEEDB2D3737204B}Prefabs/ScenarioFramewo
  }
  coords 2033.122 32.126 2017.837
  m_bAutoPlayerRespawn 0
+ m_aDisabledResourceTypes {
+  0
+ }
  {
   SCR_FactionManager FactionManager_USxUSSR1 : "{589540B35EBA8CDC}Prefabs/MP/Managers/Factions/FactionManager_USxUSSR.et" {
    coords -696.055 6.873 111.25
