@@ -142,7 +142,7 @@ class SK_SerialKillersGameMode : SCR_BaseGameMode
 			} 
 			else 
 			{
-				SK_BluforScore = m_iCivKilledScore;
+				SK_BluforScore += m_iCivKilledScore;
 			}
 		}
 		Rpc(RPC_DoOnKill, "Civilian was killed", SK_RedforScore, SK_BluforScore);
