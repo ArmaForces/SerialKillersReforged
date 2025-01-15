@@ -90,7 +90,7 @@ $grp SCR_SpawnPoint : "{4FEA25583D0975F7}Prefabs/MP/Spawning/SpawnPoint_USSR.et"
     VisibleOnMap 1
    }
   }
-  coords 1599.579 40.439 2365.708
+  coords 1401.896 35.897 2368.278
   m_Info SCR_UIInfo "{56B4CC4ECACA2C37}" {
    Name ""
   }

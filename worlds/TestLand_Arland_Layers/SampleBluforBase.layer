@@ -33,12 +33,12 @@ GenericEntity : "{B642B7B2BF172CF5}Prefabs/Compositions/Misc/CustomEntities/Inte
  angleY 0
 }
 SCR_SpawnPoint : "{CEA2B24051A44525}PrefabsEditable/SpawnPoints/E_SpawnPoint_US.et" {
- coords 1472.168 38 2951.652
+ coords 1387.009 36.266 2371.075
  m_Info SCR_UIInfo "{56B4CC4ECACA2C37}" {
  }
 }
 GenericEntity : "{DC50C3296A8BACB2}Prefabs/Compositions/SK_VehicleSpawnPoint.et" {
- coords 1467.395 38 2956.752
+ coords 1382.236 36.261 2376.175
  {
   GenericEntity {
    ID "64548D9BBCA96EE2"
