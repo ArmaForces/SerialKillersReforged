@@ -1,10 +1,10 @@
 modded class SCR_CharacterDamageManagerComponent : SCR_DamageManagerComponent
 {
 	
-	override void OnInit(IEntity owner) 
+	override void OnPostInit(IEntity owner) 
 	{
 		GetOnDamageStateChanged().Insert(SK_OnDamageStateChanged);
-		super.OnInit(owner);
+		super.OnPostInit(owner);
 	}
 	
 	void SK_OnDamageStateChanged(EDamageState state)

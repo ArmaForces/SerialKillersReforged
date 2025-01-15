@@ -10,7 +10,7 @@ GenericEntity : "{5E921FB8C70456F1}PrefabsEditable/Auto/Props/Military/SupplyBox
    }
   }
  }
- coords 1470.923 38 2959.588
+ coords 1385.616 36.239 2379.982
  {
   GenericEntity {
    ID "5D3085BCA5EF72EE"
@@ -19,7 +19,7 @@ GenericEntity : "{5E921FB8C70456F1}PrefabsEditable/Auto/Props/Military/SupplyBox
  }
 }
 GenericEntity : "{88B3A9FF09D43C1B}Prefabs/Items/Equipment/Maps/PaperMap_FastTravel_CO.et" {
- coords 1466.015 39.093 2957.104
+ coords 1380.709 37.332 2377.498
  angleX 0
  angleY 127.129
 }
@@ -29,7 +29,7 @@ GenericEntity : "{B642B7B2BF172CF5}Prefabs/Compositions/Misc/CustomEntities/Inte
    m_eSupportedArsenalItemTypes 1015806
   }
  }
- coords 1470.856 38 2957.931
+ coords 1385.979 36.382 2378.843
  angleY 0
 }
 SCR_SpawnPoint : "{CEA2B24051A44525}PrefabsEditable/SpawnPoints/E_SpawnPoint_US.et" {
