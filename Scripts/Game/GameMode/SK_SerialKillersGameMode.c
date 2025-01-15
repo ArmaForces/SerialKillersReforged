@@ -7,6 +7,8 @@ class SK_SerialKillersGameMode : SCR_BaseGameMode
 	protected SK_SerialKillersConfigComponent m_Config;
 	protected SK_CivilianManagerComponent m_CiviliansManager;
 	protected SCR_MapMarkerManagerComponent m_mapMarkerManager;
+	protected RplComponent m_RplComp;
+	
 	
 	[Attribute( defvalue: "1", desc: "Civilian killed score")]
 	int m_iCivKilledScore;
@@ -44,8 +46,9 @@ class SK_SerialKillersGameMode : SCR_BaseGameMode
 		m_Config = SK_Global.GetConfig();
 		m_CiviliansManager = SK_Global.GetCiviliansManager();
 		m_mapMarkerManager = SCR_MapMarkerManagerComponent.GetInstance();
+		m_RplComp = RplComponent.Cast(owner.FindComponent(RplComponent));
 		
-		if (m_CiviliansManager) 
+		if (m_CiviliansManager && IsMaster()) 
 		{
 			Print("Initialising civilians", LogLevel.NORMAL);
 			m_CiviliansManager.Init(this);
@@ -54,7 +57,7 @@ class SK_SerialKillersGameMode : SCR_BaseGameMode
 		
 	}
 	
-	SCR_MapMarkerBase CreateKillMarker(IEntity victim, Faction victimFaction)
+	void CreateKillMarker(IEntity victim, int color)
 	{
 		vector worldPos[4];
 		victim.GetWorldTransform(worldPos);
@@ -63,21 +66,17 @@ class SK_SerialKillersGameMode : SCR_BaseGameMode
 		marker.SetType(SCR_EMapMarkerType.PLACED_CUSTOM);
 		marker.SetCustomText(getNowTimeString());
 		marker.SetWorldPos(worldPos[3][0], worldPos[3][2]);
+		marker.SetColorEntry(color);
 		
-		if (victimFaction.GetFactionKey() == m_sBluforFactionKey) 
-		{
-			marker.SetColorEntry(7);
-		}
-		else if (victimFaction.GetFactionKey() == m_sRedforFactionKey)
-		{
-			marker.SetVisible(false); //ugly workaround, TODO FIX
-		}
-		
-		return marker;
+		m_mapMarkerManager.InsertStaticMarker(marker, false, true);
 	}
+	
 	
 	void OnUnitKilled(IEntity unit, Instigator instigator)
 	{
+		if (!IsMaster())
+			return;
+		
 		Print("Unit was killed! unit: " + unit.GetID());
 		InstigatorType instigatorType = instigator.GetInstigatorType();
 		IEntity instigatorEntity = instigator.GetInstigatorEntity();
@@ -112,12 +111,10 @@ class SK_SerialKillersGameMode : SCR_BaseGameMode
 		}
 		
 		
-		m_mapMarkerManager.InsertStaticMarker(CreateKillMarker(unit, killedFaction), false, true);
-		
 		switch (killedFaction.GetFactionKey()) 
 		{
 			case m_sRedforFactionKey:
-				return;
+				break;
 			case m_sBluforFactionKey:
 				HandleBluforKill(unit, instigatorFaction);
 				break;
@@ -139,7 +136,6 @@ class SK_SerialKillersGameMode : SCR_BaseGameMode
 			if (instigatorFaction.GetFactionKey() == "US")
 			{
 				bluScore = -2 * m_iCivKilledScore;
-				return;
 			} 
 			else 
 			{
@@ -147,12 +143,12 @@ class SK_SerialKillersGameMode : SCR_BaseGameMode
 			}
 		}
 		
-		SK_RedforScore += redScore;
-		SK_BluforScore += bluScore;
-		ShowScoreHint(redScore, bluScore, "Cop was killed");
+		Rpc(RPC_DoOnKill, "Cop was killed", redScore, bluScore);
+		RPC_DoOnKill("Cop was killed", redScore, bluScore);
+		CreateKillMarker(unit, 7);
 	}
 	
-	void HandleCivKill (IEntity unit, Faction instigatorFaction)
+	void HandleCivKill(IEntity unit, Faction instigatorFaction)
 	{
 		int redScore = m_iCivKilledScore, bluScore = 0;
 		if (instigatorFaction) 
@@ -166,10 +162,9 @@ class SK_SerialKillersGameMode : SCR_BaseGameMode
 				bluScore = m_iCivKilledScore;
 			}
 		}
-		
-		SK_RedforScore += redScore;
-		SK_BluforScore += bluScore;
-		ShowScoreHint(redScore, bluScore, "Civilian was killed");
+		Rpc(RPC_DoOnKill, "Civilian was killed", redScore, bluScore);
+		RPC_DoOnKill("Civilian was killed", redScore, bluScore);
+		CreateKillMarker(unit, 1);
 	}
 	
 	void ShowScoreHint(int scoreChange, int eqScoreChange, string message)
@@ -225,6 +220,14 @@ class SK_SerialKillersGameMode : SCR_BaseGameMode
 			EndGameMode(endData);
 		}
 	}
+	
+	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
+	void RPC_DoOnKill(string message, int redScore, int bluScore)
+	{
+		SK_RedforScore += redScore;
+		SK_BluforScore += bluScore;
+		ShowScoreHint(redScore, bluScore, message);
+	} 
 	
 	//------------------------------------------------------------------------------------------------
 	void SK_SerialKillersGameMode(IEntitySource src, IEntity parent)
