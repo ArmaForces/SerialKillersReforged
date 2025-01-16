@@ -227,18 +227,6 @@ class SK_SerialKillersGameMode : SCR_BaseGameMode
 		ShowScoreHint(message, blueScoreChange);
 	}
 	
-	/*
-		Ranks
-	    -1: Renegade
-		 0: Private
-		8: Corporal
-		16: Sergant
-		24: Lieutanant
-		32: Capitan
-		40: Major
-	*/
-	
-	
 	//------------------------------------------------------------------------------------------------
 	void SK_SerialKillersGameMode(IEntitySource src, IEntity parent)
 	{
