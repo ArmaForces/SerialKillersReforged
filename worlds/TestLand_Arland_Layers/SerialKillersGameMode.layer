@@ -20,6 +20,9 @@ SCR_AIWorld : "{01DC74137CFDDB6A}Prefabs/AI/SCR_AIWorld_Arland.et" {
 }
 SK_SerialKillersGameMode GameModeSF : "{ECEEDB2D3737204B}Prefabs/ScenarioFramework/SK_SerialKillersGameModeOverride.et" {
  components {
+  SCR_ArsenalManagerComponent "{6120A34EB1E9BBEF}" {
+   m_bRankLockedItems 1
+  }
   SCR_CampaignBuildingManagerComponent "{6454D2CC640D4E59}" {
    m_sFreeRoamBuildingServerTrigger "{5E191CEAF4B95816}Prefabs/MP/FreeRoamBuildingClientTrigger.et"
    m_sFreeRoamBuildingClientTrigger "{5E191CEAF4B95816}Prefabs/MP/FreeRoamBuildingClientTrigger.et"
@@ -94,9 +97,6 @@ SK_SerialKillersGameMode GameModeSF : "{ECEEDB2D3737204B}Prefabs/ScenarioFramewo
    m_sDefaultGroupPrefab "{8B4D49A9F324E7D5}Prefabs/Groups/PlayableGroup.et"
    m_iPlayableGroupFrequencyOffset 500
   }
-  SCR_HintManagerComponent "{5702B54C6CBC9D7F}" {
-   m_bIgnoreHintSettings 1
-  }
   SCR_MapConfigComponent "{5C669498E250A34B}" {
    m_sGadgetMapConfigPath "{32913D3C51D7736C}Configs/Map/MapFullscreenCoop.conf"
   }
@@ -140,6 +140,27 @@ SK_SerialKillersGameMode GameModeSF : "{ECEEDB2D3737204B}Prefabs/ScenarioFramewo
    m_PlayerKickReasonsConfig SCR_ConfigurableDialogUiPresets "{5AD6C337FC7F76C0}" : "{D3BFEE28E7D5B6A1}Configs/ServerBrowser/KickDialogs.conf" {
    }
   }
+  SCR_PerceivedFactionManagerComponent "{61AA7E6E0C6A76F9}" {
+   m_PerceivedFactionHints SCR_GeneralHintStorage "{6290C14649BD50BC}" {
+    m_aHintEntries {
+     SCR_HintEntry "{61AAB8A3096E40A8}" {
+      m_HintInfo SCR_HintUIInfo "{61AAB8A308FF8BE8}" {
+       m_iShowLimit 0
+      }
+     }
+     SCR_HintEntry "{61AAB8A3751F4F26}" {
+      m_HintInfo SCR_HintUIInfo "{61AAB8A374E5E1BD}" {
+       m_iShowLimit 0
+      }
+     }
+     SCR_HintEntry "{6286C0E5AFA4C404}" {
+      m_HintInfo SCR_HintUIInfo "{6286C0E5ADE02FC5}" {
+       m_iShowLimit 0
+      }
+     }
+    }
+   }
+  }
   SCR_RadialMenuItemsComponent "{5C92B03271ABD8AA}" {
    m_MenuController SCR_RadialMenuController "{5C92B0326E1334FB}" {
     m_RMControls SCR_RadialMenuControllerInputs "{5C92B0326C6BC5B4}" {
@@ -151,6 +172,8 @@ SK_SerialKillersGameMode GameModeSF : "{ECEEDB2D3737204B}Prefabs/ScenarioFramewo
    }
   }
   SCR_VotingManagerComponent "{5650BB6B6089393A}" : "{37037CBB8B4CD354}Prefabs/MP/Components/VotingManagerComponent.ct" {
+  }
+  SCR_XPHandlerComponent "{645F3E2CE901C361}" {
   }
   SK_CivilianManagerComponent "{60C4D31D2257CD56}" {
    m_iDefaultHouseOccupants 10
@@ -176,6 +199,9 @@ SK_SerialKillersGameMode GameModeSF : "{ECEEDB2D3737204B}Prefabs/ScenarioFramewo
  }
  coords 2033.122 32.126 2017.837
  m_bAutoPlayerRespawn 0
+ m_aDisabledResourceTypes {
+  0
+ }
  {
   SCR_FactionManager FactionManager_USxUSSR1 : "{589540B35EBA8CDC}Prefabs/MP/Managers/Factions/FactionManager_USxUSSR.et" {
    coords -696.055 6.873 111.25
@@ -221,6 +247,26 @@ SK_SerialKillersGameMode GameModeSF : "{ECEEDB2D3737204B}Prefabs/ScenarioFramewo
     }
    }
    m_bCanChangeFactionsPlayable 0
+   m_aRanks {
+    SCR_RankID "{5CB0777E828E61F3}" {
+     m_iRequiredXP -1
+    }
+    SCR_RankID "{5CB0777E803B7EA2}" {
+     m_iRequiredXP 8
+    }
+    SCR_RankID "{5CB0777E8F0E82AF}" {
+     m_iRequiredXP 16
+    }
+    SCR_RankID "{5CB0777E8BE66EC2}" {
+     m_iRequiredXP 24
+    }
+    SCR_RankID "{5CB0777E8AD658D6}" {
+     m_iRequiredXP 32
+    }
+    SCR_RankID "{5CB0777E88380770}" {
+     m_iRequiredXP 40
+    }
+   }
   }
  }
 }

@@ -1,23 +1,3 @@
-GenericEntity : "{5E921FB8C70456F1}PrefabsEditable/Auto/Props/Military/SupplyBox/SupplyStack/SupplyStack_Large_01/E_SupplyStack_Large_01_storage_US_covered.et" {
- components {
-  SCR_ResourceComponent "{5D247A59598D71AE}" {
-   m_aContainers {
-    SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
-     m_fResourceValueMax 2500
-     m_bEnableResourceGain 1
-     m_fResourceGain 1
-    }
-   }
-  }
- }
- coords 1385.616 36.239 2379.982
- {
-  GenericEntity {
-   ID "5D3085BCA5EF72EE"
-   coords 0 0 0
-  }
- }
-}
 GenericEntity : "{88B3A9FF09D43C1B}Prefabs/Items/Equipment/Maps/PaperMap_FastTravel_CO.et" {
  coords 1380.709 37.332 2377.498
  angleX 0
@@ -44,7 +24,6 @@ GenericEntity : "{DC50C3296A8BACB2}Prefabs/Compositions/SK_VehicleSpawnPoint.et"
    ID "64548D9BBCA96EE2"
    components {
     SCR_CampaignBuildingProviderComponent "{5ED49CDEA85A0083}" {
-     m_bIsMasterProvider 1
      m_fBuildingRadius 60
      m_aBudgetsToEvaluate {
       SCR_CampaignBuildingCooldownWithRankBudgetToEvaluateData "{5EE71CAB5BFCF9A3}" {
