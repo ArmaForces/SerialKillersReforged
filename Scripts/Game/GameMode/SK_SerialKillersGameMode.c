@@ -7,7 +7,8 @@ class SK_SerialKillersGameMode : SCR_BaseGameMode
 	protected SK_SerialKillersConfigComponent m_Config;
 	protected SK_CivilianManagerComponent m_CiviliansManager;
 	protected SCR_MapMarkerManagerComponent m_mapMarkerManager;
-	
+	protected SCR_XPHandlerComponent m_XPHandlerComponent;
+	protected SCR_FactionManager m_FactionManager;
 	
 	[Attribute( defvalue: "1", desc: "Civilian killed score")]
 	int m_iCivKilledScore;
@@ -48,6 +49,8 @@ class SK_SerialKillersGameMode : SCR_BaseGameMode
 		m_Config = SK_Global.GetConfig();
 		m_CiviliansManager = SK_Global.GetCiviliansManager();
 		m_mapMarkerManager = SCR_MapMarkerManagerComponent.GetInstance();
+		m_XPHandlerComponent = SCR_XPHandlerComponent.Cast(FindComponent(SCR_XPHandlerComponent));
+		m_FactionManager = SCR_FactionManager.Cast(GetGame().GetFactionManager());
 		
 		if (m_CiviliansManager && IsMaster()) 
 		{
@@ -114,43 +117,45 @@ class SK_SerialKillersGameMode : SCR_BaseGameMode
 	void HandleBluforKill(IEntity unit, Faction instigatorFaction)
 	{
 		SK_RedforScore += 2*m_iCivKilledScore;
+		int blueScoreChange = 0;
 		if (instigatorFaction) 
 		{
 			if (instigatorFaction.GetFactionKey() == "US")
 			{
-				SK_BluforScore -= 2 * m_iCivKilledScore;
+				blueScoreChange = -2 * m_iCivKilledScore;
 			} 
 			else 
 			{
-				SK_BluforScore += m_iCivKilledScore;
+				blueScoreChange = m_iCivKilledScore;
 			}
 		}
 		
-		Rpc(RPC_DoOnKill, "Cop was killed", SK_RedforScore, SK_BluforScore);
-		RPC_DoOnKill("Cop was killed", SK_RedforScore, SK_BluforScore);
+		Rpc(RPC_DoOnKill, "Cop was killed", SK_RedforScore, blueScoreChange);
+		RPC_DoOnKill("Cop was killed", SK_RedforScore, blueScoreChange);
 		CreateKillMarker(unit, SK_BluforMapColor);
 	}
 	
 	void HandleCivKill(IEntity unit, Faction instigatorFaction)
 	{
 		SK_RedforScore += m_iCivKilledScore;
+		int blueScoreChange = 0;
 		if (instigatorFaction) 
 		{
 			if (instigatorFaction.GetFactionKey() == "US")
 			{
-				SK_BluforScore -= m_iCivKilledScore;
+				blueScoreChange = -m_iCivKilledScore;
 			} 
 			else 
 			{
-				SK_BluforScore += m_iCivKilledScore;
+				blueScoreChange = m_iCivKilledScore;
 			}
 		}
-		Rpc(RPC_DoOnKill, "Civilian was killed", SK_RedforScore, SK_BluforScore);
-		RPC_DoOnKill("Civilian was killed", SK_RedforScore, SK_BluforScore);
+		Rpc(RPC_DoOnKill, "Civilian was killed", SK_RedforScore, blueScoreChange);
+		RPC_DoOnKill("Civilian was killed", SK_RedforScore, blueScoreChange);
 		CreateKillMarker(unit, SK_CivMapColor);
 	}
 	
-	void ShowScoreHint(string message)
+	void ShowScoreHint(string message, int blueScoreChange)
 	{
 		string msg = "\t" + getNowTimeString() + "\n";
 		msg = msg + "_____________\n";
@@ -158,7 +163,7 @@ class SK_SerialKillersGameMode : SCR_BaseGameMode
 		msg = msg + "\t " + SK_RedforScore + "/" + m_iGameOverScore + "\n";
 		msg = msg + "\n";
 		msg = msg + "\t Police\n";
-		msg = msg + "\t " + SK_BluforScore + "/" + m_iBluforResourcesScore + "\n";
+		msg = msg + "\t " + SK_BluforScore + "/" + m_iBluforResourcesScore + " (" + blueScoreChange + ")\n";
 		msg = msg + message;
 		
 		SCR_HintManagerComponent.GetInstance().ShowCustom(msg, "", 10, false);
@@ -174,9 +179,8 @@ class SK_SerialKillersGameMode : SCR_BaseGameMode
 	void GameEndCheck() 
 	{
 		//TODO! Check if everyone in redfor is dead
-		SCR_FactionManager fm = SCR_FactionManager.Cast(GetGame().GetFactionManager());
-		SCR_Faction	redfor = SCR_Faction.Cast(fm.GetFactionByKey(m_sRedforFactionKey));
-		SCR_Faction blufor = SCR_Faction.Cast(fm.GetFactionByKey(m_sBluforFactionKey));
+		SCR_Faction	redfor = SCR_Faction.Cast(m_FactionManager.GetFactionByKey(m_sRedforFactionKey));
+		SCR_Faction blufor = SCR_Faction.Cast(m_FactionManager.GetFactionByKey(m_sBluforFactionKey));
 		array<int> bluPlayers = new array<int>;
 		array<int> redPlayers = new array<int>;
 		
@@ -205,12 +209,35 @@ class SK_SerialKillersGameMode : SCR_BaseGameMode
 	}
 	
 	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
-	void RPC_DoOnKill(string message, int redScore, int bluScore)
+	void RPC_DoOnKill(string message, int redScore, int blueScoreChange)
 	{
 		SK_RedforScore = redScore;
-		SK_BluforScore = bluScore;
-		ShowScoreHint(message);
-	} 
+		SK_BluforScore = SK_BluforScore + blueScoreChange;
+		
+		
+		SCR_Faction blufor = SCR_Faction.Cast(m_FactionManager.GetFactionByKey(m_sBluforFactionKey));
+		array<int> bluPlayers = new array<int>;
+		blufor.GetPlayersInFaction(bluPlayers);
+		
+		foreach (int bluePlayerId: bluPlayers)
+		{
+			m_XPHandlerComponent.AwardXP(bluePlayerId, SCR_EXPRewards.CUSTOM_1, 1, false, blueScoreChange);
+		}
+		
+		ShowScoreHint(message, blueScoreChange);
+	}
+	
+	/*
+		Ranks
+	    -1: Renegade
+		 0: Private
+		8: Corporal
+		16: Sergant
+		24: Lieutanant
+		32: Capitan
+		40: Major
+	*/
+	
 	
 	//------------------------------------------------------------------------------------------------
 	void SK_SerialKillersGameMode(IEntitySource src, IEntity parent)
