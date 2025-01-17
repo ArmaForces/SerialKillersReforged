@@ -178,7 +178,6 @@ class SK_SerialKillersGameMode : SCR_BaseGameMode
 	
 	void GameEndCheck() 
 	{
-		//TODO! Check if everyone in redfor is dead
 		SCR_Faction	redfor = SCR_Faction.Cast(m_FactionManager.GetFactionByKey(m_sRedforFactionKey));
 		SCR_Faction blufor = SCR_Faction.Cast(m_FactionManager.GetFactionByKey(m_sBluforFactionKey));
 		array<int> bluPlayers = new array<int>;
@@ -186,23 +185,37 @@ class SK_SerialKillersGameMode : SCR_BaseGameMode
 		
 		redfor.GetPlayersInFaction(redPlayers);
 		blufor.GetPlayersInFaction(bluPlayers);
-		if (false) 
+		
+		bool redforDead = true;
+		foreach(int redforPlayerId: redPlayers)
+		{
+			PlayerController pc = GetGame().GetPlayerManager().GetPlayerController(redforPlayerId);
+			if (pc)
+			{
+				SCR_ChimeraCharacter ent = SCR_ChimeraCharacter.Cast(pc.GetControlledEntity());
+				SCR_DamageManagerComponent damageManager = ent.GetDamageManager();
+				if (!damageManager.IsDestroyed()) {
+					redforDead = false;
+					break;
+				}
+			}
+		}
+		
+		if (redforDead) 
 		{
 			Print("Blufor wins!");
-				//TODO!: Add blufor player ids
 			SCR_GameModeEndData endData = SCR_GameModeEndData.Create(
 				EGameOverTypes.FACTION_VICTORY_SCORE,
-				bluPlayers
+				bluPlayers, {m_FactionManager.GetFactionIndex(blufor)}
 			);
 			EndGameMode(endData);
 		}
 		else if (SK_RedforScore >= m_iGameOverScore)
 		{
 			Print("Redfor wins!");
-				//TODO!: Add redfor faction id and redfor player ids
 			SCR_GameModeEndData endData = SCR_GameModeEndData.Create(
 				EGameOverTypes.FACTION_VICTORY_SCORE,
-				redPlayers
+				redPlayers, {m_FactionManager.GetFactionIndex(redfor)}
 			);
 			EndGameMode(endData);
 		}
