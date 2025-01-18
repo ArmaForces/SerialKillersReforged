@@ -2,6 +2,7 @@ class SK_CivilianManagerComponentClass: ScriptComponentClass
 {
 }
 
+
 class SK_CivilianManagerComponent: ScriptComponent
 {
 	[Attribute( defvalue: "1200", desc: "Range to search cities for houses")]
@@ -18,6 +19,10 @@ class SK_CivilianManagerComponent: ScriptComponent
 	
 	private static SK_CivilianManagerComponent s_Instance = null;
 	private static int civCounter = 0;
+	private ref array<ref EntityID> cities = new array<ref EntityID>;
+	protected ref array<ref EntityID> m_aCivilians = new array<ref EntityID>;
+	
+	protected SCR_MapMarkerManagerComponent m_mapMarkerManager;
 	
 	static SK_CivilianManagerComponent GetInstance() 
 	{
@@ -36,12 +41,14 @@ class SK_CivilianManagerComponent: ScriptComponent
 	void Init(IEntity owner)
 	{
 		Print("Setting up civilians", LogLevel.DEBUG);
+
+		m_mapMarkerManager = SCR_MapMarkerManagerComponent.GetInstance();
 		
 		GetGame().GetWorld().QueryEntitiesBySphere(
 			"0 0 0",
 			float.MAX,
-			CheckAndProcessBuilding,
-			FilterBuildingEntities,
+			ProcessCities,
+			FilterCityEntities,
 			EQueryEntitiesFlags.STATIC
 		);
 	}
@@ -70,9 +77,6 @@ class SK_CivilianManagerComponent: ScriptComponent
 		AIWaypoint wp = AIWaypoint.Cast(SK_Global.SpawnEntityPrefab(SK_Global.GetConfig().m_pGetInWaypointPrefab, pos));
 		return wp;
 	}
-
-	protected ref array<ref EntityID> m_aCivilians = new array<ref EntityID>;
-	
 	
 	protected void SpawnCivilian(vector pos)
 	{
@@ -110,7 +114,7 @@ class SK_CivilianManagerComponent: ScriptComponent
 
 		AIWaypointCycle cycle = AIWaypointCycle.Cast(SpawnWaypoint(SK_Global.GetConfig().m_pCycleWaypointPrefab, targetPos));
 		cycle.SetWaypoints(queueOfWaypoints);
-		cycle.SetRerunCounter(1);
+		//cycle.SetRerunCounter(1);
 		aigroup.AddWaypoint(cycle);
 
 		Print("Done spawning civilian", LogLevel.DEBUG);
@@ -133,36 +137,105 @@ class SK_CivilianManagerComponent: ScriptComponent
 	
 	protected bool CheckAndProcessBuilding(IEntity entity)
 	{	
-		MapDescriptorComponent mapdesc = MapDescriptorComponent.Cast(entity.FindComponent(MapDescriptorComponent));
-		if (mapdesc){
-			ProcessBuilding(entity, mapdesc);
-		}
+		createDebugMarker(entity, 2);
+		for (int i = 0; i < m_iDefaultHouseOccupants; i++)
+			SpawnCivilian(entity.GetOrigin());
 		return true;
 	}
 	
-	protected void ProcessBuilding(IEntity entity, MapDescriptorComponent mapdesc)
+	protected bool ProcessCities(IEntity cityEntity)
 	{
-		for (int i = 0; i < m_iDefaultHouseOccupants; i++)
-			SpawnCivilian(entity.GetOrigin());
+		vector cityPos[4];
+		cityEntity.GetWorldTransform(cityPos);
+		cities.Insert(cityEntity.GetID());
+		
+		createDebugMarker(cityEntity, 6);
+		GetGame().GetWorld().QueryEntitiesBySphere(
+			cityEntity.GetOrigin(),
+			m_iCityRange,
+			CheckAndProcessBuilding,
+			FilterBuildingEntities,
+			EQueryEntitiesFlags.STATIC
+		);
+		return true;
 	}
+	
+	private void createDebugMarker(IEntity entity, int color)
+	{	
+		vector pos[4];
+		entity.GetWorldTransform(pos);
+		SCR_MapMarkerBase marker = new SCR_MapMarkerBase();
+		marker.SetType(SCR_EMapMarkerType.PLACED_CUSTOM);
+		//marker.SetCustomText(entity.ToString());
+		marker.SetColorEntry(color);
+		marker.SetWorldPos(pos[3][0], pos[3][2]);
+		m_mapMarkerManager.InsertStaticMarker(marker, false, true);
+	}
+	
+	/*
+		Overview of civilian lifespan algo:
+			1. Spawn in city/town
+				* Query map globally for city enities to find city positions
+				* Query map around city entites for building entites
+				* Spawn 2-3 civilians per building around town
+			2. Find PoI waypoint 
+				* Check distance and only use vehicle if PoI is far away? 
+			3. After reaching PoI find random town
+			4. After reaching town, go back to point 2.
+	
+	{9506C81D8DA79BAB}Assets/Structures/Houses/Village/House_Village_E_1I05/House_Village_E_1I05s.xob
+	*/
 	
 	protected bool FilterBuildingEntities(IEntity entity) 
     {
-        MapDescriptorComponent mapdesc = MapDescriptorComponent.Cast(entity.FindComponent(MapDescriptorComponent));
-        if (mapdesc){
-            int type = mapdesc.GetBaseType();
-            if (type == EMapDescriptorType.MDT_BUILDING) return true;
-            if (type == EMapDescriptorType.MDT_HOUSE) return true;
-            if (type == EMapDescriptorType.MDT_HOSPITAL) return true;
-            if (type == EMapDescriptorType.MDT_FUELSTATION) return true;
-            if (type == EMapDescriptorType.MDT_TOURISM) return true;
-            if (type == EMapDescriptorType.MDT_POLICE) return true;
-            if (type == EMapDescriptorType.MDT_STORE) return true;
-            if (type == EMapDescriptorType.MDT_HOTEL) return true;
-            if (type == EMapDescriptorType.MDT_PUB) return true;
-            if (type == EMapDescriptorType.MDT_FIREDEP) return true;
-        }
+		if (entity.ClassName() == "SCR_DestructibleBuildingEntity")
+		{
+			VObject mesh = entity.GetVObject();
+			if(mesh){
+				
+				string res = mesh.GetResourceName();
+				if(res.IndexOf("/Military/") > -1) return false;
+				if(res.IndexOf("/Industrial/") > -1) return false;
+				if(res.IndexOf("/Recreation/") > -1) return false;
+				
+				if(res.IndexOf("/Houses/") > -1 || res.IndexOf("/Commercial/") > -1){
+					if(res.IndexOf("_ruin") > -1) return false;
+					if(res.IndexOf("/Shed/") > -1) return false;
+					if(res.IndexOf("/Garage/") > -1) return false;
+					if(res.IndexOf("/HouseAddon/") > -1) return false;
+					return true;
+				}
+					
+			}
+		}
+		
+		return false;
+    }
+	
+	protected bool FilterCityEntities(IEntity entity)
+	{
+		
+		
+		MapDescriptorComponent mapdesc = MapDescriptorComponent.Cast(entity.FindComponent(MapDescriptorComponent));
+        if (mapdesc)
+			return mapdesc.GetBaseType() == EMapDescriptorType.MDT_NAME_CITY ||
+				   mapdesc.GetBaseType() == EMapDescriptorType.MDT_NAME_TOWN;
 
         return false;
-    }
+	}
+	
+	protected bool FilterMapPoIEntities(IEntity entity)
+	{
+		MapDescriptorComponent mapdesc = MapDescriptorComponent.Cast(entity.FindComponent(MapDescriptorComponent));
+        if (mapdesc) {
+			int type = mapdesc.GetBaseType();
+			
+			if (type == EMapDescriptorType.MDT_NAME_LOCAL) return true;
+			if (type == EMapDescriptorType.MDT_HILL) return true;
+			if (type == EMapDescriptorType.MDT_NAME_RIDGE) return true;
+		}
+
+        return false;
+	}
+	
 }
