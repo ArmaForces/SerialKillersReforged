@@ -1,0 +1,66 @@
+SCR_FactionManager : "{A242612865F2A48E}Prefabs/MP/Managers/Factions/FactionManager_Base.et" {
+ ID "56B2B4776E6E4499"
+ Factions {
+  SCR_Faction "{56B2B46E999BF3BF}" : "{5EB46557DF2AA24F}Configs/Factions/US.conf" {
+   m_aFriendlyFactionsIds {
+    "CIV"
+   }
+   m_sFactionBackground "{F8AC305446D5D480}UI/Textures/DeployMenu/Loadout-BG/Loadout_US_BG.imageset"
+  }
+  SCR_Faction "{56B2B46E9AF80999}" : "{09727032415AC39B}Configs/Factions/USSR.conf" {
+   m_sFactionBackground "{21533F2089005056}UI/Textures/DeployMenu/Loadout-BG/Loadout_BG_USSR.imageset"
+  }
+  SCR_Faction "{61667A546239623B}" {
+   FactionKey "CIV"
+   FactionColor 0.157 0.624 0.275 1
+   UIInfo SCR_FactionUIInfo "{61667A54F1719695}" {
+    Name "Civilians"
+   }
+   m_bIsPlayable 0
+   m_bShowInWelcomeScreenIfNonPlayable 0
+   m_bIsMilitary 0
+   m_FactionLabel FACTION_CIV
+   m_aFriendlyFactionsIds {
+    "US"
+   }
+   m_sFactionRadioEncryptionKey "CIVBURGER"
+   m_aEntityCatalogs {
+    SCR_EntityCatalog "{61667A54E4B30285}" {
+     m_eEntityCatalogType GROUP
+     m_aEntityEntryList {
+      SCR_EntityCatalogEntry "{61667A54EDC45164}" {
+       m_sEntityPrefab "{1AF5B9AE5CFD4433}Prefabs/Groups/INDFOR/Group_CIV.et"
+      }
+     }
+    }
+    SCR_EntityCatalog "{61667A5494ADD142}" {
+     m_eEntityCatalogType ITEM
+    }
+    SCR_EntityCatalog "{61667A548B9F013D}" {
+     m_eEntityCatalogType CHARACTER
+    }
+   }
+  }
+ }
+ m_bCanChangeFactionsPlayable 0
+ m_aRanks {
+  SCR_RankID "{5CB0777E828E61F3}" {
+   m_iRequiredXP -1
+  }
+  SCR_RankID "{5CB0777E803B7EA2}" {
+   m_iRequiredXP 8
+  }
+  SCR_RankID "{5CB0777E8F0E82AF}" {
+   m_iRequiredXP 16
+  }
+  SCR_RankID "{5CB0777E8BE66EC2}" {
+   m_iRequiredXP 24
+  }
+  SCR_RankID "{5CB0777E8AD658D6}" {
+   m_iRequiredXP 32
+  }
+  SCR_RankID "{5CB0777E88380770}" {
+   m_iRequiredXP 40
+  }
+ }
+}
