@@ -14,13 +14,27 @@ class SK_CivilianManagerComponent: ScriptComponent
 	[Attribute( defvalue: "250", desc: "Range to search villages for houses")]
 	int m_iVillageRange;
 	
-	[Attribute( defvalue: "2", desc: "Default occupants per house")]
-	int m_iDefaultHouseOccupants;
+	[Attribute(defvalue: "3", desc: "City weight in civilian distribution")]
+	int m_iCityWieght;
+	
+	[Attribute(defvalue: "2", desc: "Town weight in civilian distribution")]
+	int m_iTownWeight;
+	
+	[Attribute(defvalue: "1", desc: "Village weight in civilian distribution")]
+	int m_iVillageWieght;
+	
+	[Attribute( defvalue: "200", desc: "Target number of civilians to spawn")]
+	int m_iTargetCivilianCount;
+	
 	
 	private static SK_CivilianManagerComponent s_Instance = null;
 	private static int civCounter = 0;
 	private ref array<ref EntityID> cities = new array<ref EntityID>;
 	protected ref array<ref EntityID> m_aCivilians = new array<ref EntityID>;
+	
+	private int m_iCityCount = 0;
+	private int m_iTownCount = 0;
+	private int m_iVillageCount = 0;
 	
 	protected SCR_MapMarkerManagerComponent m_mapMarkerManager;
 	
@@ -51,6 +65,43 @@ class SK_CivilianManagerComponent: ScriptComponent
 			FilterCityEntities,
 			EQueryEntitiesFlags.STATIC
 		);
+		
+		Print("Scanning map done, found " + m_iCityCount + " cities, " + m_iTownCount + " towns and " + m_iVillageCount + " villages", LogLevel.NORMAL);
+		
+		int civTarget = Math.Ceil(m_iTargetCivilianCount / 
+			(m_iCityWieght * m_iCityCount +  m_iTownWeight * m_iTownCount + m_iVillageWieght * m_iVillageCount));
+		
+		Print("Target civilian count = " + civTarget);
+		
+		foreach(EntityID cityId: cities)
+		{
+			SpawnCivilians(cityId, civTarget);
+		}
+	}
+	
+	protected void SpawnCivilians(EntityID cityMarkerId, int civTargetCount) 
+	{
+		IEntity cityMarker = GetGame().GetWorld().FindEntityByID(cityMarkerId);
+		MapDescriptorComponent mapdesc = MapDescriptorComponent.Cast(cityMarker.FindComponent(MapDescriptorComponent));
+		int range = m_iVillageRange, weight = m_iVillageWieght;
+		
+		if (mapdesc.GetBaseType() == EMapDescriptorType.MDT_NAME_TOWN) 
+		{
+			range = m_iTownRange;
+			weight = m_iTownWeight;
+		}
+		
+		else if (mapdesc.GetBaseType() == EMapDescriptorType.MDT_NAME_CITY)
+		{
+			range = m_iCityRange;
+			weight = m_iCityWieght;
+		}
+		
+		for (int i = 0; i < civTargetCount * weight; i++) 
+		{
+			SpawnCivilian(cityMarker.GetOrigin(), range);
+		}
+		
 	}
 	
 	AIWaypoint SpawnPatrolWaypoint(vector pos)
@@ -78,10 +129,10 @@ class SK_CivilianManagerComponent: ScriptComponent
 		return wp;
 	}
 	
-	protected void SpawnCivilian(vector pos)
+	protected void SpawnCivilian(vector pos, int range)
 	{
 		Print("Spawning civilan at " + pos + "civ#: " + civCounter++, LogLevel.NORMAL);
-		vector spawnPosition = SK_Global.GetRandomNonOceanPositionNear(pos, 50);
+		vector spawnPosition = SK_Global.GetRandomNonOceanPositionNear(pos, range);
 
 		vector targetPos = SK_Global.GetRandomNonOceanPositionNear(pos, 5000);
 		vector carPosition = SK_Global.GetRandomNonOceanPositionNear(pos, 50);
@@ -90,7 +141,7 @@ class SK_CivilianManagerComponent: ScriptComponent
 
 		spawnPosition = SK_Global.FindSafeSpawnPosition(spawnPosition);
 		IEntity civ = SK_Global.SpawnEntityPrefab(SK_Global.GetConfig().m_pCivilianPrefab, spawnPosition);
-
+		
 		EntityID civId = civ.GetID();
 
 		m_aCivilians.Insert(civId);
@@ -114,10 +165,7 @@ class SK_CivilianManagerComponent: ScriptComponent
 
 		AIWaypointCycle cycle = AIWaypointCycle.Cast(SpawnWaypoint(SK_Global.GetConfig().m_pCycleWaypointPrefab, targetPos));
 		cycle.SetWaypoints(queueOfWaypoints);
-		//cycle.SetRerunCounter(1);
 		aigroup.AddWaypoint(cycle);
-
-		Print("Done spawning civilian", LogLevel.DEBUG);
 	}
 	
 	protected void SpawnVehicle(vector pos)
@@ -135,41 +183,10 @@ class SK_CivilianManagerComponent: ScriptComponent
 		
 	}
 	
-	protected bool CheckAndProcessBuilding(IEntity entity)
-	{	
-		createDebugMarker(entity, 2);
-		for (int i = 0; i < m_iDefaultHouseOccupants; i++)
-			SpawnCivilian(entity.GetOrigin());
-		return true;
-	}
-	
 	protected bool ProcessCities(IEntity cityEntity)
 	{
-		vector cityPos[4];
-		cityEntity.GetWorldTransform(cityPos);
 		cities.Insert(cityEntity.GetID());
-		
-		createDebugMarker(cityEntity, 6);
-		GetGame().GetWorld().QueryEntitiesBySphere(
-			cityEntity.GetOrigin(),
-			m_iCityRange,
-			CheckAndProcessBuilding,
-			FilterBuildingEntities,
-			EQueryEntitiesFlags.STATIC
-		);
 		return true;
-	}
-	
-	private void createDebugMarker(IEntity entity, int color)
-	{	
-		vector pos[4];
-		entity.GetWorldTransform(pos);
-		SCR_MapMarkerBase marker = new SCR_MapMarkerBase();
-		marker.SetType(SCR_EMapMarkerType.PLACED_CUSTOM);
-		//marker.SetCustomText(entity.ToString());
-		marker.SetColorEntry(color);
-		marker.SetWorldPos(pos[3][0], pos[3][2]);
-		m_mapMarkerManager.InsertStaticMarker(marker, false, true);
 	}
 	
 	/*
@@ -182,57 +199,29 @@ class SK_CivilianManagerComponent: ScriptComponent
 				* Check distance and only use vehicle if PoI is far away? 
 			3. After reaching PoI find random town
 			4. After reaching town, go back to point 2.
-	
-	{9506C81D8DA79BAB}Assets/Structures/Houses/Village/House_Village_E_1I05/House_Village_E_1I05s.xob
 	*/
-	
-	protected bool FilterBuildingEntities(IEntity entity) 
-    {
-		if (entity.ClassName() == "SCR_DestructibleBuildingEntity")
-		{
-			VObject mesh = entity.GetVObject();
-			if(mesh){
-				
-				string res = mesh.GetResourceName();
-				if(res.IndexOf("/Military/") > -1) return false;
-				if(res.IndexOf("/Industrial/") > -1) return false;
-				if(res.IndexOf("/Recreation/") > -1) return false;
-				
-				if(res.IndexOf("/Houses/") > -1 || res.IndexOf("/Commercial/") > -1){
-					if(res.IndexOf("_ruin") > -1) return false;
-					if(res.IndexOf("/Shed/") > -1) return false;
-					if(res.IndexOf("/Garage/") > -1) return false;
-					if(res.IndexOf("/HouseAddon/") > -1) return false;
-					return true;
-				}
-					
-			}
-		}
-		
-		return false;
-    }
 	
 	protected bool FilterCityEntities(IEntity entity)
 	{
-		
-		
 		MapDescriptorComponent mapdesc = MapDescriptorComponent.Cast(entity.FindComponent(MapDescriptorComponent));
         if (mapdesc)
-			return mapdesc.GetBaseType() == EMapDescriptorType.MDT_NAME_CITY ||
-				   mapdesc.GetBaseType() == EMapDescriptorType.MDT_NAME_TOWN;
-
-        return false;
-	}
-	
-	protected bool FilterMapPoIEntities(IEntity entity)
-	{
-		MapDescriptorComponent mapdesc = MapDescriptorComponent.Cast(entity.FindComponent(MapDescriptorComponent));
-        if (mapdesc) {
-			int type = mapdesc.GetBaseType();
-			
-			if (type == EMapDescriptorType.MDT_NAME_LOCAL) return true;
-			if (type == EMapDescriptorType.MDT_HILL) return true;
-			if (type == EMapDescriptorType.MDT_NAME_RIDGE) return true;
+		{
+			int baseType = mapdesc.GetBaseType();
+			if (baseType ==  EMapDescriptorType.MDT_NAME_VILLAGE) 
+			{
+				m_iVillageCount += 1;
+				return true;
+			}
+			if (baseType ==  EMapDescriptorType.MDT_NAME_TOWN) 
+			{
+				m_iTownCount += 1;
+				return true;
+			}
+			if (baseType ==  EMapDescriptorType.MDT_NAME_CITY) 
+			{
+				m_iCityCount += 1;
+				return true;
+			}
 		}
 
         return false;

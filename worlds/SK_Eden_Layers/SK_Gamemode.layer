@@ -1,0 +1,49 @@
+SCR_AIWorld : "{70CCCF16487C927F}Prefabs/AI/SCR_AIWorld_Eden.et" {
+ components {
+  NavmeshWorldComponent "{5584F30E67F617AD}" {
+   NavmeshSettings NavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{5AF8B9A1594F5532}" : "{8BBC73472092902E}Configs/Navmesh/Navmesh_GM_Eden_Soldier.conf" {
+    }
+   }
+  }
+  NavmeshWorldComponent "{5584F30EEFEE1223}" {
+   NavmeshSettings ChimeraNavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{5CF6FEFBD1A09749}" {
+     NavmeshFile "{C35ECF3276824654}worlds/GameMaster/Navmeshes/GM_Eden_vehicles.nmn"
+    }
+   }
+  }
+ }
+ coords 0 0 0
+ "Accepted Road Types" 78
+}
+PerceptionManager PerceptionManager1 : "{028DAEAD63E056BE}Prefabs/World/Game/PerceptionManager.et" {
+ coords 4926.701 34.279 10717.344
+}
+SK_SerialKillersGameMode SK_SerialKillersGameModeOverride1 : "{ECEEDB2D3737204B}Prefabs/ScenarioFramework/SK_SerialKillersGameModeOverride.et" {
+ components {
+  SK_CivilianManagerComponent "{60C4D31D2257CD56}" {
+   m_iCityRange 600
+   m_iTownRange 300
+   m_iVillageRange 80
+   m_iCityWieght 5
+   m_iTownWeight 3
+   m_iTargetCivilianCount 300
+  }
+ }
+ coords 6390.344 159.26 6439.98
+ {
+  SCR_FactionManager FactionManager_SK1 : "{1A3664A8751E1708}Prefabs/MP/Managers/Factions/FactionManager_SK.et" {
+   coords 0 0 0
+  }
+ }
+}
+SCR_MapLocator {
+ m_WorldDirections SCR_MapLocationQuadHint "{5AAA92CD91D1D8F5}" : "{ABA21F381437DFE8}Configs/Map/MapLocatorHints/LocationHintsEveron.conf" {
+ }
+}
+MusicManager : "{359452CCDBDD03F5}Prefabs/Sounds/Music/MusicManager_Campaign.et" {
+}
+SCR_LoadoutManager : "{FD4EE3666CA87EA6}Prefabs/MP/Managers/Loadouts/LoadoutManager_SK.et" {
+ coords 6390.307 159.251 6439.739
+}

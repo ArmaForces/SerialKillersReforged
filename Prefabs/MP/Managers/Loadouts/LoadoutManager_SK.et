@@ -2,6 +2,9 @@ SCR_LoadoutManager : "{AA4E7419A1FF65B0}Prefabs/MP/Managers/Loadouts/LoadoutMana
  ID "56B2B47708C4F23A"
  m_aPlayerLoadouts {
   SCR_FactionPlayerLoadout "{56B2B461C34A570F}" : "{7C7C65FD583E6612}Configs/Loadouts/US/Loadout_US_Rifleman.conf" {
+   m_sLoadoutName "Policeman"
+   m_sLoadoutResource "{DE15FB5FAFC3E63F}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Officer.et"
+   m_sLoadoutImage "{E66FEBD3F049BF7D}UI/Textures/EditorPreviews/Characters/BLUFOR/US_Army/Character_US_SL.edds"
   }
   SCR_FactionPlayerLoadout "{56B2B46134D39388}" : "{5F9034642E99437D}Configs/Loadouts/USSR/Loadout_USSR_Rifleman.conf" {
    m_sLoadoutName "Terrorist KLMK"
