@@ -1,0 +1,54 @@
+Vehicle : "{4A71F755A4513227}Prefabs/Vehicles/Wheeled/M998/M1025.et" {
+ ID "BBCBA43A9778AE21"
+ components {
+  MeshObject "{51DAA09FEFBFC0E7}" {
+   Materials {
+    MaterialAssignClass "{646ABB4EC4AB22EF}" {
+     SourceMaterial "Assets/Vehicles/Wheeled/M998/Data/HMMWV_Body"
+     AssignedMaterial "{036B6135DAF74E00}Assets/Vehicles/Wheeled/M998/Data/HMMWV_Body_Merdc.emat"
+    }
+   }
+  }
+  SCR_EditableVehicleComponent "{50DEB7C26B5EB312}" {
+   m_UIInfo SCR_EditableVehicleUIInfo "{5298E609432D192D}" {
+    Name "#AR-Vehicle_M1025_Name"
+    m_Image "{0E5145A46C98FAFB}UI/Textures/EditorPreviews/Vehicles/Wheeled/M998/M1025_MERDC.edds"
+    m_sFaction "US"
+    m_aAutoLabels +{
+    }
+    m_EntityBudgetCost {
+     SCR_EntityBudgetValue "{5EF07CF263360EC1}" {
+      m_BudgetType RANK_SERGEANT
+     }
+    }
+   }
+  }
+  SCR_UniversalInventoryStorageComponent "{5916C587FC993363}" {
+   Attributes SCR_ItemAttributeCollection "{5916C587FF082FC8}" {
+    CustomAttributes {
+     PreviewRenderAttributes "{5916C587E61024B6}" {
+     }
+    }
+   }
+  }
+  SlotManagerComponent "{55BCE45E438E4CFF}" {
+   Slots {
+    SCR_WheelSlotInfo Wheel_L01 {
+     Prefab "{DA6ED52690D48C8A}Prefabs/Vehicles/Wheeled/M998/VehParts/Wheels/M998_MERDC_wheel_01.et"
+    }
+    SCR_WheelSlotInfo Wheel_L02 {
+     Prefab "{DA6ED52690D48C8A}Prefabs/Vehicles/Wheeled/M998/VehParts/Wheels/M998_MERDC_wheel_01.et"
+    }
+    SCR_WheelSlotInfo Wheel_R01 {
+     Prefab "{DA6ED52690D48C8A}Prefabs/Vehicles/Wheeled/M998/VehParts/Wheels/M998_MERDC_wheel_01.et"
+    }
+    SCR_WheelSlotInfo Wheel_R02 {
+     Prefab "{DA6ED52690D48C8A}Prefabs/Vehicles/Wheeled/M998/VehParts/Wheels/M998_MERDC_wheel_01.et"
+    }
+    RegisteringComponentSlotInfo Roof {
+     Prefab "{34A2BAFFE03E8D95}Prefabs/Vehicles/Wheeled/M998/VehParts/M1025_roof_MERDC.et"
+    }
+   }
+  }
+ }
+}

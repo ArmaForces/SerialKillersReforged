@@ -1,0 +1,35 @@
+Vehicle : "{5674FAEB9AB7BDD0}Prefabs/Vehicles/Wheeled/M998/M998.et" {
+ ID "BBCBA43A9778AE21"
+ components {
+  MeshObject "{51DAA09FEFBFC0E7}" {
+   Materials {
+    MaterialAssignClass "{646ABB4E34080794}" {
+     SourceMaterial "Assets/Vehicles/Wheeled/M998/Data/HMMWV_Body"
+     AssignedMaterial "{036B6135DAF74E00}Assets/Vehicles/Wheeled/M998/Data/HMMWV_Body_Merdc.emat"
+    }
+   }
+  }
+  SCR_EditableVehicleComponent "{50DEB7C26B5EB312}" {
+   m_UIInfo SCR_EditableVehicleUIInfo "{5298E609432D192D}" {
+    Name "#AR-Vehicle_M998_Open_Name"
+    m_Image "{75990BD5DD49D8BF}UI/Textures/EditorPreviews/Vehicles/Wheeled/M998/M998_MERDC.edds"
+    m_sFaction "US"
+    m_aAutoLabels +{
+    }
+    m_EntityBudgetCost {
+     SCR_EntityBudgetValue "{646ABB4E3CEC7FF2}" {
+      m_BudgetType RANK_CORPORAL
+      m_Value 2
+     }
+    }
+   }
+  }
+  SlotManagerComponent "{55BCE45E438E4CFF}" {
+   Slots {
+    RegisteringComponentSlotInfo Tailgate {
+     Prefab "{7DF13DB0BA17A6F7}Prefabs/Vehicles/Wheeled/M998/VehParts/M998_tailgate_MERDC.et"
+    }
+   }
+  }
+ }
+}
