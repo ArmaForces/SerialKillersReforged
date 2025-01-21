@@ -19,187 +19,19 @@ SCR_AIWorld : "{01DC74137CFDDB6A}Prefabs/AI/SCR_AIWorld_Arland.et" {
  "Accepted Road Types" 255
 }
 SK_SerialKillersGameMode GameModeSF : "{ECEEDB2D3737204B}Prefabs/ScenarioFramework/SK_SerialKillersGameModeOverride.et" {
- components {
-  SCR_ArsenalManagerComponent "{6120A34EB1E9BBEF}" {
-   m_bRankLockedItems 1
-  }
-  SCR_CampaignBuildingManagerComponent "{6454D2CC640D4E59}" {
-   m_sFreeRoamBuildingServerTrigger "{5E191CEAF4B95816}Prefabs/MP/FreeRoamBuildingClientTrigger.et"
-   m_sFreeRoamBuildingClientTrigger "{5E191CEAF4B95816}Prefabs/MP/FreeRoamBuildingClientTrigger.et"
-   m_BudgetType RANK_CORPORAL
-  }
-  SCR_DataCollectorComponent "{5ADE83EE64329989}" {
-   m_aModules {
-    SCR_DataCollectorBasicActionsModule "{5AE097A82ED69A98}" {
-    }
-    SCR_DataCollectorDriverModule "{5AE097BB69284302}" {
-    }
-    SCR_DataCollectorShootingModule "{5AE097BB6217A2F8}" {
-    }
-    SCR_DataCollectorHealingItemsModule "{5CECE314484120F4}" {
-     m_aConsumableTypes {
-      ConsumableTypeStats "{5CECE316446057A9}" {
-       m_eConsumableType BANDAGE
-       m_eDataStatsSelf BANDAGE_SELF
-       m_eDataStatsFriend BANDAGE_FRIENDLIES
-      }
-      ConsumableTypeStats "{5CECE31644CBD9C5}" {
-       m_eConsumableType TOURNIQUET
-       m_eDataStatsSelf TOURNIQUET_SELF
-       m_eDataStatsFriend TOURNIQUET_FRIENDLIES
-      }
-      ConsumableTypeStats "{5CECE316453FD0FC}" {
-       m_eConsumableType SALINE
-       m_eDataStatsSelf SALINE_SELF
-       m_eDataStatsFriend SALINE_FRIENDLIES
-      }
-      ConsumableTypeStats "{5CECE316451EC89B}" {
-       m_eConsumableType MORPHINE
-       m_eDataStatsSelf MORPHINE_SELF
-       m_eDataStatsFriend MORPHINE_FRIENDLIES
-      }
-     }
-    }
-    SCR_DataCollectorCrimesModule "{5D9C706AD14AF695}" {
-     m_aLightBanPunishments +{
-     }
-     m_aHeavyBanPunishments +{
-     }
-    }
-    SCR_DataCollectorAchievementsModule "{5DE86E4CB99B3FFB}" {
-    }
-   }
-  }
-  SCR_EntityCatalogManagerComponent "{5C9AD18D91F9E87E}" {
-   m_aEntityCatalogs {
-    SCR_EntityCatalogMultiList "{5C9AD18D9D38E99E}" {
-    }
-    SCR_EntityCatalogMultiList "{5C9AD18D9B68853E}" {
-    }
-    SCR_EntityCatalogMultiList "{61C8EED3993E46B7}" {
-    }
-    SCR_EntityCatalogMultiList "{61C8EED39E8B0DC3}" {
-    }
-    SCR_EntityCatalogMultiList "{5C9AD18D98F9181C}" {
-    }
-    SCR_EntityCatalog "{5C9EDDD29E61EF44}" {
-    }
-   }
-  }
-  SCR_GameModeHealthSettings "{5A22E11F9ACBB1DF}" {
-   m_bPermitUnconsciousVON 1
-  }
-  SCR_GameOverScreenManagerComponent "{56DEC646298AD219}" {
-   m_GameOverScreenConfig SCR_GameOverScreenConfig "{56DEC6462FFDD82D}" {
-   }
-  }
-  SCR_GroupsManagerComponent "{5706EC99934496F5}" {
-   m_sDefaultGroupPrefab "{8B4D49A9F324E7D5}Prefabs/Groups/PlayableGroup.et"
-   m_iPlayableGroupFrequencyOffset 500
-  }
-  SCR_MapConfigComponent "{5C669498E250A34B}" {
-   m_sGadgetMapConfigPath "{32913D3C51D7736C}Configs/Map/MapFullscreenCoop.conf"
-  }
-  SCR_NotificationSenderComponent "{56FA84B04BE7D4C0}" {
-   m_aKillfeedTypeNames {
-    SCR_NotificationKillfeedTypeName "{5932B0310455E486}" {
-     m_iKillfeedType DISABLED
-     m_sKillfeedTypeName "#AR-Notification_KillfeedType_DISABLED"
-    }
-    SCR_NotificationKillfeedTypeName "{5932B0310491106B}" {
-     m_iKillfeedType UNKNOWN_KILLER
-     m_sKillfeedTypeName "#AR-Notification_KillfeedType_UNKNOWN_KILLER"
-    }
-    SCR_NotificationKillfeedTypeName "{5932B031048D51BD}" {
-     m_iKillfeedType FULL
-     m_sKillfeedTypeName "#AR-Notification_KillfeedType_FULL"
-    }
-   }
-   m_aKillfeedReceiveTypeNames {
-    SCR_NotificationKillfeedreceiveTypeName "{5932B036B747E765}" {
-     m_iKillfeedreceiveType ALL
-     m_sKillfeedReceiveTypeName "#AR-Notification_KillfeedReceiveType_ALL"
-    }
-    SCR_NotificationKillfeedreceiveTypeName "{5932B036B7003ECC}" {
-     m_iKillfeedreceiveType ALLIES_ONLY
-     m_sKillfeedReceiveTypeName "#AR-Notification_KillfeedReceiveType_ALLIES_ONLY"
-    }
-    SCR_NotificationKillfeedreceiveTypeName "{5932B036B7D2B6CF}" {
-     m_iKillfeedreceiveType SAME_FACTION_ONLY
-     m_sKillfeedReceiveTypeName "#AR-Notification_KillfeedReceiveType_SAME_FACTION_ONLY"
-    }
-    SCR_NotificationKillfeedreceiveTypeName "{5932B036B6AB6528}" {
-     m_iKillfeedreceiveType GROUP_ONLY
-     m_sKillfeedReceiveTypeName "#AR-Notification_KillfeedReceiveType_GROUP_ONLY"
-    }
-    SCR_NotificationKillfeedreceiveTypeName "{5932B036A5A136C4}" {
-     m_iKillfeedreceiveType ENEMIES_ONLY
-     m_sKillfeedReceiveTypeName "#AR-Notification_KillfeedReceiveType_ENEMIES_ONLY"
-    }
-   }
-   m_PlayerKickReasonsConfig SCR_ConfigurableDialogUiPresets "{5AD6C337FC7F76C0}" {
-   }
-  }
-  SCR_PerceivedFactionManagerComponent "{61AA7E6E0C6A76F9}" {
-   m_PerceivedFactionHints SCR_GeneralHintStorage "{6290C14649BD50BC}" {
-    m_aHintEntries {
-     SCR_HintEntry "{61AAB8A3096E40A8}" {
-      m_HintInfo SCR_HintUIInfo "{61AAB8A308FF8BE8}" {
-       m_iShowLimit 0
-      }
-     }
-     SCR_HintEntry "{61AAB8A3751F4F26}" {
-      m_HintInfo SCR_HintUIInfo "{61AAB8A374E5E1BD}" {
-       m_iShowLimit 0
-      }
-     }
-     SCR_HintEntry "{6286C0E5AFA4C404}" {
-      m_HintInfo SCR_HintUIInfo "{6286C0E5ADE02FC5}" {
-       m_iShowLimit 0
-      }
-     }
-    }
-   }
-  }
-  SCR_RadialMenuItemsComponent "{5C92B03271ABD8AA}" {
-   m_MenuController SCR_RadialMenuController "{5C92B0326E1334FB}" {
-    m_RMControls SCR_RadialMenuControllerInputs "{5C92B0326C6BC5B4}" {
-     m_sControllerContext "WeaponSelectionContext"
-     m_sOpenAction "Inventory_WeaponSwitchingRadial"
-     m_bCloseOnPerform 1
-     m_bShowWhileUnconcious 0
-    }
-   }
-  }
-  SK_CivilianManagerComponent "{60C4D31D2257CD56}" {
-   m_iCityRange 100
-   m_iTownRange 50
-   m_iVillageRange 25
-   m_iTargetCivilianCount 50
-  }
-  SK_RespawnSystemComponent "{56B2B4793051E7C9}" {
-   m_SpawnLogic SCR_MenuSpawnLogic "{5D36888CC966608A}" {
-   }
-  }
-  SK_SerialKillersConfigComponent "{60C4D31123C481B5}" {
-   m_pCivilianPrefab "{1AF5B9AE5CFD4433}Prefabs/Groups/INDFOR/Group_CIV.et"
-   m_pPatrolWaypointPrefab "{22A875E30470BD4F}Prefabs/AI/Waypoints/AIWaypoint_Patrol.et"
-   m_pWaitWaypointPrefab "{531EC45063C1F57B}Prefabs/AI/Waypoints/AIWaypoint_Wait.et"
-   m_pCycleWaypointPrefab "{35BD6541CBB8AC08}Prefabs/AI/Waypoints/AIWaypoint_Cycle.et"
-   m_pGetInWaypointPrefab "{B049D4C74FBC0C4D}Prefabs/AI/Waypoints/AIWaypoint_GetInNearest.et"
-   m_pVehiclePrefabArray +{
-   }
-  }
-  RplComponent "{56B2B4793BF2E1B4}" {
-   "Rpl State Override" None
-   Streamable Disabled
-  }
- }
  coords 2033.122 32.126 2017.837
- m_iGameOverScore 10
  {
   SCR_FactionManager FactionManager_SK1 : "{1A3664A8751E1708}Prefabs/MP/Managers/Factions/FactionManager_SK.et" {
    coords 0 0 0
+   Factions {
+    SCR_Faction "{56B2B46E9AF80999}" {
+     m_aPredefinedGroups {
+      SCR_GroupPreset "{646ADB10AFF348E3}" {
+       m_sGroupFlag "{50824EB9F2C215AB}UI/Textures/Flags/USSR-flag-base-3it.edds"
+      }
+     }
+    }
+   }
   }
  }
 }

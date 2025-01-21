@@ -155,8 +155,10 @@ SK_SerialKillersGameMode : "{1B76F75A3175E85C}Prefabs/MP/Modes/Plain/GameMode_Pl
   SCR_XPHandlerComponent "{645F3E2CE901C361}" {
   }
   SK_CivilianManagerComponent "{60C4D31D2257CD56}" {
-   m_iCityRange 300
-   m_iDefaultHouseOccupants 3
+   m_iCityRange 100
+   m_iTownRange 50
+   m_iVillageRange 25
+   m_iTargetCivilianCount 50
   }
   SK_RespawnSystemComponent "{56B2B4793051E7C9}" {
    m_SpawnLogic SCR_MenuSpawnLogic "{5D36888CC966608A}" {
@@ -178,7 +180,10 @@ SK_SerialKillersGameMode : "{1B76F75A3175E85C}Prefabs/MP/Modes/Plain/GameMode_Pl
   }
  }
  m_bAutoPlayerRespawn 0
+ m_bAllowFactionChange 0
+ m_bUseSpawnPreload 1
  m_aDisabledResourceTypes {
   0
  }
+ m_iGameOverScore 10
 }
