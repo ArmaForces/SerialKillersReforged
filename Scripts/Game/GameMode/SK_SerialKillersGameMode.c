@@ -32,7 +32,7 @@ class SK_SerialKillersGameMode : SCR_BaseGameMode
 	string m_sCivilianFactionKey;
 	
 	protected int SK_RedforScore = 0;
-	protected int SK_BluforScore = 24;
+	protected int SK_BluforScore = 0;
 	
 	const int SK_BluforMapColor = 7; //blue
 	const int SK_CivMapColor = 0; //white
