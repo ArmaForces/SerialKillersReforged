@@ -26,6 +26,7 @@ GenericEntity : "{DC50C3296A8BACB2}Prefabs/Compositions/SK_VehicleSpawnPoint.et"
      }
     }
    }
+   coords -0.277 0 -1.752
   }
  }
 }

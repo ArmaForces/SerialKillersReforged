@@ -16,10 +16,26 @@ SCR_AIWorld : "{01DC74137CFDDB6A}Prefabs/AI/SCR_AIWorld_Arland.et" {
   }
  }
  coords 1328.174 38.999 2147.295
- "Accepted Road Types" 255
+ "Accepted Road Types" 127
 }
 SK_SerialKillersGameMode GameModeSF : "{ECEEDB2D3737204B}Prefabs/ScenarioFramework/SK_SerialKillersGameModeOverride.et" {
+ components {
+  SCR_HintManagerComponent "{5702B54C6CBC9D7F}" {
+   m_bIgnoreHintSettings 1
+  }
+  SK_CivilianManagerComponent "{60C4D31D2257CD56}" {
+   m_iTargetCivilianCount 50
+  }
+  SK_RespawnSystemComponent "{56B2B4793051E7C9}" {
+   m_SpawnLogic SCR_MenuSpawnLogic "{5D36888CC966608A}" {
+   }
+  }
+ }
  coords 2033.122 32.126 2017.837
+ m_bAllowFactionChange 1
+ m_bUseSpawnPreload 0
+ m_iCivKilledScore 5
+ m_iBluforKilledScore 10
  {
   SCR_FactionManager FactionManager_SK1 : "{1A3664A8751E1708}Prefabs/MP/Managers/Factions/FactionManager_SK.et" {
    coords 0 0 0
@@ -30,6 +46,24 @@ SK_SerialKillersGameMode GameModeSF : "{ECEEDB2D3737204B}Prefabs/ScenarioFramewo
        m_sGroupFlag "{50824EB9F2C215AB}UI/Textures/Flags/USSR-flag-base-3it.edds"
       }
      }
+     m_bCreateOnlyPredefinedGroups 0
+    }
+   }
+   m_aRanks {
+    SCR_RankID "{5CB0777E83631136}" {
+    }
+    SCR_RankID "{5CB0777E828E61F3}" {
+     m_iRequiredXP -2
+    }
+    SCR_RankID "{5CB0777E803B7EA2}" {
+    }
+    SCR_RankID "{5CB0777E8F0E82AF}" {
+    }
+    SCR_RankID "{5CB0777E8BE66EC2}" {
+    }
+    SCR_RankID "{5CB0777E8AD658D6}" {
+    }
+    SCR_RankID "{5CB0777E88380770}" {
     }
    }
   }
