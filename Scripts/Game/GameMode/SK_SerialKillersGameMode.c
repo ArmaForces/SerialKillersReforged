@@ -32,7 +32,7 @@ class SK_SerialKillersGameMode : SCR_BaseGameMode
 	string m_sCivilianFactionKey;
 	
 	protected int SK_RedforScore = 0;
-	protected int SK_BluforScore = 0;
+	protected int SK_BluforScore = 24;
 	
 	const int SK_BluforMapColor = 7; //blue
 	const int SK_CivMapColor = 0; //white
@@ -58,6 +58,7 @@ class SK_SerialKillersGameMode : SCR_BaseGameMode
 			m_CiviliansManager.Init(this);
 		}
 	}
+	
 	
 	void CreateKillMarker(IEntity victim, int color)
 	{
@@ -245,6 +246,11 @@ class SK_SerialKillersGameMode : SCR_BaseGameMode
 			m_XPHandlerComponent.AwardXP(bluePlayerId, SCR_EXPRewards.CUSTOM_1, 1, false, blueScoreChange);
 		}
 		
+	}
+	
+	int GetBluforScore()
+	{
+		return SK_BluforScore;
 	}
 	
 	//------------------------------------------------------------------------------------------------
