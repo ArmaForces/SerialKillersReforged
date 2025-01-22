@@ -8,6 +8,14 @@ SCR_FactionManager : "{A242612865F2A48E}Prefabs/MP/Managers/Factions/FactionMana
    m_sFactionBackground "{F8AC305446D5D480}UI/Textures/DeployMenu/Loadout-BG/Loadout_US_BG.imageset"
   }
   SCR_Faction "{56B2B46E9AF80999}" : "{09727032415AC39B}Configs/Factions/USSR.conf" {
+   m_aPredefinedGroups {
+    SCR_GroupPreset "{646ADB10AFF348E3}" {
+     m_sGroupName "Terrorists"
+     m_sGroupFlag "{DDEC1C47914FEAA6}Assets/Props/Fabric/Flags/Data/Flag_2_3_SovietArmy_BCR.edds"
+     m_iGroupSize 4
+    }
+   }
+   m_bCreateOnlyPredefinedGroups 1
    m_sFactionBackground "{21533F2089005056}UI/Textures/DeployMenu/Loadout-BG/Loadout_BG_USSR.imageset"
   }
   SCR_Faction "{61667A546239623B}" {

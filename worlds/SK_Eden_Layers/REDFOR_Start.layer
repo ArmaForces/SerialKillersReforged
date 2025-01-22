@@ -1,0 +1,17 @@
+SCR_SpawnPoint : "{4FEA25583D0975F7}Prefabs/MP/Spawning/SpawnPoint_USSR.et" {
+ coords 1119.02 40.916 11511.721
+}
+GenericEntity : "{88B3A9FF09D43C1B}Prefabs/Items/Equipment/Maps/PaperMap_FastTravel_CO.et" {
+ coords 1116.425 41.842 11511.688
+ angleX 0
+ angleY 116.465
+}
+GenericEntity : "{8CA93330EA43EA78}PrefabsEditable/Auto/Props/Military/Compositions/USSR/E_ArsenalBox_USSR.et" {
+ components {
+  SCR_ArsenalComponent "{56F2C6D1431AD9AF}" {
+   m_eSupportedArsenalItemTypes 1048574
+  }
+ }
+ coords 1117.605 41.045 11515.277
+ angleY -63.034
+}

@@ -4,9 +4,6 @@ PerceptionManager PerceptionManager : "{028DAEAD63E056BE}Prefabs/World/Game/Perc
 RadioManagerEntity RadioManager : "{B8E09FAB91C4ECCD}Prefabs/Radio/RadioManager.et" {
  coords 2033.122 33.063 2022.837
 }
-SCR_PlayerController SK_PlayerControllerMP_Factions1 : "{BFB37A2D8B2E126A}Prefabs/Characters/Core/SK_PlayerControllerMP_Factions.et" {
- coords 1394.666 43.139 2364.672
-}
 ScriptedChatEntity ScriptedChatEntity : "{F69BC912AC8236F9}Prefabs/MP/ScriptedChatEntity.et" {
  coords 2033.122 33.482 2024.837
 }

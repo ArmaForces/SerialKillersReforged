@@ -1,0 +1,31 @@
+SCR_SpawnPoint : "{5A2220DD0C16958B}Prefabs/MP/Spawning/SpawnPoint_US.et" {
+ coords 5112.077 176.219 7035.197
+ angleY 115.633
+}
+GenericEntity : "{88B3A9FF09D43C1B}Prefabs/Items/Equipment/Maps/PaperMap_FastTravel_CO.et" {
+ coords 5114.51 177.317 7038.584
+ angleX 0
+ angleY 115.633
+}
+GenericEntity : "{C1AB654F77ABA58B}PrefabsEditable/Auto/Props/Military/Compositions/US/E_ArsenalBox_US.et" {
+ coords 5115.912 176.258 7041.035
+ angleY 115.633
+}
+GenericEntity : "{DC50C3296A8BACB2}Prefabs/Compositions/SK_VehicleSpawnPoint.et" {
+ coords 5119.34 176.072 7044.905
+ angleY 11.363
+ {
+  GenericEntity {
+   ID "64548D9BBCA96EE2"
+   components {
+    SCR_CampaignBuildingProviderComponent "{5ED49CDEA85A0083}" {
+     m_aBudgetsToEvaluate {
+      SCR_CampaignBuildingBudgetToEvaluateData "{5ED49CDE93BE360C}" {
+       m_eBudget 2147483647
+      }
+     }
+    }
+   }
+  }
+ }
+}

@@ -111,6 +111,8 @@ class SK_SerialKillersGameMode : SCR_BaseGameMode
 				Print("Unknown victim faction - " + killedFaction.GetFactionKey(), LogLevel.WARNING);
 				return;
 		}
+		
+		Replication.BumpMe();
 		GameEndCheck();
 	}
 	
@@ -132,6 +134,7 @@ class SK_SerialKillersGameMode : SCR_BaseGameMode
 		
 		Rpc(RPC_DoOnKill, "Cop was killed", SK_RedforScore, blueScoreChange);
 		RPC_DoOnKill("Cop was killed", SK_RedforScore, blueScoreChange);
+		AddBluforXP(blueScoreChange);
 		CreateKillMarker(unit, SK_BluforMapColor);
 	}
 	
@@ -152,6 +155,7 @@ class SK_SerialKillersGameMode : SCR_BaseGameMode
 		}
 		Rpc(RPC_DoOnKill, "Civilian was killed", SK_RedforScore, blueScoreChange);
 		RPC_DoOnKill("Civilian was killed", SK_RedforScore, blueScoreChange);
+		AddBluforXP(blueScoreChange);
 		CreateKillMarker(unit, SK_CivMapColor);
 	}
 	
@@ -201,7 +205,7 @@ class SK_SerialKillersGameMode : SCR_BaseGameMode
 			}
 		}
 		
-		if (redforDead) 
+		if (redforDead && redPlayers.Count() > 0) 
 		{
 			Print("Blufor wins!");
 			SCR_GameModeEndData endData = SCR_GameModeEndData.Create(
@@ -226,8 +230,12 @@ class SK_SerialKillersGameMode : SCR_BaseGameMode
 	{
 		SK_RedforScore = redScore;
 		SK_BluforScore = SK_BluforScore + blueScoreChange;
-		
-		
+
+		ShowScoreHint(message, blueScoreChange);
+	}
+	
+	void AddBluforXP(int blueScoreChange)
+	{	
 		SCR_Faction blufor = SCR_Faction.Cast(m_FactionManager.GetFactionByKey(m_sBluforFactionKey));
 		array<int> bluPlayers = new array<int>;
 		blufor.GetPlayersInFaction(bluPlayers);
@@ -237,7 +245,6 @@ class SK_SerialKillersGameMode : SCR_BaseGameMode
 			m_XPHandlerComponent.AwardXP(bluePlayerId, SCR_EXPRewards.CUSTOM_1, 1, false, blueScoreChange);
 		}
 		
-		ShowScoreHint(message, blueScoreChange);
 	}
 	
 	//------------------------------------------------------------------------------------------------
