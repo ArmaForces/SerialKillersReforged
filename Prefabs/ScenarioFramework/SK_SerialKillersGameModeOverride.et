@@ -152,8 +152,6 @@ SK_SerialKillersGameMode : "{1B76F75A3175E85C}Prefabs/MP/Modes/Plain/GameMode_Pl
     }
    }
   }
-  SCR_XPHandlerComponent "{645F3E2CE901C361}" {
-  }
   SK_CivilianManagerComponent "{60C4D31D2257CD56}" {
    m_iCityRange 600
    m_iTownRange 300
@@ -175,6 +173,8 @@ SK_SerialKillersGameMode : "{1B76F75A3175E85C}Prefabs/MP/Modes/Plain/GameMode_Pl
    m_pVehiclePrefabArray {
     "{128253A267BE9424}Prefabs/Vehicles/Wheeled/S105/S105_randomized.et" "{49C909AFD66E90A1}Prefabs/Vehicles/Wheeled/S1203/S1203_transport_randomized.et" "{57A441224AC02CF3}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_covered_CIV_Randomized.et" "{EEAC3A94929A2B55}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_CIV_randomized.et" "{43C4AF1EEBD001CE}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_ambulance.et" "{F649585ABB3706C4}Prefabs/Vehicles/Wheeled/M151A2/M151A2.et" "{1B0D46B41C50873D}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_uncovered_CIV_Randomized.et" "{F649585ABB3706C4}Prefabs/Vehicles/Wheeled/M151A2/M151A2.et"
    }
+  }
+  SK_XPHandlerComponent "{645F3E2CE901C361}" {
   }
   RplComponent "{56B2B4793BF2E1B4}" {
    "Rpl State Override" None
