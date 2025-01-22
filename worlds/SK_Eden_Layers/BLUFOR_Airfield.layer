@@ -14,6 +14,44 @@ GenericEntity : "{C1AB654F77ABA58B}PrefabsEditable/Auto/Props/Military/Compositi
  coords 4923.613 28.826 11773.585
  angleY -93.007
 }
+GenericEntity RandomVehicleSpawn : "{C72F956E4AC6A6E7}Prefabs/Systems/ScenarioFramework/Components/Area.et" {
+ coords 5173.279 173.977 7084.228
+ {
+  GenericEntity Layer1 : "{5F9FFF4BF027B3A3}Prefabs/Systems/ScenarioFramework/Components/Layer.et" {
+   components {
+    SCR_ScenarioFrameworkLayerBase "{5A2283EA2A0B4B14}" {
+     m_SpawnChildren RANDOM_ONE
+    }
+   }
+   coords 0 0 0
+   {
+    $grp GenericEntity : "{AA01691FDC4E9167}Prefabs/Systems/ScenarioFramework/Components/Slot.et" {
+     Slot1 {
+      components {
+       SCR_ScenarioFrameworkSlotBase "{5A22E1D67E712EC8}" {
+        m_sObjectToSpawn "{2D74C39A650A3030}Prefabs/Vehicles/Wheeled/M923A1/M923A1_engineer.et"
+       }
+      }
+      coords -11.346 0.019 12.93
+      angleY -162.681
+     }
+     Slot3 {
+      coords -3.206 -0.008 3.501
+     }
+     Slot4 {
+      components {
+       SCR_ScenarioFrameworkSlotBase "{5A22E1D67E712EC8}" {
+        m_sObjectToSpawn "{8B937D667742A75D}Prefabs/Vehicles/Wheeled/S105/S105_rally_BLUFOR.et"
+       }
+      }
+      coords -7.564 0.37 -11.758
+      angleY -137.272
+     }
+    }
+   }
+  }
+ }
+}
 GenericEntity : "{DC50C3296A8BACB2}Prefabs/Compositions/SK_VehicleSpawnPoint.et" {
  coords 4922.46 28.64 11768.544
  angleY 162.722
