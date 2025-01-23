@@ -16,7 +16,6 @@ SCR_AIWorld : "{70CCCF16487C927F}Prefabs/AI/SCR_AIWorld_Eden.et" {
  }
  coords 0 0 0
  "Active AI limit" 999
- "Navmesh For Off Roads" "Soldiers"
  "Accepted Road Types" 78
 }
 PerceptionManager PerceptionManager1 : "{028DAEAD63E056BE}Prefabs/World/Game/PerceptionManager.et" {
@@ -32,6 +31,13 @@ SK_SerialKillersGameMode SK_SerialKillersGameModeOverride1 : "{ECEEDB2D3737204B}
  {
   SCR_FactionManager FactionManager_SK1 : "{1A3664A8751E1708}Prefabs/MP/Managers/Factions/FactionManager_SK.et" {
    coords 0 0 0
+  }
+ }
+}
+ScriptedChatEntity : "{F69BC912AC8236F9}Prefabs/MP/ScriptedChatEntity.et" {
+ coords 6390.359 159.267 6440.183
+ Channels {
+  BaseChatChannel "{559077E72C7027BC}" {
   }
  }
 }

@@ -119,22 +119,17 @@ class SK_SerialKillersGameMode : SCR_BaseGameMode
 	
 	void HandleBluforKill(IEntity unit, Faction instigatorFaction)
 	{
-		SK_RedforScore += 2*m_iCivKilledScore;
+		SK_RedforScore += m_iBluforKilledScore;
 		int blueScoreChange = 0;
-		if (instigatorFaction) 
+		if (instigatorFaction && instigatorFaction.GetFactionKey() == m_sBluforFactionKey)
 		{
-			if (instigatorFaction.GetFactionKey() == "US")
-			{
-				blueScoreChange = -2 * m_iCivKilledScore;
-			} 
-			else 
-			{
-				blueScoreChange = m_iCivKilledScore;
-			}
-		}
+			blueScoreChange = -m_iBluforKilledScore;
+		} 
 		
-		Rpc(RPC_DoOnKill, "Cop was killed", SK_RedforScore, blueScoreChange);
-		RPC_DoOnKill("Cop was killed", SK_RedforScore, blueScoreChange);
+		string message = getNowTimeString() +  ": Cop was killed - " + SK_Global.GetLocalizationString(unit);
+		
+		Rpc(RPC_DoOnKill, message, SK_RedforScore, blueScoreChange);
+		RPC_DoOnKill(message, SK_RedforScore, blueScoreChange);
 		AddBluforXP(blueScoreChange);
 		CreateKillMarker(unit, SK_BluforMapColor);
 	}
@@ -142,29 +137,23 @@ class SK_SerialKillersGameMode : SCR_BaseGameMode
 	void HandleCivKill(IEntity unit, Faction instigatorFaction)
 	{
 		SK_RedforScore += m_iCivKilledScore;
-		int blueScoreChange = 0;
-		if (instigatorFaction) 
+		int blueScoreChange = m_iCivKilledScore;
+		if (instigatorFaction && instigatorFaction.GetFactionKey() == m_sBluforFactionKey) 
 		{
-			if (instigatorFaction.GetFactionKey() == "US")
-			{
-				blueScoreChange = -m_iCivKilledScore;
-			} 
-			else 
-			{
-				blueScoreChange = m_iCivKilledScore;
-			}
+			blueScoreChange = -m_iCivKilledScore;
 		}
-		Rpc(RPC_DoOnKill, "Civilian was killed", SK_RedforScore, blueScoreChange);
-		RPC_DoOnKill("Civilian was killed", SK_RedforScore, blueScoreChange);
+		
+		string message = getNowTimeString() + ": Civilian was killed - " + SK_Global.GetLocalizationString(unit);
+		
+		Rpc(RPC_DoOnKill, message, SK_RedforScore, blueScoreChange);
+		RPC_DoOnKill(message, SK_RedforScore, blueScoreChange);
 		AddBluforXP(blueScoreChange);
 		CreateKillMarker(unit, SK_CivMapColor);
 	}
 	
 	void ShowScoreHint(string message, int blueScoreChange)
 	{
-		string msg = "\t" + getNowTimeString() + "\n";
-		msg = msg + "_____________\n";
-		msg = msg + "\t Killers\n";
+		string msg = "\t Killers\n";
 		msg = msg + "\t " + SK_RedforScore + "/" + m_iGameOverScore + "\n";
 		msg = msg + "\n";
 		msg = msg + "\t Police\n";
@@ -172,6 +161,7 @@ class SK_SerialKillersGameMode : SCR_BaseGameMode
 		msg = msg + message;
 		
 		SCR_HintManagerComponent.GetInstance().ShowCustom(msg, "", 10, false);
+		SCR_ChatComponent.RadioProtocolMessage(message);
 	}
 	
 	string getNowTimeString() 
@@ -183,7 +173,7 @@ class SK_SerialKillersGameMode : SCR_BaseGameMode
 	
 	void GameEndCheck() 
 	{
-		SCR_Faction	redfor = SCR_Faction.Cast(m_FactionManager.GetFactionByKey(m_sRedforFactionKey));
+		SCR_Faction redfor = SCR_Faction.Cast(m_FactionManager.GetFactionByKey(m_sRedforFactionKey));
 		SCR_Faction blufor = SCR_Faction.Cast(m_FactionManager.GetFactionByKey(m_sBluforFactionKey));
 		array<int> bluPlayers = new array<int>;
 		array<int> redPlayers = new array<int>;
@@ -252,6 +242,9 @@ class SK_SerialKillersGameMode : SCR_BaseGameMode
 	{
 		return SK_BluforScore;
 	}
+	
+	
+
 	
 	//------------------------------------------------------------------------------------------------
 	void SK_SerialKillersGameMode(IEntitySource src, IEntity parent)
