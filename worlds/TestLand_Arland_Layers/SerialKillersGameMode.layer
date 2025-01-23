@@ -25,6 +25,7 @@ SK_SerialKillersGameMode GameModeSF : "{ECEEDB2D3737204B}Prefabs/ScenarioFramewo
   }
   SK_CivilianManagerComponent "{60C4D31D2257CD56}" {
    m_iTargetCivilianCount 50
+   m_fVehicleSpawnChance 0.1
   }
   SK_RespawnSystemComponent "{56B2B4793051E7C9}" {
    m_SpawnLogic SCR_MenuSpawnLogic "{5D36888CC966608A}" {
@@ -83,6 +84,35 @@ Vehicle S105_rally_BLUFOR1 : "{8B937D667742A75D}Prefabs/Vehicles/Wheeled/S105/S1
 }
 Vehicle M151A2_transport_MERDC_BLUFOR1 : "{9BC13C42CF3B4938}Prefabs/Vehicles/Wheeled/M151A2/M151A2_transport_MERDC_BLUFOR.et" {
  coords 1391.68 36.118 2347.521
+}
+$grp GenericEntity : "{C65EF20F6A441531}Prefabs/World/Locations/Arland/Beauregard.et" {
+ MilitaryCity {
+  components {
+   SCR_EditableCommentComponent "{529AB059519FE609}" {
+    m_UIInfo SCR_EditableCommentUIInfo "{5298E609432D192D}" {
+     Name "MilitaryCity"
+    }
+   }
+   SCR_MapDescriptorComponent "{527892B6ED748CEB}" {
+    DisplayName "MilitaryCity"
+   }
+  }
+  coords 1366.347 36.942 2391.34
+ }
+ FarmVillage {
+  components {
+   SCR_EditableCommentComponent "{529AB059519FE609}" {
+    m_UIInfo SCR_EditableCommentUIInfo "{5298E609432D192D}" {
+     Name "FarmVillage"
+    }
+   }
+   SCR_MapDescriptorComponent "{527892B6ED748CEB}" {
+    DisplayName "FarmVillage"
+    MainType "Name Village"
+   }
+  }
+  coords 2211.883 53.468 2890.306
+ }
 }
 Vehicle BRDM2_BLUFOR1 : "{EE02519146F1204F}Prefabs/Vehicles/Wheeled/BRDM2/BRDM2_BLUFOR.et" {
  coords 1400.281 36.027 2345.414

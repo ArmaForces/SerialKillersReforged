@@ -25,6 +25,9 @@ class SK_CivilianManagerComponent: ScriptComponent
 	
 	[Attribute( defvalue: "200", desc: "Target number of civilians to spawn")]
 	int m_iTargetCivilianCount;
+		
+	[Attribute( defvalue: "0.05", desc: "Chance to spawn vehicle at a building")]
+	float m_fVehicleSpawnChance;
 	
 	
 	private static SK_CivilianManagerComponent s_Instance = null;
@@ -77,6 +80,14 @@ class SK_CivilianManagerComponent: ScriptComponent
 		{
 			SpawnCivilians(cityId, civTarget);
 		}
+		
+		GetGame().GetWorld().QueryEntitiesBySphere(
+			"0 0 0",
+			float.MAX,
+			ProcessBuilding,
+			FilterBuildingEntities,
+			EQueryEntitiesFlags.STATIC
+		);
 	}
 	
 	protected void SpawnCivilians(EntityID cityMarkerId, int civTargetCount) 
@@ -97,7 +108,10 @@ class SK_CivilianManagerComponent: ScriptComponent
 			weight = m_iCityWieght;
 		}
 		
-		for (int i = 0; i < civTargetCount * weight; i++) 
+		int civCount = civTargetCount * weight + s_AIRandomGenerator.RandInt(-weight, weight);
+		
+		PrintFormat("Will spawn %1 civilians in %2", civCount, cityMarker.GetName());
+		for (int i = 0; i < civCount; i++) 
 		{
 			SpawnCivilian(cityMarker.GetOrigin(), range);
 		}
@@ -128,7 +142,7 @@ class SK_CivilianManagerComponent: ScriptComponent
 		AIWaypoint wp = AIWaypoint.Cast(SK_Global.SpawnEntityPrefab(SK_Global.GetConfig().m_pGetInWaypointPrefab, pos));
 		return wp;
 	}
-	
+
 	protected void SpawnCivilian(vector pos, int range)
 	{
 		Print("Spawning civilan at " + pos + "civ#: " + civCounter++, LogLevel.NORMAL);
@@ -152,9 +166,11 @@ class SK_CivilianManagerComponent: ScriptComponent
 		
 		if (s_AIRandomGenerator.RandFloat01() < 0.5) 
 		{
-			SpawnVehicle(carPosition);
-			if (s_AIRandomGenerator.RandFloat01() < 0.5) 
-				queueOfWaypoints.Insert(SpawnGetInWaypoint(carPosition));
+			queueOfWaypoints.Insert(SpawnGetInWaypoint(carPosition));
+			EntityID randCity = cities.GetRandomElement();
+			IEntity cityMarker = GetGame().GetWorld().FindEntityByID(randCity);
+			targetPos = SK_Global.GetRandomNonOceanPositionNear(cityMarker.GetOrigin(), 500);
+			PrintFormat("Civilian is going to %1", cityMarker.GetName()); 
 		}
 		
 		queueOfWaypoints.Insert(SpawnPatrolWaypoint(targetPos));
@@ -170,16 +186,20 @@ class SK_CivilianManagerComponent: ScriptComponent
 	
 	protected void SpawnVehicle(vector pos)
 	{
-		Print("Spawning vehicle at " + pos, LogLevel.NORMAL);
-		vector spawnPosition = SK_Global.GetRandomNonOceanPositionNear(pos, 50);
+		vector spawnPosition = SK_Global.GetRandomNonOceanPositionNear(pos, 25);
 		BaseWorld world = GetGame().GetWorld();
 		
-		spawnPosition = SK_Global.FindSafeSpawnPosition(spawnPosition);
-		IEntity vehicle = SK_Global.SpawnEntityPrefab(
-			SK_Global.GetConfig().m_pVehiclePrefabArray.GetRandomElement(),
-			spawnPosition, 
-			true
-		);
+		spawnPosition = SK_Global.FindSafeSpawnPosition(spawnPosition, "-2 0 -2", "2 0 2");
+		if (spawnPosition != "0 0 0") 
+		{
+			Print("Spawning vehicle at " + pos, LogLevel.NORMAL);
+			IEntity vehicle = SK_Global.SpawnEntityPrefab(
+				SK_Global.GetConfig().m_pVehiclePrefabArray.GetRandomElement(),
+				spawnPosition, 
+				true,
+				vector.FromYaw(s_AIRandomGenerator.RandFloatXY(0, 360))
+			);
+		}
 		
 	}
 	
@@ -188,18 +208,6 @@ class SK_CivilianManagerComponent: ScriptComponent
 		cities.Insert(cityEntity.GetID());
 		return true;
 	}
-	
-	/*
-		Overview of civilian lifespan algo:
-			1. Spawn in city/town
-				* Query map globally for city enities to find city positions
-				* Query map around city entites for building entites
-				* Spawn 2-3 civilians per building around town
-			2. Find PoI waypoint 
-				* Check distance and only use vehicle if PoI is far away? 
-			3. After reaching PoI find random town
-			4. After reaching town, go back to point 2.
-	*/
 	
 	protected bool FilterCityEntities(IEntity entity)
 	{
@@ -225,6 +233,32 @@ class SK_CivilianManagerComponent: ScriptComponent
 		}
 
         return false;
+	}
+	
+	protected bool ProcessBuilding(IEntity building)
+	{
+		if (s_AIRandomGenerator.RandFloat01() < m_fVehicleSpawnChance)
+		{
+			SpawnVehicle(building.GetOrigin());
+		}
+		return true;
+	}
+	
+	protected bool FilterBuildingEntities(IEntity entity)
+	{
+		if(entity.Type() == SCR_DestructibleBuildingEntity){
+			VObject mesh = entity.GetVObject();
+			
+			if(mesh){
+				string res = mesh.GetResourceName();
+				if(res.IndexOf("/Naval/") > -1) return false;
+				if(res.IndexOf("/Cemeteries/") > -1) return false;
+				if(res.IndexOf("/Ruins/") > -1) return false;
+				return true;
+					
+			}
+		}
+		return false;
 	}
 	
 }
