@@ -22,6 +22,15 @@ class SK_SerialKillersGameMode : SCR_BaseGameMode
 	[Attribute( defvalue: "40", desc: "Blufor resources score")]
 	int m_iBluforResourcesScore;
 	
+	[Attribute( defvalue: "30", desc: "Time in seconds to delay game start")]
+	int m_iGameStartDelaySeconds;
+	
+	[Attribute( defvalue: "30", desc: "Time in minutes before Blufor wins")]
+	int m_iGameOverTimeMinutes;
+	
+	[Attribute( defvalue: "900", desc: "Redfor inactivity time in seconds before penalty scoring")]
+	int m_iRedforInactivityTime;
+	
 	[Attribute( defvalue: "US", desc: "Blufor faction key")]
 	string m_sBluforFactionKey;	
 	
@@ -36,6 +45,8 @@ class SK_SerialKillersGameMode : SCR_BaseGameMode
 	
 	const int SK_BluforMapColor = 7; //blue
 	const int SK_CivMapColor = 0; //white
+	
+	private bool hasGameStarted = false;
 	
 	override void EOnInit(IEntity owner)
 	{
@@ -57,6 +68,9 @@ class SK_SerialKillersGameMode : SCR_BaseGameMode
 			Print("Initialising civilians", LogLevel.NORMAL);
 			m_CiviliansManager.Init(this);
 		}
+		
+		GetGame().GetCallqueue().CallLater(StartGame, m_iGameStartDelaySeconds * 1000);
+		GetGame().GetCallqueue().CallLater(TimeoutGameEnd, m_iGameOverTimeMinutes * 60 * 1000 + m_iGameStartDelaySeconds * 1000);
 	}
 	
 	
@@ -74,10 +88,60 @@ class SK_SerialKillersGameMode : SCR_BaseGameMode
 		m_mapMarkerManager.InsertStaticMarker(marker, false, true);
 	}
 	
+	void StartGame()
+	{
+		if (!IsMaster())
+			return;
+		
+		Print("Gamemode starting");
+		Rpc(RPC_DoStartGame);
+		RPC_DoStartGame();
+		Replication.BumpMe();
+	}
+	
+	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
+	void RPC_DoStartGame()
+	{
+		if (hasGameStarted) return;
+		hasGameStarted = true;
+		
+		SCR_HintManagerComponent.GetInstance().ShowCustom("Game is starting", "", 10, false);
+		
+		array<SCR_SpawnPoint> spawnPoints = SCR_SpawnPoint.GetSpawnPoints();
+		foreach(SCR_SpawnPoint sp: spawnPoints)
+		{
+			if (sp.GetFactionKey() == m_sRedforFactionKey)
+			{
+				sp.SetSpawnPointEnabled_S(false);
+			}
+		}
+	}
+	
+	void TimeoutGameEnd()
+	{
+		if (!IsMaster())
+			return;
+		
+		Print("Timeout reached, ending game with blufor win");
+		SCR_Faction blufor = SCR_Faction.Cast(m_FactionManager.GetFactionByKey(m_sBluforFactionKey));
+		
+		array<int> bluPlayers = new array<int>;
+		blufor.GetPlayersInFaction(bluPlayers);
+		
+		SCR_GameModeEndData endData = SCR_GameModeEndData.Create(
+			EGameOverTypes.FACTION_VICTORY_SCORE,
+			bluPlayers, {m_FactionManager.GetFactionIndex(blufor)}
+			);
+		EndGameMode(endData);
+	}
+	
 	
 	void OnUnitKilled(IEntity unit, Instigator instigator)
 	{
 		if (!IsMaster())
+			return;
+		
+		if (!hasGameStarted)
 			return;
 		
 		Print("Unit was killed! unit: " + unit.GetID());
@@ -173,6 +237,9 @@ class SK_SerialKillersGameMode : SCR_BaseGameMode
 	
 	void GameEndCheck() 
 	{
+		if (!hasGameStarted)
+			return;
+		
 		SCR_Faction redfor = SCR_Faction.Cast(m_FactionManager.GetFactionByKey(m_sRedforFactionKey));
 		SCR_Faction blufor = SCR_Faction.Cast(m_FactionManager.GetFactionByKey(m_sBluforFactionKey));
 		array<int> bluPlayers = new array<int>;
@@ -196,7 +263,7 @@ class SK_SerialKillersGameMode : SCR_BaseGameMode
 			}
 		}
 		
-		if (redforDead && redPlayers.Count() > 0) 
+		if (redforDead && redPlayers.Count() > 1) 
 		{
 			Print("Blufor wins!");
 			SCR_GameModeEndData endData = SCR_GameModeEndData.Create(
