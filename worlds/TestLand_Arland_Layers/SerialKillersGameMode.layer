@@ -34,8 +34,8 @@ SK_SerialKillersGameMode GameModeSF : "{ECEEDB2D3737204B}Prefabs/ScenarioFramewo
  coords 2033.122 32.126 2017.837
  m_bAllowFactionChange 1
  m_bUseSpawnPreload 0
- m_iCivKilledScore 5
- m_iBluforKilledScore 10
+ m_iCivKilledScore 2
+ m_iBluforKilledScore 4
  {
   SCR_FactionManager FactionManager_SK1 : "{1A3664A8751E1708}Prefabs/MP/Managers/Factions/FactionManager_SK.et" {
    coords 0 0 0

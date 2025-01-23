@@ -33,6 +33,8 @@ SK_SerialKillersGameMode SK_SerialKillersGameModeOverride1 : "{ECEEDB2D3737204B}
  coords 6390.344 159.26 6439.98
  m_bAllowFactionChange 1
  m_bUseSpawnPreload 0
+ m_iGameStartDelaySeconds 300
+ m_iGameOverTimeMinutes 45
  {
   SCR_FactionManager FactionManager_SK1 : "{1A3664A8751E1708}Prefabs/MP/Managers/Factions/FactionManager_SK.et" {
    coords 0 0 0
