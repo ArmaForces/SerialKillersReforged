@@ -93,4 +93,64 @@ class SK_Global
 		
 		return pos;
 	}
+	
+	static string GetLocalizationString(IEntity unit)
+	{
+		SCR_EditableEntityCore core = SCR_EditableEntityCore.Cast(SCR_EditableEntityCore.GetInstance(SCR_EditableEntityCore));
+	       if (!core)
+	           return "";
+
+		vector posUnit = unit.GetOrigin();
+		
+		SCR_EditableEntityComponent nearest = core.FindNearestEntity(posUnit, EEditableEntityType.COMMENT, EEditableEntityFlag.LOCAL);
+		if (!nearest)
+			return "";
+		GenericEntity nearestLocation = nearest.GetOwner();
+		SCR_MapDescriptorComponent mapDescr = SCR_MapDescriptorComponent.Cast(nearestLocation.FindComponent(SCR_MapDescriptorComponent));
+		string closestLocationName;
+		if (!mapDescr)
+			return "";
+		MapItem item = mapDescr.Item();
+		closestLocationName = item.GetDisplayName();
+
+		vector lastLocationPos = nearestLocation.GetOrigin();
+	
+		LocalizedString closeLocationAzimuth;
+		vector result = posUnit - lastLocationPos;
+		result.Normalize();
+	
+		float angle1 = vector.DotXZ(result,vector.Forward);
+		float angle2 = vector.DotXZ(result,vector.Right);
+		const float angleA = 0.775;
+		const float angleB = 0.325;
+			
+		if (angle2 > 0)
+		{
+			if (angle1 >= angleA)
+				closeLocationAzimuth = "#AR-MapLocationHint_DirectionNorth";
+			if (angle1 < angleA && angle1 >= angleB )
+				closeLocationAzimuth = "#AR-MapLocationHint_DirectionNorthEast";
+			if (angle1 < angleB && angle1 >=-angleB)
+				closeLocationAzimuth = "#AR-MapLocationHint_DirectionEast";
+			if (angle1 < -angleB && angle1 >=-angleA)
+				closeLocationAzimuth = "#AR-MapLocationHint_DirectionSouthEast";
+			if (angle1 < -angleA)
+				closeLocationAzimuth = "#AR-MapLocationHint_DirectionSouth";
+		}
+		else
+		{
+			if (angle1 >= angleA)
+				closeLocationAzimuth = "#AR-MapLocationHint_DirectionNorth";
+			if (angle1 < angleA && angle1 >= angleB )
+				closeLocationAzimuth = "#AR-MapLocationHint_DirectionNorthWest";
+			if (angle1 < angleB && angle1 >=-angleB)
+				closeLocationAzimuth = "#AR-MapLocationHint_DirectionWest";
+			if (angle1 < -angleB && angle1 >=-angleA)
+				closeLocationAzimuth = "#AR-MapLocationHint_DirectionSouthWest";
+			if (angle1 < -angleA)
+				closeLocationAzimuth = "#AR-MapLocationHint_DirectionSouth";
+		};
+		
+		return WidgetManager.Translate(closeLocationAzimuth, closestLocationName);
+	}
 }
