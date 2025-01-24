@@ -65,7 +65,7 @@ SK_SerialKillersGameMode SK_SerialKillersGameModeOverride1 : "{ECEEDB2D3737204B}
        m_eEntityCatalogType GROUP
        m_aEntityEntryList {
         SCR_EntityCatalogEntry "{61667A54EDC45164}" {
-         m_sEntityPrefab "{1AF5B9AE5CFD4433}Prefabs/Groups/INDFOR/Group_CIV.et"
+         m_sEntityPrefab "{1AF5B9AE5CFD4433}Prefabs/Groups/CIV/Group_CIV.et"
         }
        }
       }
