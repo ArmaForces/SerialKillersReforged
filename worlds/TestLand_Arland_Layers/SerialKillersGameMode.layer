@@ -49,6 +49,13 @@ SK_SerialKillersGameMode GameModeSF : "{ECEEDB2D3737204B}Prefabs/ScenarioFramewo
      }
      m_bCreateOnlyPredefinedGroups 0
     }
+    SCR_Faction "{61667A546239623B}" {
+     m_aEntityCatalogs {
+      SCR_EntityCatalog "{6470775561118D3A}" {
+       m_eEntityCatalogType VEHICLE
+      }
+     }
+    }
    }
    m_aRanks {
     SCR_RankID "{5CB0777E83631136}" {

@@ -33,6 +33,7 @@ class SK_CivilianManagerComponent: ScriptComponent
 	private static SK_CivilianManagerComponent s_Instance = null;
 	private static int civCounter = 0;
 	private ref array<ref EntityID> cities = new array<ref EntityID>;
+	private ref array<vector> housePositions = new array<vector>;
 	protected ref array<ref EntityID> m_aCivilians = new array<ref EntityID>;
 	
 	private int m_iCityCount = 0;
@@ -81,6 +82,7 @@ class SK_CivilianManagerComponent: ScriptComponent
 			SpawnCivilians(cityId, civTarget);
 		}
 		
+		Print("Finding buildings");
 		GetGame().GetWorld().QueryEntitiesBySphere(
 			"0 0 0",
 			float.MAX,
@@ -88,6 +90,30 @@ class SK_CivilianManagerComponent: ScriptComponent
 			FilterBuildingEntities,
 			EQueryEntitiesFlags.STATIC
 		);
+		
+		GetGame().GetCallqueue().CallLater(SpawnVehicles, 1500);
+	}
+	
+	protected void SpawnVehicles()
+	{
+		SCR_AIWorld aiWorld = SCR_AIWorld.Cast(GetGame().GetAIWorld());
+		RoadNetworkManager roadNetworkManager = aiWorld.GetRoadNetworkManager();
+		foreach(vector pos: housePositions)
+		{
+			BaseRoad closestRoad;
+			float distance = 0;
+			
+			int result = roadNetworkManager.GetClosestRoad(pos, closestRoad, distance);
+			if (result > -1)
+			{
+				array<vector> roadPoints = new array<vector>;
+				result = closestRoad.GetPoints(roadPoints);
+				if (result > 0)
+				{
+					SpawnVehicle(roadPoints.GetRandomElement());
+				}
+			}
+		}
 	}
 	
 	protected void SpawnCivilians(EntityID cityMarkerId, int civTargetCount) 
@@ -186,17 +212,17 @@ class SK_CivilianManagerComponent: ScriptComponent
 	
 	protected void SpawnVehicle(vector pos)
 	{
-		vector spawnPosition = SK_Global.GetRandomNonOceanPositionNear(pos, 25);
 		BaseWorld world = GetGame().GetWorld();
 		
-		spawnPosition = SK_Global.FindSafeSpawnPosition(spawnPosition, "-2 0 -2", "2 0 2");
-		if (spawnPosition != "0 0 0") 
+		pos = SK_Global.FindSafeSpawnPosition(pos, "-2 0 -2", "2 0 2");
+		if (pos != "0 0 0") 
 		{
-			Print("Spawning vehicle at " + pos, LogLevel.NORMAL);
+			PrintFormat("Spawning vehicle at %1", pos);
 			IEntity vehicle = SK_Global.SpawnEntityPrefab(
 				SK_Global.GetConfig().m_pVehiclePrefabArray.GetRandomElement(),
-				spawnPosition, 
+				pos, 
 				true,
+			//TODO! Fix vehicle entity yaw on spawn
 				vector.FromYaw(s_AIRandomGenerator.RandFloatXY(0, 360))
 			);
 		}
@@ -239,7 +265,7 @@ class SK_CivilianManagerComponent: ScriptComponent
 	{
 		if (s_AIRandomGenerator.RandFloat01() < m_fVehicleSpawnChance)
 		{
-			SpawnVehicle(building.GetOrigin());
+			housePositions.Insert(building.GetOrigin());
 		}
 		return true;
 	}
