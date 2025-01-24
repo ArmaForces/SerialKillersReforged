@@ -1,41 +1,37 @@
 SCR_AIGroup : "{242BC3C6BCE96EA5}Prefabs/Groups/INDFOR/Group_FIA_Base.et" {
  ID "0000000000000001"
  components {
-  AIPathfindingComponent "{518A98842FFC190E}" {
-   "Use Road Network" 1
-  }
   SCR_AIConfigComponent "{512CC1759AE69D6D}" {
    m_Skill 0
-   m_EnableDangerEvents 0
-   m_EnablePerception 0
    m_EnableAttack 0
    m_EnableCommunication 0
    m_EnableAimingError 0
    m_sDefaultWeaponBehaviorTree "{91B8D5FDB60C1C80}AI/BehaviorTrees/Chimera/Soldier/RetreatFromTarget.bt"
   }
   SCR_AIGroupMovementComponent "{6126A0E02097C7FF}" {
-   "Navlink Traversal Attempts" 4
-   "Max Stuck Time" 31.2
+   "Max Speed" 59
+   "Navlink Traversal Attempts" 10
+   "Max Stuck Time" 30
   }
   SCR_EditableGroupComponent "{50D291F6C83FA532}" {
    m_UIInfo SCR_EditableGroupUIInfo "{5298E609432D192D}" {
     Name "#AR-Group_Guerrilla_FireTeam"
     Icon "{C8ACE2D5D972EEE3}UI/Textures/Editor/EditableEntities/Groups/EditableEntity_Group_Indep_Infantry.edds"
     m_Image "{BC60DB5B677B2F91}UI/Textures/EditorPreviews/Groups/INDFOR/Group_FIA_FireTeam.edds"
-    m_aAuthoredLabels + {
-     25
+    m_aAuthoredLabels {
+     4 13
     }
     m_aAutoLabels {
-     71
+     70
     }
     m_EntityChildrenBudgetCost {
      SCR_EntityBudgetValue "{5D346D54155FA9CA}" {
       m_BudgetType AI
-      m_Value 5
+      m_Value 1
      }
     }
     m_MilitarySymbol SCR_MilitarySymbol "{5D346D54155FA9B7}" {
-     m_Identity INDFOR
+     m_Identity CIVILIAN
      m_Dimension LAND
      m_Icons INFANTRY
      m_Amplifier TEAM

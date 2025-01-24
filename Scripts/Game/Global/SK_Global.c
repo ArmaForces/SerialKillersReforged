@@ -12,8 +12,6 @@ class SK_Global
 	
 	static vector FindSafeSpawnPosition(vector pos, vector mins = "-0.5 0 -0.5", vector maxs = "0.5 2 0.5")
 	{
-		//a crude and brute-force way to find a spawn position, try to improve this later
-		vector foundpos = pos;
 		int i = 0;
 		
 		BaseWorld world = GetGame().GetWorld();
@@ -23,8 +21,7 @@ class SK_Global
 		{
 			i++;
 			
-			//Get a random vector in a 3m radius sphere centered on pos and above the ground
-			vector checkpos = s_AIRandomGenerator.GenerateRandomPointInRadius(0,3,pos,false);
+			vector checkpos = s_AIRandomGenerator.GenerateRandomPointInRadius(0,10,pos,false);
 			checkpos[1] = pos[1] + s_AIRandomGenerator.RandFloatXY(0, 2);
 						
 			//check if a box on that position collides with anything
@@ -33,21 +30,15 @@ class SK_Global
 			trace.Start = checkpos;
 			trace.Mins = mins;
 			trace.Maxs = maxs;
-			
-			float result = world.TracePosition(trace, null);
 				
-			if (result < 0)
+			if (world.TracePosition(trace, null) >= 0)
 			{
-				//collision, try again
-				continue;
-			}else{
-				//no collision, this pos is safe
-				foundpos = checkpos;
-				break;
+				return checkpos;
 			}
 		}
 		
-		return foundpos;
+		PrintFormat("Safe spawn not found %1", pos, level: LogLevel.WARNING);
+		return "0 0 0";
 	}
 	
 		

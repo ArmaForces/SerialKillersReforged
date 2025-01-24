@@ -20,5 +20,11 @@ SCR_LoadoutManager : "{AA4E7419A1FF65B0}Prefabs/MP/Managers/Loadouts/LoadoutMana
    m_sLoadoutResource "{7DE1CBA32A0225EB}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Randomized.et"
    m_sLoadoutImage "{B905D63636577FCB}UI/Textures/EditorPreviews/Characters/OPFOR/USSR_Army/Character_USSR_Randomized.edds"
   }
+  SCR_FactionPlayerLoadout "{6470A380DE03A134}" {
+   m_sLoadoutName "Terrorist Disguised"
+   m_sLoadoutResource "{9B443DD4C1F6DCAD}Prefabs/Characters/Factions/CIV/Character_CIV_baseLoadout.et"
+   m_sLoadoutImage "{A1FEAA3146DDAF38}UI/Textures/EditorPreviews/Characters/CIV/Character_CIV_Randomized.edds"
+   m_sAffiliatedFaction "USSR"
+  }
  }
 }

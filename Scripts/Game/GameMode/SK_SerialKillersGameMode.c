@@ -263,7 +263,7 @@ class SK_SerialKillersGameMode : SCR_BaseGameMode
 			}
 		}
 		
-		if (redforDead && redPlayers.Count() > 1) 
+		if (redforDead) 
 		{
 			Print("Blufor wins!");
 			SCR_GameModeEndData endData = SCR_GameModeEndData.Create(
