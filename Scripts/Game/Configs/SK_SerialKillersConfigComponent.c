@@ -22,6 +22,9 @@ class SK_SerialKillersConfigComponent: ScriptComponent
 	[Attribute(uiwidget: UIWidgets.ResourceAssignArray, desc: "Vehicle to spawn", params: "et", category: "PrefabList")]
 	ref array<ref ResourceName> m_pVehiclePrefabArray;
 	
+	[Attribute( defvalue: "0.3", desc: "Chance to spawn item in redfor cache")]
+	float m_fItemCacheSpawnChance;
+	
 	private static SK_SerialKillersConfigComponent s_Instance = null;
 	
 	static SK_SerialKillersConfigComponent GetInstance()
@@ -37,4 +40,6 @@ class SK_SerialKillersConfigComponent: ScriptComponent
 		
 		return s_Instance;
 	}
+	
+	
 }

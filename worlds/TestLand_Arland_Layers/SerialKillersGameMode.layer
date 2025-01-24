@@ -48,6 +48,15 @@ SK_SerialKillersGameMode GameModeSF : "{ECEEDB2D3737204B}Prefabs/ScenarioFramewo
       }
      }
      m_bCreateOnlyPredefinedGroups 0
+     m_aEntityCatalogs {
+      SCR_EntityCatalog "{5C9EDDD378BA3298}" {
+       m_aEntityEntryList {
+        SCR_EntityCatalogEntry "{6471036762660442}" {
+         m_sEntityPrefab "{D2B48DEBEF38D7D7}Prefabs/Weapons/MachineGuns/M249/MG_M249.et"
+        }
+       }
+      }
+     }
     }
     SCR_Faction "{61667A546239623B}" {
      m_aEntityCatalogs {
@@ -119,6 +128,15 @@ $grp GenericEntity : "{C65EF20F6A441531}Prefabs/World/Locations/Arland/Beauregar
    }
   }
   coords 2211.883 53.468 2890.306
+ }
+}
+GenericEntity : "{D76C2E3AA8CC7FAC}PrefabsEditable/Auto/Props/Military/SupplyBox/SupplyStack/SupplyStack_01/E_Redfor_SupplyCache.et" {
+ coords 1384.921 36.284 2369.882
+ {
+  GenericEntity {
+   ID "5D30E7825153627D"
+   coords -0.032 0.058 0
+  }
  }
 }
 Vehicle BRDM2_BLUFOR1 : "{EE02519146F1204F}Prefabs/Vehicles/Wheeled/BRDM2/BRDM2_BLUFOR.et" {
