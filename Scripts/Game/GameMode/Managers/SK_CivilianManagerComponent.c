@@ -241,7 +241,8 @@ class SK_CivilianManagerComponent: ScriptComponent
         if (mapdesc)
 		{
 			int baseType = mapdesc.GetBaseType();
-			if (baseType ==  EMapDescriptorType.MDT_NAME_VILLAGE) 
+			if (baseType ==  EMapDescriptorType.MDT_NAME_VILLAGE || 
+				baseType == EMapDescriptorType.MDT_NAME_SETTLEMENT) 
 			{
 				m_iVillageCount += 1;
 				return true;
