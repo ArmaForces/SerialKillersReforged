@@ -184,7 +184,7 @@ class SK_SerialKillersGameMode : SCR_BaseGameMode
 	void HandleBluforKill(IEntity unit, Faction instigatorFaction)
 	{
 		SK_RedforScore += m_iBluforKilledScore;
-		int blueScoreChange = 0;
+		int blueScoreChange = m_iBluforKilledScore;
 		if (instigatorFaction && instigatorFaction.GetFactionKey() == m_sBluforFactionKey)
 		{
 			blueScoreChange = -m_iBluforKilledScore;

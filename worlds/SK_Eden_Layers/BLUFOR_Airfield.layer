@@ -49,21 +49,3 @@ GenericEntity RandomVehicleSpawn : "{C72F956E4AC6A6E7}Prefabs/Systems/ScenarioFr
   }
  }
 }
-GenericEntity : "{DC50C3296A8BACB2}Prefabs/Compositions/SK_VehicleSpawnPoint.et" {
- coords 4922.46 28.64 11768.544
- angleY 162.722
- {
-  GenericEntity {
-   ID "64548D9BBCA96EE2"
-   components {
-    SCR_CampaignBuildingProviderComponent "{5ED49CDEA85A0083}" {
-     m_aBudgetsToEvaluate {
-      SCR_CampaignBuildingBudgetToEvaluateData "{5ED49CDE93BE360C}" {
-       m_eBudget 2147483647
-      }
-     }
-    }
-   }
-  }
- }
-}
