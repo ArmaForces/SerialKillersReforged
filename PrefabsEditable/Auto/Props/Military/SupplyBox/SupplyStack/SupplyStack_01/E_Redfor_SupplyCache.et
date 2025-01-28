@@ -37,37 +37,44 @@ GenericEntity : "{DA3AEFBCF6C37F82}Prefabs/Props/Military/SupplyBox/SupplyStack/
     }
    }
   }
-  SCR_ServicePointMapDescriptorComponent "{6470E49948CDE8BC}" {
-   MainType Target
-  }
-  SCR_UniversalInventoryStorageComponent "{6470E49930570B54}" {
-   MultiSlots {
-    MultiSlotConfiguration "{647103630E8D4AAE}" {
-     SlotTemplate InventoryStorageSlot InventoryStorageSlot {
-     }
-     NumSlots 10
+  SCR_ResourceComponent "{5D247A59598D71AE}" {
+   m_aContainers {
+    SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+     m_fResourceValueCurrent 0
+     m_eOnEmptyBehavior NONE
     }
    }
+   m_bEnableDebugVisualization 0
+  }
+  SCR_UniversalInventoryStorageComponent "{6470E49930570B54}" {
+   Attributes SCR_IdentityItemAttributeCollection "{6478C89F6B161298}" {
+    ItemDisplayName UIInfo "{6478C89F6DD7B7FE}" {
+     Name "Supply cache"
+    }
+    ItemPhysAttributes ItemPhysicalAttributes "{6478FB00D1D07083}" {
+     Weight 20
+    }
+    CustomAttributes {
+     SCR_CharacterInventoryPreviewAttributes "{6478C89F1C7A3D81}" {
+     }
+    }
+    m_Size SLOT_3x3
+    m_SlotType SLOT_ANY
+    m_bStackable 0
+   }
+   StoragePurpose 111
+   UseCapacityCoefficient 1
    m_fMaxWeight 10000
    m_aSlotsToShow {
    }
   }
-  SK_LocationStorageComponent "{6470E49AAA1A0227}" {
-   m_IsSpawnGuaranteed 1
-  }
-  SK_StorageArsenalComponent "{6470E49AA4426A14}" {
-   m_iItemQuantity 20
-   m_eSupportedArsenalItemTypes 262462
-   m_eSupportedArsenalItemModes 92
+  SK_StorageCacheComponent "{6479005B57C0A487}" {
+   m_iItemQuantity 40
+   m_sFactionItemKey "USSR"
+   m_eSupportedArsenalItemTypes 459774
+   m_eSupportedArsenalItemModes 126
   }
   SCR_InventoryStorageManagerComponent "{6470E4990D7C3E87}" {
-   InitialInventoryItems {
-    ItemsInitConfigurationItem "{64710367FC2ED086}" {
-     PrefabsToSpawn {
-      "{AC67BAB9763A3977}Prefabs/Items/Demining/MineFlags/MineFlag_USSR.et"
-     }
-    }
-   }
   }
  }
 }

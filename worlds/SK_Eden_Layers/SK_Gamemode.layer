@@ -65,7 +65,7 @@ SK_SerialKillersGameMode SK_SerialKillersGameModeOverride1 : "{ECEEDB2D3737204B}
        m_eEntityCatalogType GROUP
        m_aEntityEntryList {
         SCR_EntityCatalogEntry "{61667A54EDC45164}" {
-         m_sEntityPrefab "{1AF5B9AE5CFD4433}Prefabs/Groups/INDFOR/Group_CIV.et"
+         m_sEntityPrefab "{1AF5B9AE5CFD4433}Prefabs/Groups/CIV/Group_CIV.et"
         }
        }
       }
@@ -148,6 +148,9 @@ $grp SCR_SpawnPoint : "{4FEA25583D0975F7}Prefabs/MP/Spawning/SpawnPoint_USSR.et"
  {
   coords 5650.821 132.668 6580.761
  }
+}
+GenericEntity : "{D76C2E3AA8CC7FAC}PrefabsEditable/Auto/Props/Military/SupplyBox/SupplyStack/SupplyStack_01/E_Redfor_SupplyCache.et" {
+ coords 1111.447 40.401 11515.039
 }
 SCR_LoadoutManager : "{FD4EE3666CA87EA6}Prefabs/MP/Managers/Loadouts/LoadoutManager_SK.et" {
  coords 6390.307 159.251 6439.739
