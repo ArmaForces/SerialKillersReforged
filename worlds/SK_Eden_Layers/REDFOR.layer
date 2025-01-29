@@ -1,53 +1,51 @@
-SCR_SpawnPoint : "{4FEA25583D0975F7}Prefabs/MP/Spawning/SpawnPoint_USSR.et" {
- coords 1119.02 40.916 11511.721
+$grp SCR_SpawnPoint : "{4FEA25583D0975F7}Prefabs/MP/Spawning/SpawnPoint_USSR.et" {
  {
-  $grp SCR_SpawnPoint : "{4FEA25583D0975F7}Prefabs/MP/Spawning/SpawnPoint_USSR.et" {
-   {
-    coords 3443.575 -24.992 -1007.186
-   }
-   {
-    coords 5978.366 65.777 -5653.755
-   }
-   {
-    coords 3627.028 122.977 -4236.172
-   }
-   {
-    coords 8114.941 44.991 -9964.805
-   }
-   {
-    coords 7613.643 94.697 -8164.059
-   }
-   {
-    coords 4686.178 -35.784 -1708.071
-   }
-   {
-    coords 3903.951 -13.742 -1596.626
-   }
-   {
-    coords 3142.12 34.204 -3591.858
-   }
-   {
-    coords 1289.401 76.097 -5925.032
-   }
-   {
-    coords 1879.027 72.632 -5405.596
-   }
-   {
-    coords 3295.294 22.939 -6517.873
-   }
-   {
-    coords 4084.306 -26.385 -7539.48
-   }
-   {
-    coords 6186.887 98.144 -9023.957
-   }
-   {
-    coords 10492.443 -38.628 -9300.853
-   }
-   {
-    coords 4531.8 91.752 -4930.959
-   }
-  }
+  coords 1119.02 40.916 11511.721
+ }
+ {
+  coords 4562.595 15.924 10504.534
+ }
+ {
+  coords 7097.385 106.693 5857.966
+ }
+ {
+  coords 4746.048 163.893 7275.549
+ }
+ {
+  coords 9233.961 85.907 1546.916
+ }
+ {
+  coords 8732.662 135.613 3347.662
+ }
+ {
+  coords 5805.197 5.132 9803.648
+ }
+ {
+  coords 5022.97 27.174 9915.095
+ }
+ {
+  coords 4261.14 75.12 7919.862
+ }
+ {
+  coords 2408.421 117.013 5586.688
+ }
+ {
+  coords 2998.047 113.548 6106.125
+ }
+ {
+  coords 4414.313 63.855 4993.847
+ }
+ {
+  coords 5203.326 14.531 3972.24
+ }
+ {
+  coords 7305.906 139.06 2487.763
+ }
+ {
+  coords 11611.463 2.288 2210.868
+ }
+ {
+  coords 5650.82 132.668 6580.762
  }
 }
 GenericEntity : "{88B3A9FF09D43C1B}Prefabs/Items/Equipment/Maps/PaperMap_FastTravel_CO.et" {
@@ -199,14 +197,6 @@ GenericEntity SupplyCache : "{C72F956E4AC6A6E7}Prefabs/Systems/ScenarioFramework
      }
     }
    }
-  }
- }
-}
-GenericEntity SampleRedforSupplyCache : "{D76C2E3AA8CC7FAC}PrefabsEditable/Auto/Props/E_Redfor_SupplyCache.et" {
- coords 1110.593 40.266 11508.072
- {
-  GenericEntity {
-   ID "5D30E7825153627D"
   }
  }
 }
