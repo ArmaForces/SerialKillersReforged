@@ -43,6 +43,7 @@ class SK_StorageCacheComponent : ScriptComponent
 			Print("SCR_UniversalInventoryStorageComponent component could not be found on SK_StorageCacheComponent entity!", LogLevel.ERROR);
 		
 		GetGame().GetCallqueue().CallLater(InitializeCache, 2000);
+		GetGame().GetCallqueue().CallLater(CreateMapMarker, 5000);
 	}
 
 	void InitializeCache()
@@ -113,5 +114,28 @@ class SK_StorageCacheComponent : ScriptComponent
 	protected int GetItemCount()
 	{
 		return m_iItemQuantity;
+	}
+	
+	protected void CreateMapMarker()
+	{
+		SCR_MapMarkerManagerComponent mapMarkerMgr = SCR_MapMarkerManagerComponent.Cast(GetGame().GetGameMode().FindComponent(SCR_MapMarkerManagerComponent));
+		if (!mapMarkerMgr)
+			return;
+		
+		SCR_MapMarkerBase m_MapMarker = new SCR_MapMarkerBase();
+		m_MapMarker = mapMarkerMgr.PrepareMilitaryMarker(EMilitarySymbolIdentity.OPFOR, EMilitarySymbolDimension.LAND, EMilitarySymbolIcon.SUPPLY);
+		vector worldPos = GetOwner().GetOrigin();
+		m_MapMarker.SetWorldPos(worldPos[0], worldPos[2]);
+		m_MapMarker.SetCustomText("Supply cache");
+		
+		FactionManager factionManager = GetGame().GetFactionManager();
+		if (factionManager)
+		{
+			Faction faction = factionManager.GetFactionByKey(m_sFactionItemKey);
+			if (faction)
+				m_MapMarker.AddMarkerFactionFlags(factionManager.GetFactionIndex(faction));
+		}
+		
+		mapMarkerMgr.InsertStaticMarker(m_MapMarker, false, true);
 	}
 }
