@@ -309,8 +309,6 @@ class SK_SerialKillersGameMode : SCR_BaseGameMode
 	{
 		return SK_BluforScore;
 	}
-	
-	
 
 	
 	//------------------------------------------------------------------------------------------------

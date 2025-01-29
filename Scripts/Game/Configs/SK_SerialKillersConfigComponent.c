@@ -37,4 +37,6 @@ class SK_SerialKillersConfigComponent: ScriptComponent
 		
 		return s_Instance;
 	}
+	
+	
 }

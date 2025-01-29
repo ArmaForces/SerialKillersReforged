@@ -102,53 +102,6 @@ SCR_MapLocator {
 }
 MusicManager : "{359452CCDBDD03F5}Prefabs/Sounds/Music/MusicManager_Campaign.et" {
 }
-$grp SCR_SpawnPoint : "{4FEA25583D0975F7}Prefabs/MP/Spawning/SpawnPoint_USSR.et" {
- {
-  coords 4562.595 15.924 10504.534
- }
- {
-  coords 7097.386 106.693 5857.966
- }
- {
-  coords 4746.048 163.893 7275.549
- }
- {
-  coords 9233.961 85.907 1546.916
- }
- {
-  coords 8732.663 135.613 3347.661
- }
- {
-  coords 5805.198 5.132 9803.649
- }
- {
-  coords 5022.971 27.174 9915.095
- }
- {
-  coords 4261.14 75.12 7919.863
- }
- {
-  coords 2998.047 113.548 6106.124
- }
- {
-  coords 2408.421 117.013 5586.688
- }
- {
-  coords 4414.314 63.855 4993.847
- }
- {
-  coords 5203.326 14.531 3972.24
- }
- {
-  coords 7305.907 139.06 2487.764
- }
- {
-  coords 11611.463 2.288 2210.868
- }
- {
-  coords 5650.821 132.668 6580.761
- }
-}
 SCR_LoadoutManager : "{FD4EE3666CA87EA6}Prefabs/MP/Managers/Loadouts/LoadoutManager_SK.et" {
  coords 6390.307 159.251 6439.739
 }

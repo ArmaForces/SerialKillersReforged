@@ -2,6 +2,7 @@ SCR_PlayerController : "{225E51284CC95CFA}Prefabs/Characters/Core/DefaultPlayerC
  ID "1A9BA6BEFA06E3B1"
  components {
   SCR_FastTravelComponent "{5DAA74121E45C2EB}" {
+   m_iDistanceToTarget 15
    m_sDestinationType "IEntity"
   }
   SCR_SpawnerRequestComponent "{616ADC0D20F77EB9}" {
