@@ -41,10 +41,7 @@ class SK_SerialKillersGameMode : SCR_BaseGameMode
 	string m_sCivilianFactionKey;
 	
 	
-	[RplProp(onRplName: "OnMatchSituationChanged")]
 	protected int SK_RedforScore = 0;
-	
-	[RplProp(onRplName: "OnMatchSituationChanged")]
 	protected int SK_BluforScore = 0;
 	
 	protected ref ScriptInvoker m_OnMatchSituationChanged;
