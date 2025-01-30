@@ -32,6 +32,11 @@ SK_SerialKillersGameMode SK_SerialKillersGameModeOverride1 : "{ECEEDB2D3737204B}
   SK_CivilianManagerComponent "{60C4D31D2257CD56}" {
    m_iTargetCivilianCount 200
   }
+  SK_SerialKillersConfigComponent "{60C4D31123C481B5}" {
+   m_pVehiclePrefabArray + {
+    "{64E88B50EE91745E}Prefabs/Vehicles/Wheeled/S1203/S1203_cargo_sport.et" "{5729759DD092B0F7}Prefabs/Vehicles/Wheeled/S1203/S1203_cargo_randomized.et" "{C7CE8044B5E301F5}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_transport_CIV_randomized.et"
+   }
+  }
  }
  coords 6390.344 159.26 6439.98
  m_bAllowFactionChange 1
@@ -83,9 +88,13 @@ SK_SerialKillersGameMode SK_SerialKillersGameModeOverride1 : "{ECEEDB2D3737204B}
         }
        }
       }
+      SCR_EntityCatalog "{647C9AFABF89348C}" {
+       m_eEntityCatalogType WEAPONS_TRIPOD
+      }
      }
     }
    }
+   m_bCanChangeFactionsPlayable 1
   }
  }
 }
