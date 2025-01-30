@@ -5,6 +5,18 @@ SCR_PlayerController : "{225E51284CC95CFA}Prefabs/Characters/Core/DefaultPlayerC
    m_iDistanceToTarget 15
    m_sDestinationType "IEntity"
   }
+  SCR_HUDManagerComponent "{2FDC275D9EBCDB8B}" {
+   InfoDisplays {
+    SK_ScoreInfoDisplay "{647C76AF2E70096B}" {
+     m_LayoutPath "{8AD3B194BF4F97D2}UI/layouts/HUD/SK_ScoreMainHUD.layout"
+     m_eLayer ALWAYS_TOP
+    }
+    SK_ScoreMapInfoDisplay "{647C76AB39E431D7}" {
+     m_LayoutPath "{8AD3B194BF4F97D2}UI/layouts/HUD/SK_ScoreMainHUD.layout"
+     m_eLayer ALWAYS_TOP
+    }
+   }
+  }
   SCR_SpawnerRequestComponent "{616ADC0D20F77EB9}" {
   }
  }

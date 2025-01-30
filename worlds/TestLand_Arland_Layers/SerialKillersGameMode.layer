@@ -206,6 +206,7 @@ SK_SerialKillersGameMode GameModeSF : "{ECEEDB2D3737204B}Prefabs/ScenarioFramewo
  m_bUseSpawnPreload 0
  m_iCivKilledScore 2
  m_iBluforKilledScore 4
+ m_iGameOverTimeMinutes 5
  {
   SCR_FactionManager FactionManager_SK1 : "{1A3664A8751E1708}Prefabs/MP/Managers/Factions/FactionManager_SK.et" {
    coords 0 0 0

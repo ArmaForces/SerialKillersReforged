@@ -40,13 +40,22 @@ class SK_SerialKillersGameMode : SCR_BaseGameMode
 	[Attribute( defvalue: "CIV", desc: "Civilian faction key")]
 	string m_sCivilianFactionKey;
 	
+	
+	[RplProp(onRplName: "OnMatchSituationChanged")]
 	protected int SK_RedforScore = 0;
+	
+	[RplProp(onRplName: "OnMatchSituationChanged")]
 	protected int SK_BluforScore = 0;
+	
+	protected ref ScriptInvoker m_OnMatchSituationChanged;
+	
+	protected WorldTimestamp m_fVictoryTimestamp;
+	protected WorldTimestamp m_fStartTimestamp;
 	
 	const int SK_BluforMapColor = 7; //blue
 	const int SK_CivMapColor = 0; //white
 	
-	private bool hasGameStarted = false;
+	private bool m_bHasGameStarted = false;
 	
 	override void EOnInit(IEntity owner)
 	{
@@ -57,6 +66,7 @@ class SK_SerialKillersGameMode : SCR_BaseGameMode
 		
 		Print("SerialKillers gamemode initialising!", LogLevel.NORMAL);
 		
+		ChimeraWorld world = GetGame().GetWorld();
 		m_Config = SK_Global.GetConfig();
 		m_CiviliansManager = SK_Global.GetCiviliansManager();
 		m_mapMarkerManager = SCR_MapMarkerManagerComponent.GetInstance();
@@ -69,10 +79,26 @@ class SK_SerialKillersGameMode : SCR_BaseGameMode
 			m_CiviliansManager.Init(this);
 		}
 		
+		m_fStartTimestamp = world.GetServerTimestamp().PlusSeconds(m_iGameStartDelaySeconds);
+		m_fVictoryTimestamp = m_fStartTimestamp.PlusSeconds(m_iGameOverTimeMinutes * 60);
 		GetGame().GetCallqueue().CallLater(StartGame, m_iGameStartDelaySeconds * 1000);
 		GetGame().GetCallqueue().CallLater(TimeoutGameEnd, m_iGameOverTimeMinutes * 60 * 1000 + m_iGameStartDelaySeconds * 1000);
 	}
 	
+	ScriptInvoker GetOnMatchSituationChanged()
+	{
+		if (!m_OnMatchSituationChanged)
+			m_OnMatchSituationChanged = new ScriptInvoker();
+
+		return m_OnMatchSituationChanged;
+	}
+	
+	void OnMatchSituationChanged()
+	{
+		if (m_OnMatchSituationChanged)
+			m_OnMatchSituationChanged.Invoke();
+	}
+
 	
 	void CreateKillMarker(IEntity victim, int color)
 	{
@@ -102,8 +128,8 @@ class SK_SerialKillersGameMode : SCR_BaseGameMode
 	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
 	void RPC_DoStartGame()
 	{
-		if (hasGameStarted) return;
-		hasGameStarted = true;
+		if (m_bHasGameStarted) return;
+		m_bHasGameStarted = true;
 		
 		SCR_HintManagerComponent.GetInstance().ShowCustom("Game is starting", "", 10, false);
 		
@@ -115,6 +141,7 @@ class SK_SerialKillersGameMode : SCR_BaseGameMode
 				sp.SetSpawnPointEnabled_S(false);
 			}
 		}
+		OnMatchSituationChanged();
 	}
 	
 	void TimeoutGameEnd()
@@ -141,7 +168,7 @@ class SK_SerialKillersGameMode : SCR_BaseGameMode
 		if (!IsMaster())
 			return;
 		
-		if (!hasGameStarted)
+		if (!m_bHasGameStarted)
 			return;
 		
 		Print("Unit was killed! unit: " + unit.GetID());
@@ -215,19 +242,6 @@ class SK_SerialKillersGameMode : SCR_BaseGameMode
 		CreateKillMarker(unit, SK_CivMapColor);
 	}
 	
-	void ShowScoreHint(string message, int blueScoreChange)
-	{
-		string msg = "\t Killers\n";
-		msg = msg + "\t " + SK_RedforScore + "/" + m_iGameOverScore + "\n";
-		msg = msg + "\n";
-		msg = msg + "\t Police\n";
-		msg = msg + "\t " + SK_BluforScore + "/" + m_iBluforResourcesScore + " (" + blueScoreChange + ")\n";
-		msg = msg + message;
-		
-		SCR_HintManagerComponent.GetInstance().ShowCustom(msg, "", 10, false);
-		SCR_ChatComponent.RadioProtocolMessage(message);
-	}
-	
 	string getNowTimeString() 
 	{
 		ChimeraWorld world = GetWorld();
@@ -237,7 +251,7 @@ class SK_SerialKillersGameMode : SCR_BaseGameMode
 	
 	void GameEndCheck() 
 	{
-		if (!hasGameStarted)
+		if (!m_bHasGameStarted)
 			return;
 		
 		SCR_Faction redfor = SCR_Faction.Cast(m_FactionManager.GetFactionByKey(m_sRedforFactionKey));
@@ -289,7 +303,8 @@ class SK_SerialKillersGameMode : SCR_BaseGameMode
 		SK_RedforScore = redScore;
 		SK_BluforScore = SK_BluforScore + blueScoreChange;
 
-		ShowScoreHint(message, blueScoreChange);
+		OnMatchSituationChanged();
+		SCR_ChatComponent.RadioProtocolMessage(message);
 	}
 	
 	void AddBluforXP(int blueScoreChange)
@@ -305,9 +320,45 @@ class SK_SerialKillersGameMode : SCR_BaseGameMode
 		
 	}
 	
+	SCR_Faction GetBluforFaction()
+	{
+		return SCR_Faction.Cast(m_FactionManager.GetFactionByKey(m_sBluforFactionKey));
+	}
+	
+	SCR_Faction GetRedforFaction()
+	{
+		return SCR_Faction.Cast(m_FactionManager.GetFactionByKey(m_sRedforFactionKey));
+	}
+	
+	
 	int GetBluforScore()
 	{
 		return SK_BluforScore;
+	}
+	
+	int GetRedforScore()
+	{
+		return SK_RedforScore;
+	}
+	
+	int GetGameOverScore()
+	{
+		return m_iGameOverScore;
+	}
+	
+	bool IsGameRunning()
+	{
+		return m_bHasGameStarted;
+	}
+	
+	WorldTimestamp GetVictoryTimestamp()
+	{
+		return m_fVictoryTimestamp;
+	}
+	
+	WorldTimestamp GetGameStartTimestamp()
+	{
+		return m_fStartTimestamp;
 	}
 
 	
