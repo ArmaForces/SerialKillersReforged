@@ -193,7 +193,8 @@ SK_SerialKillersGameMode GameModeSF : "{ECEEDB2D3737204B}Prefabs/ScenarioFramewo
    m_pWaitWaypointPrefab "{531EC45063C1F57B}Prefabs/AI/Waypoints/AIWaypoint_Wait.et"
    m_pCycleWaypointPrefab "{35BD6541CBB8AC08}Prefabs/AI/Waypoints/AIWaypoint_Cycle.et"
    m_pGetInWaypointPrefab "{B049D4C74FBC0C4D}Prefabs/AI/Waypoints/AIWaypoint_GetInNearest.et"
-   m_pVehiclePrefabArray +{
+   m_pVehiclePrefabArray + {
+    "{64E88B50EE91745E}Prefabs/Vehicles/Wheeled/S1203/S1203_cargo_sport.et" "{C7CE8044B5E301F5}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_transport_CIV_randomized.et"
    }
   }
   RplComponent "{56B2B4793BF2E1B4}" {
@@ -206,6 +207,7 @@ SK_SerialKillersGameMode GameModeSF : "{ECEEDB2D3737204B}Prefabs/ScenarioFramewo
  m_bUseSpawnPreload 0
  m_iCivKilledScore 2
  m_iBluforKilledScore 4
+ m_iGameOverTimeMinutes 11
  {
   SCR_FactionManager FactionManager_SK1 : "{1A3664A8751E1708}Prefabs/MP/Managers/Factions/FactionManager_SK.et" {
    coords 0 0 0

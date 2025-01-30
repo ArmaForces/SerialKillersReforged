@@ -11,10 +11,10 @@ GenericEntity : "{C1AB654F77ABA58B}PrefabsEditable/Auto/Props/Military/Compositi
  coords 4923.613 28.826 11773.585
  angleY -93.007
 }
-GenericEntity RandomVehicleSpawn : "{C72F956E4AC6A6E7}Prefabs/Systems/ScenarioFramework/Components/Area.et" {
- coords 5173.279 173.977 7084.228
+GenericEntity RandomAircraftSpawn : "{C72F956E4AC6A6E7}Prefabs/Systems/ScenarioFramework/Components/Area.et" {
+ coords 4861.193 28.594 11835.772
  {
-  GenericEntity Layer1 : "{5F9FFF4BF027B3A3}Prefabs/Systems/ScenarioFramework/Components/Layer.et" {
+  GenericEntity Layer4 : "{5F9FFF4BF027B3A3}Prefabs/Systems/ScenarioFramework/Components/Layer.et" {
    components {
     SCR_ScenarioFrameworkLayerBase "{5A2283EA2A0B4B14}" {
      m_SpawnChildren RANDOM_ONE
@@ -23,26 +23,36 @@ GenericEntity RandomVehicleSpawn : "{C72F956E4AC6A6E7}Prefabs/Systems/ScenarioFr
    coords 0 0 0
    {
     $grp GenericEntity : "{AA01691FDC4E9167}Prefabs/Systems/ScenarioFramework/Components/Slot.et" {
-     Slot1 {
+     Slot10 {
       components {
        SCR_ScenarioFrameworkSlotBase "{5A22E1D67E712EC8}" {
-        m_sObjectToSpawn "{2D74C39A650A3030}Prefabs/Vehicles/Wheeled/M923A1/M923A1_engineer.et"
+        m_sObjectToSpawn "{AB9ED3A33EE1B630}Prefabs/Vehicles/Helicopters/Mi8MT/Mi8MT_unarmed_civ_blue.et"
        }
       }
-      coords -11.346 0.019 12.93
-      angleY -162.681
+      coords 1.81 0.019 -0.785
+      angleY -90.073
      }
-     Slot3 {
+     Slot20 {
       coords -3.206 -0.008 3.501
+      angleZ 4.262
      }
-     Slot4 {
+     Slot21 {
       components {
        SCR_ScenarioFrameworkSlotBase "{5A22E1D67E712EC8}" {
-        m_sObjectToSpawn "{8B937D667742A75D}Prefabs/Vehicles/Wheeled/S105/S105_rally_BLUFOR.et"
+        m_sObjectToSpawn "{7A29940A71EF5F5C}Prefabs/Vehicles/Helicopters/UH1H/UH1H_civ_livery_v1.et"
        }
       }
-      coords -7.564 0.37 -11.758
-      angleY -137.272
+      coords 3.296 0.37 17
+      angleY -89.286
+     }
+     Slot23 {
+      components {
+       SCR_ScenarioFrameworkSlotBase "{5A22E1D67E712EC8}" {
+        m_sObjectToSpawn "{8175FCADFA2FB904}Prefabs/Vehicles/Helicopters/Mi8MT/Mi8MT_unarmed_civ_red.et"
+       }
+      }
+      coords 1.235 0 34.811
+      angleY -90.073
      }
     }
    }

@@ -1,0 +1,50 @@
+Vehicle : "{D7663936ABF75FB1}Prefabs/Vehicles/Wheeled/S1203/S1203_cargo_base.et" {
+ ID "BBCBA43A9778AE21"
+ components {
+  MeshObject "{51DAA09FEFBFC0E7}" {
+   Materials {
+    MaterialAssignClass "{647C9AE8D01F5BAF}" {
+     SourceMaterial "S1203_body"
+     AssignedMaterial "{5E63A2D35756DC80}Assets/Vehicles/Wheeled/S1203/Data/S1203_body_brown.emat"
+    }
+    MaterialAssignClass "{647C9AE8D01F5BA7}" {
+     SourceMaterial "S1203_interior"
+     AssignedMaterial "{FEBD52EF5144A3F6}Assets/Vehicles/Wheeled/S1203/Data/S1203_interior_brown.emat"
+    }
+   }
+  }
+  SCR_EditableVehicleComponent "{50DEB7C26B5EB312}" {
+   m_UIInfo SCR_EditableEntityUIInfo "{5298E609432D192D}" {
+    m_Image "{142C3850F312AF58}UI/Textures/EditorPreviews/Vehicles/Wheeled/S1203/S1203_brown.edds"
+   }
+  }
+  VehicleWheeledSimulation "{731B26FCA2F19855}" {
+   Simulation Wheeled "{4D8B26DEA5F25978}" {
+    Engine Engine Engine {
+     MaxPower 167
+     MaxTorque 230
+     RpmMaxPower 5600
+     RpmMaxTorque 4500
+     RpmIdle 1200
+     RpmRedline 6000
+     RpmMax 8000
+    }
+    Clutch Clutch Clutch {
+     MaxClutchTorque 200
+    }
+    Gearbox Gearbox Gearbox {
+     Forward {
+      2.4 1.5 1 0.85
+     }
+    }
+   }
+  }
+  BaseVehicleNodeComponent "{20FB66C5B2237133}" {
+   components {
+    SCR_CarControllerComponent "{20FB66C5BC92275B}" {
+     MaxStartupTime 0.2
+    }
+   }
+  }
+ }
+}

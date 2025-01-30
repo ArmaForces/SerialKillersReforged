@@ -66,6 +66,9 @@ $grp SCR_SpawnPoint : "{4FEA25583D0975F7}Prefabs/MP/Spawning/SpawnPoint_USSR.et"
   }
  }
 }
+Vehicle S1203_cargo_sport1 : "{64E88B50EE91745E}Prefabs/Vehicles/Wheeled/S1203/S1203_cargo_sport.et" {
+ coords 1413.517 38.976 2169.052
+}
 GenericEntity : "{88B3A9FF09D43C1B}Prefabs/Items/Equipment/Maps/PaperMap_FastTravel_CO.et" {
  coords 938.605 23.602 1439.67
  angleX 0
