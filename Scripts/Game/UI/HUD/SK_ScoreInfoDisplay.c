@@ -2,7 +2,7 @@
 class SK_ScoreInfoDisplay : SCR_InfoDisplayExtended
 {
 	protected static const int HUD_DURATION = 15000;
-	protected static const int DISPLAY_VICTORY_TIMER_BEFORE_MS = 10 * 60 * 1000; //ten minutes
+	protected static const int DISPLAY_VICTORY_TIMER_BEFORE_S = 10 * 60; //ten minutes
 	protected static const int SIZE_NORMAL = 20;
 	protected static const int SIZE_WINNER = 24;
 	
@@ -101,14 +101,16 @@ class SK_ScoreInfoDisplay : SCR_InfoDisplayExtended
 			victoryCountdown = Math.Max(0, Math.Ceil(victoryCountdown / 1000));
 			string shownTime = SCR_FormatHelper.GetTimeFormatting(victoryCountdown, ETimeFormatParam.DAYS | ETimeFormatParam.HOURS, ETimeFormatParam.DAYS | ETimeFormatParam.HOURS | ETimeFormatParam.MINUTES);
 			
-			if (victoryCountdown <= DISPLAY_VICTORY_TIMER_BEFORE_MS)
+			if (victoryCountdown <= DISPLAY_VICTORY_TIMER_BEFORE_S)
 			{
 				m_wCountdown.SetText(shownTime);	
 				m_wCountdownOverlay.SetVisible(true);
 				m_bPeriodicRefresh = true;
 			}
 			else
+			{
 				m_wCountdownOverlay.SetVisible(false);
+			}
 			
 			
 			m_wFlavour.SetVisible(false);
