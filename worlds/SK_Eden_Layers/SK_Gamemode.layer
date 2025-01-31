@@ -29,6 +29,12 @@ SK_SerialKillersGameMode SK_SerialKillersGameModeOverride1 : "{ECEEDB2D3737204B}
   SCR_HintManagerComponent "{5702B54C6CBC9D7F}" {
    m_bIgnoreHintSettings 1
   }
+  SCR_NotificationSenderComponent "{56FA84B04BE7D4C0}" {
+   m_iKillFeedType DISABLED
+  }
+  SCR_PerceivedFactionManagerComponent "{61AA7E6E0C6A76F9}" {
+   m_bPerceivedFactionChangesAffectsAI 1
+  }
   SK_CivilianManagerComponent "{60C4D31D2257CD56}" {
    m_iTargetCivilianCount 200
   }

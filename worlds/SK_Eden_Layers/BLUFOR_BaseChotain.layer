@@ -1,7 +1,3 @@
-SCR_SpawnPoint : "{5A2220DD0C16958B}Prefabs/MP/Spawning/SpawnPoint_US.et" {
- coords 7444.876 7.877 6713.471
- angleY 152.304
-}
 GenericEntity : "{88B3A9FF09D43C1B}Prefabs/Items/Equipment/Maps/PaperMap_FastTravel_CO.et" {
  coords 7448.851 8.975 6714.734
  angleX 0
@@ -50,8 +46,11 @@ GenericEntity Area1 : "{C72F956E4AC6A6E7}Prefabs/Systems/ScenarioFramework/Compo
   }
  }
 }
+SCR_SpawnPoint : "{CEA2B24051A44525}PrefabsEditable/SpawnPoints/E_SpawnPoint_US.et" {
+ coords 7454.661 7.875 6700.22
+}
 GenericEntity : "{DC50C3296A8BACB2}Prefabs/Compositions/SK_VehicleSpawnPoint.et" {
- coords 7456.501 7.73 6716.921
+ coords 7457.341 7.73 6715.986
  angleY 48.033
  {
   GenericEntity {

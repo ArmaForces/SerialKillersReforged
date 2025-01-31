@@ -3,7 +3,7 @@ SCR_PlayerController : "{225E51284CC95CFA}Prefabs/Characters/Core/DefaultPlayerC
  components {
   SCR_FastTravelComponent "{5DAA74121E45C2EB}" {
    m_iDistanceToTarget 5
-   m_sDestinationType "IEntity"
+   m_sDestinationType "SCR_SpawnPoint"
   }
   SCR_HUDManagerComponent "{2FDC275D9EBCDB8B}" {
    InfoDisplays {
