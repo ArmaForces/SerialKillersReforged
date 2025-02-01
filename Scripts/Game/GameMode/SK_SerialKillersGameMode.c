@@ -1,8 +1,8 @@
-class SK_SerialKillersGameModeClass: SCR_BaseGameModeClass
+class SK_SerialKillersGameModeClass: PS_GameModeCoopClass
 {
 }
 
-class SK_SerialKillersGameMode : SCR_BaseGameMode
+class SK_SerialKillersGameMode : PS_GameModeCoop
 {
 	protected SK_SerialKillersConfigComponent m_Config;
 	protected SK_CivilianManagerComponent m_CiviliansManager;
@@ -78,7 +78,7 @@ class SK_SerialKillersGameMode : SCR_BaseGameMode
 		
 		m_fStartTimestamp = world.GetServerTimestamp().PlusSeconds(m_iGameStartDelaySeconds);
 		m_fVictoryTimestamp = m_fStartTimestamp.PlusSeconds(m_iGameOverTimeMinutes * 60);
-		GetGame().GetCallqueue().CallLater(StartGame, m_iGameStartDelaySeconds * 1000);
+		GetGame().GetCallqueue().CallLater(StartGameEvent, m_iGameStartDelaySeconds * 1000);
 		GetGame().GetCallqueue().CallLater(TimeoutGameEnd, m_iGameOverTimeMinutes * 60 * 1000 + m_iGameStartDelaySeconds * 1000);
 	}
 	
@@ -111,7 +111,7 @@ class SK_SerialKillersGameMode : SCR_BaseGameMode
 		m_mapMarkerManager.InsertStaticMarker(marker, false, true);
 	}
 	
-	void StartGame()
+	void StartGameEvent()
 	{
 		if (!IsMaster())
 			return;
@@ -248,6 +248,7 @@ class SK_SerialKillersGameMode : SCR_BaseGameMode
 	
 	void GameEndCheck() 
 	{
+		return;
 		if (!m_bHasGameStarted)
 			return;
 		

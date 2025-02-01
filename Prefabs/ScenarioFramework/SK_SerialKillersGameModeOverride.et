@@ -1,6 +1,27 @@
 SK_SerialKillersGameMode : "{1B76F75A3175E85C}Prefabs/MP/Modes/Plain/GameMode_Plain.et" {
  ID "56B2B479C6B96951"
  components {
+  PS_CutsceneManager "{6482A7117CFF838A}" {
+  }
+  PS_MissionDataManager "{6482A71164AD7345}" {
+  }
+  PS_MissionDescriptionManager "{6482B81198F5D63E}" {
+  }
+  PS_ObjectiveManager "{6482A71169B4E1CD}" {
+   m_aObjectiveLavels {
+    PS_ObjectiveLevel "{6482B818DEC32B60}" {
+     m_sName "#PS-ObjectiveLevel_MajorLoss"
+    }
+    PS_ObjectiveLevel "{6482B818C4DB55A1}" {
+     m_iScore 50
+     m_sName "#PS-ObjectiveLevel_MajorVictory"
+    }
+   }
+  }
+  PS_PlayableManager "{6482A7116C8AB3A7}" {
+  }
+  PS_VoNRoomsManager "{6482A71116EF3DAB}" {
+  }
   SCR_ArsenalManagerComponent "{6120A34EB1E9BBEF}" {
    m_bRankLockedItems 1
   }
@@ -78,6 +99,15 @@ SK_SerialKillersGameMode : "{1B76F75A3175E85C}Prefabs/MP/Modes/Plain/GameMode_Pl
    m_sDefaultGroupPrefab "{8B4D49A9F324E7D5}Prefabs/Groups/PlayableGroup.et"
    m_iPlayableGroupFrequencyOffset 500
   }
+  SCR_HintManagerComponent "{5702B54C6CBC9D7F}" {
+   m_bIgnoreHintSettings 1
+  }
+  SCR_IdentityManagerComponent "{5AEEA80681EA61AF}" {
+   m_aIdentityBioTypeHoldersConfigs +{
+   }
+   m_ExtendedIdentityHints SCR_GeneralHintStorage "{6226DDCD824CB407}" {
+   }
+  }
   SCR_MapConfigComponent "{5C669498E250A34B}" {
    m_sGadgetMapConfigPath "{32913D3C51D7736C}Configs/Map/MapFullscreenCoop.conf"
   }
@@ -142,6 +172,9 @@ SK_SerialKillersGameMode : "{1B76F75A3175E85C}Prefabs/MP/Modes/Plain/GameMode_Pl
     }
    }
   }
+  SCR_PreGameGameModeStateComponent "{6482AB780349D0CA}" {
+   m_fDuration 0
+  }
   SCR_RadialMenuItemsComponent "{5C92B03271ABD8AA}" {
    m_MenuController SCR_RadialMenuController "{5C92B0326E1334FB}" {
     m_RMControls SCR_RadialMenuControllerInputs "{5C92B0326C6BC5B4}" {
@@ -152,26 +185,33 @@ SK_SerialKillersGameMode : "{1B76F75A3175E85C}Prefabs/MP/Modes/Plain/GameMode_Pl
     }
    }
   }
+  SCR_ReconnectComponent "{5A02809D5E8ABE42}" {
+   Enabled 0
+  }
+  SCR_VotingManagerComponent "{5650BB6B6089393A}" {
+   Enabled 0
+  }
   SK_CivilianManagerComponent "{60C4D31D2257CD56}" {
    m_iCityRange 600
    m_iTownRange 300
    m_iVillageRange 80
    m_iCityWieght 5
    m_iTownWeight 3
-   m_iTargetCivilianCount 300
+   m_iTargetCivilianCount 50
+   m_fVehicleSpawnChance 0.1
   }
   SK_RespawnSystemComponent "{56B2B4793051E7C9}" {
    m_SpawnLogic SCR_MenuSpawnLogic "{5D36888CC966608A}" {
    }
   }
   SK_SerialKillersConfigComponent "{60C4D31123C481B5}" {
-   m_pCivilianPrefab "{1AF5B9AE5CFD4433}Prefabs/Groups/INDFOR/Group_CIV.et"
+   m_pCivilianPrefab "{1AF5B9AE5CFD4433}Prefabs/Groups/CIV/Group_CIV.et"
    m_pPatrolWaypointPrefab "{22A875E30470BD4F}Prefabs/AI/Waypoints/AIWaypoint_Patrol.et"
    m_pWaitWaypointPrefab "{531EC45063C1F57B}Prefabs/AI/Waypoints/AIWaypoint_Wait.et"
    m_pCycleWaypointPrefab "{35BD6541CBB8AC08}Prefabs/AI/Waypoints/AIWaypoint_Cycle.et"
    m_pGetInWaypointPrefab "{B049D4C74FBC0C4D}Prefabs/AI/Waypoints/AIWaypoint_GetInNearest.et"
    m_pVehiclePrefabArray {
-    "{128253A267BE9424}Prefabs/Vehicles/Wheeled/S105/S105_randomized.et" "{49C909AFD66E90A1}Prefabs/Vehicles/Wheeled/S1203/S1203_transport_randomized.et" "{57A441224AC02CF3}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_covered_CIV_Randomized.et" "{EEAC3A94929A2B55}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_CIV_randomized.et" "{43C4AF1EEBD001CE}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_ambulance.et" "{F649585ABB3706C4}Prefabs/Vehicles/Wheeled/M151A2/M151A2.et" "{1B0D46B41C50873D}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_uncovered_CIV_Randomized.et" "{F649585ABB3706C4}Prefabs/Vehicles/Wheeled/M151A2/M151A2.et"
+    "{128253A267BE9424}Prefabs/Vehicles/Wheeled/S105/S105_randomized.et" "{49C909AFD66E90A1}Prefabs/Vehicles/Wheeled/S1203/S1203_transport_randomized.et" "{57A441224AC02CF3}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_covered_CIV_Randomized.et" "{EEAC3A94929A2B55}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_CIV_randomized.et" "{43C4AF1EEBD001CE}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_ambulance.et" "{F649585ABB3706C4}Prefabs/Vehicles/Wheeled/M151A2/M151A2.et" "{1B0D46B41C50873D}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_uncovered_CIV_Randomized.et" "{F649585ABB3706C4}Prefabs/Vehicles/Wheeled/M151A2/M151A2.et" "{64E88B50EE91745E}Prefabs/Vehicles/Wheeled/S1203/S1203_cargo_sport.et" "{C7CE8044B5E301F5}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_transport_CIV_randomized.et"
    }
   }
   SK_XPHandlerComponent "{645F3E2CE901C361}" {
@@ -181,12 +221,30 @@ SK_SerialKillersGameMode : "{1B76F75A3175E85C}Prefabs/MP/Modes/Plain/GameMode_Pl
    Streamable Disabled
   }
  }
- PlayerControllerPrefab "{BFB37A2D8B2E126A}Prefabs/Characters/Core/SK_PlayerControllerMP_Factions.et"
+ PlayerControllerPrefab "{CCA2FD405A0B6FEE}Prefabs/Characters/Core/SK_PlayerControllerLobby.et"
  m_bAutoPlayerRespawn 0
  m_bAllowFactionChange 0
- m_bUseSpawnPreload 1
+ m_bUseSpawnPreload 0
  m_aDisabledResourceTypes {
   0
  }
+ m_bAdminMode 0
+ m_bTeamSwitch 1
+ m_bPublicCommandBriefing 1
+ m_bRemoveRedundantUnits 1
+ m_aFactionRespawnCount {
+  PS_FactionRespawnCount "{6482AB7FB7C8DBE6}" {
+   m_sFactionKey "USSR"
+  }
+  PS_FactionRespawnCount "{6482B81219048087}" {
+   m_sFactionKey "US"
+   m_iCount 10000
+   m_iTime 30
+   m_bWaveMode 0
+  }
+ }
+ m_iCivKilledScore 2
+ m_iBluforKilledScore 4
  m_iGameOverScore 50
+ m_iGameOverTimeMinutes 11
 }
