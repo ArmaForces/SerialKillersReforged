@@ -117,6 +117,7 @@ class SK_SerialKillersGameMode : SCR_BaseGameMode
 			return;
 		
 		Print("Gamemode starting");
+		StartGameMode();
 		Rpc(RPC_DoStartGame);
 		RPC_DoStartGame();
 		Replication.BumpMe();
