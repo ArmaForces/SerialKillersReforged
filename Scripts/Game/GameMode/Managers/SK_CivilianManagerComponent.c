@@ -26,7 +26,10 @@ class SK_CivilianManagerComponent: ScriptComponent
 	[Attribute( defvalue: "200", desc: "Target number of civilians to spawn")]
 	int m_iTargetCivilianCount;
 		
-	[Attribute( defvalue: "0.05", desc: "Chance to spawn vehicle at a building")]
+	[Attribute( defvalue: "0.05", desc: "Chance to spawn vehicle at a building in city")]
+	float m_fCityVehicleSpawnChance;
+	
+	[Attribute( defvalue: "0.2", desc: "Chance to spawn vehicle at a building outside of cities")]
 	float m_fVehicleSpawnChance;
 	
 	
@@ -34,6 +37,7 @@ class SK_CivilianManagerComponent: ScriptComponent
 	private static int civCounter = 0;
 	private ref array<ref EntityID> cities = new array<ref EntityID>;
 	private ref array<vector> housePositions = new array<vector>;
+	private ref array<vector> cityPositions = new array<vector>;
 	protected ref array<ref EntityID> m_aCivilians = new array<ref EntityID>;
 	
 	private int m_iCityCount = 0;
@@ -109,8 +113,32 @@ class SK_CivilianManagerComponent: ScriptComponent
 				array<vector> roadPoints = new array<vector>;
 				result = closestRoad.GetPoints(roadPoints);
 				if (result > 0)
-				{
-					SpawnVehicle(roadPoints.GetRandomElement());
+				{	
+					int randIndex = s_AIRandomGenerator.RandInt(0, roadPoints.Count() - 2);
+					vector p1 = roadPoints[randIndex];
+					vector p2 = roadPoints[randIndex+1];
+					
+					vector dir = vector.Direction(p1, p2);
+					vector dirNormalized = dir / dir.Length();
+					vector perpendicular = dirNormalized * "0 1 0";
+					vector perpendicualrNormalized = perpendicular / perpendicular.Length();
+					
+					vector sidePoint;
+					if (s_AIRandomGenerator.RandInt(0,1) == 0)
+						sidePoint = p1 + (closestRoad.GetWidth() / 2) * perpendicualrNormalized;
+					else
+						sidePoint = p1 - (closestRoad.GetWidth() / 2) * perpendicualrNormalized;
+					
+					float angleRad = Math.Atan2(dir[2], dir[0]);
+					float angleDeg = angleRad*180/Math.PI;
+					
+					PrintFormat("Spawning vehicle at %1", sidePoint);
+					SK_Global.SpawnEntityPrefab(
+						SK_Global.GetConfig().m_pVehiclePrefabArray.GetRandomElement(),
+						sidePoint, 
+						true,
+						{angleDeg, 0, 0}
+					);
 				}
 			}
 		}
@@ -175,7 +203,7 @@ class SK_CivilianManagerComponent: ScriptComponent
 		vector spawnPosition = SK_Global.GetRandomNonOceanPositionNear(pos, range);
 
 		vector targetPos = SK_Global.GetRandomNonOceanPositionNear(pos, 5000);
-		vector carPosition = SK_Global.GetRandomNonOceanPositionNear(pos, 50);
+		vector carPosition = SK_Global.GetRandomNonOceanPositionNear(spawnPosition, 50);
 
 		BaseWorld world = GetGame().GetWorld();
 
@@ -192,15 +220,23 @@ class SK_CivilianManagerComponent: ScriptComponent
 		
 		if (s_AIRandomGenerator.RandFloat01() < 0.5) 
 		{
+			housePositions.Insert(carPosition);
 			queueOfWaypoints.Insert(SpawnGetInWaypoint(carPosition));
-			EntityID randCity = cities.GetRandomElement();
-			IEntity cityMarker = GetGame().GetWorld().FindEntityByID(randCity);
-			targetPos = SK_Global.GetRandomNonOceanPositionNear(cityMarker.GetOrigin(), 500);
-			PrintFormat("Civilian is going to %1", cityMarker.GetName()); 
+			for (int i = 0; i < s_AIRandomGenerator.RandInt(1, 10); i++)
+			{
+				EntityID randCity = cities.GetRandomElement();
+				IEntity cityMarker = GetGame().GetWorld().FindEntityByID(randCity);
+				targetPos = SK_Global.GetRandomNonOceanPositionNear(cityMarker.GetOrigin(), 500);
+				queueOfWaypoints.Insert(SpawnPatrolWaypoint(targetPos));
+				queueOfWaypoints.Insert(SpawnWaitWaypoint(targetPos, s_AIRandomGenerator.RandFloatXY(15, 50)));
+				PrintFormat("Civilian is going to %1", cityMarker.GetName()); 
+			}
 		}
-		
-		queueOfWaypoints.Insert(SpawnPatrolWaypoint(targetPos));
-		queueOfWaypoints.Insert(SpawnWaitWaypoint(targetPos, s_AIRandomGenerator.RandFloatXY(15, 50)));
+		else 
+		{
+			queueOfWaypoints.Insert(SpawnPatrolWaypoint(targetPos));
+			queueOfWaypoints.Insert(SpawnWaitWaypoint(targetPos, s_AIRandomGenerator.RandFloatXY(15, 50)));
+		}
 
 		queueOfWaypoints.Insert(SpawnPatrolWaypoint(spawnPosition));
 		queueOfWaypoints.Insert(SpawnWaitWaypoint(spawnPosition, s_AIRandomGenerator.RandFloatXY(15, 50)));
@@ -210,28 +246,10 @@ class SK_CivilianManagerComponent: ScriptComponent
 		aigroup.AddWaypoint(cycle);
 	}
 	
-	protected void SpawnVehicle(vector pos)
-	{
-		BaseWorld world = GetGame().GetWorld();
-		
-		pos = SK_Global.FindSafeSpawnPosition(pos, "-2 0 -2", "2 0 2");
-		if (pos != "0 0 0") 
-		{
-			PrintFormat("Spawning vehicle at %1", pos);
-			IEntity vehicle = SK_Global.SpawnEntityPrefab(
-				SK_Global.GetConfig().m_pVehiclePrefabArray.GetRandomElement(),
-				pos, 
-				true,
-			//TODO! Fix vehicle entity yaw on spawn
-				vector.FromYaw(s_AIRandomGenerator.RandFloatXY(0, 360))
-			);
-		}
-		
-	}
-	
 	protected bool ProcessCities(IEntity cityEntity)
 	{
 		cities.Insert(cityEntity.GetID());
+		cityPositions.Insert(cityEntity.GetOrigin());
 		return true;
 	}
 	
@@ -264,7 +282,19 @@ class SK_CivilianManagerComponent: ScriptComponent
 	
 	protected bool ProcessBuilding(IEntity building)
 	{
-		if (s_AIRandomGenerator.RandFloat01() < m_fVehicleSpawnChance)
+		float spawnChance = m_fVehicleSpawnChance;
+		vector buildingPos = building.GetOrigin();
+		
+		foreach(vector pos: cityPositions)
+		{
+			if (vector.Distance(pos, buildingPos) < m_iCityRange)
+			{
+				spawnChance = m_fCityVehicleSpawnChance;
+				break;
+			}
+		}
+		
+		if (s_AIRandomGenerator.RandFloat01() < spawnChance)
 		{
 			housePositions.Insert(building.GetOrigin());
 		}

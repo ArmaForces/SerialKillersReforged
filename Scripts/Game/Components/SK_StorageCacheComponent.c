@@ -43,7 +43,8 @@ class SK_StorageCacheComponent : ScriptComponent
 			Print("SCR_UniversalInventoryStorageComponent component could not be found on SK_StorageCacheComponent entity!", LogLevel.ERROR);
 		
 		GetGame().GetCallqueue().CallLater(InitializeCache, 2000);
-		GetGame().GetCallqueue().CallLater(CreateMapMarker, 5000);
+		CreateMapMarker();
+		//GetGame().GetCallqueue().CallLater(CreateMapMarker, 5000);
 	}
 
 	void InitializeCache()
@@ -132,10 +133,10 @@ class SK_StorageCacheComponent : ScriptComponent
 		if (factionManager)
 		{
 			Faction faction = factionManager.GetFactionByKey(m_sFactionItemKey);
-			if (faction)
+			if (faction) {
 				m_MapMarker.AddMarkerFactionFlags(factionManager.GetFactionIndex(faction));
+				mapMarkerMgr.InsertStaticMarker(m_MapMarker, false, true);
+			}
 		}
-		
-		mapMarkerMgr.InsertStaticMarker(m_MapMarker, false, true);
 	}
 }
