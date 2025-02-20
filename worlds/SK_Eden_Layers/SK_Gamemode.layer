@@ -36,11 +36,14 @@ SK_SerialKillersGameMode SK_SerialKillersGameModeOverride1 : "{ECEEDB2D3737204B}
    m_bPerceivedFactionChangesAffectsAI 1
   }
   SK_CivilianManagerComponent "{60C4D31D2257CD56}" {
+   m_iCityWieght 4
+   m_iVillageWieght 2
    m_iTargetCivilianCount 200
+   m_fCityVehicleSpawnChance 0.02
   }
   SK_SerialKillersConfigComponent "{60C4D31123C481B5}" {
    m_pVehiclePrefabArray + {
-    "{64E88B50EE91745E}Prefabs/Vehicles/Wheeled/S1203/S1203_cargo_sport.et" "{5729759DD092B0F7}Prefabs/Vehicles/Wheeled/S1203/S1203_cargo_randomized.et" "{C7CE8044B5E301F5}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_transport_CIV_randomized.et"
+    "{64E88B50EE91745E}Prefabs/Vehicles/Wheeled/S1203/S1203_cargo_sport.et" "{5729759DD092B0F7}Prefabs/Vehicles/Wheeled/S1203/S1203_cargo_randomized.et" "{C7CE8044B5E301F5}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_transport_CIV_randomized.et" "{8B937D667742A75D}Prefabs/Vehicles/Wheeled/S105/S105_rally_BLUFOR.et"
    }
   }
  }

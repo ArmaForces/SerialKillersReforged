@@ -47,7 +47,6 @@ class SK_Global
 		EntitySpawnParams spawnParams();
 
 		spawnParams.TransformMode = ETransformMode.WORLD;
-
 		Math3D.AnglesToMatrix(orientation, spawnParams.Transform);
 		spawnParams.Transform[3] = origin;
 

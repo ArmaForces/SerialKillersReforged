@@ -73,7 +73,7 @@ GenericEntity : "{DC50C3296A8BACB2}Prefabs/Compositions/SK_VehicleSpawnPoint.et"
        }
       }
      }
-     m_aAvailableTraits +{
+     m_aAvailableTraits {
      }
     }
    }
