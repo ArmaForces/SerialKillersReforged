@@ -1,0 +1,19 @@
+SCR_ChimeraCharacter : "{6D3138DA846660AE}Prefabs/Characters/Factions/CIV/GenericCivilians/Character_CIV_Generic_Base.et" {
+ ID "520EC961A090B1EE"
+ components {
+  SCR_EditableCharacterComponent "{520EA1D2F659C85C}" {
+   m_UIInfo SCR_EditableEntityUIInfo "{5298E609432D192D}" {
+    m_Image "{04346C2E570E64F2}UI/Textures/EditorPreviews/Characters/CIV/Character_CIV_CottonShirt_1.edds"
+   }
+  }
+  BaseLoadoutManagerComponent "{520EA1D2DB11821E}" {
+   Slots {
+    LoadoutSlotInfo Hat {
+    }
+    LoadoutSlotInfo Back {
+     Prefab "{FDA7B6630DB87991}Prefabs/Items/Equipment/Backpacks/Backpack_M70_Swiss.et"
+    }
+   }
+  }
+ }
+}

@@ -46,6 +46,11 @@ GenericEntity RandomVehicleSpawn : "{C72F956E4AC6A6E7}Prefabs/Systems/ScenarioFr
  }
 }
 SCR_SpawnPoint : "{CEA2B24051A44525}PrefabsEditable/SpawnPoints/E_SpawnPoint_US.et" {
+ components {
+  SCR_MapDescriptorComponent "{54C659A97C47BDE2}" {
+   DisplayName "Montignac"
+  }
+ }
  coords 5127.579 176.233 7035.167
 }
 $grp GenericEntity : "{DC50C3296A8BACB2}Prefabs/Compositions/SK_VehicleSpawnPoint.et" {

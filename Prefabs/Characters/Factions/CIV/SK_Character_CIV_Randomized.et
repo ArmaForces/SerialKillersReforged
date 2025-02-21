@@ -1,0 +1,139 @@
+SCR_ChimeraCharacter : "{6D3138DA846660AE}Prefabs/Characters/Factions/CIV/GenericCivilians/Character_CIV_Generic_Base.et" {
+ ID "520EC961A090B1EE"
+ components {
+  SCR_EditableCharacterComponent "{520EA1D2F659C85C}" {
+   m_UIInfo SCR_EditableEntityUIInfo "{5298E609432D192D}" {
+    Name "#AR-Random_Civilian_Name"
+    Icon "{C431FD61793AA13F}UI/Textures/Editor/EditableEntities/Characters/EditableEntity_Random.edds"
+    m_Image "{A1FEAA3146DDAF38}UI/Textures/EditorPreviews/Characters/CIV/Character_CIV_Randomized.edds"
+    m_aAuthoredLabels {
+     290 70 2 13 22
+    }
+   }
+   m_VariantData SCR_EditableEntityVariantData "{64AA79CD7BA36E56}" {
+    m_aVariants {
+     SCR_EditableEntityVariant "{64AA79CD7BA36E69}" {
+      m_sVariantPrefab "{11EB9A0D2A5899EA}Prefabs/Characters/Factions/CIV/GenericCivilians/Character_CIV_DenimJacket_1.et"
+     }
+     SCR_EditableEntityVariant "{64AA79CD7BA36E66}" {
+      m_sVariantPrefab "{3AE3C1A509298D9D}Prefabs/Characters/Factions/CIV/GenericCivilians/Character_CIV_DenimJacket_2.et"
+     }
+     SCR_EditableEntityVariant "{64AA79CD7BA36E65}" {
+      m_sVariantPrefab "{C943F3CC53D187B6}Prefabs/Characters/Factions/CIV/GenericCivilians/Character_CIV_Turtleneck_1.et"
+     }
+     SCR_EditableEntityVariant "{64AA79CD7BA36E7E}" {
+      m_sVariantPrefab "{1FFE2B88BEF51840}Prefabs/Characters/Factions/CIV/GenericCivilians/Character_CIV_Turtleneck_2.et"
+     }
+     SCR_EditableEntityVariant "{64AA79CD7BA36E7D}" {
+      m_sVariantPrefab "{3A2FBAD5B929AC4B}Prefabs/Characters/Factions/CIV/GenericCivilians/Character_CIV_Turtleneck_3.et"
+     }
+     SCR_EditableEntityVariant "{64AA79CD7BA36E76}" {
+      m_sVariantPrefab "{8C7093AF368F496A}Prefabs/Characters/Factions/CIV/GenericCivilians/Character_CIV_CottonShirt_1.et"
+     }
+     SCR_EditableEntityVariant "{64AA79CD7BA36E75}" {
+      m_sVariantPrefab "{DF7F8D5C05CC1AF6}Prefabs/Characters/Factions/CIV/GenericCivilians/Character_CIV_CottonShirt_2.et"
+     }
+     SCR_EditableEntityVariant "{64AA79CD7BA387E6}" {
+      m_sVariantPrefab "{408B8BD5E3F09FF3}Prefabs/Characters/Factions/CIV/GenericCivilians/Character_CIV_CottonShirt_3.et"
+     }
+     SCR_EditableEntityVariant "{64AA79CD7BA387E0}" {
+      m_sVariantPrefab "{035F8F1CEF3B187F}Prefabs/Characters/Factions/CIV/GenericCivilians/Character_CIV_CottonShirt_4.et"
+     }
+     SCR_EditableEntityVariant "{64AA79CD7BA387E2}" {
+      m_sVariantPrefab "{E6C3C3E5E3DE8F14}Prefabs/Characters/Factions/CIV/GenericCivilians/Character_CIV_CottonShirt_5.et"
+     }
+     SCR_EditableEntityVariant "{64AA79CD7BA387E3}" {
+      m_sVariantPrefab "{8A97F7055F1A003A}Prefabs/Characters/Factions/CIV/GenericCivilians/Character_CIV_CottonShirt_6.et"
+     }
+     SCR_EditableEntityVariant "{64AA9AF952B0EA52}" {
+      m_sVariantPrefab "{A81670B98695C772}Prefabs/Characters/Factions/CIV/GenericCivilians/Character_CIV_CottonShirt_1BP.et"
+     }
+     SCR_EditableEntityVariant "{64AA9AF95EBFA660}" {
+      m_sVariantPrefab "{A837DC85DFB783FF}Prefabs/Characters/Factions/CIV/GenericCivilians/Character_CIV_CottonShirt_BP2.et"
+     }
+     SCR_EditableEntityVariant "{64AA9AF942E54BA5}" {
+      m_sVariantPrefab "{4DAB907CD3521494}Prefabs/Characters/Factions/CIV/GenericCivilians/Character_CIV_CottonShirt_BP3.et"
+     }
+     SCR_EditableEntityVariant "{64AA9AF9468439CA}" {
+      m_sVariantPrefab "{709FB544A63E9DA3}Prefabs/Characters/Factions/CIV/GenericCivilians/Character_CIV_CottonShirt_BP4.et"
+     }
+     SCR_EditableEntityVariant "{64AA79CDC58D4EA4}" {
+      m_sVariantPrefab "{E024A74F8A4BC644}Prefabs/Characters/Factions/CIV/Businessman/Character_CIV_Businessman_1.et"
+     }
+     SCR_EditableEntityVariant "{64AA79CDCFC61498}" {
+      m_sVariantPrefab "{A517C72CEF150898}Prefabs/Characters/Factions/CIV/Businessman/Character_CIV_Businessman_2.et"
+     }
+     SCR_EditableEntityVariant "{64AA79CDE1341911}" {
+      m_sVariantPrefab "{626874113CAE4387}Prefabs/Characters/Factions/CIV/Businessman/Character_CIV_Businessman_3.et"
+     }
+     SCR_EditableEntityVariant "{64AA9AF94FB82A8B}" {
+      m_sVariantPrefab "{D3A10A737992EBF7}Prefabs/Characters/Factions/CIV/Businessman/Character_CIV_Businessman_BP1.et"
+     }
+     SCR_EditableEntityVariant "{64AA9AF976B800A2}" {
+      m_sVariantPrefab "{BFF53E93C55664D9}Prefabs/Characters/Factions/CIV/Businessman/Character_CIV_Businessman_BP2.et"
+     }
+     SCR_EditableEntityVariant "{64AA9AF97A64E482}" {
+      m_sVariantPrefab "{5A69726AC9B3F3B2}Prefabs/Characters/Factions/CIV/Businessman/Character_CIV_Businessman_BP3.et"
+     }
+     SCR_EditableEntityVariant "{64AA79CDE9C64785}" {
+      m_sVariantPrefab "{6F5A71376479B353}Prefabs/Characters/Factions/CIV/ConstructionWorker/Character_CIV_ConstructionWorker_1.et"
+     }
+     SCR_EditableEntityVariant "{64AA79CD93480692}" {
+      m_sVariantPrefab "{C97B985FCFC3E4D6}Prefabs/Characters/Factions/CIV/ConstructionWorker/Character_CIV_ConstructionWorker_2.et"
+     }
+     SCR_EditableEntityVariant "{64AA79CD9713DCD8}" {
+      m_sVariantPrefab "{2CE7D4A6C32673BD}Prefabs/Characters/Factions/CIV/ConstructionWorker/Character_CIV_ConstructionWorker_3.et"
+     }
+     SCR_EditableEntityVariant "{64AA79CD9B69CFC7}" {
+      m_sVariantPrefab "{11D3F19EB64AFA8A}Prefabs/Characters/Factions/CIV/ConstructionWorker/Character_CIV_ConstructionWorker_4.et"
+     }
+     SCR_EditableEntityVariant "{64AA79CD9802E3B8}" {
+      m_sVariantPrefab "{F44FBD67BAAF6DE1}Prefabs/Characters/Factions/CIV/ConstructionWorker/Character_CIV_ConstructionWorker_5.et"
+     }
+     SCR_EditableEntityVariant "{64AA9AF97D449D48}" {
+      m_sVariantPrefab "{F6BFA6B08446BEED}Prefabs/Characters/Factions/CIV/ConstructionWorker/Character_CIV_ConstructionWorker_69.et"
+     }
+     SCR_EditableEntityVariant "{64AA9AF9389B411B}" {
+      m_sVariantPrefab "{67DC3560954FCC98}Prefabs/Characters/Factions/CIV/ConstructionWorker/Character_CIV_ConstructionWorker_BP1.et"
+     }
+     SCR_EditableEntityVariant "{64AA9AF93CA96D30}" {
+      m_sVariantPrefab "{0B880180298B43B6}Prefabs/Characters/Factions/CIV/ConstructionWorker/Character_CIV_ConstructionWorker_BP2.et"
+     }
+     SCR_EditableEntityVariant "{64AA9AF921091F0E}" {
+      m_sVariantPrefab "{EE144D79256ED4DD}Prefabs/Characters/Factions/CIV/ConstructionWorker/Character_CIV_ConstructionWorker_BP3.et"
+     }
+     SCR_EditableEntityVariant "{64AA9AF925A70634}" {
+      m_sVariantPrefab "{D320684150025DEA}Prefabs/Characters/Factions/CIV/ConstructionWorker/Character_CIV_ConstructionWorker_BP4.et"
+     }
+     SCR_EditableEntityVariant "{64AA79CD9C8B4542}" {
+      m_sVariantPrefab "{C6FAF52907A544AC}Prefabs/Characters/Factions/CIV/Dockworker/Character_CIV_Dockworker_1.et"
+     }
+     SCR_EditableEntityVariant "{64AA79CD8457D5F8}" {
+      m_sVariantPrefab "{2CDFBF355F3410DD}Prefabs/Characters/Factions/CIV/Dockworker/Character_CIV_Dockworker_2.et"
+     }
+     SCR_EditableEntityVariant "{64AA79CD88E0639F}" {
+      m_sVariantPrefab "{2366B9D00B40D3C7}Prefabs/Characters/Factions/CIV/Dockworker/Character_CIV_Dockworker_3.et"
+     }
+     SCR_EditableEntityVariant "{64AA79CD8D93E3EF}" {
+      m_sVariantPrefab "{472F2B06FF9BF37D}Prefabs/Characters/Factions/CIV/Dockworker/Character_CIV_Dockworker_4.et"
+     }
+     SCR_EditableEntityVariant "{64AA79CDB1A11B38}" {
+      m_sVariantPrefab "{A2B367FFF37E6416}Prefabs/Characters/Factions/CIV/Dockworker/Character_CIV_Dockworker_5.et"
+     }
+     SCR_EditableEntityVariant "{64AA79CDB632E6B9}" {
+      m_sVariantPrefab "{CEE7531F4FBAEB38}Prefabs/Characters/Factions/CIV/Dockworker/Character_CIV_Dockworker_6.et"
+     }
+     SCR_EditableEntityVariant "{64AA9AF92FEA027F}" {
+      m_sVariantPrefab "{50509F833D7030EF}Prefabs/Characters/Factions/CIV/Dockworker/Character_CIV_Dockworker_BP1.et"
+     }
+     SCR_EditableEntityVariant "{64AA9AF9D5342687}" {
+      m_sVariantPrefab "{D998E79A8D5128AA}Prefabs/Characters/Factions/CIV/Dockworker/Character_CIV_Dockworker_BP3.et"
+     }
+     SCR_EditableEntityVariant "{64AA9AF9D93A3E5F}" {
+      m_sVariantPrefab "{6D64BABB481CB9D8}Prefabs/Characters/Factions/CIV/Dockworker/Character_CIV_Dockworker_BP6.et"
+     }
+    }
+   }
+  }
+ }
+}
