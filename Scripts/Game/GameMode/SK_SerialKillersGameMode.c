@@ -249,7 +249,6 @@ class SK_SerialKillersGameMode : SCR_BaseGameMode
 	
 	void GameEndCheck() 
 	{
-		return;
 		if (!m_bHasGameStarted)
 			return;
 		

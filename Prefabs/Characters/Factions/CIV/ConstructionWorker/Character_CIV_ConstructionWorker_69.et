@@ -25,6 +25,8 @@ SCR_ChimeraCharacter : "{1E5D9B21280870AA}Prefabs/Characters/Factions/CIV/Constr
    InitialInventoryItems {
     ItemsInitConfigurationItem "{60DCBCECAC6C6E65}" {
      TargetStorage "Prefabs/Characters/Uniforms/Pants_Trousers_01/Pants_Trousers_01_DarkGrey_Dirty.et"
+     PrefabsToSpawn {
+     }
     }
    }
   }

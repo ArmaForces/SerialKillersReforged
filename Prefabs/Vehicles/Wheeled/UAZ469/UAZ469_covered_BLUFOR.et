@@ -13,6 +13,7 @@ Vehicle : "{7524FB186D534ACA}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_covered_CIV_
    m_UIInfo SCR_EditableVehicleUIInfo "{5298E609432D192D}" {
     Name "#AR-Vehicle_UAZ469_Variant5_Name"
     m_Image "{1003BE996DAF0FB3}UI/Textures/EditorPreviews/Vehicles/Wheeled/UAZ469/UAZ469_covered_CIV_blue.edds"
+    m_sFaction "US"
     m_aAutoLabels {
      11 122 50
     }

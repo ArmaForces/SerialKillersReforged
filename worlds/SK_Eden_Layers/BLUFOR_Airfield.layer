@@ -56,5 +56,10 @@ GenericEntity RandomAircraftSpawn : "{C72F956E4AC6A6E7}Prefabs/Systems/ScenarioF
  }
 }
 SCR_SpawnPoint : "{CEA2B24051A44525}PrefabsEditable/SpawnPoints/E_SpawnPoint_US.et" {
+ components {
+  SCR_MapDescriptorComponent "{54C659A97C47BDE2}" {
+   DisplayName "Airport"
+  }
+ }
  coords 4903.592 28.775 11765.131
 }
