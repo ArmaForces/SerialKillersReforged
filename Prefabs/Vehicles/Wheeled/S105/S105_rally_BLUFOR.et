@@ -7,6 +7,12 @@ Vehicle : "{8EB38BBD860DA06E}Prefabs/Vehicles/Wheeled/S105/S105_lightblue.et" {
     m_aAutoLabels {
      11 50
     }
+    m_EntityBudgetCost {
+     SCR_EntityBudgetValue "{64AA9AF10F627CE4}" {
+      m_BudgetType RANK_CORPORAL
+      m_Value 1
+     }
+    }
    }
   }
   SCR_VehicleFactionAffiliationComponent "{5882CBD9AC741CEC}" {

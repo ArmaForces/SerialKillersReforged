@@ -1,5 +1,5 @@
 MetaFileClass {
- Name "{9B443DD4C1F6DCAE}Prefabs/Characters/Factions/CIV/Character_CIV_baseLoadout.et"
+ Name "{67DC3560954FCC98}Prefabs/Characters/Factions/CIV/ConstructionWorker/Character_CIV_ConstructionWorker_BP1.et"
  Configurations {
   EntityTemplateResourceClass PC {
   }

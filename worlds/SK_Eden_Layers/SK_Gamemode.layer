@@ -37,9 +37,9 @@ SK_SerialKillersGameMode SK_SerialKillersGameModeOverride1 : "{ECEEDB2D3737204B}
   }
   SK_CivilianManagerComponent "{60C4D31D2257CD56}" {
    m_iCityWieght 4
-   m_iVillageWieght 2
    m_iTargetCivilianCount 200
-   m_fCityVehicleSpawnChance 0.02
+   m_fCityVehicleSpawnChance 0.03
+   m_fVehicleSpawnChance 0.1
   }
   SK_SerialKillersConfigComponent "{60C4D31123C481B5}" {
    m_pVehiclePrefabArray + {

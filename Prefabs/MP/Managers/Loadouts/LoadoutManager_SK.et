@@ -22,7 +22,7 @@ SCR_LoadoutManager : "{AA4E7419A1FF65B0}Prefabs/MP/Managers/Loadouts/LoadoutMana
   }
   SCR_FactionPlayerLoadout "{6470A380DE03A134}" {
    m_sLoadoutName "Terrorist Disguised"
-   m_sLoadoutResource "{9B443DD4C1F6DCAD}Prefabs/Characters/Factions/CIV/Character_CIV_baseLoadout.et"
+   m_sLoadoutResource "{9340905836271353}Prefabs/Characters/Factions/CIV/GenericCivilians/SK_Character_CIV_Randomized.et"
    m_sLoadoutImage "{A1FEAA3146DDAF38}UI/Textures/EditorPreviews/Characters/CIV/Character_CIV_Randomized.edds"
    m_sAffiliatedFaction "USSR"
   }

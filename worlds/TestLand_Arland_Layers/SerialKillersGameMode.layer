@@ -106,6 +106,9 @@ SK_SerialKillersGameMode GameModeSF : "{ECEEDB2D3737204B}Prefabs/ScenarioFramewo
    m_ExtendedIdentityHints SCR_GeneralHintStorage "{6226DDCD824CB407}" : "{4C689530864AD7DF}Configs/Hints/ExtendedIdentityHints.conf" {
    }
   }
+  SCR_MapConfigComponent "{5C669498E250A34B}" {
+   m_sGadgetMapConfigPath "{32913D3C51D7736C}Configs/Map/MapFullscreenCoop.conf"
+  }
   SCR_NotificationSenderComponent "{56FA84B04BE7D4C0}" {
    m_aKillfeedTypeNames {
     SCR_NotificationKillfeedTypeName "{5932B0310455E486}" {
@@ -382,4 +385,9 @@ Vehicle M151A1 : "{F649585ABB3706C4}Prefabs/Vehicles/Wheeled/M151A2/M151A2.et" {
 }
 SCR_LoadoutManager : "{FD4EE3666CA87EA6}Prefabs/MP/Managers/Loadouts/LoadoutManager_SK.et" {
  coords 1348.81 39 2136.208
+ m_aPlayerLoadouts {
+  SCR_FactionPlayerLoadout "{6470A380DE03A134}" {
+   m_sLoadoutResource "{22E43956740A6794}Prefabs/Characters/Factions/CIV/GenericCivilians/Character_CIV_Randomized.et"
+  }
+ }
 }

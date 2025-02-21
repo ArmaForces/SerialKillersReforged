@@ -28,6 +28,7 @@ GenericEntity : "{6E9190BC2713551D}Prefabs/Compositions/Slotted/BuildableComposi
     SCR_CampaignBuildingProviderComponent "{5ED49CDEA85A0083}" {
      m_bIsMasterProvider 1
      m_fBuildingRadius 60
+     m_iRank RENEGADE
      m_aBudgetsToEvaluate {
       SCR_CampaignBuildingBudgetToEvaluateData "{5ED49CDE93BE360C}" {
        m_eBudget 2147483647
@@ -50,6 +51,12 @@ GenericEntity : "{6E9190BC2713551D}Prefabs/Compositions/Slotted/BuildableComposi
          m_fDefaultTimeMultiplier 15
         }
        }
+      }
+      SCR_CampaignBuildingRankBudgetToEvaluateData "{60EC916CF34D9DFF}" {
+       m_eBudget RANK_RENEGADE
+      }
+      SCR_CampaignBuildingRankBudgetToEvaluateData "{64AA9AFCD731914B}" {
+       m_eBudget RANK_PRIVATE
       }
      }
      m_aAvailableTraits {
