@@ -170,9 +170,9 @@ SK_SerialKillersGameMode GameModeSF : "{ECEEDB2D3737204B}Prefabs/ScenarioFramewo
     }
    }
   }
-  SCR_PreGameGameModeStateComponent "{648304666696D87D}" {
+  SCR_PreGameGameModeStateComponent "{64ACED42C962A7E5}" {
+   Enabled 0
    m_fDuration 0
-   m_bDisableControls 0
   }
   SCR_RadialMenuItemsComponent "{5C92B03271ABD8AA}" {
    m_MenuController SCR_RadialMenuController "{5C92B0326E1334FB}" {
@@ -201,6 +201,7 @@ SK_SerialKillersGameMode GameModeSF : "{ECEEDB2D3737204B}Prefabs/ScenarioFramewo
   }
   SK_SerialKillersConfigComponent "{60C4D31123C481B5}" {
    m_pCivilianPrefab "{1AF5B9AE5CFD4433}Prefabs/Groups/CIV/Group_CIV.et"
+   m_pPrisonerPrefab "{89DB1658A016C6A9}Prefabs/Characters/Factions/USSR/Character_USSR_Prisoner.et"
    m_pPatrolWaypointPrefab "{22A875E30470BD4F}Prefabs/AI/Waypoints/AIWaypoint_Patrol.et"
    m_pWaitWaypointPrefab "{531EC45063C1F57B}Prefabs/AI/Waypoints/AIWaypoint_Wait.et"
    m_pCycleWaypointPrefab "{35BD6541CBB8AC08}Prefabs/AI/Waypoints/AIWaypoint_Cycle.et"
