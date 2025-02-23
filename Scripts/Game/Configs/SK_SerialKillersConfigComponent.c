@@ -7,6 +7,9 @@ class SK_SerialKillersConfigComponent: ScriptComponent
 	[Attribute(uiwidget: UIWidgets.ResourceNamePicker, desc: "Civilian Prefab", params: "et", category: "Prefabs")]
 	ResourceName m_pCivilianPrefab;
 	
+	[Attribute(uiwidget: UIWidgets.ResourceNamePicker, desc: "Prisoner loadout prefab", params: "et", category: "Prefabs")]
+	ResourceName m_pPrisonerPrefab;
+	
 	[Attribute(uiwidget: UIWidgets.ResourceNamePicker, desc: "Patrol Waypoint Prefab", params: "et", category: "Waypoints")]
 	ResourceName m_pPatrolWaypointPrefab;
 

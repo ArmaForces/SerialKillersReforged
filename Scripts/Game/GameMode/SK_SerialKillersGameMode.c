@@ -8,6 +8,7 @@ class SK_SerialKillersGameMode : SCR_BaseGameMode
 	protected SK_CivilianManagerComponent m_CiviliansManager;
 	protected SCR_MapMarkerManagerComponent m_mapMarkerManager;
 	protected SCR_XPHandlerComponent m_XPHandlerComponent;
+	protected SCR_RespawnSystemComponent m_RespawnSystem;
 	protected SCR_FactionManager m_FactionManager;
 	
 	[Attribute( defvalue: "1", desc: "Civilian killed score")]
@@ -68,6 +69,7 @@ class SK_SerialKillersGameMode : SCR_BaseGameMode
 		m_CiviliansManager = SK_Global.GetCiviliansManager();
 		m_mapMarkerManager = SCR_MapMarkerManagerComponent.GetInstance();
 		m_XPHandlerComponent = SCR_XPHandlerComponent.Cast(FindComponent(SCR_XPHandlerComponent));
+		m_RespawnSystem = SCR_RespawnSystemComponent.Cast(FindComponent(SCR_RespawnSystemComponent));
 		m_FactionManager = SCR_FactionManager.Cast(GetGame().GetFactionManager());
 		
 		if (m_CiviliansManager && IsMaster()) 
@@ -136,7 +138,7 @@ class SK_SerialKillersGameMode : SCR_BaseGameMode
 		{
 			if (sp.GetFactionKey() == m_sRedforFactionKey)
 			{
-				sp.SetSpawnPointEnabled_S(false);
+				sp.SetSpawnPointEnabled_S(!sp.IsSpawnPointEnabled());
 			}
 		}
 		OnMatchSituationChanged();
@@ -190,6 +192,7 @@ class SK_SerialKillersGameMode : SCR_BaseGameMode
 		switch (killedFaction.GetFactionKey()) 
 		{
 			case m_sRedforFactionKey:
+				HandleRedforKill(unit);
 				break;
 			case m_sBluforFactionKey:
 				HandleBluforKill(unit, instigatorFaction);
@@ -240,6 +243,42 @@ class SK_SerialKillersGameMode : SCR_BaseGameMode
 		CreateKillMarker(unit, SK_CivMapColor);
 	}
 	
+	void HandleRedforKill(IEntity unit)
+	{
+		int redforPlayerId = GetGame().GetPlayerManager().GetPlayerIdFromControlledEntity(unit);
+		if (redforPlayerId == 0)
+		{
+			Print("No player id found on redfor unit!!!", LogLevel.ERROR);
+			return;
+		}
+		
+		PlayerController pc = GetGame().GetPlayerManager().GetPlayerController(redforPlayerId);
+		if (!pc) 
+		{
+			Print("No player controller found on redfor unit!!!", LogLevel.ERROR);
+			return;
+		}
+		
+		SCR_RespawnComponent respawnComponent = SCR_RespawnComponent.Cast(pc.FindComponent(SCR_RespawnComponent));
+		if (!respawnComponent)
+		{
+			Print("No respawn component found on redfor unit!!!", LogLevel.ERROR);
+			return;
+		}
+		
+		IEntity sp = GetWorld().FindEntityByName("prison_spawn");
+		if (!sp)
+		{
+			Print("No prison entity found in world! Please make sure spawn point exists and its named prison_spawn", LogLevel.ERROR);
+			return;
+		}
+		
+		SCR_SpawnPoint spawnPoint = SCR_SpawnPoint.Cast(sp);
+		SCR_SpawnPointSpawnData spsd = new SCR_SpawnPointSpawnData(m_Config.m_pPrisonerPrefab, spawnPoint.GetRplId());
+		
+		respawnComponent.RequestSpawn(spsd);
+	}
+	
 	string getNowTimeString() 
 	{
 		ChimeraWorld world = GetWorld();
@@ -249,6 +288,7 @@ class SK_SerialKillersGameMode : SCR_BaseGameMode
 	
 	void GameEndCheck() 
 	{
+		return;
 		if (!m_bHasGameStarted)
 			return;
 		
