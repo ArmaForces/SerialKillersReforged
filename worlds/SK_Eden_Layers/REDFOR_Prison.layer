@@ -1,4 +1,21 @@
 SCR_SpawnPoint prison_spawn : "{CBEC19131E59A675}PrefabsEditable/SpawnPoints/E_SpawnPoint_USSR_Prison.et" {
- coords 4474.659 1.531 11124.627
- angleY -154.633
+ components {
+  SCR_MapDescriptorComponent "{54C659A97C47BDE2}" {
+   MainType Cross
+  }
+ }
+ coords 4546.106 16.157 10600.99
+ m_Info SCR_UIInfo "{56B4CC4ECACA2C37}" {
+  Name "Prison"
+ }
+}
+GenericEntity : "{D76C2E3AA8CC7FAC}PrefabsEditable/Auto/Props/E_Redfor_SupplyCache.et" {
+ components {
+  SK_StorageCacheComponent "{6479005B57C0A487}" {
+   m_iItemQuantity 10
+   m_eSupportedArsenalItemTypes 359822
+   m_eSupportedArsenalItemModes 30
+  }
+ }
+ coords 4504.309 16.394 10651.968
 }

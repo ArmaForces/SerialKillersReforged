@@ -3,9 +3,6 @@ $grp SCR_SpawnPoint : "{45225582B358C31A}PrefabsEditable/SpawnPoints/E_SpawnPoin
   coords 1118.878 40.541 11511.985
  }
  {
-  coords 4562.376 15.924 10504.443
- }
- {
   coords 7097.266 106.698 5857.989
  }
  {
@@ -46,6 +43,9 @@ $grp SCR_SpawnPoint : "{45225582B358C31A}PrefabsEditable/SpawnPoints/E_SpawnPoin
  }
  {
   coords 5650.828 132.666 6580.642
+ }
+ {
+  coords 4435.698 6.295 11027.563
  }
 }
 Vehicle S1203_cargo_sport1 : "{64E88B50EE91745E}Prefabs/Vehicles/Wheeled/S1203/S1203_cargo_sport.et" {
