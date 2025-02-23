@@ -282,6 +282,9 @@ class SK_SerialKillersGameMode : SCR_BaseGameMode
 		{
 			prisonerComponent.SetState(true);
 		}
+		
+		SK_PrisonManagerComponent prisonManager = SK_PrisonManagerComponent.Cast(sp.FindComponent(SK_PrisonManagerComponent));
+		prisonManager.RegisterPrisoner(redforPlayerId);
 
 		respawnComponent.RequestSpawn(spsd);
 	}
@@ -295,7 +298,6 @@ class SK_SerialKillersGameMode : SCR_BaseGameMode
 	
 	void GameEndCheck() 
 	{
-		return;
 		if (!m_bHasGameStarted)
 			return;
 		
@@ -307,22 +309,23 @@ class SK_SerialKillersGameMode : SCR_BaseGameMode
 		redfor.GetPlayersInFaction(redPlayers);
 		blufor.GetPlayersInFaction(bluPlayers);
 		
-		bool redforDead = true;
+		bool redforDeadOrImprisoned = true;
 		foreach(int redforPlayerId: redPlayers)
 		{
 			PlayerController pc = GetGame().GetPlayerManager().GetPlayerController(redforPlayerId);
 			if (pc)
 			{
-				SCR_ChimeraCharacter ent = SCR_ChimeraCharacter.Cast(pc.GetControlledEntity());
+				SCR_ChimeraCharacter ent = SCR_ChimeraCharacter.Cast(pc.GetControlledEntity());		
+				SK_PrisonerComponent prisoner = SK_PrisonerComponent.Cast(pc.FindComponent(SK_PrisonerComponent));
 				SCR_DamageManagerComponent damageManager = ent.GetDamageManager();
-				if (!damageManager.IsDestroyed()) {
-					redforDead = false;
+				if (!damageManager.IsDestroyed() && !prisoner.GetState()) {
+					redforDeadOrImprisoned = false;
 					break;
 				}
 			}
 		}
 		
-		if (redforDead) 
+		if (redforDeadOrImprisoned) 
 		{
 			Print("Blufor wins!");
 			SCR_GameModeEndData endData = SCR_GameModeEndData.Create(

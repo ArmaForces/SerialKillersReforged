@@ -18,6 +18,11 @@ class SK_PrisonerComponent : ScriptComponent
 		return m_bIsPrisoner;
 	}
 	
+	void FreePrisoner(vector position)
+	{
+		Rpc(RpcAsk_FreePrisoner, position);	
+	}
+	
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
 	protected void RpcAsk_SetState(bool state)
 	{
@@ -25,6 +30,13 @@ class SK_PrisonerComponent : ScriptComponent
 			return;
 		
 		m_bIsPrisoner = state;
+		Replication.BumpMe();
+	}
+	
+	[RplRpc(RplChannel.Reliable, RplRcver.Owner)]
+	protected void RpcAsk_FreePrisoner(vector position)
+	{
+		SCR_Global.TeleportLocalPlayer(position, SCR_EPlayerTeleportedReason.FAST_TRAVEL);
 		Replication.BumpMe();
 	}
 }
