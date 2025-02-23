@@ -48,6 +48,7 @@ SCR_SpawnPoint : "{987991DCED3DC197}PrefabsEditable/SpawnPoints/E_SpawnPoint.et"
         Name "Release prisoner"
        }
        ActionTitle "Release prisoner"
+       Duration 0.75
       }
      }
     }

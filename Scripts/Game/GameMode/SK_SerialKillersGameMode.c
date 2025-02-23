@@ -276,6 +276,13 @@ class SK_SerialKillersGameMode : SCR_BaseGameMode
 		SCR_SpawnPoint spawnPoint = SCR_SpawnPoint.Cast(sp);
 		SCR_SpawnPointSpawnData spsd = new SCR_SpawnPointSpawnData(m_Config.m_pPrisonerPrefab, spawnPoint.GetRplId());
 		
+		
+		SK_PrisonerComponent prisonerComponent = SK_PrisonerComponent.Cast(pc.FindComponent(SK_PrisonerComponent));
+		if (prisonerComponent)
+		{
+			prisonerComponent.SetState(true);
+		}
+
 		respawnComponent.RequestSpawn(spsd);
 	}
 	

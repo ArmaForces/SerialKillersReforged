@@ -19,5 +19,7 @@ SCR_PlayerController : "{225E51284CC95CFA}Prefabs/Characters/Core/DefaultPlayerC
   }
   SCR_SpawnerRequestComponent "{616ADC0D20F77EB9}" {
   }
+  SK_PrisonerComponent "{64AE9115EE81BDD4}" {
+  }
  }
 }
