@@ -27,7 +27,6 @@ class SK_StorageCacheComponent : ScriptComponent
 		if (SCR_Global.IsEditMode() || !Replication.IsServer()) return;
 
 		SetEventMask(owner, EntityEvent.INIT);
-		CreateMapMarker();
 	}
 	
 
@@ -45,18 +44,10 @@ class SK_StorageCacheComponent : ScriptComponent
 		
 		GetGame().GetCallqueue().CallLater(InitializeCache, Math.RandomInt(1,10) * 1000);
 	}
-	
-	override void EOnActivate(IEntity owner)
-	{
-		super.EOnActivate(owner);
-		InitializeCache();
-	}
 
 	void InitializeCache()
 	{
 		array<SCR_ArsenalItem> items = {};
-		
-		
 		if (!GetItems(items))
 		{
 			Print("Failed to get random item for supply cache!", LogLevel.ERROR);
