@@ -29,8 +29,15 @@ GenericEntity RandomAircraftSpawn : "{C72F956E4AC6A6E7}Prefabs/Systems/ScenarioF
       angleY -90.073
      }
      Slot20 {
-      coords -3.206 -0.008 3.501
-      angleZ 4.262
+      components {
+       SCR_ScenarioFrameworkSlotBase "{5A22E1D67E712EC8}" {
+        m_sObjectToSpawn "{74DCE1AEC6832E18}Prefabs/Props/Wrecks/UH1H_wreck_static.et"
+       }
+      }
+      coords 4.316 -0.569 -19.163
+      angleX 4.253
+      angleY -93.778
+      angleZ -0.281
      }
      Slot21 {
       components {
@@ -49,6 +56,21 @@ GenericEntity RandomAircraftSpawn : "{C72F956E4AC6A6E7}Prefabs/Systems/ScenarioF
       }
       coords 1.235 0 34.811
       angleY -90.073
+     }
+     Slot24 {
+      coords 40.255 -0.003 77.121
+      angleZ 4.262
+     }
+     Slot25 {
+      components {
+       SCR_ScenarioFrameworkSlotBase "{5A22E1D67E712EC8}" {
+        m_sObjectToSpawn "{9668B6C528DCECBD}Prefabs/Props/Wrecks/Mi8MT_wreck_static.et"
+       }
+      }
+      coords 2.168 0.159 -1.868
+      angleX 4.253
+      angleY -93.778
+      angleZ -0.281
      }
     }
    }

@@ -1,23 +1,23 @@
 GenericEntity : "{88B3A9FF09D43C1B}Prefabs/Items/Equipment/Maps/PaperMap_FastTravel_CO.et" {
- coords 9627.985 17.892 1567.807
+ coords 7468.645 166.144 4275.188
  angleX 0
- angleY 60.165
+ angleY 11.877
 }
 GenericEntity : "{C1AB654F77ABA58B}PrefabsEditable/Auto/Props/Military/Compositions/US/E_ArsenalBox_US.et" {
- coords 9633.195 17.123 1572.043
- angleY -165.329
+ coords 7474.365 164.695 4274.146
+ angleY -172.499
 }
 SCR_SpawnPoint : "{CEA2B24051A44525}PrefabsEditable/SpawnPoints/E_SpawnPoint_US.et" {
  components {
   SCR_MapDescriptorComponent "{54C659A97C47BDE2}" {
-   DisplayName "St Pierre"
+   DisplayName "Military"
   }
  }
- coords 9636.734 16.938 1567.322
+ coords 7478.004 164.594 4283.93
 }
 GenericEntity : "{DC50C3296A8BACB2}Prefabs/Compositions/SK_VehicleSpawnPoint.et" {
- coords 9637.667 16.937 1571.999
- angleY 90.4
+ coords 7477.16 164.625 4278.458
+ angleY 155.019
  {
   GenericEntity {
    ID "64548D9BBCA96EE2"
@@ -30,8 +30,6 @@ GenericEntity : "{DC50C3296A8BACB2}Prefabs/Compositions/SK_VehicleSpawnPoint.et"
      }
     }
    }
-   coords -0.277 0 -1.752
-   angleY 35.415
   }
  }
 }

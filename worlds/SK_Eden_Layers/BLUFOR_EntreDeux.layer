@@ -1,16 +1,16 @@
 GenericEntity : "{88B3A9FF09D43C1B}Prefabs/Items/Equipment/Maps/PaperMap_FastTravel_CO.et" {
- coords 7448.851 8.975 6714.734
+ coords 5683.068 219.519 7062.269
  angleX 0
- angleY 152.304
+ angleY 18.192
 }
 GenericEntity : "{C1AB654F77ABA58B}PrefabsEditable/Auto/Props/Military/Compositions/US/E_ArsenalBox_US.et" {
- coords 7451.438 7.916 6715.864
- angleY 152.304
+ coords 5685.333 218.75 7061.999
+ angleY -168.851
 }
-GenericEntity Area1 : "{C72F956E4AC6A6E7}Prefabs/Systems/ScenarioFramework/Components/Area.et" {
- coords 7476.072 6.568 6706.872
+GenericEntity RandomVehicleSpawn : "{C72F956E4AC6A6E7}Prefabs/Systems/ScenarioFramework/Components/Area.et" {
+ coords 5173.279 173.977 7084.228
  {
-  GenericEntity Layer5 : "{5F9FFF4BF027B3A3}Prefabs/Systems/ScenarioFramework/Components/Layer.et" {
+  GenericEntity Layer1 : "{5F9FFF4BF027B3A3}Prefabs/Systems/ScenarioFramework/Components/Layer.et" {
    components {
     SCR_ScenarioFrameworkLayerBase "{5A2283EA2A0B4B14}" {
      m_SpawnChildren RANDOM_ONE
@@ -19,27 +19,26 @@ GenericEntity Area1 : "{C72F956E4AC6A6E7}Prefabs/Systems/ScenarioFramework/Compo
    coords 0 0 0
    {
     $grp GenericEntity : "{AA01691FDC4E9167}Prefabs/Systems/ScenarioFramework/Components/Slot.et" {
-     Slot22 {
+     Slot1 {
       components {
        SCR_ScenarioFrameworkSlotBase "{5A22E1D67E712EC8}" {
-        m_sObjectToSpawn "{AB9ED3A33EE1B630}Prefabs/Vehicles/Helicopters/Mi8MT/Mi8MT_unarmed_civ_blue.et"
+        m_sObjectToSpawn "{2D74C39A650A3030}Prefabs/Vehicles/Wheeled/M923A1/M923A1_engineer.et"
        }
       }
-      coords -7.214 0.532 -6.403
-      angleY -90.073
+      coords -11.346 0.019 12.93
+      angleY -162.681
      }
-     Slot24 {
+     Slot3 {
       coords -3.206 -0.008 3.501
-      angleZ 4.262
      }
-     Slot25 {
+     Slot4 {
       components {
        SCR_ScenarioFrameworkSlotBase "{5A22E1D67E712EC8}" {
-        m_sObjectToSpawn "{7A29940A71EF5F5C}Prefabs/Vehicles/Helicopters/UH1H/UH1H_civ_livery_v1.et"
+        m_sObjectToSpawn "{8B937D667742A75D}Prefabs/Vehicles/Wheeled/S105/S105_rally_BLUFOR.et"
        }
       }
-      coords 66.213 -3.91 -9.194
-      angleY -89.286
+      coords -7.564 0.37 -11.758
+      angleY -137.272
      }
     }
    }
@@ -49,14 +48,14 @@ GenericEntity Area1 : "{C72F956E4AC6A6E7}Prefabs/Systems/ScenarioFramework/Compo
 SCR_SpawnPoint : "{CEA2B24051A44525}PrefabsEditable/SpawnPoints/E_SpawnPoint_US.et" {
  components {
   SCR_MapDescriptorComponent "{54C659A97C47BDE2}" {
-   DisplayName "Military"
+   DisplayName "Montignac"
   }
  }
- coords 7454.661 7.875 6700.22
+ coords 5686.088 218.75 7066.313
 }
 GenericEntity : "{DC50C3296A8BACB2}Prefabs/Compositions/SK_VehicleSpawnPoint.et" {
- coords 7457.341 7.73 6715.986
- angleY 48.033
+ coords 5680.043 218.785 7076.137
+ angleY 162.722
  {
   GenericEntity {
    ID "64548D9BBCA96EE2"

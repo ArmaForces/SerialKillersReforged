@@ -27,6 +27,7 @@ class SK_StorageCacheComponent : ScriptComponent
 		if (SCR_Global.IsEditMode() || !Replication.IsServer()) return;
 
 		SetEventMask(owner, EntityEvent.INIT);
+		CreateMapMarker();
 	}
 	
 
@@ -42,9 +43,13 @@ class SK_StorageCacheComponent : ScriptComponent
 		if (!m_InventoryStorage)
 			Print("SCR_UniversalInventoryStorageComponent component could not be found on SK_StorageCacheComponent entity!", LogLevel.ERROR);
 		
-		GetGame().GetCallqueue().CallLater(InitializeCache, 2000);
-		CreateMapMarker();
-		//GetGame().GetCallqueue().CallLater(CreateMapMarker, 5000);
+		GetGame().GetCallqueue().CallLater(InitializeCache, Math.RandomInt(1,10) * 1000);
+	}
+	
+	override void EOnActivate(IEntity owner)
+	{
+		super.EOnActivate(owner);
+		InitializeCache();
 	}
 
 	void InitializeCache()
@@ -68,6 +73,7 @@ class SK_StorageCacheComponent : ScriptComponent
 				PrintFormat("Unable to spawn resource %1. Error code %2", itemName, m_InventoryStorageManager.GetReturnCode(), level: LogLevel.WARNING);
 			}
 		}
+		CreateMapMarker();
 	}
 	
 	protected bool GetItems(out notnull array<SCR_ArsenalItem> items)
@@ -89,24 +95,21 @@ class SK_StorageCacheComponent : ScriptComponent
 		//TODO! Refactor me
 		for (int i = 0; i < itemsToFill; i++)
 		{
-			float randomValue = Math.RandomFloat01();
 			int j = filteredArsenalItems.GetRandomIndex();
-			if (randomValue <= 1)
+			if (SCR_Enum.HasPartialFlag(filteredArsenalItems[j].GetItemMode(), SCR_EArsenalItemMode.AMMUNITION) 
+				&& !SCR_Enum.HasPartialFlag(filteredArsenalItems[j].GetItemType(), SCR_EArsenalItemType.EQUIPMENT))
 			{
-				if (SCR_Enum.HasPartialFlag(filteredArsenalItems[j].GetItemMode(), SCR_EArsenalItemMode.AMMUNITION) 
-					&& !SCR_Enum.HasPartialFlag(filteredArsenalItems[j].GetItemType(), SCR_EArsenalItemType.EQUIPMENT))
-				{
-					int insertCount = Math.RandomInt(2, 5);
-					for (int q = 1; q <= insertCount; q++)
-					{
-						items.Insert(filteredArsenalItems[j]);
-					}
-				}
-				else 
+				int insertCount = Math.RandomInt(2, 5);
+				for (int q = 1; q <= insertCount; q++)
 				{
 					items.Insert(filteredArsenalItems[j]);
 				}
 			}
+			else 
+			{
+				items.Insert(filteredArsenalItems[j]);
+			}
+			
 		}
 
 		return !items.IsEmpty();
@@ -121,7 +124,10 @@ class SK_StorageCacheComponent : ScriptComponent
 	{
 		SCR_MapMarkerManagerComponent mapMarkerMgr = SCR_MapMarkerManagerComponent.Cast(GetGame().GetGameMode().FindComponent(SCR_MapMarkerManagerComponent));
 		if (!mapMarkerMgr)
+		{
+			Print("MamMarkerMgr not found", LogLevel.ERROR);
 			return;
+		}
 		
 		SCR_MapMarkerBase m_MapMarker = new SCR_MapMarkerBase();
 		m_MapMarker = mapMarkerMgr.PrepareMilitaryMarker(EMilitarySymbolIdentity.OPFOR, EMilitarySymbolDimension.LAND, EMilitarySymbolIcon.SUPPLY);
@@ -130,13 +136,22 @@ class SK_StorageCacheComponent : ScriptComponent
 		m_MapMarker.SetCustomText("Supply cache");
 		
 		FactionManager factionManager = GetGame().GetFactionManager();
+		
 		if (factionManager)
 		{
 			Faction faction = factionManager.GetFactionByKey(m_sFactionItemKey);
 			if (faction) {
 				m_MapMarker.AddMarkerFactionFlags(factionManager.GetFactionIndex(faction));
-				mapMarkerMgr.InsertStaticMarker(m_MapMarker, false, true);
+				mapMarkerMgr.InsertStaticMarker(m_MapMarker, false);
 			}
+			else 
+			{
+				Print("No faction found!", LogLevel.ERROR);
+			}
+		}
+		else 
+		{
+			Print("No faction manager found!", LogLevel.ERROR);
 		}
 	}
 }

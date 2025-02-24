@@ -65,6 +65,39 @@ SK_SerialKillersGameMode SK_SerialKillersGameModeOverride1 : "{ECEEDB2D3737204B}
      m_aFriendlyFactionsIds {
       "CIV"
      }
+     m_aPredefinedGroups {
+      SCR_GroupPreset "{64B07ACA3FABD65A}" {
+       m_iGroupSize 2
+      }
+      SCR_GroupPreset "{64B07ACA290B4F8D}" {
+       m_iGroupSize 2
+      }
+      SCR_GroupPreset "{64B07ACA2E579478}" {
+       m_iGroupSize 2
+      }
+      SCR_GroupPreset "{64B07ACA2C8D2FC3}" {
+       m_iGroupSize 2
+      }
+      SCR_GroupPreset "{64B07ACA2C19E6B2}" {
+       m_iGroupSize 2
+      }
+      SCR_GroupPreset "{64B07ACA2D3227C8}" {
+       m_iGroupSize 2
+      }
+      SCR_GroupPreset "{64B07ACA2DA6C9E4}" {
+       m_iGroupSize 2
+      }
+      SCR_GroupPreset "{64B07ACA2EC680ED}" {
+       m_iGroupSize 2
+      }
+      SCR_GroupPreset "{64B07ACAD77A390C}" {
+       m_iGroupSize 2
+      }
+      SCR_GroupPreset "{64B07ACAD6D0B446}" {
+       m_iGroupSize 2
+      }
+     }
+     m_bCreateOnlyPredefinedGroups 1
      m_sFactionBackground "{F8AC305446D5D480}UI/Textures/DeployMenu/Loadout-BG/Loadout_US_BG.imageset"
     }
     SCR_Faction "{56B2B46E9AF80999}" : "{09727032415AC39B}Configs/Factions/USSR.conf" {
@@ -72,7 +105,7 @@ SK_SerialKillersGameMode SK_SerialKillersGameModeOverride1 : "{ECEEDB2D3737204B}
       SCR_GroupPreset "{646ADB10AFF348E3}" {
        m_sGroupName "Terrorists"
        m_sGroupFlag "{DDEC1C47914FEAA6}Assets/Props/Fabric/Flags/Data/Flag_2_3_SovietArmy_BCR.edds"
-       m_iGroupSize 4
+       m_iGroupSize 6
       }
      }
      m_bCreateOnlyPredefinedGroups 1

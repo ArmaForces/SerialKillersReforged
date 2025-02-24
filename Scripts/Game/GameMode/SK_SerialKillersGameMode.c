@@ -189,6 +189,12 @@ class SK_SerialKillersGameMode : SCR_BaseGameMode
 					instigatorEntity.FindComponent(FactionAffiliationComponent)
 				).GetAffiliatedFaction();
 		
+		if (!killedFaction) 
+		{
+				Print("Unknown victim faction - ", LogLevel.WARNING);
+				return;
+		}
+		
 		switch (killedFaction.GetFactionKey()) 
 		{
 			case m_sRedforFactionKey:
