@@ -1,15 +1,3 @@
-SCR_AIGroup : "{1AF5B9AE5CFD4433}Prefabs/Groups/CIV/Group_CIV.et" {
- coords 1417.784 36.429 2297.162
-}
-SCR_ChimeraCharacter : "{9340905836271353}Prefabs/Characters/Factions/CIV/SK_Character_CIV_Randomized.et" {
- components {
-  SCR_MapDescriptorComponent "{64B07AC0E62F7DE3}" {
-   MapItemDescriptor 0
-   MainType "Icon (generic)"
-  }
- }
- coords 1267.047 38.999 2371.504
-}
 SCR_SpawnPoint prison_spawn : "{CBEC19131E59A675}PrefabsEditable/SpawnPoints/E_SpawnPoint_USSR_Prison.et" {
  coords 1232.849 39 2391.63
  angleY 65.306

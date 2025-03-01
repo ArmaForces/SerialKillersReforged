@@ -334,18 +334,18 @@ class SK_SerialKillersGameMode : SCR_BaseGameMode
 		if (redforDeadOrImprisoned) 
 		{
 			Print("Blufor wins!");
-			SCR_GameModeEndData endData = SCR_GameModeEndData.Create(
-				EGameOverTypes.FACTION_VICTORY_SCORE,
-				bluPlayers, {m_FactionManager.GetFactionIndex(blufor)}
+			SCR_GameModeEndData endData = SCR_GameModeEndData.CreateSimple
+				(EGameOverTypes.ENDREASON_SCORELIMIT,
+				 winnerFactionId:m_FactionManager.GetFactionIndex(blufor)
 			);
 			EndGameMode(endData);
 		}
 		else if (SK_RedforScore >= m_iGameOverScore)
 		{
 			Print("Redfor wins!");
-			SCR_GameModeEndData endData = SCR_GameModeEndData.Create(
-				EGameOverTypes.FACTION_VICTORY_SCORE,
-				redPlayers, {m_FactionManager.GetFactionIndex(redfor)}
+			SCR_GameModeEndData endData = SCR_GameModeEndData.CreateSimple
+				(EGameOverTypes.ENDREASON_SCORELIMIT,
+				 winnerFactionId:m_FactionManager.GetFactionIndex(redfor)
 			);
 			EndGameMode(endData);
 		}

@@ -54,7 +54,6 @@ SK_SerialKillersGameMode SK_SerialKillersGameModeOverride1 : "{ECEEDB2D3737204B}
  }
  coords 6390.344 159.26 6439.98
  m_bAllowFactionChange 1
- m_bUseSpawnPreload 0
  m_iGameStartDelaySeconds 180
  m_iGameOverTimeMinutes 45
  {
@@ -155,6 +154,9 @@ ScriptedChatEntity : "{F69BC912AC8236F9}Prefabs/MP/ScriptedChatEntity.et" {
 SCR_MapLocator {
  m_WorldDirections SCR_MapLocationQuadHint "{5AAA92CD91D1D8F5}" : "{ABA21F381437DFE8}Configs/Map/MapLocatorHints/LocationHintsEveron.conf" {
  }
+}
+SCR_BaseTaskManager : "{1AC69CD7907FB4F8}Prefabs/Systems/ScenarioFramework/Tasks/TaskManager.et" {
+ coords 6390.292 159.253 6439.787
 }
 MusicManager : "{359452CCDBDD03F5}Prefabs/Sounds/Music/MusicManager_Campaign.et" {
 }
