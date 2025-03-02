@@ -39,16 +39,23 @@ Vehicle : "{C8B16ABCA57679A2}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_covered_CIV_
    }
   }
   ActionsManagerComponent "{C97BE5489221AE18}" {
+   ActionContexts {
+    UserActionContext "{64C4CBD895E6FF51}" {
+     UIInfo SCR_ActionContextUIInfo "{64C4CBD832511DFF}" {
+     }
+     Radius 0.15
+    }
+   }
    additionalActions {
     SCR_AdjustSignalAction "{64C4CBDD2F5F590A}" {
      ParentContextList {
       "light_switch"
      }
      UIInfo SCR_ActionUIInfo "{64C4CBDCC455BDCA}" {
-      Name "Syrena"
+      Name "Siren"
       m_sIconName "radio-signal"
      }
-     ActionTitle "SK_SirenSwitchAction"
+     ActionTitle "SirenSwitchAction"
      "Signal name" "SirenState"
      m_fAdjustmentStep 1
      m_bLoopAction 1
