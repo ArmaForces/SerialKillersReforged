@@ -30,6 +30,14 @@ Vehicle : "{C8B16ABCA57679A2}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_covered_CIV_
   SCR_VehicleFactionAffiliationComponent "{5882CBD9AC741CEC}" {
    "faction affiliation" "US"
   }
+  VehicleWheeledSimulation "{731B26FCA2F19855}" {
+   Simulation Wheeled "{4D8B26DEA5F25978}" {
+    Engine Engine Engine {
+     MaxPower 80
+     MaxTorque 197
+    }
+   }
+  }
   SlotManagerComponent "{55BCE45E438E4CFF}" {
    Slots {
     RegisteringComponentSlotInfo Door_L01 {
