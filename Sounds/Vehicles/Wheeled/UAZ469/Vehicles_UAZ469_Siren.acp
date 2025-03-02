@@ -257,7 +257,7 @@ AudioClass {
    id 50180
    name "Siren"
    version 7
-   tl -359.577 -28.436
+   tl -430.882 -42.349
    Volume -15
    "Pitch variance" 0.25
    "Loop count" 255
