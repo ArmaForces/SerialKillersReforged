@@ -31,6 +31,25 @@ GenericEntity : "{5E921FB8C70456F1}PrefabsEditable/Auto/Props/Military/SupplyBox
   }
  }
 }
+Vehicle UAZ469_covered_BLUFOR_blue1 : "{B472B2B30A3552B2}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_covered_BLUFOR_blue.et" {
+ components {
+  ActionsManagerComponent "{C97BE5489221AE18}" {
+   ActionContexts {
+    UserActionContext "{64C4CBD895E6FF51}" {
+     UIInfo SCR_ActionContextUIInfo "{64C4CBD832511DFF}" {
+     }
+     Radius 0.15
+    }
+   }
+   additionalActions {
+    SCR_AdjustSignalAction "{64C4CBDD2F5F590A}" {
+     ActionTitle "SirenSwitchAction"
+    }
+   }
+  }
+ }
+ coords 1888.934 2.702 1523.979
+}
 GenericEntity : "{B642B7B2BF172CF5}Prefabs/Compositions/Misc/CustomEntities/InteractionPoints/ArsenalBox_US_Weapons_NoAffiliation.et" {
  components {
   SCR_ArsenalComponent "{56F2C6D1431AD9AF}" {

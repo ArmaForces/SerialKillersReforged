@@ -1,0 +1,59 @@
+Vehicle : "{C8B16ABCA57679A2}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_covered_CIV_blue.et" {
+ ID "BBCBA43A9778AE21"
+ components {
+  SCR_VehicleSoundComponent "{55C2E66AD4EF2CA6}" {
+   Filenames + {
+    "{58003736E28FEB6E}Sounds/Vehicles/Wheeled/UAZ469/Vehicles_UAZ469_Siren.acp"
+   }
+   SoundPoints {
+    SoundPointInfo Siren {
+     Offset 0.0002 1.9287 0.5535
+    }
+   }
+  }
+  MeshObject "{51DAA09FEFBFC0E7}" {
+   Materials {
+    MaterialAssignClass "{5DE8EE4570267049}" {
+     SourceMaterial "UAZ469_Body"
+     AssignedMaterial "{BD300920EC57EA13}Assets/Vehicles/Wheeled/UAZ469/Data/UAZ469_Body_BLUFOR_BLUE.emat"
+    }
+   }
+  }
+  SCR_VehicleFactionAffiliationComponent "{5882CBD9AC741CEC}" {
+   "faction affiliation" "US"
+  }
+  SlotManagerComponent "{55BCE45E438E4CFF}" {
+   Slots {
+    RegisteringComponentSlotInfo Door_L01 {
+     Prefab "{CE8D1B78962A5142}Prefabs/Vehicles/Wheeled/UAZ469/VehParts/Doors/Blue/UAZ469_door_L01_BLUFOR_blue.et"
+    }
+    RegisteringComponentSlotInfo Door_R01 {
+     Prefab "{F28AD96FED29C2D4}Prefabs/Vehicles/Wheeled/UAZ469/VehParts/Doors/Blue/UAZ469_door_R01_BLUFOR_blue.et"
+    }
+    RegisteringComponentSlotInfo Door_L02 {
+     Prefab "{4AE119B2FB2FD846}Prefabs/Vehicles/Wheeled/UAZ469/VehParts/Doors/Blue/UAZ469_door_L02_BLUFOR_blue.et"
+    }
+    RegisteringComponentSlotInfo Door_R02 {
+     Prefab "{76E6DBA5802C4BD0}Prefabs/Vehicles/Wheeled/UAZ469/VehParts/Doors/Blue/UAZ469_door_R02_BLUFOR_blue.et"
+    }
+   }
+  }
+  ActionsManagerComponent "{C97BE5489221AE18}" {
+   additionalActions {
+    SCR_AdjustSignalAction "{64C4CBDD2F5F590A}" {
+     ParentContextList {
+      "light_switch"
+     }
+     UIInfo SCR_ActionUIInfo "{64C4CBDCC455BDCA}" {
+      Name "Syrena"
+      m_sIconName "radio-signal"
+     }
+     ActionTitle "SK_SirenSwitchAction"
+     "Signal name" "SirenState"
+     m_fAdjustmentStep 1
+     m_bLoopAction 1
+    }
+   }
+  }
+ }
+}
