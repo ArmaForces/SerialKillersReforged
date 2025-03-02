@@ -1,0 +1,17 @@
+MetaFileClass {
+ Name "{CE8D1B78962A5142}Prefabs/Vehicles/Wheeled/UAZ469/VehParts/Doors/Blue/UAZ469_door_L01_BLUFOR_blue.et"
+ Configurations {
+  EntityTemplateResourceClass PC {
+  }
+  EntityTemplateResourceClass XBOX_ONE : PC {
+  }
+  EntityTemplateResourceClass XBOX_SERIES : PC {
+  }
+  EntityTemplateResourceClass PS4 : PC {
+  }
+  EntityTemplateResourceClass PS5 : PC {
+  }
+  EntityTemplateResourceClass HEADLESS : PC {
+  }
+ }
+}
