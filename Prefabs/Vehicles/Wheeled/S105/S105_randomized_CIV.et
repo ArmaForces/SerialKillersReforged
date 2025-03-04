@@ -3,6 +3,7 @@ Vehicle : "{128253A267BE9424}Prefabs/Vehicles/Wheeled/S105/S105_randomized.et" {
  components {
   SCR_EditableVehicleComponent "{50DEB7C26B5EB312}" {
    m_VariantData SCR_EditableEntityVariantData "{610A88920914827A}" {
+    m_bRandomizeDefaultVariant 1
     m_aVariants {
      SCR_EditableEntityVariant "{64C90D198B103DFE}" {
       m_sVariantPrefab "{255BD3A99F30DC74}Prefabs/Vehicles/Wheeled/S105/S105_agave_sport.et"
