@@ -1,3 +1,26 @@
 Vehicle : "{128253A267BE9424}Prefabs/Vehicles/Wheeled/S105/S105_randomized.et" {
  ID "BBCBA43A9778AE21"
+ components {
+  SCR_EditableVehicleComponent "{50DEB7C26B5EB312}" {
+   m_VariantData SCR_EditableEntityVariantData "{610A88920914827A}" {
+    m_aVariants {
+     SCR_EditableEntityVariant "{64C90D198B103DFE}" {
+      m_sVariantPrefab "{255BD3A99F30DC74}Prefabs/Vehicles/Wheeled/S105/S105_agave_sport.et"
+     }
+     SCR_EditableEntityVariant "{64C90D19B137B817}" {
+      m_sVariantPrefab "{132F3B1C45BA86D4}Prefabs/Vehicles/Wheeled/S105/S105_beige_sport.et"
+     }
+     SCR_EditableEntityVariant "{64C90D19B8FE5672}" {
+      m_sVariantPrefab "{0DE1A0B91688C1A2}Prefabs/Vehicles/Wheeled/S105/S105_brown_sport.et"
+     }
+     SCR_EditableEntityVariant "{64C90D19BCEAEAD8}" {
+      m_sVariantPrefab "{5FFC311FCB18FDB1}Prefabs/Vehicles/Wheeled/S105/S105_red_sport.et"
+     }
+     SCR_EditableEntityVariant "{64C90D19A4267A03}" {
+      m_sVariantPrefab "{C46C20FB0BD0973C}Prefabs/Vehicles/Wheeled/S105/S105_white_sport.et"
+     }
+    }
+   }
+  }
+ }
 }
