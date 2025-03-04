@@ -1,0 +1,50 @@
+Vehicle : "{54C3CC22DEBD57BE}Prefabs/Vehicles/Wheeled/S105/S105_beige.et" {
+ ID "BBCBA43A9778AE21"
+ components {
+  MeshObject "{51DAA09FEFBFC0E7}" {
+   Materials {
+    MaterialAssignClass "{5F26C9904DD4A99B}" {
+     SourceMaterial "S105Body_mat"
+     AssignedMaterial "{FA024052F804C11B}Assets/Vehicles/Wheeled/S105/Data/S105Body_mat_green_agave.emat"
+    }
+   }
+  }
+  VehicleWheeledSimulation "{731B26FCA2F19855}" {
+   Simulation Wheeled "{4D8B26DEA5F25978}" {
+    Engine Engine Engine {
+     MaxPower 140
+     MaxTorque 180
+     RpmMaxPower 7590
+     RpmMaxTorque 5500
+     Friction 41
+     RpmIdle 1250
+     RpmRedline 8500
+     RpmMax 9000
+    }
+    Clutch Clutch Clutch {
+     MaxClutchTorque 190
+    }
+    Gearbox Gearbox Gearbox {
+     Forward {
+      3.8 2.12 1.571 1.261 1.08
+     }
+    }
+    Axles {
+     Axle "{4D8B26DF957A8E1C}" {
+      Tyre Tyre "{4D8B26DFFD85E58F}" {
+       Roughness 0.2
+       LateralFriction 0.8
+       RollingResistance 0.015
+      }
+     }
+     Axle "{4D8B26DF8CF2F3D8}" {
+      Tyre Tyre "{4D8B26DF33F76974}" {
+       Roughness 0.2
+       RollingResistance 0.8
+      }
+     }
+    }
+   }
+  }
+ }
+}
