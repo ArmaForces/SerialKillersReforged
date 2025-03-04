@@ -31,6 +31,9 @@ class SK_SerialKillersGameMode : SCR_BaseGameMode
 	
 	[Attribute( defvalue: "900", desc: "Redfor inactivity time in seconds before penalty scoring")]
 	int m_iRedforInactivityTime;
+		
+	[Attribute( defvalue: "2", desc: "Maximum number of penalty strikes before blufor wins")]
+	int m_iMaxPenaltyCount;
 	
 	[Attribute( defvalue: "US", desc: "Blufor faction key")]
 	string m_sBluforFactionKey;	
@@ -41,19 +44,33 @@ class SK_SerialKillersGameMode : SCR_BaseGameMode
 	[Attribute( defvalue: "CIV", desc: "Civilian faction key")]
 	string m_sCivilianFactionKey;
 	
-	
+	[RplProp(onRplName: "OnMatchSituationChanged")]
 	protected int SK_RedforScore = 0;
+	
+	[RplProp(onRplName: "OnMatchSituationChanged")]
 	protected int SK_BluforScore = 0;
 	
-	protected ref ScriptInvoker m_OnMatchSituationChanged;
+	[RplProp(onRplName: "OnMatchSituationChanged")]
+	protected int m_iPenaltyStrikeCount = 0;
 	
+	[RplProp(onRplName: "OnMatchSituationChanged")]
+	protected bool m_bHasGameStarted = false;
+	
+	[RplProp(onRplName: "OnMatchSituationChanged")]
 	protected WorldTimestamp m_fVictoryTimestamp;
+	
+	[RplProp(onRplName: "OnMatchSituationChanged")]
 	protected WorldTimestamp m_fStartTimestamp;
+
+	[RplProp(onRplName: "OnMatchSituationChanged")]
+	protected WorldTimestamp m_fLastKillTimestamp;
+	
+	protected ref ScriptInvoker m_OnMatchSituationChanged;
 	
 	const int SK_BluforMapColor = 7; //blue
 	const int SK_CivMapColor = 0; //white
 	
-	private bool m_bHasGameStarted = false;
+	
 	
 	override void EOnInit(IEntity owner)
 	{
@@ -113,12 +130,82 @@ class SK_SerialKillersGameMode : SCR_BaseGameMode
 		m_mapMarkerManager.InsertStaticMarker(marker, false, true);
 	}
 	
+	void StartPenaltyClock()
+	{
+		if (!IsMaster())
+			return;
+		
+		Print("Starting penalty clock");
+		
+		ChimeraWorld world = GetGame().GetWorld();
+		m_fLastKillTimestamp = world.GetServerTimestamp();
+		
+		GetGame().GetCallqueue().CallLater(PenaltyClockCheck, m_iRedforInactivityTime * 1000 + 500);
+		Rpc(RPC_StartPenaltyClock);
+		RPC_StartPenaltyClock();
+	}
+	
+	
+	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
+	void RPC_StartPenaltyClock()
+	{
+		int penaltyTimerMinutes = m_iRedforInactivityTime / 60;
+		string message = string.Format("From now on killers must keep killing within %1 minutes since last kill or they will face penalty", penaltyTimerMinutes);
+		SCR_HintManagerComponent.GetInstance().ShowCustom(message, "", 10, false);
+	}
+	
+	void PenaltyClockCheck()
+	{
+		if (!IsMaster())
+			return;
+		
+		if (!m_bHasGameStarted)
+			return;
+		
+		Print("Checking penalty clock timer", LogLevel.DEBUG);
+		
+		ChimeraWorld world = GetGame().GetWorld();
+		WorldTimestamp timeNow = world.GetServerTimestamp();
+		float timeDiffSeconds = timeNow.DiffSeconds(m_fLastKillTimestamp);
+		if (timeDiffSeconds > m_iRedforInactivityTime)
+		{
+			m_iPenaltyStrikeCount++;
+			PrintFormat("Last kill event was %1s ago, redfor receives penalty for the %2 time", timeDiffSeconds, m_iPenaltyStrikeCount, level:LogLevel.WARNING);
+			
+			if (m_iPenaltyStrikeCount > m_iMaxPenaltyCount)
+			{
+				Print("Maximum number of penalty strikes has been reached. Blufor wins!");
+				SCR_GameModeEndData endData = SCR_GameModeEndData.CreateSimple(
+					EGameOverTypes.ENDREASON_SCORELIMIT,
+					winnerFactionId:m_FactionManager.GetFactionIndex(GetBluforFaction())
+				);
+				EndGameMode(endData);
+			}
+			
+			m_fLastKillTimestamp = timeNow;
+			GetGame().GetCallqueue().CallLater(PenaltyClockCheck, m_iRedforInactivityTime * 1000 + 500);
+			Rpc(RPC_PenalizeRedfor);
+			RPC_PenalizeRedfor();
+			Replication.BumpMe();
+		}
+	}
+	
+	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
+	void RPC_PenalizeRedfor()
+	{
+		SK_BluforScore += m_iBluforKilledScore*5;
+		AddBluforXP(m_iBluforKilledScore * 5);
+		OnMatchSituationChanged();
+		SCR_HintManagerComponent.GetInstance().ShowCustom("Killers were inactive for too long, additional points for blufor!", "", 10, false);
+	}
+	
 	void StartGame()
 	{
 		if (!IsMaster())
 			return;
 		
 		Print("Gamemode starting");
+		GetGame().GetCallqueue().CallLater(StartPenaltyClock, m_iRedforInactivityTime * 1000);
 		StartGameMode();
 		Rpc(RPC_DoStartGame);
 		RPC_DoStartGame();
@@ -211,6 +298,9 @@ class SK_SerialKillersGameMode : SCR_BaseGameMode
 				return;
 		}
 		
+		ChimeraWorld world = GetGame().GetWorld();
+		m_fLastKillTimestamp = world.GetServerTimestamp();
+		GetGame().GetCallqueue().CallLater(PenaltyClockCheck, m_iRedforInactivityTime * 1000 + 500);
 		Replication.BumpMe();
 		GameEndCheck();
 	}
@@ -414,6 +504,30 @@ class SK_SerialKillersGameMode : SCR_BaseGameMode
 	{
 		return m_fStartTimestamp;
 	}
+	
+	
+	override bool RplLoad(ScriptBitReader reader)
+	{
+		super.RplLoad(reader);
+		
+		reader.ReadBool(m_bHasGameStarted);
+		reader.ReadInt(SK_BluforScore);
+		reader.ReadInt(SK_RedforScore);
+		
+		return true;
+	}
+	
+	override bool RplSave(ScriptBitWriter writer)
+	{
+		super.RplSave(writer);
+		
+		writer.WriteBool(m_bHasGameStarted);
+		writer.WriteInt(SK_BluforScore);
+		writer.WriteInt(SK_RedforScore);
+		
+		return true;
+	}
+	
 
 	
 	//------------------------------------------------------------------------------------------------
