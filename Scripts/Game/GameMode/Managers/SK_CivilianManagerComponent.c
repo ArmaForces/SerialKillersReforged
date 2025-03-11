@@ -14,14 +14,20 @@ class SK_CivilianManagerComponent: ScriptComponent
 	[Attribute( defvalue: "250", desc: "Range to search villages for houses")]
 	int m_iVillageRange;
 	
-	[Attribute(defvalue: "3", desc: "City weight in civilian distribution")]
+	[Attribute( defvalue: "125", desc: "Range to search settlements for houses")]
+	int m_iSettlementRange;
+	
+	[Attribute(defvalue: "4", desc: "City weight in civilian distribution")]
 	int m_iCityWieght;
 	
-	[Attribute(defvalue: "2", desc: "Town weight in civilian distribution")]
+	[Attribute(defvalue: "3", desc: "Town weight in civilian distribution")]
 	int m_iTownWeight;
 	
-	[Attribute(defvalue: "1", desc: "Village weight in civilian distribution")]
+	[Attribute(defvalue: "2", desc: "Village weight in civilian distribution")]
 	int m_iVillageWieght;
+	
+	[Attribute(defvalue: "2", desc: "Settlement weight in civilian distribution")]
+	int m_iSettlementWieght;
 	
 	[Attribute( defvalue: "200", desc: "Target number of civilians to spawn")]
 	int m_iTargetCivilianCount;
@@ -43,6 +49,7 @@ class SK_CivilianManagerComponent: ScriptComponent
 	private int m_iCityCount = 0;
 	private int m_iTownCount = 0;
 	private int m_iVillageCount = 0;
+	private int m_iSettlementCount = 0;
 	
 	protected SCR_MapMarkerManagerComponent m_mapMarkerManager;
 	
@@ -73,11 +80,10 @@ class SK_CivilianManagerComponent: ScriptComponent
 			FilterCityEntities,
 			EQueryEntitiesFlags.STATIC
 		);
-		
-		Print("Scanning map done, found " + m_iCityCount + " cities, " + m_iTownCount + " towns and " + m_iVillageCount + " villages", LogLevel.NORMAL);
+		PrintFormat("Scanning map done, found %1 cities, %2 towns, %3 villages and %4 settlements", m_iCityCount, m_iTownCount, m_iVillageCount, m_iSettlementCount);
 		
 		int civTarget = Math.Ceil(m_iTargetCivilianCount / 
-			(m_iCityWieght * m_iCityCount +  m_iTownWeight * m_iTownCount + m_iVillageWieght * m_iVillageCount));
+			(m_iCityWieght * m_iCityCount +  m_iTownWeight * m_iTownCount + m_iVillageWieght * m_iVillageCount + m_iSettlementWieght * m_iSettlementCount));
 		
 		Print("Target civilian count = " + civTarget);
 		
@@ -160,6 +166,11 @@ class SK_CivilianManagerComponent: ScriptComponent
 		{
 			range = m_iCityRange;
 			weight = m_iCityWieght;
+		}
+		else if (mapdesc.GetBaseType() == EMapDescriptorType.MDT_NAME_SETTLEMENT)
+		{
+			range = m_iSettlementRange;
+			weight = m_iSettlementWieght;
 		}
 		
 		int civCount = civTargetCount * weight + s_AIRandomGenerator.RandInt(-weight, weight);
@@ -259,8 +270,12 @@ class SK_CivilianManagerComponent: ScriptComponent
         if (mapdesc)
 		{
 			int baseType = mapdesc.GetBaseType();
-			if (baseType ==  EMapDescriptorType.MDT_NAME_VILLAGE || 
-				baseType == EMapDescriptorType.MDT_NAME_SETTLEMENT) 
+			if (baseType == EMapDescriptorType.MDT_NAME_SETTLEMENT)
+			{
+				m_iSettlementCount += 1;
+				return true;
+			}
+			if (baseType ==  EMapDescriptorType.MDT_NAME_VILLAGE) 
 			{
 				m_iVillageCount += 1;
 				return true;

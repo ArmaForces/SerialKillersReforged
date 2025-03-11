@@ -1,0 +1,44 @@
+$grp GenericEntity : "{38F1FC441995AED9}Prefabs/World/Locations/Eden/Aquatic/Saint_Pierre_Bay_01.et" {
+ Campground {
+  components {
+   SCR_EditableCommentComponent "{529AB059519FE609}" {
+    m_UIInfo SCR_EditableCommentUIInfo "{5298E609432D192D}" {
+     Name "Campground"
+    }
+   }
+   SCR_MapDescriptorComponent "{527892B6ED748CEB}" {
+    DisplayName "Campground"
+    MainType "Name Settlement"
+   }
+  }
+  coords 4596.415 56.413 6248.613
+ }
+ Gillnet {
+  components {
+   SCR_EditableCommentComponent "{529AB059519FE609}" {
+    m_UIInfo SCR_EditableCommentUIInfo "{5298E609432D192D}" {
+     Name "Gillnet"
+    }
+   }
+   SCR_MapDescriptorComponent "{527892B6ED748CEB}" {
+    DisplayName "Gillnet"
+    MainType "Name Settlement"
+   }
+  }
+  coords 6964.296 87.606 8304.188
+ }
+ PennantPass {
+  components {
+   SCR_EditableCommentComponent "{529AB059519FE609}" {
+    m_UIInfo SCR_EditableCommentUIInfo "{5298E609432D192D}" {
+     Name "PennantPass"
+    }
+   }
+   SCR_MapDescriptorComponent "{527892B6ED748CEB}" {
+    DisplayName "PennantPass"
+    MainType "Name Settlement"
+   }
+  }
+  coords 8215.681 223.722 2186.623
+ }
+}

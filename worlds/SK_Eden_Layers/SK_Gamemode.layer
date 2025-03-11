@@ -36,7 +36,10 @@ SK_SerialKillersGameMode SK_SerialKillersGameModeOverride1 : "{ECEEDB2D3737204B}
    m_bPerceivedFactionChangesAffectsAI 1
   }
   SK_CivilianManagerComponent "{60C4D31D2257CD56}" {
-   m_iCityWieght 4
+   m_iVillageRange 120
+   m_iSettlementRange 60
+   m_iCityWieght 3
+   m_iSettlementWieght 1
    m_iTargetCivilianCount 200
    m_fCityVehicleSpawnChance 0.03
    m_fVehicleSpawnChance 0.1
