@@ -1,14 +1,6 @@
 SCR_SpawnPoint prison_spawn : "{CBEC19131E59A675}PrefabsEditable/SpawnPoints/E_SpawnPoint_USSR_Prison.et" {
- components {
-  SCR_MapDescriptorComponent "{54C659A97C47BDE2}" {
-   MainType "Name City"
-  }
- }
  coords 5572.697 89.518 5914.874
  angleY 44.648
- m_Info SCR_UIInfo "{56B4CC4ECACA2C37}" {
-  Name "Prison"
- }
 }
 GenericEntity : "{D76C2E3AA8CC7FAC}PrefabsEditable/Auto/Props/E_Redfor_SupplyCache.et" {
  components {
