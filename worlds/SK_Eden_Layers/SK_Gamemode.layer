@@ -1,0 +1,169 @@
+SCR_AIWorld : "{70CCCF16487C927F}Prefabs/AI/SCR_AIWorld_Eden.et" {
+ components {
+  NavmeshWorldComponent "{5584F30E67F617AD}" {
+   NavmeshSettings NavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{5AF8B9A1594F5532}" : "{8BBC73472092902E}Configs/Navmesh/Navmesh_GM_Eden_Soldier.conf" {
+    }
+   }
+  }
+  NavmeshWorldComponent "{5584F30EEFEE1223}" {
+   NavmeshSettings ChimeraNavmeshWorld "{50FC63BEBE3973C5}" {
+    NavmeshFilesConfig BaseNavmeshFilesConfig "{5CF6FEFBD1A09749}" {
+     NavmeshFile "{C35ECF3276824654}worlds/GameMaster/Navmeshes/GM_Eden_vehicles.nmn"
+    }
+   }
+  }
+ }
+ coords 0 0 0
+ "Active AI limit" 999
+ "Accepted Road Types" 78
+}
+PerceptionManager PerceptionManager1 : "{028DAEAD63E056BE}Prefabs/World/Game/PerceptionManager.et" {
+ coords 4926.701 34.279 10717.344
+}
+RadioManagerEntity : "{B8E09FAB91C4ECCD}Prefabs/Radio/RadioManager.et" {
+ coords 4923.784 29.723 10723.579
+}
+SK_SerialKillersGameMode SK_SerialKillersGameModeOverride1 : "{ECEEDB2D3737204B}Prefabs/ScenarioFramework/SK_SerialKillersGameModeOverride.et" {
+ components {
+  SCR_HintManagerComponent "{5702B54C6CBC9D7F}" {
+   m_bIgnoreHintSettings 1
+  }
+  SCR_NotificationSenderComponent "{56FA84B04BE7D4C0}" {
+   m_iKillFeedType DISABLED
+  }
+  SCR_PerceivedFactionManagerComponent "{61AA7E6E0C6A76F9}" {
+   m_bPerceivedFactionChangesAffectsAI 1
+  }
+  SK_CivilianManagerComponent "{60C4D31D2257CD56}" {
+   m_iVillageRange 120
+   m_iSettlementRange 60
+   m_iCityWieght 3
+   m_iSettlementWieght 1
+   m_iTargetCivilianCount 200
+   m_fCityVehicleSpawnChance 0.03
+   m_fVehicleSpawnChance 0.1
+  }
+  SK_RespawnSystemComponent "{56B2B4793051E7C9}" {
+   m_SpawnLogic SCR_MenuSpawnLogic "{5D36888CC966608A}" {
+   }
+  }
+  SK_SerialKillersConfigComponent "{60C4D31123C481B5}" {
+   m_pPrisonerPrefab "{89DB1658A016C6A9}Prefabs/Characters/Factions/USSR/Character_USSR_Prisoner.et"
+   m_pVehiclePrefabArray {
+    "{E7FD32911D253083}Prefabs/Vehicles/Wheeled/S105/S105_randomized_CIV.et" "{49C909AFD66E90A1}Prefabs/Vehicles/Wheeled/S1203/S1203_transport_randomized.et" "{57A441224AC02CF3}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_covered_CIV_Randomized.et" "{EEAC3A94929A2B55}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_CIV_randomized.et" "{43C4AF1EEBD001CE}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_ambulance.et" "{F649585ABB3706C4}Prefabs/Vehicles/Wheeled/M151A2/M151A2.et" "{1B0D46B41C50873D}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_uncovered_CIV_Randomized.et" "{F649585ABB3706C4}Prefabs/Vehicles/Wheeled/M151A2/M151A2.et" "{64E88B50EE91745E}Prefabs/Vehicles/Wheeled/S1203/S1203_cargo_sport.et" "{5729759DD092B0F7}Prefabs/Vehicles/Wheeled/S1203/S1203_cargo_randomized.et" "{C7CE8044B5E301F5}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_transport_CIV_randomized.et" "{E7FD32911D253083}Prefabs/Vehicles/Wheeled/S105/S105_randomized_CIV.et"
+   }
+  }
+ }
+ coords 6390.344 159.26 6439.98
+ m_bAllowFactionChange 1
+ m_iGameStartDelaySeconds 180
+ m_iGameOverTimeMinutes 45
+ m_iRedforInactivityTime 600
+ {
+  SCR_FactionManager FactionManager_SK1 : "{1A3664A8751E1708}Prefabs/MP/Managers/Factions/FactionManager_SK.et" {
+   coords 0 0 0
+   Factions {
+    SCR_Faction "{56B2B46E999BF3BF}" : "{5EB46557DF2AA24F}Configs/Factions/US.conf" {
+     m_aFriendlyFactionsIds {
+      "CIV"
+     }
+     m_aPredefinedGroups {
+      SCR_GroupPreset "{64B07ACA3FABD65A}" {
+       m_iGroupSize 2
+      }
+      SCR_GroupPreset "{64B07ACA290B4F8D}" {
+       m_iGroupSize 2
+      }
+      SCR_GroupPreset "{64B07ACA2E579478}" {
+       m_iGroupSize 2
+      }
+      SCR_GroupPreset "{64B07ACA2C8D2FC3}" {
+       m_iGroupSize 2
+      }
+      SCR_GroupPreset "{64B07ACA2C19E6B2}" {
+       m_iGroupSize 2
+      }
+      SCR_GroupPreset "{64B07ACA2D3227C8}" {
+       m_iGroupSize 2
+      }
+      SCR_GroupPreset "{64B07ACA2DA6C9E4}" {
+       m_iGroupSize 2
+      }
+      SCR_GroupPreset "{64B07ACA2EC680ED}" {
+       m_iGroupSize 2
+      }
+      SCR_GroupPreset "{64B07ACAD77A390C}" {
+       m_iGroupSize 2
+      }
+      SCR_GroupPreset "{64B07ACAD6D0B446}" {
+       m_iGroupSize 2
+      }
+     }
+     m_bCreateOnlyPredefinedGroups 1
+     m_sFactionBackground "{F8AC305446D5D480}UI/Textures/DeployMenu/Loadout-BG/Loadout_US_BG.imageset"
+    }
+    SCR_Faction "{56B2B46E9AF80999}" : "{09727032415AC39B}Configs/Factions/USSR.conf" {
+     m_aPredefinedGroups {
+      SCR_GroupPreset "{646ADB10AFF348E3}" {
+       m_sGroupName "Terrorists"
+       m_sGroupFlag "{DDEC1C47914FEAA6}Assets/Props/Fabric/Flags/Data/Flag_2_3_SovietArmy_BCR.edds"
+       m_iGroupSize 6
+      }
+     }
+     m_bCreateOnlyPredefinedGroups 1
+     m_sFactionBackground "{21533F2089005056}UI/Textures/DeployMenu/Loadout-BG/Loadout_BG_USSR.imageset"
+    }
+    SCR_Faction "{61667A546239623B}" {
+     m_aEntityCatalogs {
+      SCR_EntityCatalog "{61667A54E4B30285}" {
+       m_eEntityCatalogType GROUP
+       m_aEntityEntryList {
+        SCR_EntityCatalogEntry "{61667A54EDC45164}" {
+         m_sEntityPrefab "{1AF5B9AE5CFD4433}Prefabs/Groups/CIV/Group_CIV.et"
+        }
+       }
+      }
+      SCR_EntityCatalog "{61667A5494ADD142}" {
+       m_eEntityCatalogType ITEM
+      }
+      SCR_EntityCatalog "{61667A548B9F013D}" {
+       m_eEntityCatalogType CHARACTER
+      }
+      SCR_EntityCatalog "{6470A3803B173F69}" {
+       m_eEntityCatalogType VEHICLE
+       m_aEntityEntryList {
+        SCR_EntityCatalogEntry "{6470A3803DD6678B}" {
+         m_sEntityPrefab "{33B2DFDCD0EBA3DB}Prefabs/Items/Equipment/Kits/RepairKit_01/RepairKit_01_wrench.et"
+        }
+       }
+      }
+      SCR_EntityCatalog "{647C9AFABF89348C}" {
+       m_eEntityCatalogType WEAPONS_TRIPOD
+      }
+     }
+    }
+   }
+   m_bCanChangeFactionsPlayable 1
+  }
+ }
+}
+ScriptedChatEntity : "{F69BC912AC8236F9}Prefabs/MP/ScriptedChatEntity.et" {
+ coords 6390.359 159.267 6440.183
+ Channels {
+  BaseChatChannel "{559077E72C7027BC}" {
+  }
+ }
+}
+SCR_MapLocator {
+ m_WorldDirections SCR_MapLocationQuadHint "{5AAA92CD91D1D8F5}" : "{ABA21F381437DFE8}Configs/Map/MapLocatorHints/LocationHintsEveron.conf" {
+ }
+}
+SCR_BaseTaskManager : "{1AC69CD7907FB4F8}Prefabs/Systems/ScenarioFramework/Tasks/TaskManager.et" {
+ coords 6390.292 159.253 6439.787
+}
+MusicManager : "{359452CCDBDD03F5}Prefabs/Sounds/Music/MusicManager_Campaign.et" {
+}
+SCR_LoadoutManager : "{FD4EE3666CA87EA6}Prefabs/MP/Managers/Loadouts/LoadoutManager_SK.et" {
+ coords 6390.307 159.251 6439.739
+}

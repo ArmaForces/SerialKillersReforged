@@ -1,0 +1,129 @@
+SCR_AIGroup : "{242BC3C6BCE96EA5}Prefabs/Groups/INDFOR/Group_FIA_Base.et" {
+ ID "0000000000000001"
+ components {
+  MapDescriptorComponent "{64A8F00FCCECB7AB}" {
+   Enabled 0
+   ImagesetQuadElement "dot"
+   MapItemDescriptor 0
+   MainType Tree
+  }
+  SCR_AIConfigComponent "{512CC1759AE69D6D}" {
+   m_Skill 0
+   m_EnableAttack 0
+   m_EnableCommunication 0
+   m_EnableAimingError 0
+   m_sDefaultWeaponBehaviorTree "{1BA5045FA2493B43}AI/BehaviorTrees/Chimera/Soldier/Idle_Loiter.bt"
+  }
+  SCR_AIGroupMovementComponent "{6126A0E02097C7FF}" {
+   "Max Speed" 59
+   "Navlink Traversal Attempts" 100
+   "Max Stuck Time" 30
+   "Max Distance to Path" 15
+  }
+  SCR_EditableGroupComponent "{50D291F6C83FA532}" {
+   m_UIInfo SCR_EditableGroupUIInfo "{5298E609432D192D}" {
+    Name "Civilian"
+    Icon "{C8ACE2D5D972EEE3}UI/Textures/Editor/EditableEntities/Groups/EditableEntity_Group_Indep_Infantry.edds"
+    m_Image "{A1FEAA3146DDAF38}UI/Textures/EditorPreviews/Characters/CIV/Character_CIV_Randomized.edds"
+    m_sFaction "CIV"
+    m_aAuthoredLabels {
+     4 13
+    }
+    m_aAutoLabels {
+     70
+    }
+    m_EntityChildrenBudgetCost {
+     SCR_EntityBudgetValue "{5D346D54155FA9CA}" {
+      m_BudgetType AI
+      m_Value 1
+     }
+    }
+    m_MilitarySymbol SCR_MilitarySymbol "{5D346D54155FA9B7}" {
+     m_Identity CIVILIAN
+     m_Dimension LAND
+     m_Icons INFANTRY
+     m_Amplifier TEAM
+    }
+   }
+  }
+  SCR_FactionAffiliationComponent "{61667A5E63E6E908}" {
+   "faction affiliation" "CIV"
+  }
+  SCR_GroupIdentityComponent "{56366C5C50AD3CF2}" {
+   m_MilitarySymbol SCR_MilitarySymbol "{56366C5C4E32A359}" {
+    m_Identity CIVILIAN
+    m_Icons 1073741825
+    m_Amplifier NONE
+   }
+  }
+  SCR_PreviewEntityComponent "{56FCFA56AF8F68E9}" : "{6CADA7A88A6265FD}Prefabs/Editor/Components/PreviewEntityComponentClass.ct" {
+   m_bRuntime 0
+   m_aEntries {
+    SCR_BasePreviewEntry "{5D346D54155FA9BE}" {
+     m_iParentID -1
+     m_Mesh ""
+     m_Flags 3
+     m_Shape MESH
+     m_iPivotID ""
+     m_vPosition 0 0 0
+     m_vAngles 0 0 0
+    }
+    SCR_BasePreviewEntry "{5D346D54155FA9BC}" {
+     m_iParentID 0
+     m_Mesh "{7B2420C8BC72373A}Prefabs/Characters/Core/Character_Base_Preview.et"
+     m_Flags 0
+     m_Shape PREFAB
+     m_iPivotID ""
+     m_vPosition 0 0 0
+     m_vAngles 0 0 0
+    }
+    SCR_BasePreviewEntry "{5D346D54155FA9BB}" {
+     m_iParentID 0
+     m_Mesh "{7B2420C8BC72373A}Prefabs/Characters/Core/Character_Base_Preview.et"
+     m_Flags 0
+     m_Shape PREFAB
+     m_iPivotID ""
+     m_vPosition 3 0 -3
+     m_vAngles 0 0 0
+    }
+    SCR_BasePreviewEntry "{5D346D54155FA9BA}" {
+     m_iParentID 0
+     m_Mesh "{7B2420C8BC72373A}Prefabs/Characters/Core/Character_Base_Preview.et"
+     m_Flags 0
+     m_Shape PREFAB
+     m_iPivotID ""
+     m_vPosition -3 0 -3
+     m_vAngles 0 0 0
+    }
+    SCR_BasePreviewEntry "{5D346D54155FA9B9}" {
+     m_iParentID 0
+     m_Mesh "{7B2420C8BC72373A}Prefabs/Characters/Core/Character_Base_Preview.et"
+     m_Flags 0
+     m_Shape PREFAB
+     m_iPivotID ""
+     m_vPosition 6 0 -6
+     m_vAngles 0 0 0
+    }
+    SCR_BasePreviewEntry "{5D346D54155FA9A7}" {
+     m_iParentID 0
+     m_Mesh "{7B2420C8BC72373A}Prefabs/Characters/Core/Character_Base_Preview.et"
+     m_Flags 0
+     m_Shape PREFAB
+     m_iPivotID ""
+     m_vPosition -6 0 -6
+     m_vAngles 0 0 0
+    }
+   }
+  }
+  RplComponent "{524EC5D51F101B32}" {
+   "Rpl State Override" Runtime
+   Streamable Disabled
+  }
+ }
+ DangerEventRange 50
+ DynamicsimLastlodDistance 10000
+ m_faction "CIV"
+ m_aUnitPrefabSlots {
+  "{9340905836271353}Prefabs/Characters/Factions/CIV/SK_Character_CIV_Randomized.et"
+ }
+}

@@ -1,7 +1,25 @@
 SCR_PlayerController : "{225E51284CC95CFA}Prefabs/Characters/Core/DefaultPlayerControllerMP.et" {
  ID "1A9BA6BEFA06E3B1"
  components {
+  SCR_FastTravelComponent "{5DAA74121E45C2EB}" {
+   m_iDistanceToTarget 5
+   m_sDestinationType "SCR_SpawnPoint"
+  }
+  SCR_HUDManagerComponent "{2FDC275D9EBCDB8B}" {
+   InfoDisplays {
+    SK_ScoreInfoDisplay "{647C76AF2E70096B}" {
+     m_LayoutPath "{8AD3B194BF4F97D2}UI/layouts/HUD/SK_ScoreMainHUD.layout"
+     m_eLayer ALWAYS_TOP
+    }
+    SK_ScoreMapInfoDisplay "{647C76AB39E431D7}" {
+     m_LayoutPath "{8AD3B194BF4F97D2}UI/layouts/HUD/SK_ScoreMainHUD.layout"
+     m_eLayer ALWAYS_TOP
+    }
+   }
+  }
   SCR_SpawnerRequestComponent "{616ADC0D20F77EB9}" {
+  }
+  SK_PrisonerComponent "{64AE9115EE81BDD4}" {
   }
  }
 }

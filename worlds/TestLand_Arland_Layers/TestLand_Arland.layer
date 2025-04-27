@@ -7,7 +7,7 @@ RadioManagerEntity RadioManager : "{B8E09FAB91C4ECCD}Prefabs/Radio/RadioManager.
 ScriptedChatEntity ScriptedChatEntity : "{F69BC912AC8236F9}Prefabs/MP/ScriptedChatEntity.et" {
  coords 2033.122 33.482 2024.837
 }
-SCR_BaseTaskManager TaskManager : "{1AC69CD7907FB4F8}Prefabs/ScenarioFramework/Tasks/TaskManager.et" {
+SCR_BaseTaskManager TaskManager : "{1AC69CD7907FB4F8}Prefabs/Systems/ScenarioFramework/Tasks/TaskManager.et" {
  coords 2033.122 32.501 2019.837
  {
   CommentEntity {
@@ -21,4 +21,25 @@ SCR_BaseTaskManager TaskManager : "{1AC69CD7907FB4F8}Prefabs/ScenarioFramework/T
    m_BackgroundTransparency 0
   }
  }
+}
+Vehicle BRDM2_FIA1 : "{442939C9617DF228}Prefabs/Vehicles/Wheeled/BRDM2/BRDM2_FIA.et" {
+ coords 2742.254 4.156 924.733
+ angleY -154.116
+}
+Vehicle S105_rally1 : "{5555DCAFADB8CE2A}Prefabs/Vehicles/Wheeled/S105/S105_rally.et" {
+ components {
+  VehicleWheeledSimulation "{731B26FCA2F19855}" {
+   Simulation Wheeled "{4D8B26DEA5F25978}" {
+    Engine Engine Engine {
+     MaxPower 150
+     MaxTorque 190
+    }
+   }
+  }
+ }
+ coords 3125.047 16.021 2679.899
+ angleY -57.263
+}
+Vehicle Mi8MT_unarmed_civ_blue1 : "{AB9ED3A33EE1B630}Prefabs/Vehicles/Helicopters/Mi8MT/Mi8MT_unarmed_civ_blue.et" {
+ coords 956.254 39.344 2755.291
 }

@@ -24,8 +24,52 @@ GenericEntity : "{6E9190BC2713551D}Prefabs/Compositions/Slotted/BuildableComposi
  {
   GenericEntity : "{79604FB6CD0DD617}Prefabs/Props/Military/Compositions/US/VehicleService_US_Small.et" {
    ID "64548D9BBCA96EE2"
-   coords 0.017 0 -1.971
-   angleY 176.019
+   components {
+    SCR_CampaignBuildingProviderComponent "{5ED49CDEA85A0083}" {
+     m_bIsMasterProvider 1
+     m_fBuildingRadius 60
+     m_iRank RENEGADE
+     m_aBudgetsToEvaluate {
+      SCR_CampaignBuildingBudgetToEvaluateData "{5ED49CDE93BE360C}" {
+       m_eBudget 2147483647
+      }
+      SCR_CampaignBuildingCooldownWithRankBudgetToEvaluateData "{5EE71CAB5BFCF9A3}" {
+       m_aCustomCooldownData {
+        SCR_CooldownData "{5EEEF52515996867}" {
+         m_fDefaultTimeMultiplier 15
+        }
+        SCR_CooldownData "{5EEEF5250BF881BF}" {
+         m_fDefaultTimeMultiplier 15
+        }
+        SCR_CooldownData "{5EEEF5250BBA697C}" {
+         m_fDefaultTimeMultiplier 15
+        }
+        SCR_CooldownData "{5EEEF5250B54777E}" {
+         m_fDefaultTimeMultiplier 15
+        }
+        SCR_CooldownData "{5EEEF5250B763DE5}" {
+         m_fDefaultTimeMultiplier 15
+        }
+       }
+      }
+      SCR_CampaignBuildingRankBudgetToEvaluateData "{60EC916CF34D9DFF}" {
+       m_eBudget RANK_RENEGADE
+      }
+      SCR_CampaignBuildingRankBudgetToEvaluateData "{64AA9AFCD731914B}" {
+       m_eBudget RANK_PRIVATE
+      }
+     }
+     m_aAvailableTraits {
+      54 53 51 50
+     }
+    }
+    SCR_CatalogEntitySpawnerComponent "{5D22B968F23A847A}" {
+     m_bSuppliesConsumptionEnabled 0
+     m_iCustomSupplies 1
+    }
+   }
+   coords -3.739 0 2.348
+   angleY 139.822
   }
  }
 }

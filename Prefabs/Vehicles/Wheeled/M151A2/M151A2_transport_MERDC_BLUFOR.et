@@ -1,0 +1,47 @@
+Vehicle : "{47D94E1193A88497}Prefabs/Vehicles/Wheeled/M151A2/M151A2_transport.et" {
+ ID "44EC665ABD2FF04B"
+ components {
+  MeshObject "{51DAA09FEFBFC0E7}" {
+   Materials {
+    MaterialAssignClass "{646ABB4E76B3BDE0}" {
+     SourceMaterial "M151A2_Wheels"
+     AssignedMaterial "{F134A7D2E04B674E}Assets/Vehicles/Wheeled/M151A2/Data/M151A2_Wheels_MERDC.emat"
+    }
+    MaterialAssignClass "{646ABB4E76B3BC0F}" {
+     SourceMaterial "M151A2_Body"
+     AssignedMaterial "{8E56AB1F90705C7A}Assets/Vehicles/Wheeled/M151A2/Data/M151A2_Body_MERDC.emat"
+    }
+    MaterialAssignClass "{646ABB4E76B3BC0C}" {
+     SourceMaterial "M151A2_Wheel_Spare"
+     AssignedMaterial "{1E76B93EC0C35CA3}Assets/Vehicles/Wheeled/M151A2/Data/M151A2_Wheel_Spare_MERDC.emat"
+    }
+    MaterialAssignClass "{646ABB4E76B3BC0A}" {
+     SourceMaterial "M151A2_Decals"
+     AssignedMaterial "{9E7DD7368234C794}Assets/Vehicles/Wheeled/M151A2/Data/M151A2_Decals_MERDC.emat"
+    }
+   }
+  }
+  SCR_EditableVehicleComponent "{50DEB7C26B5EB312}" {
+   m_UIInfo SCR_EditableVehicleUIInfo "{5298E609432D192D}" {
+    Name "#AR-Vehicle_M151A2_Name"
+    m_Image "{C4EF1FEA56C61A62}UI/Textures/EditorPreviews/Vehicles/Wheeled/M151A2/M151A2_transport_MERDC.edds"
+    m_sFaction "US"
+    m_aAutoLabels +{
+    }
+    m_EntityBudgetCost {
+     SCR_EntityBudgetValue "{646ABB4E679C23A1}" {
+      m_BudgetType RANK_CORPORAL
+      m_Value 1
+     }
+    }
+   }
+  }
+  SlotManagerComponent "{55BCE45E438E4CFF}" {
+   Slots {
+    RegisteringComponentSlotInfo Canvas {
+     Prefab "{2C1E5C34A73DD234}Prefabs/Vehicles/Wheeled/M151A2/M151A2_canvas_roof_MERDC.et"
+    }
+   }
+  }
+ }
+}

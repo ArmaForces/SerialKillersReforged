@@ -1,0 +1,72 @@
+GenericEntity Area1 : "{C72F956E4AC6A6E7}Prefabs/Systems/ScenarioFramework/Components/Area.et" {
+ components {
+  SCR_ScenarioFrameworkArea "{59E8CDC50969206E}" {
+   m_iDynamicDespawnRange 7500
+  }
+ }
+ coords 5174.505 40.438 10456.483
+ {
+  $grp GenericEntity : "{E537867C6E760514}Prefabs/Systems/ScenarioFramework/Components/SlotMarker.et" {
+   SlotMarker2 {
+    components {
+     SCR_ScenarioFrameworkSlotMarker "{5EA2BD9901E5E82E}" {
+      m_MapMarkerType SCR_ScenarioFrameworkMarkerCustom "{64D4A0BC99863DD6}" {
+       m_sMapMarkerText "Airfield"
+       m_eMapMarkerIcon FLAG2
+       m_eMapMarkerColor BLUFOR
+      }
+     }
+    }
+    coords -268.552 -4.93 1318.352
+   }
+   SlotMarker1 {
+    components {
+     SCR_ScenarioFrameworkSlotMarker "{5EA2BD9901E5E82E}" {
+      m_MapMarkerType SCR_ScenarioFrameworkMarkerCustom "{64D4A0BC99863DD6}" {
+       m_sMapMarkerText "Levie"
+       m_eMapMarkerIcon FLAG2
+       m_eMapMarkerColor BLUFOR
+      }
+     }
+    }
+    coords 2293.945 129.517 -6169.655
+   }
+   SlotMarker5 {
+    components {
+     SCR_ScenarioFrameworkSlotMarker "{5EA2BD9901E5E82E}" {
+      m_MapMarkerType SCR_ScenarioFrameworkMarkerCustom "{64D4A0BC99863DD6}" {
+       m_sMapMarkerText "Entre Deux"
+       m_eMapMarkerIcon FLAG2
+       m_eMapMarkerColor BLUFOR
+      }
+     }
+    }
+    coords 510.942 178.312 -3388.428
+   }
+   SlotMarker6 {
+    components {
+     SCR_ScenarioFrameworkSlotMarker "{5EA2BD9901E5E82E}" {
+      m_MapMarkerType SCR_ScenarioFrameworkMarkerCustom "{64D4A0BC99863DD6}" {
+       m_sMapMarkerText "Lamentin"
+       m_eMapMarkerIcon FLAG2
+       m_eMapMarkerColor BLUFOR
+      }
+     }
+    }
+    coords -4113.358 -37.217 -4434.23
+   }
+   SlotMarker7 {
+    components {
+     SCR_ScenarioFrameworkSlotMarker "{5EA2BD9901E5E82E}" {
+      m_MapMarkerType SCR_ScenarioFrameworkMarkerCustom "{64D4A0BC99863DD6}" {
+       m_sMapMarkerText "Prison"
+       m_eMapMarkerIcon FORTIFICATION
+       m_eMapMarkerColor BLUFOR
+      }
+     }
+    }
+    coords 391.79 53.143 -4538.803
+   }
+  }
+ }
+}

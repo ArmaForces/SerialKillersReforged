@@ -1,0 +1,33 @@
+SCR_ChimeraCharacter : "{76EC8248377D0989}Prefabs/Characters/Factions/CIV/Businessman/Character_CIV_Businessman_Base.et" {
+ ID "520EC961A090B1EE"
+ components {
+  SCR_EditableCharacterComponent "{520EA1D2F659C85C}" {
+   m_UIInfo SCR_EditableEntityUIInfo "{5298E609432D192D}" {
+    m_Image "{E89D7A100ABD03DC}UI/Textures/EditorPreviews/Characters/CIV/Character_CIV_Businessman_1.edds"
+   }
+  }
+  BaseLoadoutManagerComponent "{520EA1D2DB11821E}" {
+   Slots {
+    LoadoutSlotInfo Hat {
+     Prefab ""
+    }
+    LoadoutSlotInfo Jacket {
+     Prefab "{E652D625A46A00FC}Prefabs/Characters/Uniforms/Jacket_Suit_01/Jacket_Suit_01_Grey_V1.et"
+    }
+    LoadoutSlotInfo Pants {
+     Prefab "{401072A652DD9849}Prefabs/Characters/Uniforms/Pants_Suit_01/Pants_Suit_01_grey_V1.et"
+    }
+    LoadoutSlotInfo Back {
+     Prefab "{FDA7B6630DB87991}Prefabs/Items/Equipment/Backpacks/Backpack_M70_Swiss.et"
+    }
+   }
+  }
+  SCR_InventoryStorageManagerComponent "{520EA1D2DB118DE5}" {
+   InitialInventoryItems {
+    ItemsInitConfigurationItem "{60DCBCECAC6C6E65}" {
+     TargetStorage "Prefabs/Characters/Uniforms/Pants_Suit_01/Pants_Suit_01_grey_V1.et"
+    }
+   }
+  }
+ }
+}

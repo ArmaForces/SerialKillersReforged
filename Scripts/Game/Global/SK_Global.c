@@ -12,8 +12,6 @@ class SK_Global
 	
 	static vector FindSafeSpawnPosition(vector pos, vector mins = "-0.5 0 -0.5", vector maxs = "0.5 2 0.5")
 	{
-		//a crude and brute-force way to find a spawn position, try to improve this later
-		vector foundpos = pos;
 		int i = 0;
 		
 		BaseWorld world = GetGame().GetWorld();
@@ -23,8 +21,7 @@ class SK_Global
 		{
 			i++;
 			
-			//Get a random vector in a 3m radius sphere centered on pos and above the ground
-			vector checkpos = s_AIRandomGenerator.GenerateRandomPointInRadius(0,3,pos,false);
+			vector checkpos = s_AIRandomGenerator.GenerateRandomPointInRadius(0,10,pos,false);
 			checkpos[1] = pos[1] + s_AIRandomGenerator.RandFloatXY(0, 2);
 						
 			//check if a box on that position collides with anything
@@ -33,21 +30,15 @@ class SK_Global
 			trace.Start = checkpos;
 			trace.Mins = mins;
 			trace.Maxs = maxs;
-			
-			float result = world.TracePosition(trace, null);
 				
-			if (result < 0)
+			if (world.TracePosition(trace, null) >= 0)
 			{
-				//collision, try again
-				continue;
-			}else{
-				//no collision, this pos is safe
-				foundpos = checkpos;
-				break;
+				return checkpos;
 			}
 		}
 		
-		return foundpos;
+		PrintFormat("Safe spawn not found %1", pos, level: LogLevel.WARNING);
+		return "0 0 0";
 	}
 	
 		
@@ -56,7 +47,6 @@ class SK_Global
 		EntitySpawnParams spawnParams();
 
 		spawnParams.TransformMode = ETransformMode.WORLD;
-
 		Math3D.AnglesToMatrix(orientation, spawnParams.Transform);
 		spawnParams.Transform[3] = origin;
 
@@ -92,5 +82,65 @@ class SK_Global
 		}
 		
 		return pos;
+	}
+	
+	static string GetLocalizationString(IEntity unit)
+	{
+		SCR_EditableEntityCore core = SCR_EditableEntityCore.Cast(SCR_EditableEntityCore.GetInstance(SCR_EditableEntityCore));
+	       if (!core)
+	           return "";
+
+		vector posUnit = unit.GetOrigin();
+		
+		SCR_EditableEntityComponent nearest = core.FindNearestEntity(posUnit, EEditableEntityType.COMMENT, EEditableEntityFlag.LOCAL);
+		if (!nearest)
+			return "";
+		GenericEntity nearestLocation = nearest.GetOwner();
+		SCR_MapDescriptorComponent mapDescr = SCR_MapDescriptorComponent.Cast(nearestLocation.FindComponent(SCR_MapDescriptorComponent));
+		string closestLocationName;
+		if (!mapDescr)
+			return "";
+		MapItem item = mapDescr.Item();
+		closestLocationName = item.GetDisplayName();
+
+		vector lastLocationPos = nearestLocation.GetOrigin();
+	
+		LocalizedString closeLocationAzimuth;
+		vector result = posUnit - lastLocationPos;
+		result.Normalize();
+	
+		float angle1 = vector.DotXZ(result,vector.Forward);
+		float angle2 = vector.DotXZ(result,vector.Right);
+		const float angleA = 0.775;
+		const float angleB = 0.325;
+			
+		if (angle2 > 0)
+		{
+			if (angle1 >= angleA)
+				closeLocationAzimuth = "#AR-MapLocationHint_DirectionNorth";
+			if (angle1 < angleA && angle1 >= angleB )
+				closeLocationAzimuth = "#AR-MapLocationHint_DirectionNorthEast";
+			if (angle1 < angleB && angle1 >=-angleB)
+				closeLocationAzimuth = "#AR-MapLocationHint_DirectionEast";
+			if (angle1 < -angleB && angle1 >=-angleA)
+				closeLocationAzimuth = "#AR-MapLocationHint_DirectionSouthEast";
+			if (angle1 < -angleA)
+				closeLocationAzimuth = "#AR-MapLocationHint_DirectionSouth";
+		}
+		else
+		{
+			if (angle1 >= angleA)
+				closeLocationAzimuth = "#AR-MapLocationHint_DirectionNorth";
+			if (angle1 < angleA && angle1 >= angleB )
+				closeLocationAzimuth = "#AR-MapLocationHint_DirectionNorthWest";
+			if (angle1 < angleB && angle1 >=-angleB)
+				closeLocationAzimuth = "#AR-MapLocationHint_DirectionWest";
+			if (angle1 < -angleB && angle1 >=-angleA)
+				closeLocationAzimuth = "#AR-MapLocationHint_DirectionSouthWest";
+			if (angle1 < -angleA)
+				closeLocationAzimuth = "#AR-MapLocationHint_DirectionSouth";
+		};
+		
+		return WidgetManager.Translate(closeLocationAzimuth, closestLocationName);
 	}
 }

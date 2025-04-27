@@ -1,0 +1,119 @@
+SCR_SpawnPoint : "{987991DCED3DC197}PrefabsEditable/SpawnPoints/E_SpawnPoint.et" {
+ ID "52E65E9446A3DC1D"
+ components {
+  SCR_EditableSpawnPointComponent "{52E65E94E3532698}" {
+   m_UIInfo SCR_EditableDescriptorUIInfo "{52E65E94C47560A2}" {
+    m_Image "{634887D6ACE69536}UI/Textures/EditorPreviews/Auto/Systems/SpawnPoints/E_SpawnPoint_USSR.edds"
+    m_sFaction "USSR"
+    m_aAuthoredLabels + {
+     10
+    }
+   }
+  }
+  SCR_FactionAffiliationComponent "{5A5286F8ED58877B}" {
+   "faction affiliation" "USSR"
+  }
+  SCR_MapDescriptorComponent "{54C659A97C47BDE2}" {
+   Enabled 0
+   DisplayName "Prison"
+   MainType "Name City"
+  }
+  SK_PrisonManagerComponent "{64AE912719A5AB0D}" {
+  }
+ }
+ coords 0 0 0
+ m_fSpawnRadius 7
+ m_sFaction "USSR"
+ m_Info SCR_UIInfo "{56B4CC4ECACA2C37}" {
+  Name "Prison"
+ }
+ m_fSpawnPositionUsageRange 7
+ m_bSpawnPointEnabled 0
+ {
+  GenericEntity : "{57B5CA74735D6E39}PrefabsEditable/Auto/Structures/Signs/Military/E_SignFlag_USSR_01.et" {
+   ID "64AE911F080BD839"
+   components {
+    ActionsPerformerComponent "{64AE911F2059239F}" {
+    }
+    SCR_DestructionMultiPhaseComponent "{5496C1EF00137501}" {
+     Enabled 0
+    }
+    ActionsManagerComponent "{64AE911F226CB017}" {
+     ActionContexts {
+      UserActionContext "{64AE911F26211FBB}" {
+       UIInfo UIInfo "{64AE911F2A611F3B}" {
+        Name "Release prrisoner"
+       }
+       ContextName "RELEASE_PRISONER"
+       Position PointInfo "{64AE912367898E58}" {
+        Offset 0 1 0
+       }
+       Height 1
+      }
+     }
+     additionalActions {
+      SK_ReleasePrisonerAction "{64AE91220268B9E1}" {
+       ParentContextList {
+        "RELEASE_PRISONER"
+       }
+       UIInfo UIInfo "{64AE91220E8D655E}" {
+        Name "Release prisoner"
+       }
+       ActionTitle "RELEASE_PRISONER"
+       Duration 1.5
+      }
+     }
+    }
+   }
+   coords 1.105 0.356 10.972
+  }
+  $grp SCR_DestructibleEntity : "{7B75DBCC0EDB5EE3}Prefabs/Structures/Walls/Net/NetFence_03/NetFence_03_8m.et" {
+   {
+    ID "64AE9100847ED16D"
+    coords -7 0 -7
+    Enabled 0
+   }
+   {
+    ID "64AE9100AF720532"
+    coords 1 0 -7
+    Enabled 0
+   }
+   {
+    ID "64AE910138CA49C5"
+    coords 9 0 1
+    angleY 270
+    Enabled 0
+   }
+   {
+    ID "64AE91013EA14D8E"
+    coords 9 0 -7
+    angleY 270
+    Enabled 0
+   }
+   {
+    ID "64AE91019E23A853"
+    coords -7 0 1
+    angleY 90
+    Enabled 0
+   }
+   {
+    ID "64AE9101AFBF2AAA"
+    coords -7 0 9
+    angleY 90
+    Enabled 0
+   }
+   {
+    ID "64AE911E5E0D8A11"
+    coords 1 0 9
+    angleY 180
+    Enabled 0
+   }
+   {
+    ID "64AE911E6B5A52FD"
+    coords 9 0 9
+    angleY -180
+    Enabled 0
+   }
+  }
+ }
+}

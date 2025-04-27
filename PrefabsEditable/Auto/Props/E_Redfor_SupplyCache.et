@@ -1,0 +1,80 @@
+GenericEntity : "{DA3AEFBCF6C37F82}Prefabs/Props/Military/SupplyBox/SupplyStack/SupplyStack_01/SupplyStack_01_V1_storage_FIA_covered.et" {
+ ID "F0DBA538AC2A0552"
+ components {
+  SCR_EditableEntityComponent "{5EF0C52B735501E3}" : "{996046FE206C699A}Prefabs/Editor/Components/Default_SCR_EditableEntityComponent.ct" {
+   m_UIInfo SCR_EditableEntityUIInfo "{5298E609432D192D}" {
+    Name "Redfor supply cache"
+    m_Image ""
+    m_aAuthoredLabels {
+    }
+    m_aAutoLabels {
+     108 1 121
+    }
+   }
+  }
+  SCR_PreviewEntityComponent "{5EF0C52B73558434}" : "{6CADA7A88A6265FD}Prefabs/Editor/Components/PreviewEntityComponentClass.ct" {
+   m_bRuntime 0
+   m_aEntries {
+    SCR_BasePreviewEntry "{6470E4971DFA1C76}" {
+     m_iParentID -1
+     m_Mesh "{5172A6E151032216}Assets/Props/Military/AmmoBox/EquipmentBoxStack/EquipmentBoxStack_01_V1.xob"
+     m_Flags EDITABLE
+     m_Shape MESH
+     m_iPivotID ""
+     m_vScale 1 1 1
+     m_vPosition 0 0 0
+     m_vAngles 0 0 0
+    }
+    SCR_BasePreviewEntry "{6470E4971DFA1C8B}" {
+     m_iParentID 0
+     m_Mesh "{B7399E5183564354}Assets/Props/Military/AmmoBox/EquipmentBoxStack/EquipmentBoxStack_01_V1_cover.xob"
+     m_Flags 0
+     m_Shape MESH
+     m_iPivotID ""
+     m_vScale 1 1 1
+     m_vPosition 0 0 0
+     m_vAngles 0 0 0
+    }
+   }
+  }
+  SCR_ResourceComponent "{5D247A59598D71AE}" {
+   m_aContainers {
+    SCR_ResourceContainer "{5D3CDAE74F1A6127}" {
+     m_fResourceValueCurrent 0
+     m_eOnEmptyBehavior NONE
+    }
+   }
+   m_bEnableDebugVisualization 0
+  }
+  SCR_UniversalInventoryStorageComponent "{6470E49930570B54}" {
+   Attributes SCR_IdentityItemAttributeCollection "{6478C89F6B161298}" {
+    ItemDisplayName UIInfo "{6478C89F6DD7B7FE}" {
+     Name "Supply cache"
+    }
+    ItemPhysAttributes ItemPhysicalAttributes "{6478FB00D1D07083}" {
+     Weight 20
+    }
+    CustomAttributes {
+     SCR_CharacterInventoryPreviewAttributes "{6478C89F1C7A3D81}" {
+     }
+    }
+    m_Size SLOT_3x3
+    m_SlotType SLOT_ANY
+    m_bStackable 0
+   }
+   StoragePurpose 111
+   UseCapacityCoefficient 1
+   m_fMaxWeight 10000
+   m_aSlotsToShow {
+   }
+  }
+  SK_StorageCacheComponent "{6479005B57C0A487}" {
+   m_iItemQuantity 40
+   m_sFactionItemKey "USSR"
+   m_eSupportedArsenalItemTypes 459774
+   m_eSupportedArsenalItemModes 126
+  }
+  SCR_InventoryStorageManagerComponent "{6470E4990D7C3E87}" {
+  }
+ }
+}

@@ -31,6 +31,9 @@ GenericEntity : "{5E921FB8C70456F1}PrefabsEditable/Auto/Props/Military/SupplyBox
   }
  }
 }
+Vehicle UAZ469_covered_BLUFOR_blue1 : "{B472B2B30A3552B2}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_covered_BLUFOR_blue.et" {
+ coords 1888.934 2.702 1523.979
+}
 GenericEntity : "{B642B7B2BF172CF5}Prefabs/Compositions/Misc/CustomEntities/InteractionPoints/ArsenalBox_US_Weapons_NoAffiliation.et" {
  components {
   SCR_ArsenalComponent "{56F2C6D1431AD9AF}" {
@@ -41,47 +44,8 @@ GenericEntity : "{B642B7B2BF172CF5}Prefabs/Compositions/Misc/CustomEntities/Inte
  angleY -141.492
 }
 SCR_SpawnPoint : "{CEA2B24051A44525}PrefabsEditable/SpawnPoints/E_SpawnPoint_US.et" {
- coords 2752.718 79.534 1646.793
- m_Info SCR_UIInfo "{56B4CC4ECACA2C37}" {
- }
+ coords 2752.021 77.357 1651.089
 }
 GenericEntity : "{DC50C3296A8BACB2}Prefabs/Compositions/SK_VehicleSpawnPoint.et" {
  coords 2752.658 77.146 1653.42
- {
-  GenericEntity {
-   ID "64548D9BBCA96EE2"
-   components {
-    SCR_CampaignBuildingProviderComponent "{5ED49CDEA85A0083}" {
-     m_bIsMasterProvider 1
-     m_fBuildingRadius 60
-     m_aBudgetsToEvaluate {
-      SCR_CampaignBuildingCooldownWithRankBudgetToEvaluateData "{5EE71CAB5BFCF9A3}" {
-       m_aCustomCooldownData {
-        SCR_CooldownData "{5EEEF52515996867}" {
-         m_fDefaultTimeMultiplier 15
-        }
-        SCR_CooldownData "{5EEEF5250BF881BF}" {
-         m_fDefaultTimeMultiplier 15
-        }
-        SCR_CooldownData "{5EEEF5250BBA697C}" {
-         m_fDefaultTimeMultiplier 15
-        }
-        SCR_CooldownData "{5EEEF5250B54777E}" {
-         m_fDefaultTimeMultiplier 15
-        }
-        SCR_CooldownData "{5EEEF5250B763DE5}" {
-         m_fDefaultTimeMultiplier 15
-        }
-       }
-      }
-     }
-     m_aAvailableTraits {
-      54 53 51 50
-     }
-    }
-   }
-   coords -3.739 0 2.348
-   angleY 139.822
-  }
- }
 }

@@ -1,0 +1,4 @@
+SCR_SpawnPoint prison_spawn : "{CBEC19131E59A675}PrefabsEditable/SpawnPoints/E_SpawnPoint_USSR_Prison.et" {
+ coords 1232.849 39 2391.63
+ angleY 65.306
+}

@@ -1,0 +1,17 @@
+MetaFileClass {
+ Name "{D998E79A8D5128AA}Prefabs/Characters/Factions/CIV/Dockworker/Character_CIV_Dockworker_BP3.et"
+ Configurations {
+  EntityTemplateResourceClass PC {
+  }
+  EntityTemplateResourceClass XBOX_ONE : PC {
+  }
+  EntityTemplateResourceClass XBOX_SERIES : PC {
+  }
+  EntityTemplateResourceClass PS4 : PC {
+  }
+  EntityTemplateResourceClass PS5 : PC {
+  }
+  EntityTemplateResourceClass HEADLESS : PC {
+  }
+ }
+}

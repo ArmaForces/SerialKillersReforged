@@ -1,0 +1,242 @@
+$grp SCR_SpawnPoint : "{45225582B358C31A}PrefabsEditable/SpawnPoints/E_SpawnPoint_USSR.et" {
+ {
+  coords 1118.878 40.541 11511.985
+  m_Info SCR_UIInfo "{56B4CC4ECACA2C37}" {
+   Name "Arsenal"
+  }
+ }
+ {
+  coords 7097.266 106.698 5857.989
+ }
+ {
+  coords 4746.098 163.893 7275.533
+ }
+ {
+  coords 9233.948 85.906 1546.608
+ }
+ {
+  coords 8732.764 135.614 3347.594
+ }
+ {
+  coords 5805.222 5.132 9803.573
+ }
+ {
+  coords 5022.916 27.174 9915.149
+ }
+ {
+  coords 4261.184 75.134 7920.002
+ }
+ {
+  coords 2408.368 117.012 5586.628
+ }
+ {
+  coords 2998.019 113.567 6105.982
+ }
+ {
+  coords 4414.248 63.863 4993.988
+ }
+ {
+  coords 5203.434 14.531 3972.231
+ }
+ {
+  coords 7306.004 139.06 2487.642
+ }
+ {
+  coords 11612.008 1.426 2211.084
+ }
+ {
+  coords 5650.828 132.666 6580.642
+ }
+ {
+  coords 4435.698 6.295 11027.563
+ }
+}
+Vehicle S1203_cargo_sport1 : "{64E88B50EE91745E}Prefabs/Vehicles/Wheeled/S1203/S1203_cargo_sport.et" {
+ coords 4492.902 57.419 6190.082
+}
+GenericEntity : "{88B3A9FF09D43C1B}Prefabs/Items/Equipment/Maps/PaperMap_FastTravel_CO.et" {
+ coords 1116.425 41.842 11511.688
+ angleX 0
+ angleY 116.465
+}
+GenericEntity : "{8CA93330EA43EA78}PrefabsEditable/Auto/Props/Military/Compositions/USSR/E_ArsenalBox_USSR.et" {
+ components {
+  SCR_ArsenalComponent "{56F2C6D1431AD9AF}" {
+   m_eSupportedArsenalItemTypes 1048574
+  }
+ }
+ coords 1117.605 41.045 11515.277
+ angleY -63.034
+}
+$grp GenericEntity : "{C72F956E4AC6A6E7}Prefabs/Systems/ScenarioFramework/Components/Area.et" {
+ SupplyCache {
+  coords 1096.625 40.449 11524.412
+  {
+   GenericEntity Layer2 : "{5F9FFF4BF027B3A3}Prefabs/Systems/ScenarioFramework/Components/Layer.et" {
+    components {
+     SCR_ScenarioFrameworkLayerBase "{5A2283EA2A0B4B14}" {
+      m_SpawnChildren RANDOM_MULTIPLE
+      m_iRandomPercent 45
+     }
+    }
+    coords 0 0 0
+    {
+     $grp GenericEntity : "{AA01691FDC4E9167}Prefabs/Systems/ScenarioFramework/Components/Slot.et" {
+      Slot2 {
+       components {
+        SCR_ScenarioFrameworkSlotBase "{5A22E1D67E712EC8}" {
+         m_sObjectToSpawn "{D76C2E3AA8CC7FAC}PrefabsEditable/Auto/Props/E_Redfor_SupplyCache.et"
+        }
+       }
+       coords 1205.324 -23.071 -3985.133
+      }
+      Slot6 {
+       components {
+        SCR_ScenarioFrameworkSlotBase "{5A22E1D67E712EC8}" {
+         m_sObjectToSpawn "{D76C2E3AA8CC7FAC}PrefabsEditable/Auto/Props/E_Redfor_SupplyCache.et"
+        }
+       }
+       coords 2378.554 62.412 -5070.153
+      }
+      Slot7 {
+       components {
+        SCR_ScenarioFrameworkSlotBase "{5A22E1D67E712EC8}" {
+         m_sObjectToSpawn "{D76C2E3AA8CC7FAC}PrefabsEditable/Auto/Props/E_Redfor_SupplyCache.et"
+        }
+       }
+       coords 3217.633 30.693 -2939.944
+      }
+      Slot8 {
+       components {
+        SCR_ScenarioFrameworkSlotBase "{5A22E1D67E712EC8}" {
+         m_sObjectToSpawn "{D76C2E3AA8CC7FAC}PrefabsEditable/Auto/Props/E_Redfor_SupplyCache.et"
+        }
+       }
+       coords 4405.273 -16.154 -1319.558
+      }
+      Slot9 {
+       components {
+        SCR_ScenarioFrameworkSlotBase "{5A22E1D67E712EC8}" {
+         m_sObjectToSpawn "{D76C2E3AA8CC7FAC}PrefabsEditable/Auto/Props/E_Redfor_SupplyCache.et"
+        }
+       }
+       coords 3320.363 -17.529 586.627
+      }
+      Slot11 {
+       components {
+        SCR_ScenarioFrameworkSlotBase "{5A22E1D67E712EC8}" {
+         m_sObjectToSpawn "{D76C2E3AA8CC7FAC}PrefabsEditable/Auto/Props/E_Redfor_SupplyCache.et"
+        }
+       }
+       coords 4708.866 -38.688 -7965.668
+      }
+      Slot12 {
+       components {
+        SCR_ScenarioFrameworkSlotBase "{5A22E1D67E712EC8}" {
+         m_sObjectToSpawn "{D76C2E3AA8CC7FAC}PrefabsEditable/Auto/Props/E_Redfor_SupplyCache.et"
+        }
+       }
+       coords 3692.09 139.01 -4532.386
+      }
+      Slot13 {
+       components {
+        SCR_ScenarioFrameworkSlotBase "{5A22E1D67E712EC8}" {
+         m_sObjectToSpawn "{D76C2E3AA8CC7FAC}PrefabsEditable/Auto/Props/E_Redfor_SupplyCache.et"
+        }
+       }
+       coords 7145.165 183.6 -7145.336
+      }
+      Slot14 {
+       components {
+        SCR_ScenarioFrameworkSlotBase "{5A22E1D67E712EC8}" {
+         m_sObjectToSpawn "{D76C2E3AA8CC7FAC}PrefabsEditable/Auto/Props/E_Redfor_SupplyCache.et"
+        }
+       }
+       coords 6854.681 -28.637 -10068.96
+      }
+      Slot15 {
+       components {
+        SCR_ScenarioFrameworkSlotBase "{5A22E1D67E712EC8}" {
+         m_sObjectToSpawn "{D76C2E3AA8CC7FAC}PrefabsEditable/Auto/Props/E_Redfor_SupplyCache.et"
+        }
+       }
+       coords 7565.192 154.005 -10099.309
+      }
+      Slot16 {
+       components {
+        SCR_ScenarioFrameworkSlotBase "{5A22E1D67E712EC8}" {
+         m_sObjectToSpawn "{D76C2E3AA8CC7FAC}PrefabsEditable/Auto/Props/E_Redfor_SupplyCache.et"
+        }
+       }
+       coords 9538.34 145.488 -9065.875
+      }
+      Slot17 {
+       components {
+        SCR_ScenarioFrameworkSlotBase "{5A22E1D67E712EC8}" {
+         m_sObjectToSpawn "{D76C2E3AA8CC7FAC}PrefabsEditable/Auto/Props/E_Redfor_SupplyCache.et"
+        }
+       }
+       coords 10570.709 -31.335 -10108.692
+      }
+      Slot5 {
+       components {
+        SCR_ScenarioFrameworkSlotBase "{5A22E1D67E712EC8}" {
+         m_sObjectToSpawn "{D76C2E3AA8CC7FAC}PrefabsEditable/Auto/Props/E_Redfor_SupplyCache.et"
+        }
+       }
+       coords 1775.376 53.747 -6665.39
+      }
+      Slot18 {
+       components {
+        SCR_ScenarioFrameworkSlotBase "{5A22E1D67E712EC8}" {
+         m_sObjectToSpawn "{D76C2E3AA8CC7FAC}PrefabsEditable/Auto/Props/E_Redfor_SupplyCache.et"
+        }
+       }
+       coords 213.812 6.084 -5467.993
+      }
+      Slot19 {
+       components {
+        SCR_ScenarioFrameworkSlotBase "{5A22E1D67E712EC8}" {
+         m_sObjectToSpawn "{D76C2E3AA8CC7FAC}PrefabsEditable/Auto/Props/E_Redfor_SupplyCache.et"
+        }
+       }
+       coords 6009.069 15.489 -3351.698
+      }
+      Slot27 {
+       components {
+        SCR_ScenarioFrameworkSlotBase "{5A22E1D67E712EC8}" {
+         m_sObjectToSpawn "{D76C2E3AA8CC7FAC}PrefabsEditable/Auto/Props/E_Redfor_SupplyCache.et"
+        }
+       }
+       coords 8227.655 168.485 -10367.998
+      }
+     }
+    }
+   }
+  }
+ }
+ Area3 {
+  coords 9318.354 229.186 1162.18
+  {
+   GenericEntity Layer6 : "{5F9FFF4BF027B3A3}Prefabs/Systems/ScenarioFramework/Components/Layer.et" {
+    components {
+     SCR_ScenarioFrameworkLayerBase "{5A2283EA2A0B4B14}" {
+      m_SpawnChildren RANDOM_ONE
+     }
+    }
+    coords 0 0 0
+    {
+     GenericEntity Slot28 : "{AA01691FDC4E9167}Prefabs/Systems/ScenarioFramework/Components/Slot.et" {
+      components {
+       SCR_ScenarioFrameworkSlotBase "{5A22E1D67E712EC8}" {
+        m_sObjectToSpawn "{7A29940A71EF5F5C}Prefabs/Vehicles/Helicopters/UH1H/UH1H_civ_livery_v1.et"
+       }
+      }
+      coords 21.93 -31.839 -25.991
+      angleY -137.527
+     }
+    }
+   }
+  }
+ }
+}

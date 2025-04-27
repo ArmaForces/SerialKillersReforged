@@ -16,10 +16,13 @@ SCR_AIWorld : "{01DC74137CFDDB6A}Prefabs/AI/SCR_AIWorld_Arland.et" {
   }
  }
  coords 1328.174 38.999 2147.295
- "Accepted Road Types" 255
+ "Accepted Road Types" 127
 }
 SK_SerialKillersGameMode GameModeSF : "{ECEEDB2D3737204B}Prefabs/ScenarioFramework/SK_SerialKillersGameModeOverride.et" {
  components {
+  SCR_ArsenalManagerComponent "{6120A34EB1E9BBEF}" {
+   m_bRankLockedItems 1
+  }
   SCR_CampaignBuildingManagerComponent "{6454D2CC640D4E59}" {
    m_sFreeRoamBuildingServerTrigger "{5E191CEAF4B95816}Prefabs/MP/FreeRoamBuildingClientTrigger.et"
    m_sFreeRoamBuildingClientTrigger "{5E191CEAF4B95816}Prefabs/MP/FreeRoamBuildingClientTrigger.et"
@@ -69,17 +72,17 @@ SK_SerialKillersGameMode GameModeSF : "{ECEEDB2D3737204B}Prefabs/ScenarioFramewo
   }
   SCR_EntityCatalogManagerComponent "{5C9AD18D91F9E87E}" {
    m_aEntityCatalogs {
-    SCR_EntityCatalogMultiList "{5C9AD18D9D38E99E}" : "{EAD206A79A774696}Configs/EntityCatalog/FactionLess/Characters_EntityCatalog_Factionless.conf" {
+    SCR_EntityCatalogMultiList "{5C9AD18D9D38E99E}" {
     }
-    SCR_EntityCatalogMultiList "{5C9AD18D9B68853E}" : "{77243A71AF0E5A75}Configs/EntityCatalog/FactionLess/Vehicles_EntityCatalog_Factionless.conf" {
+    SCR_EntityCatalogMultiList "{5C9AD18D9B68853E}" {
     }
-    SCR_EntityCatalogMultiList "{61C8EED3993E46B7}" : "{2E8FFD9558E26113}Configs/EntityCatalog/FactionLess/Groups_EntityCatalog_Factionless.conf" {
+    SCR_EntityCatalogMultiList "{61C8EED3993E46B7}" {
     }
-    SCR_EntityCatalogMultiList "{61C8EED39E8B0DC3}" : "{0CC054C7DEDC766E}Configs/EntityCatalog/FactionLess/WeaponTripod_EntityCatalog_Factionless.conf" {
+    SCR_EntityCatalogMultiList "{61C8EED39E8B0DC3}" {
     }
-    SCR_EntityCatalogMultiList "{5C9AD18D98F9181C}" : "{BB12292052E2F5B8}Configs/EntityCatalog/FactionLess/InventoryItems_EntityCatalog_Factionless.conf" {
+    SCR_EntityCatalogMultiList "{5C9AD18D98F9181C}" {
     }
-    SCR_EntityCatalog "{5C9EDDD29E61EF44}" : "{B80293331FB7BFCF}Configs/EntityCatalog/FactionLess/SupplyContainerItems_EntityCatalog_Factionless.conf" {
+    SCR_EntityCatalog "{5C9EDDD29E61EF44}" {
     }
    }
   }
@@ -96,6 +99,12 @@ SK_SerialKillersGameMode GameModeSF : "{ECEEDB2D3737204B}Prefabs/ScenarioFramewo
   }
   SCR_HintManagerComponent "{5702B54C6CBC9D7F}" {
    m_bIgnoreHintSettings 1
+  }
+  SCR_IdentityManagerComponent "{5AEEA80681EA61AF}" {
+   m_aIdentityBioTypeHoldersConfigs +{
+   }
+   m_ExtendedIdentityHints SCR_GeneralHintStorage "{6226DDCD824CB407}" : "{4C689530864AD7DF}Configs/Hints/ExtendedIdentityHints.conf" {
+   }
   }
   SCR_MapConfigComponent "{5C669498E250A34B}" {
    m_sGadgetMapConfigPath "{32913D3C51D7736C}Configs/Map/MapFullscreenCoop.conf"
@@ -137,8 +146,33 @@ SK_SerialKillersGameMode GameModeSF : "{ECEEDB2D3737204B}Prefabs/ScenarioFramewo
      m_sKillfeedReceiveTypeName "#AR-Notification_KillfeedReceiveType_ENEMIES_ONLY"
     }
    }
-   m_PlayerKickReasonsConfig SCR_ConfigurableDialogUiPresets "{5AD6C337FC7F76C0}" : "{D3BFEE28E7D5B6A1}Configs/ServerBrowser/KickDialogs.conf" {
+   m_PlayerKickReasonsConfig SCR_ConfigurableDialogUiPresets "{5AD6C337FC7F76C0}" {
    }
+  }
+  SCR_PerceivedFactionManagerComponent "{61AA7E6E0C6A76F9}" {
+   m_PerceivedFactionHints SCR_GeneralHintStorage "{6290C14649BD50BC}" {
+    m_aHintEntries {
+     SCR_HintEntry "{61AAB8A3096E40A8}" {
+      m_HintInfo SCR_HintUIInfo "{61AAB8A308FF8BE8}" {
+       m_iShowLimit 0
+      }
+     }
+     SCR_HintEntry "{61AAB8A3751F4F26}" {
+      m_HintInfo SCR_HintUIInfo "{61AAB8A374E5E1BD}" {
+       m_iShowLimit 0
+      }
+     }
+     SCR_HintEntry "{6286C0E5AFA4C404}" {
+      m_HintInfo SCR_HintUIInfo "{6286C0E5ADE02FC5}" {
+       m_iShowLimit 0
+      }
+     }
+    }
+   }
+  }
+  SCR_PreGameGameModeStateComponent "{64ACED42C962A7E5}" {
+   Enabled 0
+   m_fDuration 0
   }
   SCR_RadialMenuItemsComponent "{5C92B03271ABD8AA}" {
    m_MenuController SCR_RadialMenuController "{5C92B0326E1334FB}" {
@@ -153,20 +187,26 @@ SK_SerialKillersGameMode GameModeSF : "{ECEEDB2D3737204B}Prefabs/ScenarioFramewo
   SCR_VotingManagerComponent "{5650BB6B6089393A}" : "{37037CBB8B4CD354}Prefabs/MP/Components/VotingManagerComponent.ct" {
   }
   SK_CivilianManagerComponent "{60C4D31D2257CD56}" {
-   m_iDefaultHouseOccupants 10
+   m_iCityRange 300
+   m_iTownRange 150
+   m_iVillageRange 75
+   m_iCityWieght 4
+   m_iVillageWieght 2
+   m_iTargetCivilianCount 125
+   m_fVehicleSpawnChance 0.1
   }
   SK_RespawnSystemComponent "{56B2B4793051E7C9}" {
    m_SpawnLogic SCR_MenuSpawnLogic "{5D36888CC966608A}" {
    }
   }
   SK_SerialKillersConfigComponent "{60C4D31123C481B5}" {
-   m_pCivilianPrefab "{1AF5B9AE5CFD4433}Prefabs/Groups/INDFOR/Group_CIV.et"
+   m_pCivilianPrefab "{1AF5B9AE5CFD4433}Prefabs/Groups/CIV/Group_CIV.et"
+   m_pPrisonerPrefab "{89DB1658A016C6A9}Prefabs/Characters/Factions/USSR/Character_USSR_Prisoner.et"
    m_pPatrolWaypointPrefab "{22A875E30470BD4F}Prefabs/AI/Waypoints/AIWaypoint_Patrol.et"
    m_pWaitWaypointPrefab "{531EC45063C1F57B}Prefabs/AI/Waypoints/AIWaypoint_Wait.et"
    m_pCycleWaypointPrefab "{35BD6541CBB8AC08}Prefabs/AI/Waypoints/AIWaypoint_Cycle.et"
-   m_pGetInWaypointPrefab "{B049D4C74FBC0C4D}Prefabs/AI/Waypoints/AIWaypoint_GetInNearest.et"
-   m_pVehiclePrefabArray {
-    "{128253A267BE9424}Prefabs/Vehicles/Wheeled/S105/S105_randomized.et" "{49C909AFD66E90A1}Prefabs/Vehicles/Wheeled/S1203/S1203_transport_randomized.et" "{57A441224AC02CF3}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_covered_CIV_Randomized.et" "{EEAC3A94929A2B55}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_CIV_randomized.et" "{43C4AF1EEBD001CE}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_ambulance.et" "{F649585ABB3706C4}Prefabs/Vehicles/Wheeled/M151A2/M151A2.et" "{1B0D46B41C50873D}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_uncovered_CIV_Randomized.et" "{F649585ABB3706C4}Prefabs/Vehicles/Wheeled/M151A2/M151A2.et"
+   m_pVehiclePrefabArray + {
+    "{64E88B50EE91745E}Prefabs/Vehicles/Wheeled/S1203/S1203_cargo_sport.et" "{C7CE8044B5E301F5}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_transport_CIV_randomized.et" "{8B937D667742A75D}Prefabs/Vehicles/Wheeled/S105/S105_rally_BLUFOR.et"
    }
   }
   RplComponent "{56B2B4793BF2E1B4}" {
@@ -175,39 +215,58 @@ SK_SerialKillersGameMode GameModeSF : "{ECEEDB2D3737204B}Prefabs/ScenarioFramewo
   }
  }
  coords 2033.122 32.126 2017.837
- m_bAutoPlayerRespawn 0
+ m_bAllowFactionChange 1
+ m_bUseSpawnPreload 0
+ m_iCivKilledScore 2
+ m_iBluforKilledScore 4
+ m_iGameOverTimeMinutes 11
  {
-  SCR_FactionManager FactionManager_USxUSSR1 : "{589540B35EBA8CDC}Prefabs/MP/Managers/Factions/FactionManager_USxUSSR.et" {
-   coords -696.055 6.873 111.25
+  SCR_FactionManager FactionManager_SK1 : "{1A3664A8751E1708}Prefabs/MP/Managers/Factions/FactionManager_SK.et" {
+   coords 0 0 0
    Factions {
-    SCR_Faction "{56B2B46E999BF3BF}" {
+    SCR_Faction "{56B2B46E999BF3BF}" : "{5EB46557DF2AA24F}Configs/Factions/US.conf" {
      m_aFriendlyFactionsIds {
       "CIV"
      }
+     m_sFactionBackground "{F8AC305446D5D480}UI/Textures/DeployMenu/Loadout-BG/Loadout_US_BG.imageset"
     }
-    SCR_Faction "{56B2B46E9AF80999}" : "{09727032415AC39B}Configs/Factions/USSR.conf" {
-     m_sFactionBackground "{21533F2089005056}UI/Textures/DeployMenu/Loadout-BG/Loadout_BG_USSR.imageset"
+    SCR_Faction "{56B2B46E9AF80999}" {
+     m_aPredefinedGroups {
+      SCR_GroupPreset "{646ADB10AFF348E3}" {
+       m_sGroupFlag "{50824EB9F2C215AB}UI/Textures/Flags/USSR-flag-base-3it.edds"
+      }
+     }
+     m_bCreateOnlyPredefinedGroups 0
+     m_aEntityCatalogs {
+      SCR_EntityCatalogMultiList "{5C68A0E9BD5E5DD9}" : "{3B679F1799D55F6F}Configs/EntityCatalog/USSR/Characters_EntityCatalog_USSR.conf" {
+      }
+      SCR_EntityCatalogMultiList "{5C9E82F285C09E24}" : "{09C2ED5F617A0390}Configs/EntityCatalog/USSR/Vehicles_EntityCatalog_USSR.conf" {
+      }
+      SCR_EntityCatalogMultiList "{5C68A0E9B9AA3C2D}" : "{37D5B75AAC3E72EA}Configs/EntityCatalog/USSR/Groups_EntityCatalog_USSR.conf" {
+      }
+      SCR_EntityCatalog "{5C68A0E9A51460AB}" : "{DDF17C8C140BD1F2}Configs/EntityCatalog/USSR/WeaponTripod_EntityCatalog_USSR.conf" {
+      }
+      SCR_EntityCatalogMultiList "{5C68A0E9AFE1E631}" : "{C53421647C3D0D2E}Configs/EntityCatalog/USSR/InventoryItems_EntityCatalog_USSR.conf" {
+      }
+      SCR_EntityCatalog "{5C9EDDD378BA3298}" {
+       m_aEntityEntryList {
+        SCR_EntityCatalogEntry "{6471036762660442}" {
+         m_sEntityPrefab "{D2B48DEBEF38D7D7}Prefabs/Weapons/MachineGuns/M249/MG_M249.et"
+        }
+       }
+      }
+     }
     }
     SCR_Faction "{61667A546239623B}" {
-     FactionKey "CIV"
-     FactionColor 0.157 0.624 0.275 1
-     UIInfo SCR_FactionUIInfo "{61667A54F1719695}" {
-      Name "Civilians"
+     m_aFriendlyFactionsIds + {
+      "USSR"
      }
-     m_bIsPlayable 0
-     m_bShowInWelcomeScreenIfNonPlayable 0
-     m_bIsMilitary 0
-     m_FactionLabel FACTION_CIV
-     m_aFriendlyFactionsIds {
-      "US"
-     }
-     m_sFactionRadioEncryptionKey "CIVBURGER"
      m_aEntityCatalogs {
       SCR_EntityCatalog "{61667A54E4B30285}" {
        m_eEntityCatalogType GROUP
        m_aEntityEntryList {
         SCR_EntityCatalogEntry "{61667A54EDC45164}" {
-         m_sEntityPrefab "{1AF5B9AE5CFD4433}Prefabs/Groups/INDFOR/Group_CIV.et"
+         m_sEntityPrefab "{1AF5B9AE5CFD4433}Prefabs/Groups/CIV/Group_CIV.et"
         }
        }
       }
@@ -217,20 +276,118 @@ SK_SerialKillersGameMode GameModeSF : "{ECEEDB2D3737204B}Prefabs/ScenarioFramewo
       SCR_EntityCatalog "{61667A548B9F013D}" {
        m_eEntityCatalogType CHARACTER
       }
+      SCR_EntityCatalog "{6470775561118D3A}" {
+       m_eEntityCatalogType VEHICLE
+      }
+      SCR_EntityCatalog "{647A98C48CF38115}" {
+       m_eEntityCatalogType WEAPONS_TRIPOD
+      }
      }
     }
    }
-   m_bCanChangeFactionsPlayable 0
+   m_bCanChangeFactionsPlayable 1
+   m_aRanks {
+    SCR_RankID "{5CB0777E83631136}" {
+    }
+    SCR_RankID "{5CB0777E828E61F3}" {
+     m_iRequiredXP -2
+    }
+    SCR_RankID "{5CB0777E803B7EA2}" {
+    }
+    SCR_RankID "{5CB0777E8F0E82AF}" {
+    }
+    SCR_RankID "{5CB0777E8BE66EC2}" {
+    }
+    SCR_RankID "{5CB0777E8AD658D6}" {
+    }
+    SCR_RankID "{5CB0777E88380770}" {
+    }
+   }
   }
  }
+}
+Vehicle M998_MERDC_BLUFOR1 : "{166FBA8B408CFFE4}Prefabs/Vehicles/Wheeled/M998/M998_MERDC_BLUFOR.et" {
+ coords 1384.843 36.017 2356.197
+}
+Vehicle M151A2_M2HB_BLUFOR1 : "{46CF39239AA1FE28}Prefabs/Vehicles/Wheeled/M151A2/M151A2_M2HB_BLUFOR.et" {
+ coords 1394.636 35.962 2355.395
+}
+Vehicle M1025_armed_M2HB_BLUFOR1 : "{74D45AF920A3D284}Prefabs/Vehicles/Wheeled/M998/M1025_armed_M2HB_BLUFOR.et" {
+ coords 1389.727 36.11 2355.931
+}
+Vehicle S105_rally_BLUFOR1 : "{8B937D667742A75D}Prefabs/Vehicles/Wheeled/S105/S105_rally_BLUFOR.et" {
+ coords 1398.945 35.921 2355.578
+}
+Vehicle M151A2_transport_MERDC_BLUFOR1 : "{9BC13C42CF3B4938}Prefabs/Vehicles/Wheeled/M151A2/M151A2_transport_MERDC_BLUFOR.et" {
+ coords 1391.68 36.118 2347.521
+}
+$grp GenericEntity : "{C65EF20F6A441531}Prefabs/World/Locations/Arland/Beauregard.et" {
+ MilitaryCity {
+  components {
+   SCR_EditableCommentComponent "{529AB059519FE609}" {
+    m_UIInfo SCR_EditableCommentUIInfo "{5298E609432D192D}" {
+     Name "MilitaryCity"
+    }
+   }
+   SCR_MapDescriptorComponent "{527892B6ED748CEB}" {
+    DisplayName "MilitaryCity"
+   }
+  }
+  coords 1366.347 36.942 2391.34
+ }
+ FarmVillage {
+  components {
+   SCR_EditableCommentComponent "{529AB059519FE609}" {
+    m_UIInfo SCR_EditableCommentUIInfo "{5298E609432D192D}" {
+     Name "FarmVillage"
+    }
+   }
+   SCR_MapDescriptorComponent "{527892B6ED748CEB}" {
+    DisplayName "FarmVillage"
+    MainType "Name Village"
+   }
+  }
+  coords 2211.883 53.468 2890.306
+ }
+ Port {
+  components {
+   SCR_EditableCommentComponent "{529AB059519FE609}" {
+    m_UIInfo SCR_EditableCommentUIInfo "{5298E609432D192D}" {
+     Name "Port"
+    }
+   }
+   SCR_MapDescriptorComponent "{527892B6ED748CEB}" {
+    DisplayName "Port"
+    MainType "Name City"
+   }
+  }
+  coords 1167.274 1.157 3302.76
+ }
+ Hillside {
+  components {
+   SCR_EditableCommentComponent "{529AB059519FE609}" {
+    m_UIInfo SCR_EditableCommentUIInfo "{5298E609432D192D}" {
+     Name "Hillside"
+    }
+   }
+   SCR_MapDescriptorComponent "{527892B6ED748CEB}" {
+    DisplayName "Hillside"
+    MainType "Name Settlement"
+   }
+  }
+  coords 2306.947 90.269 1260.102
+ }
+}
+Vehicle BRDM2_BLUFOR1 : "{EE02519146F1204F}Prefabs/Vehicles/Wheeled/BRDM2/BRDM2_BLUFOR.et" {
+ coords 1400.281 36.027 2345.414
+}
+Vehicle M151A1 : "{F649585ABB3706C4}Prefabs/Vehicles/Wheeled/M151A2/M151A2.et" {
+ coords 1394.805 35.987 2347.423
 }
 SCR_LoadoutManager : "{FD4EE3666CA87EA6}Prefabs/MP/Managers/Loadouts/LoadoutManager_SK.et" {
  coords 1348.81 39 2136.208
  m_aPlayerLoadouts {
-  SCR_FactionPlayerLoadout "{56B2B461C34A570F}" {
-   m_sLoadoutName "Policeman"
-   m_sLoadoutResource "{DE15FB5FAFC3E63F}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Officer.et"
-   m_sLoadoutImage "{E66FEBD3F049BF7D}UI/Textures/EditorPreviews/Characters/BLUFOR/US_Army/Character_US_SL.edds"
+  SCR_FactionPlayerLoadout "{6470A380DE03A134}" {
   }
  }
 }
