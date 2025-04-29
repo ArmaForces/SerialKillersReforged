@@ -28,8 +28,8 @@ Vehicle : "{1C5FE7B7FF49BB8D}Prefabs/Vehicles/Wheeled/BTR70/BTR70_Base.et" {
       m_Value 975
      }
      SCR_EntityBudgetValue "{646A9A70BB750D1D}" {
-      m_BudgetType RANK_SERGEANT
-      m_Value 3
+      m_BudgetType RANK_LIEUTENANT
+      m_Value 4
      }
     }
     m_bEditorPlaceAsOneGroup 0

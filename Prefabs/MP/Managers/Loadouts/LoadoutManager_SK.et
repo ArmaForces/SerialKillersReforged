@@ -3,8 +3,8 @@ SCR_LoadoutManager : "{AA4E7419A1FF65B0}Prefabs/MP/Managers/Loadouts/LoadoutMana
  m_aPlayerLoadouts {
   SCR_FactionPlayerLoadout "{56B2B461C34A570F}" : "{7C7C65FD583E6612}Configs/Loadouts/US/Loadout_US_Rifleman.conf" {
    m_sLoadoutName "Policeman"
-   m_sLoadoutResource "{DE15FB5FAFC3E63F}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Officer.et"
-   m_sLoadoutImage "{E66FEBD3F049BF7D}UI/Textures/EditorPreviews/Characters/BLUFOR/US_Army/Character_US_SL.edds"
+   m_sLoadoutResource "{45114DC74EFE6FB2}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Police_Recruit.et"
+   m_sLoadoutImage "{8FAFF8FD08AA541D}Assets/Images/Preview/ReloadzPoliceLogo.edds"
   }
   SCR_FactionPlayerLoadout "{56B2B46134D39388}" : "{5F9034642E99437D}Configs/Loadouts/USSR/Loadout_USSR_Rifleman.conf" {
    m_sLoadoutName "Terrorist KLMK"
@@ -22,9 +22,21 @@ SCR_LoadoutManager : "{AA4E7419A1FF65B0}Prefabs/MP/Managers/Loadouts/LoadoutMana
   }
   SCR_FactionPlayerLoadout "{6470A380DE03A134}" {
    m_sLoadoutName "Terrorist Disguised"
-   m_sLoadoutResource "{9340905836271353}Prefabs/Characters/Factions/CIV/GenericCivilians/SK_Character_CIV_Randomized.et"
+   m_sLoadoutResource "{9340905836271353}Prefabs/Characters/Factions/CIV/SK_Character_CIV_Randomized.et"
    m_sLoadoutImage "{A1FEAA3146DDAF38}UI/Textures/EditorPreviews/Characters/CIV/Character_CIV_Randomized.edds"
    m_sAffiliatedFaction "USSR"
+  }
+  SCR_FactionPlayerLoadout "{653A92464D9D14D6}" {
+   m_sLoadoutName "Sheriff"
+   m_sLoadoutResource "{CDF44B935D443C3F}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Sheriff_Recruit.et"
+   m_sLoadoutImage "{8FAFF8FD08AA541D}Assets/Images/Preview/ReloadzPoliceLogo.edds"
+   m_sAffiliatedFaction "US"
+  }
+  SCR_FactionPlayerLoadout "{653A92460C9E3A44}" {
+   m_sLoadoutName "Police pilot"
+   m_sLoadoutResource "{42A502E3BB727CEC}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_HeliPilot.et"
+   m_sLoadoutImage "{8FAFF8FD08AA541D}Assets/Images/Preview/ReloadzPoliceLogo.edds"
+   m_sAffiliatedFaction "US"
   }
  }
 }

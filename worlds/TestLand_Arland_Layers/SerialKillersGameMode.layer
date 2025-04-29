@@ -20,9 +20,6 @@ SCR_AIWorld : "{01DC74137CFDDB6A}Prefabs/AI/SCR_AIWorld_Arland.et" {
 }
 SK_SerialKillersGameMode GameModeSF : "{ECEEDB2D3737204B}Prefabs/ScenarioFramework/SK_SerialKillersGameModeOverride.et" {
  components {
-  SCR_ArsenalManagerComponent "{6120A34EB1E9BBEF}" {
-   m_bRankLockedItems 1
-  }
   SCR_CampaignBuildingManagerComponent "{6454D2CC640D4E59}" {
    m_sFreeRoamBuildingServerTrigger "{5E191CEAF4B95816}Prefabs/MP/FreeRoamBuildingClientTrigger.et"
    m_sFreeRoamBuildingClientTrigger "{5E191CEAF4B95816}Prefabs/MP/FreeRoamBuildingClientTrigger.et"
@@ -386,8 +383,4 @@ Vehicle M151A1 : "{F649585ABB3706C4}Prefabs/Vehicles/Wheeled/M151A2/M151A2.et" {
 }
 SCR_LoadoutManager : "{FD4EE3666CA87EA6}Prefabs/MP/Managers/Loadouts/LoadoutManager_SK.et" {
  coords 1348.81 39 2136.208
- m_aPlayerLoadouts {
-  SCR_FactionPlayerLoadout "{6470A380DE03A134}" {
-  }
- }
 }
