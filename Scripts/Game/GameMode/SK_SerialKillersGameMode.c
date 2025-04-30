@@ -505,6 +505,22 @@ class SK_SerialKillersGameMode : SCR_BaseGameMode
 		return m_fStartTimestamp;
 	}
 	
+	void TaskCompletedAward(FactionKey fKey, int awardPoints)
+	{
+		if (!m_bHasGameStarted)
+			return;
+		
+		if(fKey == m_sRedforFactionKey)
+			SK_RedforScore += awardPoints;
+		else if (fKey == m_sBluforFactionKey)
+			SK_BluforScore += awardPoints;
+		else {
+			Print("Unable to award points - Unknown faction! " + fKey, LogLevel.ERROR);
+			return;
+		}
+		OnMatchSituationChanged();
+	}
+	
 	
 	override bool RplLoad(ScriptBitReader reader)
 	{

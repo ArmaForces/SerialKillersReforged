@@ -28,7 +28,7 @@ SCR_LoadoutManager : "{AA4E7419A1FF65B0}Prefabs/MP/Managers/Loadouts/LoadoutMana
   }
   SCR_FactionPlayerLoadout "{653A92464D9D14D6}" {
    m_sLoadoutName "Sheriff"
-   m_sLoadoutResource "{CDF44B935D443C3F}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Sheriff_Recruit.et"
+   m_sLoadoutResource "{CDF44B935D443C40}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Sheriff_Recruit.et"
    m_sLoadoutImage "{8FAFF8FD08AA541D}Assets/Images/Preview/ReloadzPoliceLogo.edds"
    m_sAffiliatedFaction "US"
   }

@@ -1,0 +1,59 @@
+GenericEntity Area1 : "{C72F956E4AC6A6E7}Prefabs/Systems/ScenarioFramework/Components/Area.et" {
+ components {
+  SCR_ScenarioFrameworkArea "{59E8CDC50969206E}" {
+   m_bShowDebugShapesInWorkbench 1
+  }
+ }
+ coords 2502.148 147.57 2266.534
+ {
+  GenericEntity LayerTaskDestroy1 : "{5EDF39860639027D}Prefabs/Systems/ScenarioFramework/Components/LayerTaskDestroy.et" {
+   components {
+    SCR_ScenarioFrameworkLayerTaskDestroy "{5A6513F41BA457C8}" {
+     m_sFactionKey "USSR"
+     m_sTaskTitle "Destroy"
+     m_sTaskDescription "Destroy backup power generator for the radio transmitter"
+    }
+   }
+   coords -1.741 0.227 -6.023
+   {
+    GenericEntity SlotDestroy1 : "{7586595959BA2D99}Prefabs/Systems/ScenarioFramework/Components/SlotDestroy.et" {
+     components {
+      SCR_ScenarioFrameworkSlotDestroy "{5A22E1D6276BD209}" {
+       m_sObjectToSpawn "{10377ABE6825CC97}Prefabs/Props/Military/Generators/GeneratorMilitary_USSR_01/GeneratorMilitary_USSR_01_camo_open.et"
+       m_sID "destroy_entity_id"
+       m_aActionsOnFinished {
+        SK_ScenarioFrameworkOnTaskCompleted "{653C9C0EDA7A31BD}" {
+         m_sFactionKey "USSR"
+         m_iAwardPoints 10
+         m_sTaskToFailName "TaskDefend_1"
+        }
+       }
+      }
+     }
+     coords 3.5 0 0
+    }
+   }
+  }
+  GenericEntity LayerTaskDefend1 : "{775C493CE872C3A5}Prefabs/Systems/ScenarioFramework/Components/LayerTaskDefend.et" {
+   components {
+    SCR_ScenarioFrameworkLayerTaskDefend "{5C52E161174024CB}" {
+     m_sFactionKey "US"
+     m_bDisplayCountdownHUD 0
+     m_aFactionSettings {
+      SCR_ScenarioFrameworkTaskDefendFactionSettings "{653CE501AF131C6C}" {
+       m_sFactionKey "US"
+      }
+     }
+    }
+   }
+   coords 0 0 0.47
+   {
+    SCR_TaskDefend TaskDefend_1 : "{888DC29A0B4F3F20}Prefabs/Systems/ScenarioFramework/Tasks/TaskDefend.et" {
+     coords 0.019 0.126 -2.461
+     m_sDescription "Defend radio station power generator"
+     m_bAssignable 0
+    }
+   }
+  }
+ }
+}

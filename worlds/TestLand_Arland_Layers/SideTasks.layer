@@ -1,0 +1,116 @@
+GenericEntity Area1 : "{C72F956E4AC6A6E7}Prefabs/Systems/ScenarioFramework/Components/Area.et" {
+ components {
+  SCR_ScenarioFrameworkArea "{59E8CDC50969206E}" {
+   m_bShowDebugShapesInWorkbench 1
+  }
+ }
+ coords 2502.148 147.57 2266.534
+ {
+  GenericEntity SpawnOneChildrenLayer : "{5F9FFF4BF027B3A3}Prefabs/Systems/ScenarioFramework/Components/Layer.et" {
+   components {
+    SCR_ScenarioFrameworkLayerBase "{5A2283EA2A0B4B14}" {
+     m_SpawnChildren RANDOM_MULTIPLE
+     m_iRandomPercent 35
+    }
+   }
+   coords -1.709 0.259 -7.024
+   {
+    $grp GenericEntity : "{5EDF39860639027D}Prefabs/Systems/ScenarioFramework/Components/LayerTaskDestroy.et" {
+     LayerTaskDestroy3 {
+      components {
+       SCR_ScenarioFrameworkLayerTaskDestroy "{5A6513F41BA457C8}" {
+        m_sFactionKey "USSR"
+       }
+      }
+      coords -397.716 -97.907 501.685
+      {
+       GenericEntity SlotDestroy3 : "{7586595959BA2D99}Prefabs/Systems/ScenarioFramework/Components/SlotDestroy.et" {
+        components {
+         SCR_ScenarioFrameworkSlotDestroy "{5A22E1D6276BD209}" {
+          m_sObjectToSpawn "{68FA4E56264168B7}PrefabLibrary/Infrastructure/Towers/TransmitterTower_01_small.et"
+          m_sID "destroy_entity_id"
+          m_aActionsOnFinished {
+           SK_ScenarioFrameworkOnTaskCompleted "{653C9C0EDA7A31BD}" {
+            m_sFactionKey "USSR"
+            m_iAwardPoints 10
+            m_sTaskToFailName "TaskDefend_2"
+           }
+          }
+         }
+        }
+        coords 3.5 0 0
+       }
+       GenericEntity LayerTaskDefend3 : "{775C493CE872C3A5}Prefabs/Systems/ScenarioFramework/Components/LayerTaskDefend.et" {
+        components {
+         SCR_ScenarioFrameworkLayerTaskDefend "{5C52E161174024CB}" {
+          m_sFactionKey "US"
+          m_bDisplayCountdownHUD 0
+         }
+        }
+        coords 1.741 -0.227 6.492
+        {
+         SCR_TaskDefend TaskDefend_2 : "{888DC29A0B4F3F20}Prefabs/Systems/ScenarioFramework/Tasks/TaskDefend.et" {
+          components {
+           SCR_MapDescriptorComponent "{5C5477272E4DE3E5}" {
+            Faction 1
+           }
+          }
+          coords 0.019 0.126 -2.461
+          m_bAssignable 0
+         }
+        }
+       }
+      }
+     }
+     LayerTaskDestroy1 {
+      components {
+       SCR_ScenarioFrameworkLayerTaskDestroy "{5A6513F41BA457C8}" {
+        m_sFactionKey "USSR"
+       }
+      }
+      coords -0.032 -0.032 1.001
+      {
+       GenericEntity SlotDestroy1 : "{7586595959BA2D99}Prefabs/Systems/ScenarioFramework/Components/SlotDestroy.et" {
+        components {
+         SCR_ScenarioFrameworkSlotDestroy "{5A22E1D6276BD209}" {
+          m_sObjectToSpawn "{10377ABE6825CC97}Prefabs/Props/Military/Generators/GeneratorMilitary_USSR_01/GeneratorMilitary_USSR_01_camo_open.et"
+          m_sID "destroy_entity_id"
+          m_aActionsOnFinished {
+           SK_ScenarioFrameworkOnTaskCompleted "{653C9C0EDA7A31BD}" {
+            m_sFactionKey "USSR"
+            m_iAwardPoints 10
+            m_sTaskToFailName "TaskDefend_1"
+           }
+          }
+         }
+        }
+        coords 3.5 0 0
+       }
+       GenericEntity LayerTaskDefend1 : "{775C493CE872C3A5}Prefabs/Systems/ScenarioFramework/Components/LayerTaskDefend.et" {
+        components {
+         SCR_ScenarioFrameworkLayerTaskDefend "{5C52E161174024CB}" {
+          m_sFactionKey "US"
+          m_bDisplayCountdownHUD 0
+         }
+        }
+        coords 1.741 -0.227 6.493
+        {
+         SCR_TaskDefend TaskDefend_1 : "{888DC29A0B4F3F20}Prefabs/Systems/ScenarioFramework/Tasks/TaskDefend.et" {
+          components {
+           SCR_MapDescriptorComponent "{5C5477272E4DE3E5}" {
+            Faction 1
+           }
+          }
+          coords 0.019 0.126 -2.461
+          m_sDescription "Defend radio station power generator"
+          m_bAssignable 0
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}

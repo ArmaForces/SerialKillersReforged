@@ -213,10 +213,11 @@ SK_SerialKillersGameMode GameModeSF : "{ECEEDB2D3737204B}Prefabs/ScenarioFramewo
  }
  coords 2033.122 32.126 2017.837
  m_bAllowFactionChange 1
- m_bUseSpawnPreload 0
  m_iCivKilledScore 2
- m_iBluforKilledScore 4
- m_iGameOverTimeMinutes 11
+ m_iBluforKilledScore 3
+ m_iGameStartDelaySeconds 120
+ m_iGameOverTimeMinutes 20
+ m_iRedforInactivityTime 300
  {
   SCR_FactionManager FactionManager_SK1 : "{1A3664A8751E1708}Prefabs/MP/Managers/Factions/FactionManager_SK.et" {
    coords 0 0 0
@@ -303,21 +304,6 @@ SK_SerialKillersGameMode GameModeSF : "{ECEEDB2D3737204B}Prefabs/ScenarioFramewo
   }
  }
 }
-Vehicle M998_MERDC_BLUFOR1 : "{166FBA8B408CFFE4}Prefabs/Vehicles/Wheeled/M998/M998_MERDC_BLUFOR.et" {
- coords 1384.843 36.017 2356.197
-}
-Vehicle M151A2_M2HB_BLUFOR1 : "{46CF39239AA1FE28}Prefabs/Vehicles/Wheeled/M151A2/M151A2_M2HB_BLUFOR.et" {
- coords 1394.636 35.962 2355.395
-}
-Vehicle M1025_armed_M2HB_BLUFOR1 : "{74D45AF920A3D284}Prefabs/Vehicles/Wheeled/M998/M1025_armed_M2HB_BLUFOR.et" {
- coords 1389.727 36.11 2355.931
-}
-Vehicle S105_rally_BLUFOR1 : "{8B937D667742A75D}Prefabs/Vehicles/Wheeled/S105/S105_rally_BLUFOR.et" {
- coords 1398.945 35.921 2355.578
-}
-Vehicle M151A2_transport_MERDC_BLUFOR1 : "{9BC13C42CF3B4938}Prefabs/Vehicles/Wheeled/M151A2/M151A2_transport_MERDC_BLUFOR.et" {
- coords 1391.68 36.118 2347.521
-}
 $grp GenericEntity : "{C65EF20F6A441531}Prefabs/World/Locations/Arland/Beauregard.et" {
  MilitaryCity {
   components {
@@ -402,12 +388,6 @@ $grp GenericEntity : "{C65EF20F6A441531}Prefabs/World/Locations/Arland/Beauregar
   }
   coords 2286.871 54.161 1657.341
  }
-}
-Vehicle BRDM2_BLUFOR1 : "{EE02519146F1204F}Prefabs/Vehicles/Wheeled/BRDM2/BRDM2_BLUFOR.et" {
- coords 1400.281 36.027 2345.414
-}
-Vehicle M151A1 : "{F649585ABB3706C4}Prefabs/Vehicles/Wheeled/M151A2/M151A2.et" {
- coords 1394.805 35.987 2347.423
 }
 SCR_LoadoutManager : "{FD4EE3666CA87EA6}Prefabs/MP/Managers/Loadouts/LoadoutManager_SK.et" {
  coords 1348.81 39 2136.208
