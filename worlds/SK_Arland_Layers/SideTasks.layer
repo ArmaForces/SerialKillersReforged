@@ -39,11 +39,6 @@ GenericEntity Area1 : "{C72F956E4AC6A6E7}Prefabs/Systems/ScenarioFramework/Compo
     SCR_ScenarioFrameworkLayerTaskDefend "{5C52E161174024CB}" {
      m_sFactionKey "US"
      m_bDisplayCountdownHUD 0
-     m_aFactionSettings {
-      SCR_ScenarioFrameworkTaskDefendFactionSettings "{653CE501AF131C6C}" {
-       m_sFactionKey "US"
-      }
-     }
     }
    }
    coords 0 0 0.47
