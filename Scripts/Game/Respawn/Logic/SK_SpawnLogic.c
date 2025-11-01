@@ -16,8 +16,7 @@ class SK_SpawnLogic : SCR_SpawnLogic
 		super.OnPlayerRegistered_S(playerId);
 	
 		// Probe reconnection component first
-		IEntity returnedEntity;
-		if (ResolveReconnection(playerId, returnedEntity))
+		if (ResolveReconnection(playerId))
 		{
 			// User was reconnected, their entity was returned
 			return;

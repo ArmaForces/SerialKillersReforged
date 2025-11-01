@@ -39,6 +39,6 @@ class SK_ScenarioFrameworkOnTaskCompleted : SCR_ScenarioFrameworkActionBase
 			return;
 		}
 		
-		task.Fail();
+		//task.Fail();
 	}
 }
