@@ -16,7 +16,7 @@ SCR_AIWorld : "{01DC74137CFDDB6A}Prefabs/AI/SCR_AIWorld_Arland.et" {
   }
  }
  coords 1328.174 38.999 2147.295
- "Accepted Road Types" 127
+ "Accepted Road Types" 0x7f 0
 }
 SK_SerialKillersGameMode GameModeSF : "{ECEEDB2D3737204B}Prefabs/ScenarioFramework/SK_SerialKillersGameModeOverride.et" {
  components {
@@ -202,8 +202,16 @@ SK_SerialKillersGameMode GameModeSF : "{ECEEDB2D3737204B}Prefabs/ScenarioFramewo
    m_pPatrolWaypointPrefab "{22A875E30470BD4F}Prefabs/AI/Waypoints/AIWaypoint_Patrol.et"
    m_pWaitWaypointPrefab "{531EC45063C1F57B}Prefabs/AI/Waypoints/AIWaypoint_Wait.et"
    m_pCycleWaypointPrefab "{35BD6541CBB8AC08}Prefabs/AI/Waypoints/AIWaypoint_Cycle.et"
-   m_pVehiclePrefabArray + {
-    "{64E88B50EE91745E}Prefabs/Vehicles/Wheeled/S1203/S1203_cargo_sport.et" "{C7CE8044B5E301F5}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_transport_CIV_randomized.et" "{8B937D667742A75D}Prefabs/Vehicles/Wheeled/S105/S105_rally_BLUFOR.et"
+   m_pVehiclePrefabArray +{
+    "{64E88B50EE91745E}Prefabs/Vehicles/Wheeled/S1203/S1203_cargo_sport.et"
+    "{C7CE8044B5E301F5}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_transport_CIV_randomized.et"
+    "{8B937D667742A75D}Prefabs/Vehicles/Wheeled/S105/S105_rally_BLUFOR.et"
+    "{C82D53CC4956581D}Prefabs/Vehicles/Wheeled/SampleCar_01/FIAT125P.et"
+    "{CFDE63534C13BC10}Prefabs/Vehicles/Wheeled/SampleCar_01/FSO125P 1.6.et"
+    "{620DFF85E6313335}Prefabs/Vehicles/Wheeled/SampleCar_01/FIAT125PcabrioBlue.et"
+    "{81DFB6213937DA4C}Prefabs/Vehicles/Wheeled/SampleCar_01/FSO125P4x4.et"
+    "{0239A9BB6E1C109A}Prefabs/Vehicles/Wheeled/SampleCar_01/FIAT125POrange.et"
+    "{AB5B0A3F56219B3C}Prefabs/Vehicles/Wheeled/SampleCar_01/FSO125PWSW2.et"
    }
   }
   RplComponent "{56B2B4793BF2E1B4}" {
@@ -255,7 +263,7 @@ SK_SerialKillersGameMode GameModeSF : "{ECEEDB2D3737204B}Prefabs/ScenarioFramewo
      }
     }
     SCR_Faction "{61667A546239623B}" {
-     m_aFriendlyFactionsIds + {
+     m_aFriendlyFactionsIds +{
       "USSR"
      }
      m_aEntityCatalogs {

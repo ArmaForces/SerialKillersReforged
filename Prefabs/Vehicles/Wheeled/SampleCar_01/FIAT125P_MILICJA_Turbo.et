@@ -1,0 +1,625 @@
+Vehicle : "{4E8595C9A8254222}Prefabs/Vehicles/Wheeled/SampleCar_01/SampleCar_01_Base.et" {
+ ID "51C2C0913C9BBE3D"
+ components {
+  SCR_VehicleSoundComponent "{55C2E66AD4EF2CA6}" {
+   components {
+    RadioBroadcastSoundComponent "{66C2DA441C89B303}" {
+     Filenames {
+      "{A965C26E719C0300}Sounds/RadioBroadcast/Siren.acp"
+     }
+     ScriptCallbacks 1
+     DistanceManagement 0
+     IncludeInactive 1
+     SoundPoints {
+      SoundPointInfo belka {
+       Offset 0 2.0698 -1.1846
+      }
+     }
+    }
+   }
+   Filenames {
+    "{4B00D02772E227AC}Sounds/Vehicles/Wheeled/UAZ469/Vehicles_UAZ469-fiat_Engine.acp" "{306D7467339A1577}Sounds/Vehicles/Wheeled/SampleCar_01/Vehicles_SampleCar_01_Animations.acp" "{D90F39F89E7BAADF}Sounds/Vehicles/Wheeled/UAZ469/Vehicles_UAZ469_Dampers.acp" "{7A5D78E3381DF66D}Sounds/Vehicles/Wheeled/SampleCar_01/Vehicles_SampleCar_01_Horn.acp" "{BA8A5BD290F5FB34}Sounds/Vehicles/_SharedData/Destruction/Vehicles_Destruction.acp" "{0E29FA31A7D0A498}Sounds/Vehicles/Wheeled/S105/Vehicles_S105_Rain.acp" "{D2DF25DD8B4A4B62}Sounds/Destruction/Multiphase/Destruction_Multiphase_Vehicle.acp" "{465B31754AAAE693}Sounds/Vehicles/_SharedData/Crashes/Cars/Vehicles_Crashes_Cars.acp"
+   }
+   DistanceManagement 0
+   SoundPoints {
+    SoundPointInfo Exhaust {
+     Offset 0.5003 0.3 -2.1969
+     Angles 0 180 0
+    }
+    SoundPointInfo Engine {
+     Offset 0 0.7 1.1972
+     Angles 0 180 0
+    }
+    SoundPointInfo Rain_Window_Front {
+     Offset 0 1.3 1.3
+    }
+    SoundPointInfo Supplies {
+     Offset 0 0.85 -0.5
+    }
+    SoundPointInfo FuelTank {
+     Offset 0 0.3 -0.5
+    }
+    SoundPointInfo Horn {
+     Offset 0 0.7 1.5
+    }
+   }
+  }
+  BaseLightManagerComponent "{51E210F17D2534F7}" {
+   LightSlots {
+    SCR_LightSlot "{51E210F3B1CB7E19}" {
+     LightPositionInfo EntitySlotInfo "{51DAAC8FC2824EEC}" {
+      Offset 0.0051 -0.0662 -0.0103
+      Angles -13.4285 -4 0
+     }
+    }
+    SCR_LightSlot "{51E210F3B0547F5D}" {
+     LightPositionInfo EntitySlotInfo "{51DAAC8FC2824EEC}" {
+      Offset -0.0005 -0.0638 -0.0025
+      Angles -12.719 4 0
+     }
+    }
+    SCR_LightSlot "{51E210F3B5B66F36}" {
+     LightPositionInfo EntitySlotInfo "{51E17746999D1D6E}" {
+      Offset 0.1802 -0.0759 0.0322
+     }
+    }
+    SCR_LightSlot "{51E210F3B4D32037}" {
+     LightPositionInfo EntitySlotInfo "{51E17746999D1D6E}" {
+      Offset -0.1761 -0.0607 0.0334
+     }
+    }
+    SCR_LightSlot "{51E210F3B6509160}" {
+     LightPositionInfo EntitySlotInfo "{51E1774683E31D16}" {
+      Offset -0.0097 -0.0592 -0.0261
+     }
+    }
+    SCR_LightSlot "{51E210F3B95B59D0}" {
+     LightPositionInfo EntitySlotInfo "{51E1774683E31D16}" {
+      Offset 0.0087 -0.0678 -0.0201
+     }
+    }
+    SCR_LightSlot "{51E210F3BEAB0401}" {
+     LightPositionInfo EntitySlotInfo "{51E177468DA2D7F8}" {
+      Offset -0.1371 -0.0658 -0.0374
+     }
+    }
+    SCR_LightSlot "{51E210F3A1E9D264}" {
+     LightPositionInfo EntitySlotInfo "{51E177468DA2D7F8}" {
+      Offset 0.1686 -0.0476 -0.0401
+     }
+    }
+    SCR_LightSlot "{51E210F3A6C24FD9}" {
+     LightPositionInfo EntitySlotInfo "{51E17746F39EE9D3}" {
+      Offset 0.0214 0.3529 -2.4066
+      Angles -18.7664 -180 0
+     }
+    }
+    SCR_LightSlot "{51E21B90AA7D691E}" {
+     LightPositionInfo EntitySlotInfo "{51E17746FFBF4ED6}" {
+      Offset -0.7135 0.6995 1.721
+     }
+    }
+    SCR_LightSlot "{51E21B9093ABB970}" {
+     LightPositionInfo EntitySlotInfo "{51E17746FFBF4ED6}" {
+      Offset -0.5281 0.6949 -2.4997
+     }
+    }
+    SCR_LightSlot "{51E21B90923720F8}" {
+     LightPositionInfo EntitySlotInfo "{51E17746FFBF4ED6}" {
+      Offset 0.7528 0.7019 1.7206
+     }
+    }
+    SCR_LightSlot "{51E21B9094FB604F}" {
+     LightPositionInfo EntitySlotInfo "{51E17746FFBF4ED6}" {
+      Offset 0.5703 0.6946 -2.5093
+     }
+    }
+    SCR_LightSlot "{5556BE37947E2282}" {
+     LightPositionInfo EntitySlotInfo "{51E2210D04212E5A}" {
+      Offset 0.0177 -0.0694 0.035
+     }
+    }
+    SCR_LightSlot "{66C2DA441C89B324}" {
+     LightType SearchLight
+     LightPositionInfo EntitySlotInfo "{51E2210D04212E5A}" {
+      Offset -0.0008 1.6946 -0.3936
+      Angles 31.1379 0 0
+     }
+     LightPrefab "{177FBE7117BC60CB}Prefabs/Vehicles/Core/Lights/BAZAsyreny.et"
+     LightShouldTick 1
+     LightPhaseTime 0.1
+     ParentSurface "Syrena"
+    }
+    SCR_LightSlot "{66C2DA441C89B322}" {
+     LightType SearchLight
+     LightPositionInfo EntitySlotInfo "{51E2210D04212E5A}" {
+      Offset -0.0008 1.6946 -0.3936
+      Angles 31.1379 -36 0
+     }
+     LightPrefab "{177FBE7117BC60CB}Prefabs/Vehicles/Core/Lights/BAZAsyreny.et"
+     LightShouldTick 1
+     LightPhaseTime 0.2
+     ParentSurface "Syrena"
+    }
+    SCR_LightSlot "{66C2DA441C89B320}" {
+     LightType SearchLight
+     LightPositionInfo EntitySlotInfo "{51E2210D04212E5A}" {
+      Offset -0.0008 1.6946 -0.3936
+      Angles 31.1379 -72 0
+     }
+     LightPrefab "{177FBE7117BC60CB}Prefabs/Vehicles/Core/Lights/BAZAsyreny.et"
+     LightShouldTick 1
+     LightPhaseTime 0.1
+     ParentSurface "Syrena"
+    }
+    SCR_LightSlot "{66C2DA441C89B33E}" {
+     LightType SearchLight
+     LightPositionInfo EntitySlotInfo "{51E2210D04212E5A}" {
+      Offset -0.0008 1.6946 -0.3936
+      Angles 31.1379 -108 0
+     }
+     LightPrefab "{177FBE7117BC60CB}Prefabs/Vehicles/Core/Lights/BAZAsyreny.et"
+     LightShouldTick 1
+     LightPhaseTime 0.2
+     ParentSurface "Syrena"
+    }
+    SCR_LightSlot "{66C2DA441C89B33C}" {
+     LightType SearchLight
+     LightPositionInfo EntitySlotInfo "{51E2210D04212E5A}" {
+      Offset -0.0008 1.6946 -0.3936
+      Angles 31.1379 -144 0
+     }
+     LightPrefab "{177FBE7117BC60CB}Prefabs/Vehicles/Core/Lights/BAZAsyreny.et"
+     LightShouldTick 1
+     LightPhaseTime 0.1
+     ParentSurface "Syrena"
+    }
+    SCR_LightSlot "{66C2DA441C89B33A}" {
+     LightType SearchLight
+     LightPositionInfo EntitySlotInfo "{51E2210D04212E5A}" {
+      Offset -0.0008 1.6946 -0.3936
+      Angles 31.1379 -180 0
+     }
+     LightPrefab "{177FBE7117BC60CB}Prefabs/Vehicles/Core/Lights/BAZAsyreny.et"
+     LightShouldTick 1
+     LightPhaseTime 0.2
+     ParentSurface "Syrena"
+    }
+    SCR_LightSlot "{66C2DA441C89B338}" {
+     LightType SearchLight
+     LightPositionInfo EntitySlotInfo "{51E2210D04212E5A}" {
+      Offset -0.0008 1.6946 -0.3936
+      Angles 31.1379 -216 0
+     }
+     LightPrefab "{177FBE7117BC60CB}Prefabs/Vehicles/Core/Lights/BAZAsyreny.et"
+     LightShouldTick 1
+     LightPhaseTime 0.1
+     ParentSurface "Syrena"
+    }
+    SCR_LightSlot "{66C2DA441C89B337}" {
+     LightType SearchLight
+     LightPositionInfo EntitySlotInfo "{51E2210D04212E5A}" {
+      Offset -0.0008 1.6946 -0.3936
+      Angles 31.1379 -252 0
+     }
+     LightPrefab "{177FBE7117BC60CB}Prefabs/Vehicles/Core/Lights/BAZAsyreny.et"
+     LightShouldTick 1
+     LightPhaseTime 0.2
+     ParentSurface "Syrena"
+    }
+    SCR_LightSlot "{66C2DA441C89B336}" {
+     LightType SearchLight
+     LightPositionInfo EntitySlotInfo "{51E2210D04212E5A}" {
+      Offset -0.0008 1.6946 -0.3936
+      Angles 31.1379 -288 0
+     }
+     LightPrefab "{177FBE7117BC60CB}Prefabs/Vehicles/Core/Lights/BAZAsyreny.et"
+     LightShouldTick 1
+     LightPhaseTime 0.1
+     ParentSurface "Syrena"
+    }
+    SCR_LightSlot "{66C2DA441C89B335}" {
+     LightType SearchLight
+     LightPositionInfo EntitySlotInfo "{51E2210D04212E5A}" {
+      Offset -0.0008 1.6946 -0.3936
+      Angles 31.1379 -324 0
+     }
+     LightPrefab "{177FBE7117BC60CB}Prefabs/Vehicles/Core/Lights/BAZAsyreny.et"
+     LightShouldTick 1
+     LightPhaseTime 0.2
+     ParentSurface "Syrena"
+    }
+   }
+   EmissiveSurfaceSlots {
+    SCR_EmissiveLightSurfaceSlot Light_Indicator_FL {
+     Offset 0 -0.0507 -0.0097
+     Prefab "{C0C0A748F15A0007}Prefabs/Vehicles/Wheeled/SampleCar_01/Lights/FIATSampleCar_01_ES_Indicator_FL.et"
+    }
+    SCR_EmissiveLightSurfaceSlot Light_Indicator_FR {
+     Offset 0 -0.057 0
+     Prefab "{BDD84BB094C93C9E}Prefabs/Vehicles/Wheeled/SampleCar_01/Lights/FIATSampleCar_01_ES_Indicator_FR.et"
+    }
+    SCR_EmissiveLightSurfaceSlot Light_Indicator_RL {
+     Offset 0.0037 -0.0625 0.0001
+     Prefab "{A09D28763469CB3E}Prefabs/Vehicles/Wheeled/SampleCar_01/Lights/FIATSampleCar_01_ES_Indicator_RL.et"
+    }
+    SCR_EmissiveLightSurfaceSlot Light_Indicator_RR {
+     Offset 0 -0.054 0
+     Prefab "{DD85C48E51FAF7A7}Prefabs/Vehicles/Wheeled/SampleCar_01/Lights/FIATSampleCar_01_ES_Indicator_RR.et"
+    }
+    SCR_EmissiveLightSurfaceSlot Light_Rear_L {
+     Offset 0 -0.057 0.0025
+     Prefab "{399ADA14C1486BE2}Prefabs/Vehicles/Wheeled/SampleCar_01/Lights/FIATSampleCar_01_ES_Rear_L.et"
+     EmissiveOnMultiplier 150
+    }
+    SCR_EmissiveLightSurfaceSlot Light_Rear_R {
+     Offset 0 -0.057 0
+     Prefab "{448236ECA4DB577B}Prefabs/Vehicles/Wheeled/SampleCar_01/Lights/FIATSampleCar_01_ES_Rear_R.et"
+    }
+    SCR_EmissiveLightSurfaceSlot Light_LB_L {
+     Offset 0 -0.057 0
+     Prefab "{C55E654E91CF9F6E}Prefabs/Vehicles/Wheeled/SampleCar_01/Lights/FIATSampleCar_01_ES_LB_L.et"
+    }
+    SCR_EmissiveLightSurfaceSlot Light_LB_R {
+     Offset 0 -0.057 0
+     Prefab "{B84689B6F45CA3F7}Prefabs/Vehicles/Wheeled/SampleCar_01/Lights/FIATSampleCar_01_ES_LB_R.et"
+    }
+    SCR_EmissiveLightSurfaceSlot Light_HB_L {
+     Offset 0 -0.057 0
+     Prefab "{1D7D0505BEA8C8EB}Prefabs/Vehicles/Wheeled/SampleCar_01/Lights/FIATSampleCar_01_ES_HB_L.et"
+    }
+    SCR_EmissiveLightSurfaceSlot Light_HB_R {
+     Offset 0 -0.057 0
+     Prefab "{6065E9FDDB3BF472}Prefabs/Vehicles/Wheeled/SampleCar_01/Lights/FIATSampleCar_01_ES_HB_R.et"
+    }
+    SCR_EmissiveLightSurfaceSlot Light_Front_L {
+     Offset 0 -0.057 -0.0067
+     Prefab "{B4BD370065E16E09}Prefabs/Vehicles/Wheeled/SampleCar_01/Lights/FIATSampleCar_01_ES_Front_L.et"
+    }
+    SCR_EmissiveLightSurfaceSlot Light_Front_R {
+     Offset 0 -0.057 -0.0067
+     Prefab "{C9A5DBF800725290}Prefabs/Vehicles/Wheeled/SampleCar_01/Lights/FIATSampleCar_01_ES_Front_R.et"
+    }
+    SCR_EmissiveLightSurfaceSlot Light_Brake_L {
+     Offset 0 -0.057 0.0001
+     Prefab "{AEACE6DEEFCA6FB3}Prefabs/Vehicles/Wheeled/SampleCar_01/Lights/FIATSampleCar_01_ES_Brake_L.et"
+    }
+    SCR_EmissiveLightSurfaceSlot Light_Brake_R {
+     Offset 0 -0.057 0
+     Prefab "{D3B40A268A59532A}Prefabs/Vehicles/Wheeled/SampleCar_01/Lights/FIATSampleCar_01_ES_Brake_R.et"
+    }
+    SCR_EmissiveLightSurfaceSlot Light_Reverse_L {
+     Offset 0 -0.057 0
+     Prefab "{28DFF18E9020B8F3}Prefabs/Vehicles/Wheeled/SampleCar_01/Lights/FIATSampleCar_01_ES_Reverse_L.et"
+    }
+    SCR_EmissiveLightSurfaceSlot Light_Reverse_R {
+     Offset 0 -0.057 0
+     Prefab "{55C71D76F5B3846A}Prefabs/Vehicles/Wheeled/SampleCar_01/Lights/FIATSampleCar_01_ES_Reverse_R.et"
+    }
+    SCR_EmissiveLightSurfaceSlot Light_Interior {
+     Offset 0 0.0859 -0.0364
+    }
+    SCR_EmissiveLightSurfaceSlot Dashboard_Daylights {
+     Offset -0.034 -0.111 -0.003
+     Angles 6.2 0 0
+    }
+    SCR_EmissiveLightSurfaceSlot Dashboard_Indicator_L {
+     Offset -0.02 -0.175 -0.026
+     Angles 6.2 0 0
+    }
+    SCR_EmissiveLightSurfaceSlot Dashboard_Indicator_R {
+     Offset -0.075 -0.175 -0.02
+     Angles 6.2 0 0
+    }
+    SCR_EmissiveLightSurfaceSlot Syrena {
+     Offset 0 -0.0564 0
+     Prefab "{2B0CFDDDC6A39472}Prefabs/Vehicles/Wheeled/SampleCar_01/xxxxx/KogutSzklo.et"
+     RegisterLights 1
+     LightType 0x400 0
+     EmissiveOnMultiplier 10
+    }
+   }
+   LightAction {
+    SCR_LightsSearchLightUserAction "{66C2DA441C89B348}" {
+     ParentContextList {
+      "Kogut"
+     }
+     UIInfo SCR_ActionUIInfo "{66C2DA441C89B347}" {
+      Name "Światło Syreny"
+     }
+     ActionTitle "Światła Syreny"
+     Duration 0
+     m_eLightType SearchLight
+    }
+   }
+  }
+  MeshObject "{51DAA09FEFBFC0E7}" {
+   Object "{60164D9E2E32DF10}Prefabs/Vehicles/Wheeled/SampleCar_01/xxxxx/FIATprzetransferowanyNowy7plusLODs.xob"
+   Materials {
+    MaterialAssignClass "{66C2DA441C89B381}" {
+     SourceMaterial "BodyPNG"
+     AssignedMaterial "{34797BCEF158F55A}Assets/Vehicles/Wheeled/SampleCar_01/Data/BodyPNGMILICJA.emat"
+    }
+   }
+   LODFactors {
+    1 0.9 0.8 0.7 0.6
+   }
+  }
+  RadioBroadcastComponent "{66C2DA441C89B39F}" {
+   TurnOnAction SCR_TurnOnAction "{66C2DA441C89B39D}" {
+    ParentContextList {
+     "Kogut"
+    }
+    UIInfo UIInfo "{66C2DA441C89B39C}" {
+     Name "Syrena"
+    }
+    ActionTitle "Syrena"
+   }
+  }
+  RigidBody "{51DAA09FECF52BBF}" {
+   Mass 990
+   CenterOfMass 0 0.1 0
+  }
+  SCR_BaseCompartmentManagerComponent "{20FB66C5DCB8DF72}" {
+   DoorInfoList {
+    CompartmentDoorInfo "{66C2DA441C89B397}" {
+     AnimDoorIndex 6
+     ContextName "passenger_trunk"
+     EntryPositionInfo PointInfo "{66C2DA441C89B396}" {
+      PivotID "v_trunk"
+      Offset 0 -0.7812 -1.0465
+     }
+     ExitPositionInfo PointInfo "{66C2DA441C89B394}" {
+      PivotID "v_trunk"
+      Offset 0 -0.1487 -0.8806
+      Angles 0 180 0
+     }
+     GetInTeleport 1
+     GetOutTeleport 1
+     GetInAligningTeleport 1
+     GetOutAligningTeleport 1
+     AccessibilitySettings CompartmentAccessibilityContext "{66C2DA441C89B392}" {
+      BBHalfExtents 0.4 0.4 0.005
+      TraceOffset 0 0.7 1
+      ExcludePhysicsLayer 0x40000 0
+     }
+    }
+   }
+   CompartmentSlots {
+    PilotCompartmentSlot PilotCompartment {
+     PassengerPositionInfo EntitySlotInfo "{A1CB25848A3D93A8}" {
+      Offset 0 -0.0088 -0.0285
+      AutoTransform 1
+      InheritParentSkeleton 0
+     }
+    }
+    CargoCompartmentSlot passenger_trunk : "{9BD4548866DA1807}Prefabs/Vehicles/Core/Configs/CargoCompartment_Base.conf" {
+     CompartmentAction SCR_GetInUserAction "{5086CC2FCCAA457D}" {
+      ParentContextList {
+       "trunk"
+      }
+      UIInfo SCR_ActionUIInfo "{5086CC2FC26F3322}" {
+       Name "Wsiadaj do bagażnika"
+      }
+     }
+     GetOutAction SCR_GetOutAction "{509D56665A8C6923}" {
+      ParentContextList {
+       "trunk_inside"
+      }
+      UIInfo SCR_ActionUIInfo "{509D56665C8E044F}" {
+       Name "wysiadaj"
+      }
+     }
+     JumpOutAction SCR_JumpOutAction "{5D0B1D46E1FC958A}" {
+      UIInfo SCR_ActionUIInfo "{5D0B1D4714B59342}" {
+       Name "wyskocz"
+      }
+     }
+     AdditionalActions {
+      SCR_RemoveCasualtyUserAction "{5D528255CC646B68}" {
+       ParentContextList {
+        "passenger_m02"
+       }
+      }
+      SCR_RemoveCasualtyUserAction "{61089D5E00C44348}" {
+       ParentContextList {
+        "door_l02" "door_r02"
+       }
+      }
+     }
+     PassengerPositionInfo EntitySlotInfo "{5260E4F4EBCB5BB3}" {
+      PivotID "passengerc_idle"
+      Offset 0.1494 0.0174 -1.2996
+      Angles 0.3712 162.4493 89.88271
+     }
+     ForcedFreeLook 1
+     SeatType 4
+     DoorInfoList {
+      6
+     }
+     UIInfo UIInfo "{66C2DA441C89B3A7}" {
+     }
+     ContextName "passenger_trunk"
+    }
+   }
+   m_bBlockSuppliesIfOccupied 1
+  }
+  SCR_EditableVehicleComponent "{50DEB7C26B5EB312}" {
+   m_UIInfo SCR_EditableEntityUIInfo "{5298E609432D192D}" {
+    Name "Fiat 125P Milicja"
+    Description "Polski Fiat 125P"
+    m_Image "{02D11EBF835EBEC5}Assets/Vehicles/Wheeled/SampleCar_01/Data/FIATmilicja.edds"
+    m_sFaction "US"
+    m_aAuthoredLabels {
+     ENTITYTYPE_VEHICLE FACTION_US VEHICLE_CAR CONTENT_MODDED TRAIT_PASSENGERS_SMALL
+    }
+    m_aAutoLabels +{
+    }
+    m_EntityBudgetCost {
+     SCR_EntityBudgetValue "{5EDC86E4AF8908B6}" {
+      m_Value 40
+     }
+    }
+   }
+  }
+  SCR_FuelConsumptionComponent "{512CC5B0F07DA8F9}" {
+   m_fFuelConsumption 10
+   m_fFuelConsumptionIdle 0.44
+  }
+  SCR_MotorExhaustEffectGeneralComponent "{66C2DA441C89B3A1}" {
+   ParticleEffect "{94A1A377C5D9AA63}Particles/Vehicle/Vehicle_smoke_car_exhaust_petrol_normal.ptc"
+   RPMSignal "engineRPM"
+   ThrustSignal "engineThrust"
+   MaxRPM 8000
+   EffectPosition EntitySlotInfo exhaust {
+    PivotID "v_fx_exhaust"
+    Offset 0 -0.0538 -0.015
+   }
+  }
+  SCR_UniversalInventoryStorageComponent "{5AD4F813E67ECB5D}" {
+   Attributes SCR_ItemAttributeCollection "{5AD4F813E67ECB5B}" {
+    m_bDraggable 1
+   }
+  }
+  SCR_VehicleDamageManagerComponent "{141326E9FD94FE40}" {
+   "Additional hit zones" {
+    SCR_FlammableHitZone Hull {
+     m_pDestructionHandler SCR_DestructionBaseHandler "{5584C42C773FDFBF}" {
+      m_sWreckModel "{E622C2781FCE95A0}Prefabs/Vehicles/Wheeled/SampleCar_01/xxxxx/FIATprzetransferowanyNowy7plusLODsWRECK.xob"
+     }
+    }
+    SCR_EngineHitZone Engine_01 {
+     ColliderNames {
+      "UCX_FG_FIATsilnik"
+     }
+    }
+    SCR_GearboxHitZone Gearbox_01 {
+     ColliderNames {
+      "UCX_FG_FIATGearbox"
+     }
+    }
+    SCR_FuelHitZone FuelTank_01 {
+     ColliderNames {
+      "UCX_FG_FIATFuelTank"
+     }
+    }
+    SCR_BatteryHitZone Battery_01 {
+     ColliderNames {
+      "UCX_FG_FIATakumulator"
+     }
+    }
+   }
+  }
+  VehicleWheeledSimulation "{731B26FCA2F19855}" {
+   Simulation Wheeled "{4D8B26DEA5F25978}" {
+    Axles {
+     Axle "{4D8B26DF957A8E1C}" {
+      Wheel Wheel "{4D8B26DFFE211745}" {
+       Mass 20
+      }
+     }
+     Axle "{4D8B26DF8CF2F3D8}" {
+      Suspension Suspension "{4D8B26DF2B10AE05}" {
+      }
+      Wheel Wheel "{4D8B26DF30A4E4D7}" {
+       Mass 20
+      }
+      Tyre Tyre "{4D8B26DF33F76974}" {
+       Roughness 0.1
+      }
+     }
+    }
+   }
+  }
+  BaseVehicleNodeComponent "{20FB66C5B2237133}" {
+   components {
+    SCR_CarControllerComponent "{20FB66C5BC92275B}" {
+     Type Manual
+    }
+   }
+  }
+  ChimeraAIVehicleControlComponent "{61C2E46781A66E82}" {
+   components {
+    AICarMovementComponent "{61C2E46796C28D80}" {
+     "Max Speed" 118
+    }
+   }
+  }
+  SlotManagerComponent "{55BCE45E438E4CFF}" {
+   Slots {
+    EntitySlotInfo glass_f {
+     Offset 0 -0.0579 -0.0095
+     Prefab "{AD12F65676979B9E}Prefabs/Vehicles/Wheeled/SampleCar_01/Dst/FIATSampleCar_01_glass_Fnakl.et"
+    }
+    EntitySlotInfo glass_fl {
+     Offset 0.8076 -0.4989 -0.5378
+     Prefab "{1770A5E2FABAF72A}Prefabs/Vehicles/Wheeled/SampleCar_01/Dst/FIATSampleCar_01_glass_FLnakl.et"
+    }
+    EntitySlotInfo glass_fr {
+     Offset -0.8373 -0.4963 -0.5358
+     Prefab "{AD57512BB6ADE005}Prefabs/Vehicles/Wheeled/SampleCar_01/Dst/FIATSampleCar_01_glass_FRnakl.et"
+    }
+    EntitySlotInfo glass_r {
+     PivotID "Empty"
+     Offset 0 -0.0565 -0.0038
+     ChildPivotID ""
+     Prefab "{7ED7AED801727E54}Prefabs/Vehicles/Wheeled/SampleCar_01/Dst/FIATSampleCar_01_glass_Rnakl.et"
+    }
+    EntitySlotInfo glass_rl {
+     Offset 0.8083 -0.4953 0.4223
+     Prefab "{5FFB9683E2DEB692}Prefabs/Vehicles/Wheeled/SampleCar_01/Dst/FIATSampleCar_01_glass_RLnakl.et"
+    }
+    EntitySlotInfo glass_rr {
+     Offset -0.8445 -0.4982 0.4205
+     Prefab "{E5DC624AAEC9A1BD}Prefabs/Vehicles/Wheeled/SampleCar_01/Dst/FIATSampleCar_01_glass_RRnakl.et"
+    }
+    SCR_WheelSlotInfo Wheel_L01 {
+     Prefab "{D1BADCDB81341CF6}Prefabs/Vehicles/Wheeled/SampleCar_01/VehParts/FIATSampleCar_01_wheel.et"
+    }
+    SCR_WheelSlotInfo Wheel_L02 {
+     Prefab "{D1BADCDB81341CF6}Prefabs/Vehicles/Wheeled/SampleCar_01/VehParts/FIATSampleCar_01_wheel.et"
+    }
+    SCR_WheelSlotInfo Wheel_R01 {
+     Prefab "{D1BADCDB81341CF6}Prefabs/Vehicles/Wheeled/SampleCar_01/VehParts/FIATSampleCar_01_wheel.et"
+    }
+    SCR_WheelSlotInfo Wheel_R02 {
+     Prefab "{D1BADCDB81341CF6}Prefabs/Vehicles/Wheeled/SampleCar_01/VehParts/FIATSampleCar_01_wheel.et"
+    }
+    RegisteringComponentSlotInfo SupplyStorage_01 {
+     Offset -0.0207 0.1657 -2.1683
+     Angles 0 -1.6922 0
+     MergePhysics 1
+    }
+    EntitySlotInfo Syrena {
+     Offset 0 -0.0567 0
+     MergePhysics 1
+     Prefab "{F339F7081FA4C49D}Prefabs/Vehicles/Wheeled/SampleCar_01/xxxxx/KogutBaza.et"
+    }
+   }
+  }
+  ActionsManagerComponent "{C97BE5489221AE18}" {
+   ActionContexts {
+    UserActionContext "{5E96ACA123D93C4A}" {
+     Position PointInfo "{5E96ACA11863D4D4}" {
+      Offset 0 0.6172 -2.2041
+     }
+    }
+    UserActionContext "{5F10A658EBB557D3}" {
+     Position PointInfo "{5F10A658DA4AF07A}" {
+      Offset 0 0.8614 1.5605
+     }
+    }
+    UserActionContext "{66C2DA441C89B3C4}" {
+     UIInfo SCR_ActionUIInfo "{66C2DA441C89B3D8}" {
+      Name "Kogut"
+     }
+     ContextName "Kogut"
+     Position PointInfo "{66C2DA441C89B3D6}" {
+      Offset 0.098 0.9359 0.4623
+     }
+    }
+   }
+  }
+ }
+ coords 0 0 0
+}
