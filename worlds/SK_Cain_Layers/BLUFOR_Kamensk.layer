@@ -1,0 +1,37 @@
+GenericEntity : "{88B3A9FF09D43C1B}Prefabs/Items/Equipment/Maps/Map_Paper_01/PaperMap_FastTravel_CO.et" {
+ coords 12024.318 3.712 10886.428
+ angles 0 96.922 0
+}
+GenericEntity : "{C1AB654F77ABA58B}PrefabsEditable/Auto/Props/Military/Compositions/US/E_ArsenalBox_US.et" {
+ coords 12023.903 2.844 10882.076
+ angles 0 -85.464 0
+}
+SCR_SpawnPoint : "{CEA2B24051A44525}PrefabsEditable/SpawnPoints/E_SpawnPoint_US.et" {
+ components {
+  SCR_MapDescriptorComponent "{54C659A97C47BDE2}" {
+   DisplayName "Montignac"
+  }
+ }
+ coords 12030.388 2.875 10876.148
+}
+GenericEntity : "{DC50C3296A8BACB2}Prefabs/Compositions/SK_VehicleSpawnPoint.et" {
+ coords 12027.079 2.844 10873.628
+ angles 0 -97.436 0
+ {
+  GenericEntity {
+   ID "64548D9BBCA96EE2"
+   components {
+    SCR_CampaignBuildingProviderComponent "{5ED49CDEA85A0083}" {
+     m_aBudgetsToEvaluate {
+      SCR_CampaignBuildingBudgetToEvaluateData "{5ED49CDE93BE360C}" {
+       m_eBudget 2147483647
+      }
+     }
+     m_aAvailableTraits {
+      VEHICLE_CAR
+     }
+    }
+   }
+  }
+ }
+}

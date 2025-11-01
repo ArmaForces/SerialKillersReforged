@@ -1,0 +1,98 @@
+GenericEntity : "{88B3A9FF09D43C1B}Prefabs/Items/Equipment/Maps/Map_Paper_01/PaperMap_FastTravel_CO.et" {
+ coords 2704.385 25.46 5500.797
+ angles 0 179.914 0
+}
+GenericEntity : "{C1AB654F77ABA58B}PrefabsEditable/Auto/Props/Military/Compositions/US/E_ArsenalBox_US.et" {
+ coords 2707.321 24.581 5500.574
+ angles 0 -2.115 0
+}
+GenericEntity RandomAircraftSpawn : "{C72F956E4AC6A6E7}Prefabs/Systems/ScenarioFramework/Components/Area.et" {
+ coords 2893.282 24.219 5058.332
+ {
+  GenericEntity Layer4 : "{5F9FFF4BF027B3A3}Prefabs/Systems/ScenarioFramework/Components/Layer.et" {
+   components {
+    SCR_ScenarioFrameworkLayerBase "{5A2283EA2A0B4B14}" {
+     m_SpawnChildren RANDOM_ONE
+    }
+   }
+   coords 0 0 0
+   {
+    $grp GenericEntity : "{AA01691FDC4E9167}Prefabs/Systems/ScenarioFramework/Components/Slot.et" {
+     Slot20 {
+      components {
+       SCR_ScenarioFrameworkSlotBase "{5A22E1D67E712EC8}" {
+        m_sObjectToSpawn "{74DCE1AEC6832E18}Prefabs/Props/Wrecks/UH1H_wreck/UH1H_wreck_static.et"
+       }
+      }
+      coords 90.197 -0.412 48.902
+      angles 3.312 -129.064 -2.685
+     }
+     Slot21 {
+      components {
+       SCR_ScenarioFrameworkSlotBase "{5A22E1D67E712EC8}" {
+        m_sObjectToSpawn "{7A29940A71EF5F5C}Prefabs/Vehicles/Helicopters/UH1H/UH1H_civ_livery_v1.et"
+       }
+      }
+      coords 86.713 0.573 53.961
+      angles 0 -133.904 0
+     }
+     Slot23 {
+      components {
+       SCR_ScenarioFrameworkSlotBase "{5A22E1D67E712EC8}" {
+        m_sObjectToSpawn "{8175FCADFA2FB904}Prefabs/Vehicles/Helicopters/Mi8MT/Mi8MT_unarmed_civ_red.et"
+       }
+      }
+      coords 100.511 0 34.938
+      angles 0 -128.378 0
+     }
+     Slot24 {
+      components {
+       SCR_ScenarioFrameworkSlotBase "{5A22E1D67E712EC8}" {
+        m_sObjectToSpawn "{AF950919C81D91B4}Prefabs/Vehicles/Helicopters/AH6M/MH6M.et"
+       }
+      }
+      coords 100.413 -4.487 35.48
+      angles 0 0 4.262
+     }
+     Slot25 {
+      components {
+       SCR_ScenarioFrameworkSlotBase "{5A22E1D67E712EC8}" {
+        m_sObjectToSpawn "{9668B6C528DCECBD}Prefabs/Props/Wrecks/Mi8MT_wreck/Mi8MT_wreck_static.et"
+       }
+      }
+      coords 11.708 -0.552 -13.016
+      angles 4.253 -93.778 -0.281
+     }
+    }
+   }
+  }
+ }
+}
+SCR_SpawnPoint : "{CEA2B24051A44525}PrefabsEditable/SpawnPoints/E_SpawnPoint_US.et" {
+ components {
+  SCR_MapDescriptorComponent "{54C659A97C47BDE2}" {
+   DisplayName "Montignac"
+  }
+ }
+ coords 2717.898 26.977 5476.13
+}
+GenericEntity : "{DC50C3296A8BACB2}Prefabs/Compositions/SK_VehicleSpawnPoint.et" {
+ coords 2701.822 24.592 5488.41
+ angles 0 -97.436 0
+ {
+  GenericEntity {
+   ID "64548D9BBCA96EE2"
+   components {
+    SCR_CampaignBuildingProviderComponent "{5ED49CDEA85A0083}" {
+     m_aBudgetsToEvaluate {
+      SCR_CampaignBuildingBudgetToEvaluateData "{5ED49CDE93BE360C}" {
+       m_eBudget 2147483647
+      }
+     }
+    }
+   }
+   coords -4.736 -0.377 11.07
+   angles 0 173.476 0
+  }
+ }
+}

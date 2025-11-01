@@ -1,0 +1,72 @@
+$grp GenericEntity : "{38F1FC441995AED9}Prefabs/World/Locations/Eden/Aquatic/Saint_Pierre_Bay_01.et" {
+ EasternHarbour {
+  components {
+   SCR_EditableCommentComponent "{529AB059519FE609}" {
+    m_UIInfo SCR_EditableCommentUIInfo "{5298E609432D192D}" {
+     Name "Campground"
+    }
+   }
+   SCR_MapDescriptorComponent "{527892B6ED748CEB}" {
+    DisplayName "Eastern harbour"
+    MainType "Name Settlement"
+   }
+  }
+  coords 8743.296 9.344 7398.443
+ }
+ HotSprings {
+  components {
+   SCR_EditableCommentComponent "{529AB059519FE609}" {
+    m_UIInfo SCR_EditableCommentUIInfo "{5298E609432D192D}" {
+     Name "Gillnet"
+    }
+   }
+   SCR_MapDescriptorComponent "{527892B6ED748CEB}" {
+    DisplayName "Hot springs"
+    MainType "Name Settlement"
+   }
+  }
+  coords 4830.148 439.824 5690.821
+ }
+ ZenitMine {
+  components {
+   SCR_EditableCommentComponent "{529AB059519FE609}" {
+    m_UIInfo SCR_EditableCommentUIInfo "{5298E609432D192D}" {
+     Name "PennantPass"
+    }
+   }
+   SCR_MapDescriptorComponent "{527892B6ED748CEB}" {
+    DisplayName "Zenit mine"
+    MainType "Name Settlement"
+   }
+  }
+  coords 3588.529 1.983 7892.519
+ }
+ Villa {
+  components {
+   SCR_EditableCommentComponent "{529AB059519FE609}" {
+    m_UIInfo SCR_EditableCommentUIInfo "{5298E609432D192D}" {
+     Name "Villla"
+    }
+   }
+   SCR_MapDescriptorComponent "{527892B6ED748CEB}" {
+    DisplayName "Villa"
+    MainType "Name Settlement"
+   }
+  }
+  coords 1926.422 132.544 7429.03
+ }
+ EasternHarbour2 {
+  components {
+   SCR_EditableCommentComponent "{529AB059519FE609}" {
+    m_UIInfo SCR_EditableCommentUIInfo "{5298E609432D192D}" {
+     Name "Airport"
+    }
+   }
+   SCR_MapDescriptorComponent "{527892B6ED748CEB}" {
+    DisplayName "Airport"
+    MainType "Name Town"
+   }
+  }
+  coords 2715.788 24.656 5667.189
+ }
+}
