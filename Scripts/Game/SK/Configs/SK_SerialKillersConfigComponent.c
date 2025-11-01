@@ -25,6 +25,9 @@ class SK_SerialKillersConfigComponent: ScriptComponent
 	[Attribute(uiwidget: UIWidgets.ResourceAssignArray, desc: "Vehicle to spawn", params: "et", category: "PrefabList")]
 	ref array<ref ResourceName> m_pVehiclePrefabArray;
 	
+	[Attribute("-1")]
+	int m_iAiFixedLod;
+	
 	private static SK_SerialKillersConfigComponent s_Instance = null;
 	
 	static SK_SerialKillersConfigComponent GetInstance()

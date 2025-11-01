@@ -255,6 +255,7 @@ class SK_CivilianManagerComponent: ScriptComponent
 		AIWaypointCycle cycle = AIWaypointCycle.Cast(SpawnWaypoint(SK_Global.GetConfig().m_pCycleWaypointPrefab, targetPos));
 		cycle.SetWaypoints(queueOfWaypoints);
 		aigroup.AddWaypoint(cycle);
+		aigroup.SetFixedLOD(SK_Global.GetConfig().m_iAiFixedLod);
 	}
 	
 	protected bool ProcessCities(IEntity cityEntity)
@@ -325,7 +326,7 @@ class SK_CivilianManagerComponent: ScriptComponent
 				string res = mesh.GetResourceName();
 				if(res.IndexOf("/Naval/") > -1) return false;
 				if(res.IndexOf("/Cemeteries/") > -1) return false;
-				if(res.IndexOf("/Ruins/") > -1) return false;
+				//if(res.IndexOf("/Ruins/") > -1) return false;
 				return true;
 					
 			}
