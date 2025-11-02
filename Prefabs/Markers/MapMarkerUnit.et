@@ -6,7 +6,7 @@ SCR_MapMarkerDotCircle {
  }
  Flags 0 0x3
  coords 9154.646 32.782 4943.347
- m_fUpdateDelayData 10
+ m_fUpdateDelayData 5
  m_fRadius 1
  m_fDotDensity 1
 }
