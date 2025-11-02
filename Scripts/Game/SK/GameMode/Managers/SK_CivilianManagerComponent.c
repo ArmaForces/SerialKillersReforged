@@ -321,18 +321,24 @@ class SK_CivilianManagerComponent: ScriptComponent
 	
 	protected bool FilterBuildingEntities(IEntity entity)
 	{
-		if(entity.Type() == SCR_DestructibleBuildingEntity){
-			VObject mesh = entity.GetVObject();
-			
-			if(mesh){
-				string res = mesh.GetResourceName();
-				if(res.IndexOf("/Naval/") > -1) return false;
-				if(res.IndexOf("/Cemeteries/") > -1) return false;
-				//if(res.IndexOf("/Ruins/") > -1) return false;
-				return true;
-					
-			}
+		if (entity.Type() != SCR_DestructibleBuildingEntity)
+			return false;
+		
+		VObject mesh = entity.GetVObject();
+		if (!mesh)
+			Print("No mesh found for " + entity.GetName());
+		
+		if(mesh){
+			string res = mesh.GetResourceName();
+			if(res.IndexOf("/Naval/") > -1) 
+				return false;
+			if(res.IndexOf("/Cemeteries/") > -1) 
+				return false;
+			//if(res.IndexOf("/Ruins/") > -1) return false;
+			return true;
+				
 		}
+		
 		return false;
 	}
 	

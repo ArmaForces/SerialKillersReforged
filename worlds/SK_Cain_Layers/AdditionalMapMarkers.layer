@@ -13,20 +13,6 @@ $grp GenericEntity : "{38F1FC441995AED9}Prefabs/World/Locations/Eden/Aquatic/Sai
   }
   coords 8743.296 9.344 7398.443
  }
- HotSprings {
-  components {
-   SCR_EditableCommentComponent "{529AB059519FE609}" {
-    m_UIInfo SCR_EditableCommentUIInfo "{5298E609432D192D}" {
-     Name "Gillnet"
-    }
-   }
-   SCR_MapDescriptorComponent "{527892B6ED748CEB}" {
-    DisplayName "Hot springs"
-    MainType "Name Settlement"
-   }
-  }
-  coords 4830.148 439.824 5690.821
- }
  ZenitMine {
   components {
    SCR_EditableCommentComponent "{529AB059519FE609}" {
@@ -55,7 +41,7 @@ $grp GenericEntity : "{38F1FC441995AED9}Prefabs/World/Locations/Eden/Aquatic/Sai
   }
   coords 1926.422 132.544 7429.03
  }
- EasternHarbour2 {
+ Airport {
   components {
    SCR_EditableCommentComponent "{529AB059519FE609}" {
     m_UIInfo SCR_EditableCommentUIInfo "{5298E609432D192D}" {
@@ -82,5 +68,187 @@ $grp GenericEntity : "{38F1FC441995AED9}Prefabs/World/Locations/Eden/Aquatic/Sai
    }
   }
   coords 3689.202 179.888 5261.566
+ }
+ Skalisty {
+  components {
+   SCR_EditableCommentComponent "{529AB059519FE609}" {
+    m_UIInfo SCR_EditableCommentUIInfo "{5298E609432D192D}" {
+     Name "Skalisty"
+    }
+   }
+   SCR_MapDescriptorComponent "{527892B6ED748CEB}" {
+    DisplayName "Skalisty"
+    MainType "Name Settlement"
+   }
+  }
+  coords 11064.588 35.563 1663.581
+ }
+ Rowan {
+  components {
+   SCR_EditableCommentComponent "{529AB059519FE609}" {
+    m_UIInfo SCR_EditableCommentUIInfo "{5298E609432D192D}" {
+     Name "Rowan"
+    }
+   }
+   SCR_MapDescriptorComponent "{527892B6ED748CEB}" {
+    DisplayName "Rowan"
+    MainType "Name Settlement"
+   }
+  }
+  coords 10523.469 22.406 9707.202
+ }
+ NadezhdaMine {
+  components {
+   SCR_EditableCommentComponent "{529AB059519FE609}" {
+    m_UIInfo SCR_EditableCommentUIInfo "{5298E609432D192D}" {
+     Name "NadezhdaMine"
+    }
+   }
+   SCR_MapDescriptorComponent "{527892B6ED748CEB}" {
+    DisplayName "Nadezhda Mine"
+    MainType "Name Settlement"
+   }
+  }
+  coords 7651.572 207.241 6832.167
+ }
+ StakhanovMine {
+  components {
+   SCR_EditableCommentComponent "{529AB059519FE609}" {
+    m_UIInfo SCR_EditableCommentUIInfo "{5298E609432D192D}" {
+     Name "StakhanovMine"
+    }
+   }
+   SCR_MapDescriptorComponent "{527892B6ED748CEB}" {
+    DisplayName "Stakhanov Mine"
+    MainType "Name Settlement"
+   }
+  }
+  coords 6059.029 182.394 4576.118
+ }
+ Soumont {
+  components {
+   SCR_EditableCommentComponent "{529AB059519FE609}" {
+    m_UIInfo SCR_EditableCommentUIInfo "{5298E609432D192D}" {
+     Name "Soumont"
+    }
+   }
+   SCR_MapDescriptorComponent "{527892B6ED748CEB}" {
+    DisplayName "Soumont"
+    MainType "Name Settlement"
+   }
+  }
+  coords 5110.595 410.049 5325.763
+ }
+ Hamertin {
+  components {
+   SCR_EditableCommentComponent "{529AB059519FE609}" {
+    m_UIInfo SCR_EditableCommentUIInfo "{5298E609432D192D}" {
+     Name "Hamertin"
+    }
+   }
+   SCR_MapDescriptorComponent "{527892B6ED748CEB}" {
+    DisplayName "Hamertin"
+    MainType "Name Settlement"
+   }
+  }
+  coords 3284.975 269.562 6877.64
+ }
+ Langonnet {
+  components {
+   SCR_EditableCommentComponent "{529AB059519FE609}" {
+    m_UIInfo SCR_EditableCommentUIInfo "{5298E609432D192D}" {
+     Name "Langonnet"
+    }
+   }
+   SCR_MapDescriptorComponent "{527892B6ED748CEB}" {
+    DisplayName "Langonnet"
+    MainType "Name Settlement"
+   }
+  }
+  coords 9643.925 131.058 10024.048
+ }
+ LeRocher {
+  components {
+   SCR_EditableCommentComponent "{529AB059519FE609}" {
+    m_UIInfo SCR_EditableCommentUIInfo "{5298E609432D192D}" {
+     Name "LeRocher"
+    }
+   }
+   SCR_MapDescriptorComponent "{527892B6ED748CEB}" {
+    DisplayName "Le Rocher"
+    MainType "Name Settlement"
+   }
+  }
+  coords 11397.375 86.427 10517.324
+ }
+ Bovemont {
+  components {
+   SCR_EditableCommentComponent "{529AB059519FE609}" {
+    m_UIInfo SCR_EditableCommentUIInfo "{5298E609432D192D}" {
+     Name "Bovemont"
+    }
+   }
+   SCR_MapDescriptorComponent "{527892B6ED748CEB}" {
+    DisplayName "Bovemont"
+    MainType "Name Settlement"
+   }
+  }
+  coords 6091.077 418.295 6231.873
+ }
+ Meglerone {
+  components {
+   SCR_EditableCommentComponent "{529AB059519FE609}" {
+    m_UIInfo SCR_EditableCommentUIInfo "{5298E609432D192D}" {
+     Name "Meglerone"
+    }
+   }
+   SCR_MapDescriptorComponent "{527892B6ED748CEB}" {
+    DisplayName "Meglerone"
+    MainType "Name Settlement"
+   }
+  }
+  coords 9828.381 55.601 9458.712
+ }
+ Querrien {
+  components {
+   SCR_EditableCommentComponent "{529AB059519FE609}" {
+    m_UIInfo SCR_EditableCommentUIInfo "{5298E609432D192D}" {
+     Name "Querrien"
+    }
+   }
+   SCR_MapDescriptorComponent "{527892B6ED748CEB}" {
+    DisplayName "Querrien"
+    MainType "Name Settlement"
+   }
+  }
+  coords 4388.823 22.311 2929.968
+ }
+ TurtleRock {
+  components {
+   SCR_EditableCommentComponent "{529AB059519FE609}" {
+    m_UIInfo SCR_EditableCommentUIInfo "{5298E609432D192D}" {
+     Name "TurtleRock"
+    }
+   }
+   SCR_MapDescriptorComponent "{527892B6ED748CEB}" {
+    DisplayName "Turtle rock"
+    MainType "Name Settlement"
+   }
+  }
+  coords 6357.018 6.173 2672.709
+ }
+ Emptyname {
+  components {
+   SCR_EditableCommentComponent "{529AB059519FE609}" {
+    m_UIInfo SCR_EditableCommentUIInfo "{5298E609432D192D}" {
+     Name "EmptyName"
+    }
+   }
+   SCR_MapDescriptorComponent "{527892B6ED748CEB}" {
+    DisplayName " "
+    MainType "Name Village"
+   }
+  }
+  coords 7641.18 23.408 5076.095
  }
 }
