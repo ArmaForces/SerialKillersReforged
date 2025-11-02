@@ -43,18 +43,6 @@ GenericEntity Area1 : "{C72F956E4AC6A6E7}Prefabs/Systems/ScenarioFramework/Compo
     }
     coords 1712.996 396.513 -3750.088
    }
-   SlotMarker5 {
-    components {
-     SCR_ScenarioFrameworkSlotMarker "{5EA2BD9901E5E82E}" {
-      m_MapMarkerType SCR_ScenarioFrameworkMarkerCustom "{64D4A0BC99863DD6}" {
-       m_sMapMarkerText "Prison"
-       m_eMapMarkerIcon FORTIFICATION
-       m_eMapMarkerColor BLUFOR
-      }
-     }
-    }
-    coords 1619.799 399.295 -3777.899
-   }
    SlotMarker6 {
     components {
      SCR_ScenarioFrameworkSlotMarker "{5EA2BD9901E5E82E}" {
@@ -66,6 +54,18 @@ GenericEntity Area1 : "{C72F956E4AC6A6E7}Prefabs/Systems/ScenarioFramework/Compo
      }
     }
     coords -2476.481 -16.219 -4970.934
+   }
+   SlotMarker7 {
+    components {
+     SCR_ScenarioFrameworkSlotMarker "{5EA2BD9901E5E82E}" {
+      m_MapMarkerType SCR_ScenarioFrameworkMarkerCustom "{64D4A0BC99863DD6}" {
+       m_sMapMarkerText "Prison"
+       m_eMapMarkerIcon FORTIFICATION
+       m_eMapMarkerColor BLUFOR
+      }
+     }
+    }
+    coords 1928.72 280.319 -4422.796
    }
   }
  }
