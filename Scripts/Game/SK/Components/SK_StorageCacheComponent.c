@@ -42,7 +42,7 @@ class SK_StorageCacheComponent : ScriptComponent
 		if (!m_InventoryStorage)
 			Print("SCR_UniversalInventoryStorageComponent component could not be found on SK_StorageCacheComponent entity!", LogLevel.ERROR);
 		
-		GetGame().GetCallqueue().CallLater(InitializeCache, Math.RandomInt(30,40) * 1000);
+		GetGame().GetCallqueue().CallLater(InitializeCache, Math.RandomInt(1,15) * 250);
 	}
 
 	void InitializeCache()
@@ -113,36 +113,36 @@ class SK_StorageCacheComponent : ScriptComponent
 	
 	protected void CreateMapMarker()
 	{
-		SCR_MapMarkerManagerComponent mapMarkerMgr = SCR_MapMarkerManagerComponent.Cast(GetGame().GetGameMode().FindComponent(SCR_MapMarkerManagerComponent));
-		if (!mapMarkerMgr)
-		{
-			Print("MamMarkerMgr not found", LogLevel.ERROR);
+		SCR_MapMarkerManagerComponent mapMarkerManager = SCR_MapMarkerManagerComponent.GetInstance();
+		if (!mapMarkerManager)
 			return;
-		}
 		
-		SCR_MapMarkerBase m_MapMarker = new SCR_MapMarkerBase();
-		m_MapMarker = mapMarkerMgr.PrepareMilitaryMarker(EMilitarySymbolIdentity.OPFOR, EMilitarySymbolDimension.LAND, EMilitarySymbolIcon.SUPPLY);
-		vector worldPos = GetOwner().GetOrigin();
-		m_MapMarker.SetWorldPos(worldPos[0], worldPos[2]);
-		m_MapMarker.SetCustomText("Supply cache");
+		SCR_MapMarkerEntity marker = mapMarkerManager.InsertDynamicMarker(
+			SCR_EMapMarkerType.SK_CACHE, GetOwner()
+		);
 		
-		FactionManager factionManager = GetGame().GetFactionManager();
+		if (!marker)
+			return;
 		
-		if (factionManager)
-		{
-			Faction faction = factionManager.GetFactionByKey(m_sFactionItemKey);
-			if (faction) {
-				m_MapMarker.AddMarkerFactionFlags(factionManager.GetFactionIndex(faction));
-				mapMarkerMgr.InsertStaticMarker(m_MapMarker, false, true);
-			}
-			else 
-			{
-				Print("No faction found!", LogLevel.ERROR);
-			}
-		}
-		else 
-		{
-			Print("No faction manager found!", LogLevel.ERROR);
-		}
+		Faction faction = GetGame().GetFactionManager().GetFactionByKey(m_sFactionItemKey);
+		marker.SetFaction(faction);
+		marker.SetText("Supply cache");
+	}
+	
+}
+
+modded enum SCR_EMapMarkerType
+{
+	SK_CACHE
+}
+
+[BaseContainerProps(), SCR_MapMarkerTitle()]
+class SK_MapMarkerEntryCache : SCR_MapMarkerEntryDynamic
+{
+	//------------------------------------------------------------------------------------------------
+	override SCR_EMapMarkerType GetMarkerType()
+	{
+	 	return SCR_EMapMarkerType.SK_CACHE;
 	}
 }
+

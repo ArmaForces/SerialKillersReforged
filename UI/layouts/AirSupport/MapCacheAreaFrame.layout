@@ -1,0 +1,23 @@
+SizeLayoutWidgetClass {
+ Name "MapUnitAreaFrame"
+ Clipping False
+ components {
+  SK_MapUnitHandler "{66C4C48E265ECA1A}" {
+   m_sDotResource "{430612DFB359499C}UI/layouts/AirSupport/MapAreaCache.layout"
+  }
+ }
+ AllowWidthOverride 1
+ WidthOverride 200
+ AllowHeightOverride 1
+ HeightOverride 200
+ {
+  FrameWidgetClass "{66C4CBE802AE97B0}" {
+   Name "DotFrame"
+   Slot AlignableSlot "{62AEA07D5B23DA94}" {
+    HorizontalAlign 3
+    VerticalAlign 3
+   }
+   Clipping False
+  }
+ }
+}
