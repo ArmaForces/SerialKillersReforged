@@ -4,6 +4,9 @@ Vehicle FIAT125P_MILICJA_Turbo1 : "{726A3785E1C695E3}Prefabs/Vehicles/Wheeled/Sa
 Vehicle S105_rally_BLUFOR2 : "{8B937D667742A75D}Prefabs/Vehicles/Wheeled/S105/S105_rally_BLUFOR.et" {
  coords 1307.911 38.654 2332.812
 }
+Vehicle UAZ469_covered_BLUFOR_blue2 : "{B472B2B30A3552B2}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_covered_BLUFOR_blue.et" {
+ coords 1402.728 35.868 2353.746
+}
 GenericEntity Area1 : "{C72F956E4AC6A6E7}Prefabs/Systems/ScenarioFramework/Components/Area.et" {
  components {
   SCR_ScenarioFrameworkArea "{59E8CDC50969206E}" {

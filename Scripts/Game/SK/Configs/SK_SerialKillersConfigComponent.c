@@ -25,8 +25,8 @@ class SK_SerialKillersConfigComponent: ScriptComponent
 	[Attribute(uiwidget: UIWidgets.ResourceAssignArray, desc: "Vehicle to spawn", params: "et", category: "PrefabList")]
 	ref array<ref ResourceName> m_pVehiclePrefabArray;
 	
-	[Attribute("-1")]
-	int m_iAiFixedLod;
+	[Attribute("0")]
+	protected bool m_bAllowAIMaxLOD;
 	
 	private static SK_SerialKillersConfigComponent s_Instance = null;
 	
@@ -42,6 +42,11 @@ class SK_SerialKillersConfigComponent: ScriptComponent
 		}
 		
 		return s_Instance;
+	}
+	
+	bool IsAIMaxLodAllowed()
+	{
+		return m_bAllowAIMaxLOD;
 	}
 	
 	

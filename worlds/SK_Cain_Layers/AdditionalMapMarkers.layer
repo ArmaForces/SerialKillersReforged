@@ -69,4 +69,18 @@ $grp GenericEntity : "{38F1FC441995AED9}Prefabs/World/Locations/Eden/Aquatic/Sai
   }
   coords 2715.788 24.656 5667.189
  }
+ KrasnyjOctobarMine {
+  components {
+   SCR_EditableCommentComponent "{529AB059519FE609}" {
+    m_UIInfo SCR_EditableCommentUIInfo "{5298E609432D192D}" {
+     Name "KrasnyOktyabrMine"
+    }
+   }
+   SCR_MapDescriptorComponent "{527892B6ED748CEB}" {
+    DisplayName "Krasny Oktyabr mine"
+    MainType "Name Settlement"
+   }
+  }
+  coords 3689.202 179.888 5261.566
+ }
 }

@@ -28,6 +28,9 @@ SK_SerialKillersGameMode SK_SerialKillersGameModeOverride1 : "{ECEEDB2D3737204B}
   SCR_HintManagerComponent "{5702B54C6CBC9D7F}" {
    m_bIgnoreHintSettings 1
   }
+  SCR_MapMarkerManagerComponent "{5D32E876D3886A72}" {
+   m_sMarkerCfgPath "{3583D42139D9A10B}Configs/Map/CampaignMapMarkerConfig.conf"
+  }
   SCR_NotificationSenderComponent "{56FA84B04BE7D4C0}" {
    m_iKillFeedType DISABLED
   }
@@ -71,7 +74,6 @@ SK_SerialKillersGameMode SK_SerialKillersGameModeOverride1 : "{ECEEDB2D3737204B}
     "{81DFB6213937DA4C}Prefabs/Vehicles/Wheeled/SampleCar_01/FSO125P4x4.et"
     "{AB5B0A3F56219B3C}Prefabs/Vehicles/Wheeled/SampleCar_01/FSO125PWSW2.et"
    }
-   m_iAiFixedLod 0
   }
  }
  coords 6390.344 159.26 6439.98

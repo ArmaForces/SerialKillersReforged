@@ -255,7 +255,9 @@ class SK_CivilianManagerComponent: ScriptComponent
 		AIWaypointCycle cycle = AIWaypointCycle.Cast(SpawnWaypoint(SK_Global.GetConfig().m_pCycleWaypointPrefab, targetPos));
 		cycle.SetWaypoints(queueOfWaypoints);
 		aigroup.AddWaypoint(cycle);
-		aigroup.SetFixedLOD(SK_Global.GetConfig().m_iAiFixedLod);
+		
+		if (!SK_Global.GetConfig().IsAIMaxLodAllowed())
+			aigroup.PreventMaxLOD();
 	}
 	
 	protected bool ProcessCities(IEntity cityEntity)
