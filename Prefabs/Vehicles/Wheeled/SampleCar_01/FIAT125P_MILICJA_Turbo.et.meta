@@ -1,0 +1,17 @@
+MetaFileClass {
+ Name "{726A3785E1C695E3}Prefabs/Vehicles/Wheeled/SampleCar_01/FIAT125P_MILICJA_Turbo.et"
+ Configurations {
+  EntityTemplateResourceClass PC {
+  }
+  EntityTemplateResourceClass XBOX_ONE : PC {
+  }
+  EntityTemplateResourceClass XBOX_SERIES : PC {
+  }
+  EntityTemplateResourceClass PS4 : PC {
+  }
+  EntityTemplateResourceClass PS5 : PC {
+  }
+  EntityTemplateResourceClass HEADLESS : PC {
+  }
+ }
+}

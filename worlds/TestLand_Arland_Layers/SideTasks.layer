@@ -1,3 +1,18 @@
+SCR_ChimeraCharacter : "{284E735C6C70DAD3}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_BaseLoadout.et" {
+ coords 1306.019 38.596 2337.812
+}
+Vehicle FIAT125P_MILICJA_Turbo1 : "{726A3785E1C695E3}Prefabs/Vehicles/Wheeled/SampleCar_01/FIAT125P_MILICJA_Turbo.et" {
+ coords 1303.772 38.818 2332.075
+}
+SCR_ChimeraCharacter : "{8B2D21607CC52AE7}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Pilot.et" {
+ coords 1304.92 38.647 2337.815
+}
+Vehicle S105_rally_BLUFOR2 : "{8B937D667742A75D}Prefabs/Vehicles/Wheeled/S105/S105_rally_BLUFOR.et" {
+ coords 1307.911 38.654 2332.812
+}
+Vehicle UAZ469_covered_BLUFOR_blue2 : "{B472B2B30A3552B2}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_covered_BLUFOR_blue.et" {
+ coords 1402.728 35.868 2353.746
+}
 GenericEntity Area1 : "{C72F956E4AC6A6E7}Prefabs/Systems/ScenarioFramework/Components/Area.et" {
  components {
   SCR_ScenarioFrameworkArea "{59E8CDC50969206E}" {
@@ -27,7 +42,7 @@ GenericEntity Area1 : "{C72F956E4AC6A6E7}Prefabs/Systems/ScenarioFramework/Compo
        GenericEntity SlotDestroy3 : "{7586595959BA2D99}Prefabs/Systems/ScenarioFramework/Components/SlotDestroy.et" {
         components {
          SCR_ScenarioFrameworkSlotDestroy "{5A22E1D6276BD209}" {
-          m_sObjectToSpawn "{68FA4E56264168B7}PrefabLibrary/Infrastructure/Towers/TransmitterTower_01_small.et"
+          m_sObjectToSpawn "{68FA4E56264168B7}PrefabLibrary/DefaultLibrary/Infrastructure/Towers/TransmitterTower_01_small.et"
           m_sID "destroy_entity_id"
           m_aActionsOnFinished {
            SK_ScenarioFrameworkOnTaskCompleted "{653C9C0EDA7A31BD}" {
@@ -56,7 +71,6 @@ GenericEntity Area1 : "{C72F956E4AC6A6E7}Prefabs/Systems/ScenarioFramework/Compo
            }
           }
           coords 0.019 0.126 -2.461
-          m_bAssignable 0
          }
         }
        }
@@ -102,8 +116,6 @@ GenericEntity Area1 : "{C72F956E4AC6A6E7}Prefabs/Systems/ScenarioFramework/Compo
            }
           }
           coords 0.019 0.126 -2.461
-          m_sDescription "Defend radio station power generator"
-          m_bAssignable 0
          }
         }
        }
@@ -113,4 +125,7 @@ GenericEntity Area1 : "{C72F956E4AC6A6E7}Prefabs/Systems/ScenarioFramework/Compo
    }
   }
  }
+}
+SCR_ChimeraCharacter : "{E1061FEC8F8945C1}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_PoliceOfficer.et" {
+ coords 1303.681 38.707 2337.738
 }

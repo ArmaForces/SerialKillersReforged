@@ -1,0 +1,7 @@
+SCR_ChimeraCharacter {
+ ID "520EC961A090B1EE"
+ components {
+  SK_MapMarkerComponent "{66C4A1AE862FCA93}" {
+  }
+ }
+}

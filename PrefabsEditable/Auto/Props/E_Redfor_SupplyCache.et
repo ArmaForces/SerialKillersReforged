@@ -8,7 +8,7 @@ GenericEntity : "{DA3AEFBCF6C37F82}Prefabs/Props/Military/SupplyBox/SupplyStack/
     m_aAuthoredLabels {
     }
     m_aAutoLabels {
-     108 1 121
+     THEME_MILITARY ENTITYTYPE_OBJECT SIZE_S
     }
    }
   }
@@ -62,7 +62,7 @@ GenericEntity : "{DA3AEFBCF6C37F82}Prefabs/Props/Military/SupplyBox/SupplyStack/
     m_SlotType SLOT_ANY
     m_bStackable 0
    }
-   StoragePurpose 111
+   StoragePurpose 0x6f 0
    UseCapacityCoefficient 1
    m_fMaxWeight 10000
    m_aSlotsToShow {
@@ -75,6 +75,8 @@ GenericEntity : "{DA3AEFBCF6C37F82}Prefabs/Props/Military/SupplyBox/SupplyStack/
    m_eSupportedArsenalItemModes 126
   }
   SCR_InventoryStorageManagerComponent "{6470E4990D7C3E87}" {
+  }
+  SCR_MapMarkerSyncComponent "{66C4CBEA95BBF75A}" {
   }
  }
 }

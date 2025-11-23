@@ -1,0 +1,72 @@
+GenericEntity Area1 : "{C72F956E4AC6A6E7}Prefabs/Systems/ScenarioFramework/Components/Area.et" {
+ components {
+  SCR_ScenarioFrameworkArea "{59E8CDC50969206E}" {
+   m_iDynamicDespawnRange 7500
+  }
+ }
+ coords 5174.505 40.438 10456.483
+ {
+  $grp GenericEntity : "{E537867C6E760514}Prefabs/Systems/ScenarioFramework/Components/SlotMarker.et" {
+   SlotMarker1 {
+    components {
+     SCR_ScenarioFrameworkSlotMarker "{5EA2BD9901E5E82E}" {
+      m_MapMarkerType SCR_ScenarioFrameworkMarkerCustom "{64D4A0BC99863DD6}" {
+       m_sMapMarkerText "Kamensk"
+       m_eMapMarkerIcon FLAG2
+       m_eMapMarkerColor BLUFOR
+      }
+     }
+    }
+    coords 6854.521 -37.625 406.904
+   }
+   SlotMarker3 {
+    components {
+     SCR_ScenarioFrameworkSlotMarker "{5EA2BD9901E5E82E}" {
+      m_MapMarkerType SCR_ScenarioFrameworkMarkerCustom "{64D4A0BC99863DD6}" {
+       m_sMapMarkerText "Ugoldar"
+       m_eMapMarkerIcon FLAG2
+       m_eMapMarkerColor BLUFOR
+      }
+     }
+    }
+    coords 2277.169 -37.169 -6251.265
+   }
+   SlotMarker4 {
+    components {
+     SCR_ScenarioFrameworkSlotMarker "{5EA2BD9901E5E82E}" {
+      m_MapMarkerType SCR_ScenarioFrameworkMarkerCustom "{64D4A0BC99863DD6}" {
+       m_sMapMarkerText "Pobieda"
+       m_eMapMarkerIcon FLAG2
+       m_eMapMarkerColor BLUFOR
+      }
+     }
+    }
+    coords 1712.996 396.513 -3750.088
+   }
+   SlotMarker6 {
+    components {
+     SCR_ScenarioFrameworkSlotMarker "{5EA2BD9901E5E82E}" {
+      m_MapMarkerType SCR_ScenarioFrameworkMarkerCustom "{64D4A0BC99863DD6}" {
+       m_sMapMarkerText "Airport"
+       m_eMapMarkerIcon FLAG2
+       m_eMapMarkerColor BLUFOR
+      }
+     }
+    }
+    coords -2476.481 -16.219 -4970.934
+   }
+   SlotMarker7 {
+    components {
+     SCR_ScenarioFrameworkSlotMarker "{5EA2BD9901E5E82E}" {
+      m_MapMarkerType SCR_ScenarioFrameworkMarkerCustom "{64D4A0BC99863DD6}" {
+       m_sMapMarkerText "Prison"
+       m_eMapMarkerIcon FORTIFICATION
+       m_eMapMarkerColor BLUFOR
+      }
+     }
+    }
+    coords 1928.72 280.319 -4422.796
+   }
+  }
+ }
+}

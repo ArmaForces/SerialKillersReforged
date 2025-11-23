@@ -1,0 +1,17 @@
+ImageWidgetClass {
+ Name "MapMarkerAreaDot"
+ Slot FrameWidgetSlot "{62AEA057BA26A12F}" {
+  PositionX 0
+  OffsetLeft 0
+  PositionY 0
+  OffsetTop 0
+  SizeX 60
+  OffsetRight -60
+  SizeY 60
+  OffsetBottom -60
+  Alignment 0.5 0.5
+ }
+ Texture "{E23427CAC80DA8B7}UI/Textures/Icons/icons_mapMarkersUI.imageset"
+ Image "pick-up-2"
+ Size 32 32
+}
