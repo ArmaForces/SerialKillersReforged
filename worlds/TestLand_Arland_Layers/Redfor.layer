@@ -27,6 +27,23 @@ GenericEntity : "{109608EEA0C767D0}PrefabsEditable/Auto/Props/Military/SupplyBox
   }
  }
 }
+$grp SCR_SpawnPoint : "{45225582B358C31A}PrefabsEditable/SpawnPoints/E_SpawnPoint_USSR.et" {
+ {
+  coords 1339.704 36.735 2358.757
+ }
+ {
+  coords 935.228 21.689 1444.132
+ }
+ {
+  coords 1158.074 1.093 3334.989
+ }
+ {
+  coords 3113.209 16 2742.246
+ }
+ {
+  coords 2863.869 71.931 1689.305
+ }
+}
 Vehicle S1203_cargo_sport1 : "{64E88B50EE91745E}Prefabs/Vehicles/Wheeled/S1203/S1203_cargo_sport.et" {
  coords 1413.517 38.976 2169.052
 }

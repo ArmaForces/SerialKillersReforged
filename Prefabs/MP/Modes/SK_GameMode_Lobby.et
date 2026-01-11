@@ -99,10 +99,10 @@ SK_SerialKillersGameMode : "{0F307326459A1395}Prefabs/MP/Modes/GameMode_Base.et"
     "{128253A267BE9424}Prefabs/Vehicles/Wheeled/S105/S105_randomized.et" "{49C909AFD66E90A1}Prefabs/Vehicles/Wheeled/S1203/S1203_transport_randomized.et" "{57A441224AC02CF3}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_covered_CIV_Randomized.et" "{EEAC3A94929A2B55}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_CIV_randomized.et" "{43C4AF1EEBD001CE}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_ambulance.et" "{F649585ABB3706C4}Prefabs/Vehicles/Wheeled/M151A2/M151A2.et" "{1B0D46B41C50873D}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_uncovered_CIV_Randomized.et" "{F649585ABB3706C4}Prefabs/Vehicles/Wheeled/M151A2/M151A2.et" "{960800AA779D0FF0}Prefabs/Vehicles/Wheeled/SampleCar_01/FIAT125PYellow.et" "{0239A9BB6E1C109A}Prefabs/Vehicles/Wheeled/SampleCar_01/FIAT125POrange.et"
    }
   }
+  SK_XPHandlerComponent "{685720C511AE4E84}" {
+  }
   SCR_ReconnectComponent "{5A02809D5E8ABE42}" {
    Enabled 0
-  }
-  SK_XPHandlerComponent "{685720C511AE4E84}" {
   }
  }
  coords 2033.819 32.299 2018.762
