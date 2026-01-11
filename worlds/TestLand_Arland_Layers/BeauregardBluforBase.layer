@@ -1,12 +1,10 @@
 GenericEntity : "{1571BF54599093AF}PrefabsEditable/Auto/Props/Furniture/E_MeetingTable_01.et" {
  coords 3171.693 10.611 2822.167
- angleY -134.396
+ angles 0 -134.396 0
  {
-  GenericEntity : "{88B3A9FF09D43C1B}Prefabs/Items/Equipment/Maps/PaperMap_FastTravel_CO.et" {
+  GenericEntity : "{88B3A9FF09D43C1B}Prefabs/Items/Equipment/Maps/Map_Paper_01/PaperMap_FastTravel_CO.et" {
    coords 0.13 1.029 -0.18
-   angleX 89.473
-   angleY -52.871
-   angleZ 129.223
+   angles 89.473 -52.871 129.223
   }
  }
 }
@@ -23,7 +21,7 @@ GenericEntity : "{5E921FB8C70456F1}PrefabsEditable/Auto/Props/Military/SupplyBox
   }
  }
  coords 3170.416 10.632 2823.59
- angleY -47.915
+ angles 0 -47.915 0
  {
   GenericEntity {
    ID "5D3085BCA5EF72EE"
@@ -38,10 +36,7 @@ GenericEntity : "{B642B7B2BF172CF5}Prefabs/Compositions/Misc/CustomEntities/Inte
   }
  }
  coords 3168.87 10.719 2824.942
- angleY -141.492
-}
-SCR_SpawnPoint : "{CEA2B24051A44525}PrefabsEditable/SpawnPoints/E_SpawnPoint_US.et" {
- coords 3175.12 12.154 2824.078
+ angles 0 -141.492 0
 }
 GenericEntity : "{DC50C3296A8BACB2}Prefabs/Compositions/SK_VehicleSpawnPoint.et" {
  coords 3174.454 10.341 2828.739

@@ -1,7 +1,6 @@
-GenericEntity : "{88B3A9FF09D43C1B}Prefabs/Items/Equipment/Maps/PaperMap_FastTravel_CO.et" {
+GenericEntity : "{88B3A9FF09D43C1B}Prefabs/Items/Equipment/Maps/Map_Paper_01/PaperMap_FastTravel_CO.et" {
  coords 1380.709 37.332 2377.498
- angleX 0
- angleY 127.129
+ angles 0 127.129 0
 }
 GenericEntity : "{B642B7B2BF172CF5}Prefabs/Compositions/Misc/CustomEntities/InteractionPoints/ArsenalBox_US_Weapons_NoAffiliation.et" {
  components {
@@ -10,12 +9,7 @@ GenericEntity : "{B642B7B2BF172CF5}Prefabs/Compositions/Misc/CustomEntities/Inte
   }
  }
  coords 1385.979 36.382 2378.843
- angleY 0
-}
-SCR_SpawnPoint : "{CEA2B24051A44525}PrefabsEditable/SpawnPoints/E_SpawnPoint_US.et" {
- coords 1387.009 36.266 2371.075
- m_Info SCR_UIInfo "{56B4CC4ECACA2C37}" {
- }
+ angles 0 0 0
 }
 GenericEntity : "{DC50C3296A8BACB2}Prefabs/Compositions/SK_VehicleSpawnPoint.et" {
  coords 1382.236 36.261 2376.175
@@ -46,8 +40,7 @@ GenericEntity : "{DC50C3296A8BACB2}Prefabs/Compositions/SK_VehicleSpawnPoint.et"
        }
       }
      }
-     m_aAvailableTraits {
-      54 53 51 50
+     m_aAvailableTraits +{
      }
     }
    }

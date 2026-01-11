@@ -1,0 +1,146 @@
+SK_SerialKillersGameMode : "{0F307326459A1395}Prefabs/MP/Modes/GameMode_Base.et" {
+ ID "56B2B479C6B96951"
+ components {
+  SignalsManagerComponent "{685718D99460F8C1}" {
+  }
+  SCR_CommunicationSoundComponent "{685718D99460FB0D}" {
+  }
+  PS_CutsceneManager "{685718D99460FB0B}" {
+  }
+  PS_MissionDataManager "{685718D99460FB0A}" {
+  }
+  PS_MissionDescriptionManager "{685718D99460FB09}" {
+  }
+  PS_ObjectiveManager "{685718D99460FB08}" {
+   m_aObjectiveLavels {
+    PS_ObjectiveLevel "{685718D99460FB15}" {
+     m_iScore 0
+     m_sName "#PS-ObjectiveLevel_MajorLoss"
+    }
+    PS_ObjectiveLevel "{685718D99460FB14}" {
+     m_iScore 25
+     m_sName "#PS-ObjectiveLevel_MinorLoss"
+    }
+    PS_ObjectiveLevel "{685718D99460FB13}" {
+     m_iScore 50
+     m_sName "#PS-ObjectiveLevel_Draw"
+    }
+    PS_ObjectiveLevel "{685718D99460CB40}" {
+     m_iScore 75
+     m_sName "#PS-ObjectiveLevel_MinorVictory"
+    }
+    PS_ObjectiveLevel "{685718D99460CB41}" {
+     m_iScore 100
+     m_sName "#PS-ObjectiveLevel_MajorVictory"
+    }
+   }
+  }
+  PS_PlayableManager "{685718D99460CB43}" {
+  }
+  PS_VoNRoomsManager "{685718D99460CB4C}" {
+  }
+  SCR_ArsenalManagerComponent "{6120A34EB1E9BBEF}" {
+   m_bRankLockedItems 1
+  }
+  SCR_CampaignBuildingManagerComponent "{685718D99460CB64}" {
+   m_sFreeRoamBuildingClientTrigger "{5E191CEAF4B95816}Prefabs/MP/FreeRoamBuildingClientTrigger.et"
+   m_BudgetType CAMPAIGN
+   m_iCompositionRefundPercentage 100
+   m_OutlineManager SCR_CampaignBuildingCompositionOutlineManager "{5DF6FBB5913F3245}" {
+   }
+   m_sPrefabsToBuildResource "{D2527D9AA5B4A33E}Configs/Editor/PlaceableEntities/Compositions/Compositions_FreeRoamBuilding.conf"
+  }
+  SCR_CommandingManagerComponent "{685718D99460CB66}" {
+  }
+  SCR_GameModeHealthSettings "{5A22E11F9ACBB1DF}" {
+   m_bPermitUnconsciousVON 1
+  }
+  SCR_GameModeSFManager "{685718D99460CB60}" {
+  }
+  SCR_GroupsManagerComponent "{5706EC99934496F5}" {
+   m_bAllowGroupMenu 0
+  }
+  SCR_InitWeatherComponent "{685718D99460CB62}" {
+  }
+  SCR_MapConfigComponent "{5C669498E250A34B}" {
+   m_sGadgetMapConfigPath "{32913D3C51D7736C}Configs/Map/MapFullscreenCoop.conf"
+  }
+  SCR_NametagConfigComponent "{571AA9E54FC9210D}" {
+   m_sConfigPath "{09F7AAA14A642683}Configs/NameTags/NametagFriendlies.conf"
+  }
+  SCR_NotificationSenderComponent "{56FA84B04BE7D4C0}" {
+   m_iKillFeedType DISABLED
+   m_iReceiveKillFeedType ALL
+  }
+  SCR_PreGameGameModeStateComponent "{685718D99460CB6E}" {
+   m_fDuration 0
+   m_bDisableControls 0
+  }
+  SCR_RespawnSystemComponent "{56B2B4793051E7C9}" {
+   Enabled 1
+  }
+  SCR_RestoreEditorModesComponent "{685718D99460CB68}" {
+  }
+  SCR_TimeAndWeatherHandlerComponent "{685718D99460CB6A}" {
+  }
+  SCR_VotingManagerComponent "{5650BB6B6089393A}" {
+   Enabled 0
+  }
+  SK_CivilianManagerComponent "{685718D9BA600F62}" {
+  }
+  SK_SerialKillersConfigComponent "{685718DA3A83D046}" {
+   m_pCivilianPrefab "{1AF5B9AE5CFD4433}Prefabs/Groups/CIV/Group_CIV.et"
+   m_pPrisonerPrefab "{89DB1658A016C6A9}Prefabs/Characters/Factions/USSR/Character_USSR_Prisoner.et"
+   m_pPatrolWaypointPrefab "{22A875E30470BD4F}Prefabs/AI/Waypoints/AIWaypoint_Patrol.et"
+   m_pWaitWaypointPrefab "{531EC45063C1F57B}Prefabs/AI/Waypoints/AIWaypoint_Wait.et"
+   m_pCycleWaypointPrefab "{35BD6541CBB8AC08}Prefabs/AI/Waypoints/AIWaypoint_Cycle.et"
+   m_pGetInWaypointPrefab "{B049D4C74FBC0C4D}Prefabs/AI/Waypoints/AIWaypoint_GetInNearest.et"
+   m_pVehiclePrefabArray {
+    "{128253A267BE9424}Prefabs/Vehicles/Wheeled/S105/S105_randomized.et" "{49C909AFD66E90A1}Prefabs/Vehicles/Wheeled/S1203/S1203_transport_randomized.et" "{57A441224AC02CF3}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_covered_CIV_Randomized.et" "{EEAC3A94929A2B55}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_CIV_randomized.et" "{43C4AF1EEBD001CE}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_ambulance.et" "{F649585ABB3706C4}Prefabs/Vehicles/Wheeled/M151A2/M151A2.et" "{1B0D46B41C50873D}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_uncovered_CIV_Randomized.et" "{F649585ABB3706C4}Prefabs/Vehicles/Wheeled/M151A2/M151A2.et" "{960800AA779D0FF0}Prefabs/Vehicles/Wheeled/SampleCar_01/FIAT125PYellow.et" "{0239A9BB6E1C109A}Prefabs/Vehicles/Wheeled/SampleCar_01/FIAT125POrange.et"
+   }
+  }
+  SCR_ReconnectComponent "{5A02809D5E8ABE42}" {
+   Enabled 0
+  }
+  SK_XPHandlerComponent "{685720C511AE4E84}" {
+  }
+ }
+ coords 2033.819 32.299 2018.762
+ PlayerControllerPrefab "{BFB37A2D8B2E126A}Prefabs/Characters/Core/SK_PlayerControllerMP_Factions.et"
+ m_bAutoPlayerRespawn 0
+ m_bAllowFactionChange 0
+ m_aDisabledResourceTypes {
+  SUPPLIES
+ }
+ m_bPublicCommandBriefing 1
+ m_bRemoveRedundantUnits 1
+ m_bRemoveSquadMarkers 1
+ m_iFreezeTime 0
+ m_aFactionRespawnCount {
+  PS_FactionRespawnCount "{685718DB3407165C}" {
+   m_sFactionKey "US"
+   m_iCount 999
+  }
+ }
+ m_bFriendliesSpectatorOnly 1
+ m_bDisableArmaVision 0
+ m_bHolsterWeapon 0
+ {
+  SCR_FactionManager "5EA8C932C68D400F" : "{4A188E44289B9A50}Prefabs/MP/Managers/Factions/FactionManager_Editor.et" {
+   ID "685718D994601CA1"
+  }
+  RadioManagerEntity : "{B8E09FAB91C4ECCD}Prefabs/Systems/Radio/RadioManager.et" {
+   ID "685718D994601CBE"
+  }
+  ScriptedChatEntity : "{F69BC912AC8236F9}Prefabs/MP/ScriptedChatEntity.et" {
+   ID "685718D994601CBD"
+  }
+  SCR_EditorSettingsEntity {
+   ID "685718D99460F8B5"
+   m_bIsUnlimitedEditorLegal 1
+  }
+  ItemPreviewManagerEntity "5E7AE0AB2109F297" : "{AB5D049A3AB43FC0}Prefabs/World/Game/ItemPreviewManager_PS.et" {
+   ID "685718D99460F8B2"
+  }
+ }
+}

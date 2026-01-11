@@ -1,11 +1,5 @@
-SCR_ChimeraCharacter : "{284E735C6C70DAD3}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_BaseLoadout.et" {
- coords 1306.019 38.596 2337.812
-}
 Vehicle FIAT125P_MILICJA_Turbo1 : "{726A3785E1C695E3}Prefabs/Vehicles/Wheeled/SampleCar_01/FIAT125P_MILICJA_Turbo.et" {
  coords 1303.772 38.818 2332.075
-}
-SCR_ChimeraCharacter : "{8B2D21607CC52AE7}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Pilot.et" {
- coords 1304.92 38.647 2337.815
 }
 Vehicle S105_rally_BLUFOR2 : "{8B937D667742A75D}Prefabs/Vehicles/Wheeled/S105/S105_rally_BLUFOR.et" {
  coords 1307.911 38.654 2332.812
@@ -125,7 +119,4 @@ GenericEntity Area1 : "{C72F956E4AC6A6E7}Prefabs/Systems/ScenarioFramework/Compo
    }
   }
  }
-}
-SCR_ChimeraCharacter : "{E1061FEC8F8945C1}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_PoliceOfficer.et" {
- coords 1303.681 38.707 2337.738
 }

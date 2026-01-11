@@ -1,0 +1,7 @@
+SCR_AIGroup : "{F72EF3429D8C8DF5}Prefabs/Groups/BLUFOR/Group_US_AmmoTeam.et" {
+ ID "0000000000000001"
+ coords 1300.337 38.874 2333.745
+ m_aUnitPrefabSlots {
+  "{8B2D21607CC52AE7}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Pilot.et" "{8B2D21607CC52AE7}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Pilot.et"
+ }
+}

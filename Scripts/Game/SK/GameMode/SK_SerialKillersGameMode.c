@@ -1,8 +1,8 @@
-class SK_SerialKillersGameModeClass: SCR_BaseGameModeClass
+class SK_SerialKillersGameModeClass: PS_GameModeCoopClass
 {
 }
 
-class SK_SerialKillersGameMode : SCR_BaseGameMode
+class SK_SerialKillersGameMode : PS_GameModeCoop
 {
 	protected SK_SerialKillersConfigComponent m_Config;
 	protected SK_CivilianManagerComponent m_CiviliansManager;
@@ -70,7 +70,24 @@ class SK_SerialKillersGameMode : SCR_BaseGameMode
 	const int SK_BluforMapColor = 7; //blue
 	const int SK_CivMapColor = 0; //white
 	
-	
+	override void OnGameStateChanged()
+	{
+		super.OnGameStateChanged();
+		
+		SCR_EGameModeState state = GetState();
+		if (state != SCR_EGameModeState.GAME)
+			return;
+		
+		Print("SerialKillers gamemode initialising!", LogLevel.NORMAL);
+		
+		ChimeraWorld world = GetGame().GetWorld();
+		
+
+		m_fStartTimestamp = world.GetServerTimestamp().PlusSeconds(m_iGameStartDelaySeconds);
+		m_fVictoryTimestamp = m_fStartTimestamp.PlusSeconds(m_iGameOverTimeMinutes * 60);
+		GetGame().GetCallqueue().CallLater(StartSKGame, m_iGameStartDelaySeconds * 1000);
+		GetGame().GetCallqueue().CallLater(TimeoutGameEnd, m_iGameOverTimeMinutes * 60 * 1000 + m_iGameStartDelaySeconds * 1000);
+	}
 	
 	override void EOnInit(IEntity owner)
 	{
@@ -79,26 +96,19 @@ class SK_SerialKillersGameMode : SCR_BaseGameMode
 		if(SCR_Global.IsEditMode())
 			return;
 		
-		Print("SerialKillers gamemode initialising!", LogLevel.NORMAL);
-		
-		ChimeraWorld world = GetGame().GetWorld();
 		m_Config = SK_Global.GetConfig();
 		m_CiviliansManager = SK_Global.GetCiviliansManager();
 		m_mapMarkerManager = SCR_MapMarkerManagerComponent.GetInstance();
 		m_XPHandlerComponent = SCR_XPHandlerComponent.Cast(FindComponent(SCR_XPHandlerComponent));
 		m_RespawnSystem = SCR_RespawnSystemComponent.Cast(FindComponent(SCR_RespawnSystemComponent));
-		m_FactionManager = SCR_FactionManager.Cast(GetGame().GetFactionManager());
-		
+		m_FactionManager = SCR_FactionManager.Cast(GetGame().GetFactionManager());	
+			
 		if (m_CiviliansManager && IsMaster()) 
 		{
 			Print("Initialising civilians", LogLevel.NORMAL);
 			m_CiviliansManager.Init(this);
 		}
 		
-		m_fStartTimestamp = world.GetServerTimestamp().PlusSeconds(m_iGameStartDelaySeconds);
-		m_fVictoryTimestamp = m_fStartTimestamp.PlusSeconds(m_iGameOverTimeMinutes * 60);
-		GetGame().GetCallqueue().CallLater(StartGame, m_iGameStartDelaySeconds * 1000);
-		GetGame().GetCallqueue().CallLater(TimeoutGameEnd, m_iGameOverTimeMinutes * 60 * 1000 + m_iGameStartDelaySeconds * 1000);
 	}
 	
 	ScriptInvoker GetOnMatchSituationChanged()
@@ -199,7 +209,7 @@ class SK_SerialKillersGameMode : SCR_BaseGameMode
 		SCR_HintManagerComponent.GetInstance().ShowCustom("Killers were inactive for too long, additional points for blufor!", "", 10, false);
 	}
 	
-	void StartGame()
+	void StartSKGame()
 	{
 		if (!IsMaster())
 			return;

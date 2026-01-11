@@ -27,33 +27,15 @@ GenericEntity : "{109608EEA0C767D0}PrefabsEditable/Auto/Props/Military/SupplyBox
   }
  }
 }
-$grp SCR_SpawnPoint : "{45225582B358C31A}PrefabsEditable/SpawnPoints/E_SpawnPoint_USSR.et" {
- {
-  coords 938.88 22.174 1442.319
- }
- {
-  coords 2123.365 61.797 1042.075
- }
- {
-  coords 2789.403 62.794 1514.693
- }
- {
-  coords 3177.262 17.94 2833.826
- }
- {
-  coords 1436.038 34.557 3186.371
- }
- {
-  coords 1401.73 35.882 2368.477
- }
-}
 Vehicle S1203_cargo_sport1 : "{64E88B50EE91745E}Prefabs/Vehicles/Wheeled/S1203/S1203_cargo_sport.et" {
  coords 1413.517 38.976 2169.052
 }
-GenericEntity : "{88B3A9FF09D43C1B}Prefabs/Items/Equipment/Maps/PaperMap_FastTravel_CO.et" {
+GenericEntity : "{88B3A9FF09D43C1B}Prefabs/Items/Equipment/Maps/Map_Paper_01/PaperMap_FastTravel_CO.et" {
  coords 938.605 23.602 1439.67
- angleX 0
- angleY 0
+ angles 0 0 0
+}
+SCR_AIGroup : "{C4D087C8DCF49E8F}Prefabs/Groups/OPFOR/Group_USSR_Terorrists.et" {
+ coords 939.78 30.537 1452.26
 }
 GenericEntity CacheSpawn : "{C72F956E4AC6A6E7}Prefabs/Systems/ScenarioFramework/Components/Area.et" {
  components {

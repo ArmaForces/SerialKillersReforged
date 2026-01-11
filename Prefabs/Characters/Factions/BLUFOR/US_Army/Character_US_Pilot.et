@@ -1,6 +1,9 @@
 SCR_ChimeraCharacter : "{284E735C6C70DAD3}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_BaseLoadout.et" {
  ID "520EC961A090B1EE"
  components {
+  PS_PlayableComponent "{5EFCC1946F475F15}" {
+   m_bIsPlayable 1
+  }
   BaseLoadoutManagerComponent "{520EA1D2DB11821E}" {
    Slots {
     LoadoutSlotInfo Hat {
@@ -46,4 +49,5 @@ SCR_ChimeraCharacter : "{284E735C6C70DAD3}Prefabs/Characters/Factions/BLUFOR/US_
    }
   }
  }
+ coords 1301.056 38.843 2335.929
 }

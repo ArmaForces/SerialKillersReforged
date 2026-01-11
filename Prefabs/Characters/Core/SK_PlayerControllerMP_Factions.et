@@ -21,5 +21,7 @@ SCR_PlayerController : "{225E51284CC95CFA}Prefabs/Characters/Core/DefaultPlayerC
   }
   SK_PrisonerComponent "{64AE9115EE81BDD4}" {
   }
+  PS_PlayableControllerComponent "{685718DB56783556}" {
+  }
  }
 }
