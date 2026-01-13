@@ -351,44 +351,7 @@ class SK_SerialKillersGameMode : PS_GameModeCoop
 	
 	void HandleRedforKill(IEntity unit)
 	{
-		//TODO: Cleanup
-		/*
-		int redforPlayerId = GetGame().GetPlayerManager().GetPlayerIdFromControlledEntity(unit);
-		if (redforPlayerId == 0)
-		{
-			Print("No player id found on redfor unit!!!", LogLevel.ERROR);
-			return;
-		}
-		
-		PlayerController pc = GetGame().GetPlayerManager().GetPlayerController(redforPlayerId);
-		if (!pc) 
-		{
-			Print("No player controller found on redfor unit!!!", LogLevel.ERROR);
-			return;
-		}
-		
-		IEntity sp = GetWorld().FindEntityByName("prison_spawn");
-		if (!sp)
-		{
-			Print("No prison entity found in world! Please make sure spawn point exists and its named prison_spawn", LogLevel.ERROR);
-			return;
-		}
-		
-		SCR_SpawnPoint spawnPoint = SCR_SpawnPoint.Cast(sp);
-		SCR_SpawnPointSpawnData spsd = new SCR_SpawnPointSpawnData(m_Config.m_pPrisonerPrefab, spawnPoint.GetRplId());
-		
-		
-		SK_PrisonerComponent prisonerComponent = SK_PrisonerComponent.Cast(pc.FindComponent(SK_PrisonerComponent));
-		if (prisonerComponent)
-		{
-			prisonerComponent.SetState(true);
-		}
-		
-		SK_PrisonManagerComponent prisonManager = SK_PrisonManagerComponent.Cast(sp.FindComponent(SK_PrisonManagerComponent));
-		prisonManager.RegisterPrisoner(redforPlayerId);
-
-		respawnComponent.RequestSpawn(spsd);
-		*/
+		//nil - nothing special happens in game logic when redfor is killed
 	}
 	
 	string getNowTimeString() 
@@ -400,8 +363,6 @@ class SK_SerialKillersGameMode : PS_GameModeCoop
 	
 	void GameEndCheck() 
 	{
-		return;
-		
 		if (!m_bHasGameStarted)
 			return;
 		
