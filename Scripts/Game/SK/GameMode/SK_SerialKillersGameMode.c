@@ -351,6 +351,8 @@ class SK_SerialKillersGameMode : PS_GameModeCoop
 	
 	void HandleRedforKill(IEntity unit)
 	{
+		//TODO: Cleanup
+		/*
 		int redforPlayerId = GetGame().GetPlayerManager().GetPlayerIdFromControlledEntity(unit);
 		if (redforPlayerId == 0)
 		{
@@ -362,13 +364,6 @@ class SK_SerialKillersGameMode : PS_GameModeCoop
 		if (!pc) 
 		{
 			Print("No player controller found on redfor unit!!!", LogLevel.ERROR);
-			return;
-		}
-		
-		SCR_RespawnComponent respawnComponent = SCR_RespawnComponent.Cast(pc.FindComponent(SCR_RespawnComponent));
-		if (!respawnComponent)
-		{
-			Print("No respawn component found on redfor unit!!!", LogLevel.ERROR);
 			return;
 		}
 		
@@ -393,6 +388,7 @@ class SK_SerialKillersGameMode : PS_GameModeCoop
 		prisonManager.RegisterPrisoner(redforPlayerId);
 
 		respawnComponent.RequestSpawn(spsd);
+		*/
 	}
 	
 	string getNowTimeString() 
@@ -404,6 +400,8 @@ class SK_SerialKillersGameMode : PS_GameModeCoop
 	
 	void GameEndCheck() 
 	{
+		return;
+		
 		if (!m_bHasGameStarted)
 			return;
 		
@@ -529,6 +527,50 @@ class SK_SerialKillersGameMode : PS_GameModeCoop
 			return;
 		}
 		OnMatchSituationChanged();
+	}
+	
+	override void Respawn(int playerId, PS_RespawnData respawnData)
+	{
+		// TODO: Super sketchy, fix me later
+		// Only handle custom respawn for opfor players (set to prisoner)
+		if (respawnData.m_sPrefabName.IndexOf("USSR") < 0)
+		{
+			super.Respawn(playerId, respawnData);
+			return;
+		}
+		
+		Resource resource = Resource.Load(respawnData.m_sPrefabName);
+		EntitySpawnParams params = new EntitySpawnParams();
+		Math3D.MatrixCopy(respawnData.m_aSpawnTransform, params.Transform);
+		IEntity entity = GetGame().SpawnEntityPrefab(resource, GetGame().GetWorld(), params);
+		SCR_AIGroup aiGroup = m_playableManager.GetPlayerGroupByPlayable(respawnData.m_Id);
+		SCR_AIGroup playabelGroup = aiGroup.GetSlave();
+		playabelGroup.AddAIEntityToGroup(entity);
+		
+		PS_PlayableComponent playableComponentNew = PS_PlayableComponent.Cast(entity.FindComponent(PS_PlayableComponent));
+		//playableComponentNew.SetPlayable(true);
+
+		GetGame().GetCallqueue().Call(FinishPrisonerSetup, playerId, entity, 4);
+	}
+	
+	protected void FinishPrisonerSetup(int playerId, IEntity prisonerEntity, int frameCounter)
+	{
+		if (frameCounter > 0)
+		{
+			GetGame().GetCallqueue().Call(FinishPrisonerSetup, playerId, prisonerEntity, frameCounter - 1);
+			return;
+		}
+		
+		PS_PlayableComponent playableComponent = PS_PlayableComponent.Cast(prisonerEntity.FindComponent(PS_PlayableComponent));
+		PlayerController pc = GetGame().GetPlayerManager().GetPlayerController(playerId);
+		SK_PrisonerComponent prisoner = SK_PrisonerComponent.Cast(pc.FindComponent(SK_PrisonerComponent));
+		
+		RplId playableId = playableComponent.GetRplId();
+		prisoner.SetPrisoner(playerId, playableId);
+		
+		SK_PrisonManagerComponent.GetInstance().RegisterPrisoner(playerId);
+		
+		SwitchToInitialEntity(playerId);
 	}
 	
 	

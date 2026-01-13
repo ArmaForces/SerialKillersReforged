@@ -52,7 +52,8 @@ GenericEntity : "{88B3A9FF09D43C1B}Prefabs/Items/Equipment/Maps/Map_Paper_01/Pap
  angles 0 0 0
 }
 SCR_AIGroup : "{C4D087C8DCF49E8F}Prefabs/Groups/OPFOR/Group_USSR_Terorrists.et" {
- coords 939.78 30.537 1452.26
+ coords 1244.46 39.01 2407.071
+ angles 0 -163.311 0
 }
 GenericEntity CacheSpawn : "{C72F956E4AC6A6E7}Prefabs/Systems/ScenarioFramework/Components/Area.et" {
  components {

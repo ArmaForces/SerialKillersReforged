@@ -1,0 +1,73 @@
+SCR_ChimeraCharacter : "{47B0BA658525301A}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Rifleman_P.et" {
+ ID "200D264F0EEA1A28"
+ components {
+  SCR_CharacterInventoryStorageComponent "{520EA1D2DB118DAC}" {
+   components {
+    SCR_EquipmentStorageComponent "{56B49DA9722B635D}" {
+     InitialStorageSlots {
+      SCR_EquipmentStorageSlot BinocularSlot {
+      }
+      SCR_EquipmentStorageSlot WristwatchSlot {
+      }
+     }
+    }
+   }
+  }
+  SCR_EditableCharacterComponent "{520EA1D2F659C85C}" {
+   m_UIInfo SCR_EditableEntityUIInfo "{5298E609432D192D}" {
+    Name "Terrorist"
+   }
+  }
+  SK_RespawnToPrisonPlayableComponent "{5EFCC1946F475F15}" {
+   m_sName "Terrorrist"
+   m_aRespawnPrefabs {
+    "{582D5E8D62C723A5}Prefabs/Characters/Factions/OPFOR/USSR_Army/SK_Character_USSR_Prisoner_P.et"
+   }
+  }
+  CharacterGrenadeSlotComponent "{520EA1D2F659CE6E}" {
+   WeaponTemplate "{7CEF68E2BC68CE71}Prefabs/Items/Equipment/Compass/Compass_Adrianov.et"
+  }
+  CharacterWeaponSlotComponent "{520EA1D2F659CFAB}" {
+   WeaponTemplate ""
+  }
+  BaseLoadoutManagerComponent "{520EA1D2DB11821E}" {
+   Slots {
+    LoadoutSlotInfo Hat {
+     Prefab ""
+    }
+    LoadoutSlotInfo Jacket {
+     Prefab "{690819A92A3A8D14}Prefabs/Characters/Uniforms/Jacket_Raincoat_01/Jacket_Raincoat_01_orange.et"
+    }
+    LoadoutSlotInfo ArmoredVest {
+     Prefab ""
+    }
+    LoadoutSlotInfo Pants {
+     Prefab "{5B29F970DC4022D5}Prefabs/Characters/Uniforms/Pants_Fisherman_01/Pants_Fisherman_01_orange.et"
+    }
+    LoadoutSlotInfo Boots {
+     Prefab ""
+    }
+    LoadoutSlotInfo Vest {
+     Prefab ""
+    }
+   }
+  }
+  SCR_InventoryStorageManagerComponent "{520EA1D2DB118DE5}" {
+   InitialInventoryItems {
+    ItemsInitConfigurationItem "{5D7CC173E6675BF7}" {
+     PrefabsToSpawn {
+     }
+    }
+    ItemsInitConfigurationItem "{5D7CC173E6675BF5}" {
+     PrefabsToSpawn {
+      ""
+     }
+    }
+    ItemsInitConfigurationItem "{54A68D64D7F9124F}" {
+     PrefabsToSpawn {
+     }
+    }
+   }
+  }
+ }
+}

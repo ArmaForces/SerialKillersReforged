@@ -19,17 +19,6 @@ SCR_AIWorld : "{01DC74137CFDDB6A}Prefabs/AI/SCR_AIWorld_Arland.et" {
  "Accepted Road Types" 0x7f 0
 }
 SK_SerialKillersGameMode SK_GameMode_Lobby1 : "{7C4A1D3050992454}Prefabs/MP/Modes/SK_GameMode_Lobby.et" {
- components {
-  SK_CivilianManagerComponent "{685718D9BA600F62}" {
-   m_iCityRange 120
-   m_iTownRange 60
-   m_iVillageRange 25
-   m_iSettlementRange 10
-   m_iTargetCivilianCount 50
-   m_fCityVehicleSpawnChance 0.005
-   m_fVehicleSpawnChance 0.001
-  }
- }
  coords 2033.819 32.299 2018.762
 }
 SCR_AIGroup : "{027F4A688EBC9894}Prefabs/Groups/BLUFOR/Group_US_PilotSquad.et" {
@@ -151,7 +140,4 @@ Vehicle BRDM2_BLUFOR1 : "{EE02519146F1204F}Prefabs/Vehicles/Wheeled/BRDM2/BRDM2_
 }
 Vehicle M151A1 : "{F649585ABB3706C4}Prefabs/Vehicles/Wheeled/M151A2/M151A2.et" {
  coords 1394.805 35.987 2347.423
-}
-SCR_LoadoutManager : "{FD4EE3666CA87EA6}Prefabs/MP/Managers/Loadouts/LoadoutManager_SK.et" {
- coords 1348.81 39 2136.208
 }

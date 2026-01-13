@@ -8,9 +8,22 @@ class SK_PrisonerComponent : ScriptComponent
 	[RplProp()]
 	protected bool m_bIsPrisoner = false;
 	
-	void SetState(bool isPrisoner)
+	[RplProp()]
+	protected int m_iPlayerId = -1;
+	
+	[RplProp()]
+	protected RplId m_iPlayableId = RplId.Invalid();
+	
+	void SetPrisoner(int playerId, RplId playableId)
 	{
-		Rpc(RpcAsk_SetState, isPrisoner);
+		//if (!IsMaster())
+		//	return;
+		
+		m_iPlayerId = playerId;
+		m_iPlayableId = playableId;
+		m_bIsPrisoner = true;
+		
+		Replication.BumpMe();
 	}
 	
 	bool GetState()
@@ -20,23 +33,29 @@ class SK_PrisonerComponent : ScriptComponent
 	
 	void FreePrisoner(vector position)
 	{
-		Rpc(RpcAsk_FreePrisoner, position);	
+		Rpc(RpcAsk_SwitchToPrisonerEntity, position);
 	}
 	
 	[RplRpc(RplChannel.Reliable, RplRcver.Server)]
-	protected void RpcAsk_SetState(bool state)
+	protected void RpcAsk_SwitchToPrisonerEntity(vector position)
 	{
-		if (m_bIsPrisoner == state)
-			return;
+		m_bIsPrisoner = false;
 		
-		m_bIsPrisoner = state;
+		PS_PlayableManager playableManager = PS_PlayableManager.GetInstance();
+		playableManager.SetPlayerPlayable(m_iPlayerId, m_iPlayableId);
+		playableManager.ForceSwitch(m_iPlayerId);
+		
+		SCR_Global.TeleportPlayer(m_iPlayerId, position, SCR_EPlayerTeleportedReason.FAST_TRAVEL);
+		
 		Replication.BumpMe();
 	}
 	
-	[RplRpc(RplChannel.Reliable, RplRcver.Owner)]
-	protected void RpcAsk_FreePrisoner(vector position)
+	
+	
+	
+	/*protected bool IsMaster()
 	{
-		SCR_Global.TeleportLocalPlayer(position, SCR_EPlayerTeleportedReason.FAST_TRAVEL);
-		Replication.BumpMe();
+		return (!m_RplComponent || m_RplComponent.IsMaster());
 	}
+	*/
 }

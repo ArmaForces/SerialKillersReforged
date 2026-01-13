@@ -1,0 +1,16 @@
+SCR_ChimeraCharacter : "{47B0BA658525301A}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Rifleman_P.et" {
+ ID "200D264F0EEA1A28"
+ components {
+  SCR_EditableCharacterComponent "{520EA1D2F659C85C}" {
+   m_UIInfo SCR_EditableEntityUIInfo "{5298E609432D192D}" {
+    Name "Terrorist"
+   }
+  }
+  SK_RespawnToPrisonPlayableComponent "{5EFCC1946F475F15}" {
+   m_sName "Terrorrist"
+   m_aRespawnPrefabs {
+    "{582D5E8D62C723A5}Prefabs/Characters/Factions/OPFOR/USSR_Army/SK_Character_USSR_Prisoner_P.et"
+   }
+  }
+ }
+}

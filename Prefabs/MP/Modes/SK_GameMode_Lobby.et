@@ -87,10 +87,17 @@ SK_SerialKillersGameMode : "{0F307326459A1395}Prefabs/MP/Modes/GameMode_Base.et"
    Enabled 0
   }
   SK_CivilianManagerComponent "{685718D9BA600F62}" {
+   m_iCityRange 120
+   m_iTownRange 60
+   m_iVillageRange 25
+   m_iSettlementRange 10
+   m_iTargetCivilianCount 20
+   m_fCityVehicleSpawnChance 0.005
+   m_fVehicleSpawnChance 0.001
   }
   SK_SerialKillersConfigComponent "{685718DA3A83D046}" {
    m_pCivilianPrefab "{1AF5B9AE5CFD4433}Prefabs/Groups/CIV/Group_CIV.et"
-   m_pPrisonerPrefab "{89DB1658A016C6A9}Prefabs/Characters/Factions/USSR/Character_USSR_Prisoner.et"
+   m_pPrisonerPrefab "{582D5E8D62C723A5}Prefabs/Characters/Factions/OPFOR/USSR_Army/SK_Character_USSR_Prisoner_P.et"
    m_pPatrolWaypointPrefab "{22A875E30470BD4F}Prefabs/AI/Waypoints/AIWaypoint_Patrol.et"
    m_pWaitWaypointPrefab "{531EC45063C1F57B}Prefabs/AI/Waypoints/AIWaypoint_Wait.et"
    m_pCycleWaypointPrefab "{35BD6541CBB8AC08}Prefabs/AI/Waypoints/AIWaypoint_Cycle.et"
@@ -120,11 +127,19 @@ SK_SerialKillersGameMode : "{0F307326459A1395}Prefabs/MP/Modes/GameMode_Base.et"
   PS_FactionRespawnCount "{685718DB3407165C}" {
    m_sFactionKey "US"
    m_iCount 999
+   m_iTime 30
+  }
+  PS_FactionRespawnCount "{68574E2A6369DF60}" {
+   m_sFactionKey "USSR"
+   m_iCount 999
+   m_iTime 10
   }
  }
- m_bFriendliesSpectatorOnly 1
+ m_bFriendliesSpectatorOnly 0
  m_bDisableArmaVision 0
  m_bHolsterWeapon 0
+ m_iCivKilledScore 10
+ m_iBluforKilledScore 20
  {
   SCR_FactionManager "5EA8C932C68D400F" : "{4A188E44289B9A50}Prefabs/MP/Managers/Factions/FactionManager_Editor.et" {
    ID "685718D994601CA1"
