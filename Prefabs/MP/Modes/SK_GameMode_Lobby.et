@@ -43,8 +43,9 @@ SK_SerialKillersGameMode : "{0F307326459A1395}Prefabs/MP/Modes/GameMode_Base.et"
    m_bRankLockedItems 1
   }
   SCR_CampaignBuildingManagerComponent "{685718D99460CB64}" {
+   m_sFreeRoamBuildingServerTrigger "{5E191CEAF4B95816}Prefabs/MP/FreeRoamBuildingClientTrigger.et"
    m_sFreeRoamBuildingClientTrigger "{5E191CEAF4B95816}Prefabs/MP/FreeRoamBuildingClientTrigger.et"
-   m_BudgetType CAMPAIGN
+   m_BudgetType RANK_CORPORAL
    m_iCompositionRefundPercentage 100
    m_OutlineManager SCR_CampaignBuildingCompositionOutlineManager "{5DF6FBB5913F3245}" {
    }
@@ -91,7 +92,7 @@ SK_SerialKillersGameMode : "{0F307326459A1395}Prefabs/MP/Modes/GameMode_Base.et"
    m_iTownRange 60
    m_iVillageRange 25
    m_iSettlementRange 10
-   m_iTargetCivilianCount 20
+   m_iTargetCivilianCount 100
    m_fCityVehicleSpawnChance 0.005
    m_fVehicleSpawnChance 0.001
   }
@@ -138,8 +139,10 @@ SK_SerialKillersGameMode : "{0F307326459A1395}Prefabs/MP/Modes/GameMode_Base.et"
  m_bFriendliesSpectatorOnly 0
  m_bDisableArmaVision 0
  m_bHolsterWeapon 0
- m_iCivKilledScore 10
- m_iBluforKilledScore 20
+ m_iCivKilledScore 2
+ m_iBluforKilledScore 4
+ m_iGameStartDelaySeconds 45
+ m_iRedforInactivityTime 300
  {
   SCR_FactionManager "5EA8C932C68D400F" : "{4A188E44289B9A50}Prefabs/MP/Managers/Factions/FactionManager_Editor.et" {
    ID "685718D994601CA1"

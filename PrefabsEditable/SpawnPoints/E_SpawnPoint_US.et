@@ -1,0 +1,7 @@
+SCR_SpawnPoint : "{987991DCED3DC197}PrefabsEditable/SpawnPoints/E_SpawnPoint.et" {
+ ID "52E65E9446A3DC1D"
+ components {
+  SK_FastTravelMapDescriptorComponent "{685AE699EC0EAC3A}" {
+  }
+ }
+}

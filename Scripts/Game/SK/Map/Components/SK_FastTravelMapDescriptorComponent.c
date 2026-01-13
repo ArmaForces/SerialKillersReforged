@@ -1,10 +1,11 @@
-class SK_MapMarkerComponentClass : ScriptComponentClass
+class SK_FastTravelMapDescriptorComponentClass : ScriptComponentClass
 {
 }
 
-class SK_MapMarkerComponent: ScriptComponent
+class SK_FastTravelMapDescriptorComponent: ScriptComponent
 {
 	protected IEntity m_Owner;
+	protected SCR_EMapMarkerType m_eMarkerType = SCR_EMapMarkerType.SK_UNIT;
 	
 	
 	protected override void OnPostInit(IEntity owner)
@@ -22,7 +23,7 @@ class SK_MapMarkerComponent: ScriptComponent
 			return;
 		
 		SCR_MapMarkerEntity marker = mapMarkerManager.InsertDynamicMarker(
-			SCR_EMapMarkerType.SK_UNIT,
+			SCR_EMapMarkerType.SK_FAST_TRAVEL,
 			m_Owner
 		);
 		
@@ -32,11 +33,12 @@ class SK_MapMarkerComponent: ScriptComponent
 			return;
 		}		
 		
-		SCR_ChimeraCharacter character = SCR_ChimeraCharacter.Cast(m_Owner);
-		if (!character)
+		SCR_SpawnPoint sp = SCR_SpawnPoint.Cast(m_Owner);
+		if (!sp)
 			return;
 		
-		Faction faction = character.GetFaction();
+		FactionKey fk = sp.GetFactionKey();
+		Faction faction = GetGame().GetFactionManager().GetFactionByKey(fk);
 		if (!faction)
 			return;
 		
@@ -46,17 +48,19 @@ class SK_MapMarkerComponent: ScriptComponent
 	}
 }
 
+
 modded enum SCR_EMapMarkerType
 {
-	SK_UNIT
+	SK_FAST_TRAVEL
 }
 
+
 [BaseContainerProps(), SCR_MapMarkerTitle()]
-class SK_MapMarkerEntryUnit : SCR_MapMarkerEntryDynamic
+class SK_MapMarkerEntryFastTravel : SCR_MapMarkerEntryDynamic
 {
 	//------------------------------------------------------------------------------------------------
 	override SCR_EMapMarkerType GetMarkerType()
 	{
-	 	return SCR_EMapMarkerType.SK_UNIT;
+	 	return SCR_EMapMarkerType.SK_FAST_TRAVEL;
 	}
 }
