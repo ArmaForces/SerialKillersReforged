@@ -10,6 +10,7 @@ class SK_SerialKillersGameMode : PS_GameModeCoop
 	protected SCR_XPHandlerComponent m_XPHandlerComponent;
 	protected SCR_RespawnSystemComponent m_RespawnSystem;
 	protected SCR_FactionManager m_FactionManager;
+	protected SK_GameStateSystem m_GameStateSystem;
 	
 	[Attribute( defvalue: "1", desc: "Civilian killed score")]
 	int m_iCivKilledScore;
@@ -82,11 +83,31 @@ class SK_SerialKillersGameMode : PS_GameModeCoop
 		
 		ChimeraWorld world = GetGame().GetWorld();
 		
-
 		m_fStartTimestamp = world.GetServerTimestamp().PlusSeconds(m_iGameStartDelaySeconds);
 		m_fVictoryTimestamp = m_fStartTimestamp.PlusSeconds(m_iGameOverTimeMinutes * 60);
-		GetGame().GetCallqueue().CallLater(StartSKGame, m_iGameStartDelaySeconds * 1000);
-		GetGame().GetCallqueue().CallLater(TimeoutGameEnd, m_iGameOverTimeMinutes * 60 * 1000 + m_iGameStartDelaySeconds * 1000);
+		
+		// Initialize and start the game state system
+		m_GameStateSystem = SK_GameStateSystem.GetInstance();
+		if (m_GameStateSystem)
+		{
+			// Subscribe to system events
+			m_GameStateSystem.GetOnGameStart().Insert(OnSystemGameStart);
+			m_GameStateSystem.GetOnVictoryTimeout().Insert(OnSystemVictoryTimeout);
+			m_GameStateSystem.GetOnPenaltyStrike().Insert(OnSystemPenaltyStrike);
+			m_GameStateSystem.GetOnMaxPenaltiesReached().Insert(OnSystemMaxPenalties);
+			
+			// Start the system with configuration
+			m_GameStateSystem.StartSystem(
+				m_iGameStartDelaySeconds,
+				m_iGameOverTimeMinutes * 60,
+				m_iRedforInactivityTime,
+				m_iMaxPenaltyCount
+			);
+		}
+		else
+		{
+			Print("SK_GameStateSystem not found! Timers will not work.", LogLevel.ERROR);
+		}
 	}
 	
 	override void EOnInit(IEntity owner)
@@ -140,20 +161,77 @@ class SK_SerialKillersGameMode : PS_GameModeCoop
 		m_mapMarkerManager.InsertStaticMarker(marker, false, true);
 	}
 	
-	void StartPenaltyClock()
+	//------------------------------------------------------------------------------------------------
+	// System Event Handlers
+	//------------------------------------------------------------------------------------------------
+	
+	protected void OnSystemGameStart()
 	{
 		if (!IsMaster())
 			return;
 		
-		Print("Starting penalty clock");
+		Print("Gamemode starting (via system)");
+		StartGameMode();
+		Rpc(RPC_DoStartGame);
+		RPC_DoStartGame();
+		Replication.BumpMe();
 		
-		ChimeraWorld world = GetGame().GetWorld();
-		m_fLastKillTimestamp = world.GetServerTimestamp();
+		// Start penalty clock after initial grace period
+		if (m_GameStateSystem)
+			m_GameStateSystem.StartPenaltyClock();
 		
-		GetGame().GetCallqueue().CallLater(PenaltyClockCheck, m_iRedforInactivityTime * 1000 + 500);
+		// Notify clients about penalty clock
 		Rpc(RPC_StartPenaltyClock);
 		RPC_StartPenaltyClock();
 	}
+	
+	protected void OnSystemVictoryTimeout()
+	{
+		if (!IsMaster())
+			return;
+		
+		Print("Timeout reached (via system), ending game with blufor win");
+		SCR_Faction blufor = SCR_Faction.Cast(m_FactionManager.GetFactionByKey(m_sBluforFactionKey));
+		
+		array<int> bluPlayers = new array<int>;
+		blufor.GetPlayersInFaction(bluPlayers);
+		
+		SCR_GameModeEndData endData = SCR_GameModeEndData.Create(
+			EGameOverTypes.FACTION_VICTORY_SCORE,
+			bluPlayers, {m_FactionManager.GetFactionIndex(blufor)}
+		);
+		EndGameMode(endData);
+	}
+	
+	protected void OnSystemPenaltyStrike(int strikeCount)
+	{
+		if (!IsMaster())
+			return;
+		
+		m_iPenaltyStrikeCount = strikeCount;
+		PrintFormat("Penalty strike %1 (via system)", strikeCount);
+		
+		Rpc(RPC_PenalizeRedfor);
+		RPC_PenalizeRedfor();
+		Replication.BumpMe();
+	}
+	
+	protected void OnSystemMaxPenalties()
+	{
+		if (!IsMaster())
+			return;
+		
+		Print("Maximum number of penalty strikes reached (via system). Blufor wins!");
+		SCR_GameModeEndData endData = SCR_GameModeEndData.CreateSimple(
+			EGameOverTypes.ENDREASON_SCORELIMIT,
+			winnerFactionId:m_FactionManager.GetFactionIndex(GetBluforFaction())
+		);
+		EndGameMode(endData);
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	// RPC Methods
+	//------------------------------------------------------------------------------------------------
 	
 	
 	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
@@ -162,42 +240,6 @@ class SK_SerialKillersGameMode : PS_GameModeCoop
 		int penaltyTimerMinutes = m_iRedforInactivityTime / 60;
 		string message = string.Format("From now on killers must keep killing within %1 minutes since last kill or they will face penalty", penaltyTimerMinutes);
 		SCR_HintManagerComponent.GetInstance().ShowCustom(message, "", 10, false);
-	}
-	
-	void PenaltyClockCheck()
-	{
-		if (!IsMaster())
-			return;
-		
-		if (!m_bHasGameStarted)
-			return;
-		
-		Print("Checking penalty clock timer", LogLevel.DEBUG);
-		
-		ChimeraWorld world = GetGame().GetWorld();
-		WorldTimestamp timeNow = world.GetServerTimestamp();
-		float timeDiffSeconds = timeNow.DiffSeconds(m_fLastKillTimestamp);
-		if (timeDiffSeconds > m_iRedforInactivityTime)
-		{
-			m_iPenaltyStrikeCount++;
-			PrintFormat("Last kill event was %1s ago, redfor receives penalty for the %2 time", timeDiffSeconds, m_iPenaltyStrikeCount, level:LogLevel.WARNING);
-			
-			if (m_iPenaltyStrikeCount > m_iMaxPenaltyCount)
-			{
-				Print("Maximum number of penalty strikes has been reached. Blufor wins!");
-				SCR_GameModeEndData endData = SCR_GameModeEndData.CreateSimple(
-					EGameOverTypes.ENDREASON_SCORELIMIT,
-					winnerFactionId:m_FactionManager.GetFactionIndex(GetBluforFaction())
-				);
-				EndGameMode(endData);
-			}
-			
-			m_fLastKillTimestamp = timeNow;
-			GetGame().GetCallqueue().CallLater(PenaltyClockCheck, m_iRedforInactivityTime * 1000 + 500);
-			Rpc(RPC_PenalizeRedfor);
-			RPC_PenalizeRedfor();
-			Replication.BumpMe();
-		}
 	}
 	
 	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
@@ -209,19 +251,6 @@ class SK_SerialKillersGameMode : PS_GameModeCoop
 		SCR_HintManagerComponent.GetInstance().ShowCustom("Killers were inactive for too long, additional points for blufor!", "", 10, false);
 	}
 	
-	void StartSKGame()
-	{
-		if (!IsMaster())
-			return;
-		
-		Print("Gamemode starting");
-		GetGame().GetCallqueue().CallLater(StartPenaltyClock, m_iRedforInactivityTime * 1000);
-		StartGameMode();
-		Rpc(RPC_DoStartGame);
-		RPC_DoStartGame();
-		Replication.BumpMe();
-	}
-	
 	[RplRpc(RplChannel.Reliable, RplRcver.Broadcast)]
 	void RPC_DoStartGame()
 	{
@@ -229,34 +258,7 @@ class SK_SerialKillersGameMode : PS_GameModeCoop
 		m_bHasGameStarted = true;
 		
 		SCR_HintManagerComponent.GetInstance().ShowCustom("Game is starting", "", 10, false);
-		
-		array<SCR_SpawnPoint> spawnPoints = SCR_SpawnPoint.GetSpawnPoints();
-		foreach(SCR_SpawnPoint sp: spawnPoints)
-		{
-			if (sp.GetFactionKey() == m_sRedforFactionKey)
-			{
-				sp.SetSpawnPointEnabled_S(!sp.IsSpawnPointEnabled());
-			}
-		}
 		OnMatchSituationChanged();
-	}
-	
-	void TimeoutGameEnd()
-	{
-		if (!IsMaster())
-			return;
-		
-		Print("Timeout reached, ending game with blufor win");
-		SCR_Faction blufor = SCR_Faction.Cast(m_FactionManager.GetFactionByKey(m_sBluforFactionKey));
-		
-		array<int> bluPlayers = new array<int>;
-		blufor.GetPlayersInFaction(bluPlayers);
-		
-		SCR_GameModeEndData endData = SCR_GameModeEndData.Create(
-			EGameOverTypes.FACTION_VICTORY_SCORE,
-			bluPlayers, {m_FactionManager.GetFactionIndex(blufor)}
-			);
-		EndGameMode(endData);
 	}
 	
 	
@@ -308,9 +310,10 @@ class SK_SerialKillersGameMode : PS_GameModeCoop
 				return;
 		}
 		
-		ChimeraWorld world = GetGame().GetWorld();
-		m_fLastKillTimestamp = world.GetServerTimestamp();
-		GetGame().GetCallqueue().CallLater(PenaltyClockCheck, m_iRedforInactivityTime * 1000 + 500);
+		// Reset penalty clock via system (replaces CallLater pattern)
+		if (m_GameStateSystem)
+			m_GameStateSystem.ResetPenaltyClock();
+		
 		Replication.BumpMe();
 		GameEndCheck();
 	}
@@ -566,6 +569,13 @@ class SK_SerialKillersGameMode : PS_GameModeCoop
 	
 	void ~SK_SerialKillersGameMode()
 	{
-		//TODO
+		// Cleanup system event subscriptions
+		if (m_GameStateSystem)
+		{
+			m_GameStateSystem.GetOnGameStart().Remove(OnSystemGameStart);
+			m_GameStateSystem.GetOnVictoryTimeout().Remove(OnSystemVictoryTimeout);
+			m_GameStateSystem.GetOnPenaltyStrike().Remove(OnSystemPenaltyStrike);
+			m_GameStateSystem.GetOnMaxPenaltiesReached().Remove(OnSystemMaxPenalties);
+		}
 	}
 }

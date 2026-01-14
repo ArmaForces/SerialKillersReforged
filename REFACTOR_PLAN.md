@@ -420,9 +420,9 @@ override void DisplayUpdate(IEntity owner, float timeSlice)
 ### Step-by-Step Implementation Order
 
 1. **Preparation**
-   - [ ] Create backup branch
-   - [ ] Add Reforger Lobby dependency to `addon.gproj`
-   - [ ] Verify dependency loads correctly
+   - [X] Create backup branch
+   - [X] Add Reforger Lobby dependency to `addon.gproj`
+   - [X] Verify dependency loads correctly
 
 2. **Create New Systems (no breaking changes)**
    - [ ] Create `SK_GameStateSystem.c`
@@ -443,10 +443,10 @@ override void DisplayUpdate(IEntity owner, float timeSlice)
    - [ ] Test each component individually
 
 5. **Implement Spectator/Slotting**
-   - [ ] Create `SK_PlayableManagerComponent`
-   - [ ] Implement killer capture → spectator transition
-   - [ ] Implement prison release → respawn flow
-   - [ ] Test multiplayer scenarios
+   - [X] Create `SK_PlayableManagerComponent`
+   - [X]  Implement killer capture → spectator transition
+   - [X] Implement prison release → respawn flow
+   - [X] Test multiplayer scenarios
 
 6. **UI Updates**
    - [ ] Update `SK_ScoreInfoDisplay` (optional)
@@ -454,7 +454,7 @@ override void DisplayUpdate(IEntity owner, float timeSlice)
 
 7. **Cleanup**
    - [ ] Remove deprecated code
-   - [ ] Update prefabs to include new components
+   - [X] Update prefabs to include new components
    - [ ] Update mission files if needed
    - [ ] Final integration testing
 
