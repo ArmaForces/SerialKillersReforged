@@ -39,6 +39,9 @@ SK_SerialKillersGameMode : "{0F307326459A1395}Prefabs/MP/Modes/GameMode_Base.et"
   }
   PS_VoNRoomsManager "{685718D99460CB4C}" {
   }
+  SCR_AdditionalGameModeSettingsComponent "{6170E11C3C452ACC}" {
+   m_eNametagRelationFilters 18
+  }
   SCR_ArsenalManagerComponent "{6120A34EB1E9BBEF}" {
    m_bRankLockedItems 1
   }
@@ -146,6 +149,33 @@ SK_SerialKillersGameMode : "{0F307326459A1395}Prefabs/MP/Modes/GameMode_Base.et"
  {
   SCR_FactionManager "5EA8C932C68D400F" : "{4A188E44289B9A50}Prefabs/MP/Managers/Factions/FactionManager_Editor.et" {
    ID "685718D994601CA1"
+   m_aRanks {
+    SCR_RankID "{5CB0777E83631136}" {
+     m_iRequiredXP -1001
+    }
+    SCR_RankID "{5CB0777E828E61F3}" {
+     m_iRequiredXP -1000
+    }
+    SCR_RankID "{5CB0777E803B7EA2}" {
+     m_iRequiredXP 8
+    }
+    SCR_RankID "{5CB0777E8F0E82AF}" {
+     m_iRequiredXP 16
+    }
+    SCR_RankID "{5CB0777E8BE66EC2}" {
+     m_iRequiredXP 24
+    }
+    SCR_RankID "{5CB0777E8AD658D6}" {
+     m_iRequiredXP 28
+    }
+    SCR_RankID "{5CB0777E88380770}" {
+     m_iRequiredXP 32
+    }
+    SCR_RankID "{685D08F25EBA0CBA}" {
+     m_iRank COLONEL
+     m_iRequiredXP 40
+    }
+   }
   }
   RadioManagerEntity : "{B8E09FAB91C4ECCD}Prefabs/Systems/Radio/RadioManager.et" {
    ID "685718D994601CBE"
