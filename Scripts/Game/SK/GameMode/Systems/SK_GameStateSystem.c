@@ -2,7 +2,6 @@
  * SK_GameStateSystem
  * 
  * GameSystem responsible for managing all time-based game logic in Serial Killers.
- * Replaces CallQueue/CallLater patterns with proper frame-based updates.
  * 
  * Manages:
  * - Game start countdown
