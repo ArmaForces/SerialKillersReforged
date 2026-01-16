@@ -22,6 +22,9 @@ class SK_SerialKillersConfigComponent: ScriptComponent
 	[Attribute(uiwidget: UIWidgets.ResourceNamePicker, desc: "GetIn Waypoint Prefab", params: "et", category: "Waypoints")]
 	ResourceName m_pGetInWaypointPrefab;
 	
+	[Attribute(uiwidget: UIWidgets.ResourceNamePicker, desc: "GetOut Waypoint Prefab", params: "et", category: "Waypoints")]
+	ResourceName m_pGetOutWaypointPrefab;
+	
 	[Attribute(uiwidget: UIWidgets.ResourceAssignArray, desc: "Vehicle to spawn", params: "et", category: "PrefabList")]
 	ref array<ref ResourceName> m_pVehiclePrefabArray;
 	

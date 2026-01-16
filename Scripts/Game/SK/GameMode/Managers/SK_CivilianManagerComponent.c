@@ -93,6 +93,17 @@ class SK_CivilianManagerComponent: ScriptComponent
 		int civTarget = Math.Ceil(m_iTargetCivilianCount / totalWeight);
 		Print("Target civilian count per weight = " + civTarget);
 		
+		// Start the movement system before spawning civilians
+		SK_CivilianMovementSystem movementSystem = SK_CivilianMovementSystem.GetInstance();
+		if (movementSystem)
+		{
+			movementSystem.StartSystem();
+		}
+		else
+		{
+			Print("SK_CivilianManagerComponent: SK_CivilianMovementSystem not found! Civilians will be idle.", LogLevel.WARNING);
+		}
+		
 		// Get spawn system and queue civilians
 		SK_CivilianSpawnSystem spawnSystem = SK_CivilianSpawnSystem.GetInstance();
 		if (!spawnSystem)
@@ -135,12 +146,12 @@ class SK_CivilianManagerComponent: ScriptComponent
 		
 		PrintFormat("Queueing %1 civilians for %2", civCount, cityMarker.GetName());
 		
-		// Queue each civilian spawn
+		// Queue each civilian spawn with city ID
 		vector cityPos = cityMarker.GetOrigin();
 		for (int i = 0; i < civCount; i++)
 		{
 			vector spawnPos = SK_Global.GetRandomNonOceanPositionNear(cityPos, range);
-			spawnSystem.QueueCivilianSpawn(spawnPos, range);
+			spawnSystem.QueueCivilianSpawn(spawnPos, range, cityMarkerId);
 		}
 	}
 	
@@ -284,15 +295,22 @@ class SK_CivilianManagerComponent: ScriptComponent
 		return wp;
 	}
 	
+	AIWaypoint SpawnGetOutWaypoint(vector pos)
+	{
+		AIWaypoint wp = AIWaypoint.Cast(SK_Global.SpawnEntityPrefab(SK_Global.GetConfig().m_pGetOutWaypointPrefab, pos));
+		return wp;
+	}
+	
 	//------------------------------------------------------------------------------------------------
 	/**
-	 * Setup AI waypoints for a spawned civilian entity
-	 * Called by SK_CivilianSpawnSystem after spawning
+	 * Setup AI for a spawned civilian entity
+	 * Registers the civilian with SK_CivilianMovementSystem for dynamic waypoint management
 	 * @param civEntity - The spawned civilian entity
-	 * @param originPos - Origin position for waypoint calculations
-	 * @param range - Range for random position generation
+	 * @param originPos - Origin position (city center)
+	 * @param range - Range for movement in the city
+	 * @param cityId - EntityID of the city this civilian belongs to
 	 */
-	void SetupCivilianAI(IEntity civEntity, vector originPos, int range)
+	void SetupCivilianAI(IEntity civEntity, vector originPos, int range, EntityID cityId = EntityID.INVALID)
 	{
 		if (!civEntity)
 			return;
@@ -307,47 +325,20 @@ class SK_CivilianManagerComponent: ScriptComponent
 			return;
 		}
 		
-		vector spawnPosition = civEntity.GetOrigin();
-		vector targetPos = SK_Global.GetRandomNonOceanPositionNear(originPos, 5000);
-		vector carPosition = SK_Global.GetRandomNonOceanPositionNear(spawnPosition, 50);
-		
-		array<AIWaypoint> queueOfWaypoints = new array<AIWaypoint>();
-		
-		if (s_AIRandomGenerator.RandFloat01() < 0.5) 
-		{
-			housePositions.Insert(carPosition);
-			queueOfWaypoints.Insert(SpawnGetInWaypoint(carPosition));
-			for (int i = 0; i < s_AIRandomGenerator.RandInt(1, 10); i++)
-			{
-				if (cities.Count() == 0)
-					break;
-				EntityID randCity = cities.GetRandomElement();
-				IEntity cityMarker = GetGame().GetWorld().FindEntityByID(randCity);
-				if (!cityMarker)
-					continue;
-				targetPos = SK_Global.GetRandomNonOceanPositionNear(cityMarker.GetOrigin(), 500);
-				queueOfWaypoints.Insert(SpawnPatrolWaypoint(targetPos));
-				queueOfWaypoints.Insert(SpawnWaitWaypoint(targetPos, s_AIRandomGenerator.RandFloatXY(15, 50)));
-			}
-		}
-		else 
-		{
-			queueOfWaypoints.Insert(SpawnPatrolWaypoint(targetPos));
-			queueOfWaypoints.Insert(SpawnWaitWaypoint(targetPos, s_AIRandomGenerator.RandFloatXY(15, 50)));
-		}
-
-		queueOfWaypoints.Insert(SpawnPatrolWaypoint(spawnPosition));
-		queueOfWaypoints.Insert(SpawnWaitWaypoint(spawnPosition, s_AIRandomGenerator.RandFloatXY(15, 50)));
-
-		AIWaypointCycle cycle = AIWaypointCycle.Cast(SpawnWaypoint(SK_Global.GetConfig().m_pCycleWaypointPrefab, targetPos));
-		if (cycle)
-		{
-			cycle.SetWaypoints(queueOfWaypoints);
-			aigroup.AddWaypoint(cycle);
-		}
-		
+		// Prevent max LOD if configured
 		if (!SK_Global.GetConfig().IsAIMaxLodAllowed())
 			aigroup.PreventMaxLOD();
+		
+		// Register with movement system for dynamic waypoint management
+		SK_CivilianMovementSystem movementSystem = SK_CivilianMovementSystem.GetInstance();
+		if (movementSystem)
+		{
+			movementSystem.RegisterCivilian(civEntity, cityId, range);
+		}
+		else
+		{
+			Print("SK_CivilianManagerComponent: MovementSystem not found, civilian will be idle!", LogLevel.WARNING);
+		}
 	}
 	
 	//------------------------------------------------------------------------------------------------

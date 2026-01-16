@@ -95,17 +95,18 @@ SK_SerialKillersGameMode : "{0F307326459A1395}Prefabs/MP/Modes/GameMode_Base.et"
    m_iTownRange 60
    m_iVillageRange 25
    m_iSettlementRange 10
-   m_iTargetCivilianCount 100
-   m_fCityVehicleSpawnChance 0.005
-   m_fVehicleSpawnChance 0.001
+   m_iTargetCivilianCount 50
+   m_fCityVehicleSpawnChance 0.5
+   m_fVehicleSpawnChance 0.1
   }
   SK_SerialKillersConfigComponent "{685718DA3A83D046}" {
    m_pCivilianPrefab "{1AF5B9AE5CFD4433}Prefabs/Groups/CIV/Group_CIV.et"
    m_pPrisonerPrefab "{582D5E8D62C723A5}Prefabs/Characters/Factions/OPFOR/USSR_Army/SK_Character_USSR_Prisoner_P.et"
-   m_pPatrolWaypointPrefab "{22A875E30470BD4F}Prefabs/AI/Waypoints/AIWaypoint_Patrol.et"
+   m_pPatrolWaypointPrefab "{4ECD14650D82F5CA}Prefabs/AI/Waypoints/AIWaypoint_Loiter_CO.et"
    m_pWaitWaypointPrefab "{531EC45063C1F57B}Prefabs/AI/Waypoints/AIWaypoint_Wait.et"
    m_pCycleWaypointPrefab "{35BD6541CBB8AC08}Prefabs/AI/Waypoints/AIWaypoint_Cycle.et"
    m_pGetInWaypointPrefab "{B049D4C74FBC0C4D}Prefabs/AI/Waypoints/AIWaypoint_GetInNearest.et"
+   m_pGetOutWaypointPrefab "{C40316EE26846CAB}Prefabs/AI/Waypoints/AIWaypoint_GetOut.et"
    m_pVehiclePrefabArray {
     "{128253A267BE9424}Prefabs/Vehicles/Wheeled/S105/S105_randomized.et" "{49C909AFD66E90A1}Prefabs/Vehicles/Wheeled/S1203/S1203_transport_randomized.et" "{57A441224AC02CF3}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_covered_CIV_Randomized.et" "{EEAC3A94929A2B55}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_CIV_randomized.et" "{43C4AF1EEBD001CE}Prefabs/Vehicles/Wheeled/UAZ452/UAZ452_ambulance.et" "{F649585ABB3706C4}Prefabs/Vehicles/Wheeled/M151A2/M151A2.et" "{1B0D46B41C50873D}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469_uncovered_CIV_Randomized.et" "{F649585ABB3706C4}Prefabs/Vehicles/Wheeled/M151A2/M151A2.et" "{960800AA779D0FF0}Prefabs/Vehicles/Wheeled/SampleCar_01/FIAT125PYellow.et" "{0239A9BB6E1C109A}Prefabs/Vehicles/Wheeled/SampleCar_01/FIAT125POrange.et"
    }

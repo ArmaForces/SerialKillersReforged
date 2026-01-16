@@ -195,8 +195,8 @@ class SK_CivilianSpawnSystem : GameSystem
 		
 		EntityID civId = civ.GetID();
 		
-		// Setup AI waypoints through manager
-		m_CivilianManager.SetupCivilianAI(civ, data.m_vPosition, data.m_iRange);
+		// Setup AI through manager - pass city ID for movement system registration
+		m_CivilianManager.SetupCivilianAI(civ, data.m_vPosition, data.m_iRange, data.m_CityId);
 		
 		return civId;
 	}
@@ -228,12 +228,14 @@ class SK_CivilianSpawnSystem : GameSystem
 	 * Queue a civilian for spawning
 	 * @param position - Center position for spawn area
 	 * @param range - Spawn range around position
+	 * @param cityId - EntityID of the city this civilian belongs to
 	 */
-	void QueueCivilianSpawn(vector position, int range)
+	void QueueCivilianSpawn(vector position, int range, EntityID cityId = EntityID.INVALID)
 	{
 		SK_CivilianSpawnData data = new SK_CivilianSpawnData();
 		data.m_vPosition = position;
 		data.m_iRange = range;
+		data.m_CityId = cityId;
 		
 		m_aPendingCivilians.Insert(data);
 		m_iTotalCiviliansQueued++;
@@ -442,6 +444,7 @@ class SK_CivilianSpawnData
 {
 	vector m_vPosition;
 	int m_iRange;
+	EntityID m_CityId;
 }
 
 class SK_VehicleSpawnData
