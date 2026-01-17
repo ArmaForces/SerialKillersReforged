@@ -1,0 +1,32 @@
+SCR_AIGroup : "{027F4A688EBC9894}Prefabs/Groups/BLUFOR/Group_US_PilotSquad.et" {
+ coords 4858.379 56.45 11743.114
+}
+$grp SCR_AIGroup : "{32744F4CFDB10933}Prefabs/Groups/BLUFOR/Group_US_PoliceSquad.et" {
+ {
+  coords 4903.287 28.594 11746.003
+ }
+ {
+  coords 4901.794 28.562 11742.771
+ }
+ {
+  coords 4900.77 28.563 11740.045
+ }
+ {
+  coords 4901.514 28.563 11737.688
+ }
+ {
+  coords 4902.501 28.584 11734.598
+ }
+ {
+  coords 4901.59 28.593 11731.426
+ }
+ {
+  coords 4901.668 28.595 11727.083
+ }
+ {
+  coords 4900.647 28.595 11724.671
+ }
+}
+SCR_AIGroup : "{C4D087C8DCF49E8F}Prefabs/Groups/OPFOR/Group_USSR_Terorrists.et" {
+ coords 1121.26 40.863 11513.572
+}

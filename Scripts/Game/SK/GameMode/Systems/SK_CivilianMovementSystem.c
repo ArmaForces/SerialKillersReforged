@@ -80,9 +80,9 @@ class SK_CivilianMovementSystem : GameSystem
 	protected ref array<vector> m_aCityPositions;
 	
 	// Configuration
-	protected const float LOCAL_PATROL_CHANCE = 0.6; // 60% chance to patrol locally, 40% to travel
-	protected const float MIN_WAIT_TIME = 10.0;
-	protected const float MAX_WAIT_TIME = 60.0;
+	protected const float LOCAL_PATROL_CHANCE = 0.2; // 20% chance to patrol locally, 80% to travel
+	protected const float MIN_WAIT_TIME = 0.5;
+	protected const float MAX_WAIT_TIME = 10.0;
 	
 	// Random generator
 	protected static ref RandomGenerator s_RandomGenerator = new RandomGenerator();
@@ -129,6 +129,7 @@ class SK_CivilianMovementSystem : GameSystem
 		
 		m_fUpdateTimer = 0;
 		CleanupDeadCivilians();
+		CheckIdleCivilians();
 	}
 	
 	//------------------------------------------------------------------------------------------------
@@ -152,6 +153,31 @@ class SK_CivilianMovementSystem : GameSystem
 		
 		if (toRemove.Count() > 0)
 			PrintFormat("SK_CivilianMovementSystem: Cleaned up %1 dead civilians, %2 remaining", toRemove.Count(), m_mCivilianData.Count());
+	}
+	
+	//------------------------------------------------------------------------------------------------
+	protected void CheckIdleCivilians()
+	{
+		int idleCivDetected = 0;
+		foreach (EntityID civId, SK_CivilianMovementData data : m_mCivilianData)
+		{
+			IEntity civ = GetGame().GetWorld().FindEntityByID(civId);
+			SCR_AIGroup aiGroup = SCR_AIGroup.Cast(civ);
+			if (!aiGroup)
+				continue;
+			
+			array<AIWaypoint> remainingWaypoints = new array<AIWaypoint>();
+			aiGroup.GetWaypoints(remainingWaypoints);
+			
+			if (remainingWaypoints.IsEmpty())
+			{
+				AssignNewBehavior(civId);
+				idleCivDetected++;
+			}
+		}
+		
+		if (idleCivDetected > 0)
+			PrintFormat("SK_CivilianMovementSystem: Detected %1 idle civilians", idleCivDetected);
 	}
 	
 	//------------------------------------------------------------------------------------------------

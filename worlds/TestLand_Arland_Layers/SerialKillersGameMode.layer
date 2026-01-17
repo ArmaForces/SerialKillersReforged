@@ -16,7 +16,8 @@ SCR_AIWorld : "{01DC74137CFDDB6A}Prefabs/AI/SCR_AIWorld_Arland.et" {
   }
  }
  coords 1328.174 38.999 2147.295
- "Accepted Road Types" 0x7f 0
+ "Off Road Flags" 0 0x2
+ "Accepted Road Types" 0xe 0x8
 }
 SK_SerialKillersGameMode SK_GameMode_Lobby1 : "{7C4A1D3050992454}Prefabs/MP/Modes/SK_GameMode_Lobby.et" {
  coords 2033.819 32.299 2018.762

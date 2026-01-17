@@ -96,7 +96,7 @@ SK_SerialKillersGameMode : "{0F307326459A1395}Prefabs/MP/Modes/GameMode_Base.et"
    m_iVillageRange 25
    m_iSettlementRange 10
    m_iTargetCivilianCount 50
-   m_fCityVehicleSpawnChance 0.5
+   m_fCityVehicleSpawnChance 0.25
    m_fVehicleSpawnChance 0.1
   }
   SK_SerialKillersConfigComponent "{685718DA3A83D046}" {
@@ -143,10 +143,10 @@ SK_SerialKillersGameMode : "{0F307326459A1395}Prefabs/MP/Modes/GameMode_Base.et"
  m_bFriendliesSpectatorOnly 0
  m_bDisableArmaVision 0
  m_bHolsterWeapon 0
- m_iCivKilledScore 2
- m_iBluforKilledScore 4
- m_iGameStartDelaySeconds 45
- m_iRedforInactivityTime 300
+ m_iCivKilledScore 1
+ m_iBluforKilledScore 2
+ m_iGameStartDelaySeconds 90
+ m_iRedforInactivityTime 600
  {
   SCR_FactionManager "5EA8C932C68D400F" : "{4A188E44289B9A50}Prefabs/MP/Managers/Factions/FactionManager_Editor.et" {
    ID "685718D994601CA1"
